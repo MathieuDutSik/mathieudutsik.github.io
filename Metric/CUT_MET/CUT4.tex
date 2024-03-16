@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,amssymb,amsmath,vmargin,multicol}
+\usepackage[english]{babel}
+\title{The Cone CUT4}
+\setpapersize{custom}{21cm}{29.7cm}
+\setmarginsrb{1cm}{1cm}{1cm}{2cm}{0pt}{0pt}{0pt}{0pt}
+\begin{document}
+\maketitle
+\section{The intrisic informations concerning the graph of extreme rays of CUT4.ext}
+The graph considered is made of $7$ elements.\\
+The group acting on CUT4.ext is ReprS4\\
+Under the group action we have in fact only $2$ orbits to consider.\\
+The diameter of the graph is $1$.\\
+The list of orbits is with adjacency and Size info:
+\begin{center}
+\scriptsize
+\begin{tabular}{ccccccc|c|c}
+E1:&0&0&1&0&1&1&6&4\\
+E2:&0&1&1&1&1&0&6&3\\
+\end{tabular}
+\end{center}
+The representation matrix is:
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|cc|c|c|}
+\hline
+&E1&E2&Adj.&Size\\
+\hline
+E1& 3& 3&6&4\\
+E2& 4& 2&6&3\\
+\hline
+Size&4&3&&7\\
+\hline
+\end{tabular}
+\end{center}
+\subsection{The local graphs}
+The complemented local graph are:\\
+We consider graph with cardinal inferior or equal to $20$\\
+The complemented local graph for orbit $1$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&0&:&\\
+2&0&:&\\
+3&0&:&\\
+4&0&:&\\
+5&0&:&\\
+6&0&:&\\
+\end{array}
+\end{equation*}
+The complemented local graph for orbit $2$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&0&:&\\
+2&0&:&\\
+3&0&:&\\
+4&0&:&\\
+5&0&:&\\
+6&0&:&\\
+\end{array}
+\end{equation*}
+\subsection{scalar product between elements of orbits}
+\noindent This subsection made sense only if the representation is orthogonal which is the usual case
+Considering Orbit 1
+\begin{enumerate}
+\item Orbit Size is $4$.
+\item Norm of elements is $3$.
+\item Possible scalar product : $1$
+\end{enumerate}
+Considering Orbit 2
+\begin{enumerate}
+\item Orbit Size is $3$.
+\item Norm of elements is $4$.
+\item Possible scalar product : $2$
+\end{enumerate}
+\subsection{invariant group of Orbits}
+\noindent The invariant group of $x$ is the set of $g$ such that $g(x)=x$ denoted by $G_x$.\\
+If $x$ and $y$ are in the same orbit then the groups $G_x$ and  $G_y$ are conjuguate.\\
+For any element $x$ we denote $O_x$ its Orbit, we have $|O_x|\times |G_x|=|G|$
+We print only nontrivial groups
+Invariant group of Orbit $1$:
+\begin{enumerate}
+\item Group Size is $6$.
+\item Elements are : (3 2 1 4  ), (3 1 2 4  ), (2 3 1 4  ), (1 3 2 4  ), (2 1 3 4  ), (1 2 3 4  )
+\end{enumerate}
+Invariant group of Orbit $2$:
+\begin{enumerate}
+\item Group Size is $8$.
+\item Elements are : (4 3 2 1  ), (4 3 1 2  ), (3 4 2 1  ), (3 4 1 2  ), (2 1 4 3  ), (1 2 4 3  ), (2 1 3 4  ), (1 2 3 4  )
+\end{enumerate}
+\section{The intrisic informations concerning the graph of facet rays of CUT4.ine}
+The graph considered is made of $12$ elements.\\
+The group acting on CUT4.ine is ReprS4\\
+Under the group action we have in fact only $1$ orbits to consider.\\
+The diameter of the graph is $2$.\\
+The list of orbits is with adjacency and Size info:
+\begin{center}
+\scriptsize
+\begin{tabular}{ccccccc|c|c}
+F1:&-1&0&1&0&1&0&5&12\\
+\end{tabular}
+\end{center}
+The representation matrix is:
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|c|c|c|}
+\hline
+&F1&Adj.&Size\\
+\hline
+F1& 5&5&12\\
+\hline
+Size&12&&12\\
+\hline
+\end{tabular}
+\end{center}
+\subsection{The local graphs}
+The complemented local graph are:\\
+We consider graph with cardinal inferior or equal to $20$\\
+The complemented local graph for orbit $1$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&2&:&\,\,4\,\,5\\
+2&2&:&\,\,4\,\,5\\
+3&2&:&\,\,4\,\,5\\
+4&3&:&\,\,1\,\,2\,\,3\\
+5&3&:&\,\,1\,\,2\,\,3\\
+\end{array}
+\end{equation*}
+\subsection{scalar product between elements of orbits}
+\noindent This subsection made sense only if the representation is orthogonal which is the usual case
+Considering Orbit 1
+\begin{enumerate}
+\item Orbit Size is $12$.
+\item Norm of elements is $3$.
+\item Possible scalar product : $-1$, $1$
+\end{enumerate}
+\subsection{invariant group of Orbits}
+\noindent The invariant group of $x$ is the set of $g$ such that $g(x)=x$ denoted by $G_x$.\\
+If $x$ and $y$ are in the same orbit then the groups $G_x$ and  $G_y$ are conjuguate.\\
+For any element $x$ we denote $O_x$ its Orbit, we have $|O_x|\times |G_x|=|G|$
+We print only nontrivial groups
+Invariant group of Orbit $1$:
+\begin{enumerate}
+\item Group Size is $2$.
+\item Elements are : (2 1 3 4  ), (1 2 3 4  )
+\end{enumerate}
+\section{The two incidence matrix}
+Incidence between Orbit of Extreme rays and Orbits of Facets
+\begin{equation*}
+\begin{array}{|c|c|c|}
+\hline
+&F1&Inc\\
+\hline
+E1&9&9\\
+E2&8&8\\
+\hline
+\end{array}
+\end{equation*}
+Incidence between Orbits of Facets and Orbits of Extreme Rays
+\begin{equation*}
+\begin{array}{|c|cc|c|}
+\hline
+&E1&E2&Inc\\
+\hline
+F1&3&2&5\\
+\hline
+\end{array}
+\end{equation*}
+\end{document}

@@ -1,0 +1,385 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<TITLE>Metrics</TITLE>
+</head>
+<body>
+<center><h3>
+<b><font color="#D77A08"><font size=+0>Cut and Metric Cones</font></font></b>
+</h3></center>
+<p>see page <a href="http://www.cas.mcmaster.ca/~deza/metric.html">http://www.cas.mcmaster.ca/~deza/metric.html</a>
+for the <i>metric polytopes and cones</i>
+<p>see page <a href="http://www.iwr.uni-heidelberg.de/groups/comopt/software/SMAPO/cut/cut.html">http://www.iwr.uni-heidelberg.de/groups/comopt/software/SMAPO/cut/cut.html</a>
+for the <i>cut polytopes</i>
+<p>The <i>metric cone</i> MET_n is defined by the following n(n-1)(n-2)/2
+<i>triangle
+inequalities</i>:
+<ul>
+<li>
+x_{ij}+x_{jk}-x_{ik} >= 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for all triples
+{i,j,k} of {1,...,n}</li>
+</ul>
+For any subset S of {1,...,n}, the <i>cut vector</i> is defined by
+<ul>
+<li>
+Delta(S)ij=1, if i\in S and j\notin S</li>
+
+<li>
+Delta(S)ij=1, if i\notin S and j\in S</li>
+
+<li>
+Delta(S)ij=0, if i\notin S and j\notin S</li>
+
+<li>
+Delta(S)ij=0, if i\in S and j\in S</li>
+</ul>
+The <i>cut cone</i> CUT_is defined as the positive span of the 2^{n-1}-1
+cut vectors
+<p>Here I give a list of metric cones. All computations were done using
+cdd and perl scripts.
+<p>
+<hr WIDTH="100%">
+<br>The cone CUT_3=MET_3
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>3</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(3)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>3 in one orbit</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>3 in one orbit</td>
+</tr>
+</table>
+
+<p>see files <a href="CUT3.tex">CUT3.tex </a>and
+<a href="CUT3.ps">CUT3.ps
+</a>for details
+<p>
+<hr WIDTH="100%">
+<br>The cone CUT_4=MET_4
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>6</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(4)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>7 in two orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>12 in one orbit</td>
+</tr>
+</table>
+
+<p>see files <a href="CUT4.tex">CUT4.tex </a>and
+<a href="CUT4.ps">CUT4.ps
+</a>for details
+<p>
+<hr WIDTH="100%">
+<br>The cone CUT_5
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>10</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(5)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>15 in two orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>40 in two orbits</td>
+</tr>
+</table>
+
+<p>see files <a href="CUT5.tex">CUT5.tex </a>and
+<a href="CUT5.ps">CUT5.ps
+</a>for details
+<br>&nbsp;
+<p>The cone MET_5
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>10</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(5)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>25 in three orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>30 in one orbit</td>
+</tr>
+</table>
+
+<p>see files <a href="MET5.tex">MET5.tex </a>and
+<a href="MET5.ps">MET5.ps
+</a>for details
+<p>
+<hr WIDTH="100%">
+<br>The cone CUT_6
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>15</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(6)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>31 in three orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>210 in four orbits</td>
+</tr>
+</table>
+
+<p>see files <a href="CUT6.tex">CUT6.tex </a>and
+<a href="CUT6.ps">CUT6.ps
+</a>for details
+<br>&nbsp;
+<p>The cone MET_6
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>15</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(6)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>296 in seven orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>60 in one orbit</td>
+</tr>
+</table>
+
+<p>see files <a href="MET6.tex">MET6.tex </a>and
+<a href="MET6.ps">MET6.ps
+</a>for details
+<p>
+<hr WIDTH="100%">
+<br>The cone CUT_7
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>21</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(7)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>63 in three orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>38780 in 36 orbits</td>
+</tr>
+</table>
+
+<p>see files <a href="CUT7.tex">CUT7.tex </a>and
+<a href="CUT7.ps">CUT7.ps
+</a>for details
+<p>The cone MET_7
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>21</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(7)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>55226 in 46 orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>105 in 1 orbits</td>
+</tr>
+</table>
+
+<p>see files <a href="MET7.tex">MET7.tex </a>and
+<a href="MET7.ps">MET7.ps
+</a>for details
+<p>
+<hr WIDTH="100%">
+<p>The cone CUT_8
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>28</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(8)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>127 in 4 orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>49604520 in 2169 orbits</td>
+</tr>
+</table>
+
+<p>see files <a href="List2169_CUT8.txt">List2169_CUT8</a>
+for details
+<p>The cone MET_8
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>28</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(8)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>119269588 in 3918 orbits</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>168 in one orbit</td>
+</tr>
+</table>
+
+<p>see files <a href="List3918_MET8.txt">List3918_MET8</a>
+for details
+<p>
+<hr WIDTH="100%">
+<br>The cone CUT_9
+<br>(description possibly complete)
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>dimension</td>
+
+<td>36</td>
+</tr>
+
+<tr>
+<td>group</td>
+
+<td>Sym(9)</td>
+</tr>
+
+<tr>
+<td>extreme rays</td>
+
+<td>255</td>
+</tr>
+
+<tr>
+<td>facets</td>
+
+<td>at least 12246651158320 facets in 164506 classes (under switching +
+permutation)</td>
+</tr>
+</table>
+
+<br>&nbsp;
+</body>
+</html>

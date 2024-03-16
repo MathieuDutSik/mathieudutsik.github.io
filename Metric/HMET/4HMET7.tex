@@ -1,0 +1,226 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,amssymb,amsmath,vmargin,multicol}
+\usepackage[english]{babel}
+\title{The Cone 4HMET7}
+\setpapersize{custom}{21cm}{29.7cm}
+\setmarginsrb{1cm}{1cm}{1cm}{2cm}{0pt}{0pt}{0pt}{0pt}
+\begin{document}
+\maketitle
+\section{The intrisic informations concerning the graph of extreme rays of 4HMET7.ext}
+The graph considered is made of $3692$ elements.\\
+The group acting on 4HMET7.ext is Group4hmet7\\
+Under the group action we have in fact only $8$ orbits to consider.\\
+The diameter of the graph is $3$.\\
+The list of orbits is with adjacency and Size info:
+\begin{center}
+\scriptsize
+\begin{tabular}{cccccccccccccccccccccc|c|c}
+E1:&0&0&0&0&0&0&0&0&0&0&0&0&0&0&1&0&0&0&0&1&1&985&35\\
+E2:&0&0&0&0&0&0&0&0&0&0&0&0&0&1&1&0&0&0&1&1&0&535&105\\
+E3:&0&0&0&0&0&0&0&0&0&1&0&0&1&0&1&0&0&1&1&0&0&315&252\\
+E4:&0&0&0&0&0&0&0&0&1&1&0&1&0&1&0&0&1&1&0&0&0&192&420\\
+E5:&0&0&0&0&0&1&0&1&0&1&1&0&1&0&0&1&1&0&0&0&0&126&360\\
+E6:&0&0&0&0&0&1&0&0&1&1&0&1&0&0&0&0&1&0&0&2&1&67&630\\
+E7:&0&0&0&0&0&1&0&1&0&0&2&0&1&1&0&2&1&0&0&1&0&43&630\\
+E8:&0&0&0&0&0&1&0&0&1&1&1&1&0&0&0&1&1&0&0&2&0&42&1260\\
+\end{tabular}
+\end{center}
+The representation matrix is:
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|cccccccc|c|c|}
+\hline
+&E1&E2&E3&E4&E5&E6&E7&E8&Adj.&Size\\
+\hline
+E1& 34& 87& 144& 144& 72& 162& 126& 216&985&35\\
+E2& 29& 50& 72& 84& 72& 72& 48& 108&535&105\\
+E3& 20& 30& 45& 70& 40& 40& 20& 50&315&252\\
+E4& 12& 21& 42& 39& 24& 18& 12& 24&192&420\\
+E5& 7& 21& 28& 28& 14& 7& 7& 14&126&360\\
+E6& 9& 12& 16& 12& 4& 4& 4& 6&67&630\\
+E7& 7& 8& 8& 8& 4& 4& 0& 4&43&630\\
+E8& 6& 9& 10& 8& 4& 3& 2& 0&42&1260\\
+\hline
+Size&35&105&252&420&360&630&630&1260&&3692\\
+\hline
+\end{tabular}
+\end{center}
+No complemented local graph of size inferior to $20$.
+\subsection{scalar product between elements of orbits}
+\noindent This subsection made sense only if the representation is orthogonal which is the usual case
+Considering Orbit 1
+\begin{enumerate}
+\item Orbit Size is $35$.
+\item Norm of elements is $3$.
+\item Possible scalar product : $0$, $1$
+\end{enumerate}
+Considering Orbit 2
+\begin{enumerate}
+\item Orbit Size is $105$.
+\item Norm of elements is $4$.
+\item Possible scalar product : $0$, $1$, $2$
+\end{enumerate}
+Considering Orbit 3
+\begin{enumerate}
+\item Orbit Size is $252$.
+\item Norm of elements is $5$.
+\item Possible scalar product : $0$, $1$, $2$, $3$
+\end{enumerate}
+Considering Orbit 4
+\begin{enumerate}
+\item Orbit Size is $420$.
+\item Norm of elements is $6$.
+\item Possible scalar product : $0$, $1$, $2$, $3$, $4$
+\end{enumerate}
+Considering Orbit 5
+\begin{enumerate}
+\item Orbit Size is $360$.
+\item Norm of elements is $7$.
+\item Possible scalar product : $0$, $1$, $2$, $3$, $4$, $5$
+\end{enumerate}
+Considering Orbit 6
+\begin{enumerate}
+\item Orbit Size is $630$.
+\item Norm of elements is $10$.
+\item Possible scalar product : $1$, $2$, $3$, $4$, $5$, $6$, $8$
+\end{enumerate}
+Considering Orbit 7
+\begin{enumerate}
+\item Orbit Size is $630$.
+\item Norm of elements is $14$.
+\item Possible scalar product : $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$, $10$
+\end{enumerate}
+Considering Orbit 8
+\begin{enumerate}
+\item Orbit Size is $1260$.
+\item Norm of elements is $11$.
+\item Possible scalar product : $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$
+\end{enumerate}
+\subsection{invariant group of Orbits}
+\noindent The invariant group of $x$ is the set of $g$ such that g(x)=x denoted b $G_x$.\\
+If $x$ and $y$ are in the same orbit then the groups $G_x$ and  $G_x$ are conjuguate.\\
+Invariant group of Orbit 1
+\begin{enumerate}
+\item Group Size is $144$.
+\item Elements are : (3 2 1 7 6 5 4  ), (3 1 2 7 6 5 4  ), (2 3 1 7 6 5 4  ), (1 3 2 7 6 5 4  ), (2 1 3 7 6 5 4  ), (1 2 3 7 6 5 4  ), (3 2 1 7 6 4 5  ), (3 1 2 7 6 4 5  ), (2 3 1 7 6 4 5  ), (1 3 2 7 6 4 5  ), (2 1 3 7 6 4 5  ), (1 2 3 7 6 4 5  ), (3 2 1 7 5 6 4  ), (3 1 2 7 5 6 4  ), (2 3 1 7 5 6 4  ), (1 3 2 7 5 6 4  ), (2 1 3 7 5 6 4  ), (1 2 3 7 5 6 4  ), (3 2 1 7 4 6 5  ), (3 1 2 7 4 6 5  ), (2 3 1 7 4 6 5  ), (1 3 2 7 4 6 5  ), (2 1 3 7 4 6 5  ), (1 2 3 7 4 6 5  ), (3 2 1 7 5 4 6  ), (3 1 2 7 5 4 6  ), (2 3 1 7 5 4 6  ), (1 3 2 7 5 4 6  ), (2 1 3 7 5 4 6  ), (1 2 3 7 5 4 6  ), (3 2 1 7 4 5 6  ), (3 1 2 7 4 5 6  ), (2 3 1 7 4 5 6  ), (1 3 2 7 4 5 6  ), (2 1 3 7 4 5 6  ), (1 2 3 7 4 5 6  ), (3 2 1 6 7 5 4  ), (3 1 2 6 7 5 4  ), (2 3 1 6 7 5 4  ), (1 3 2 6 7 5 4  ), (2 1 3 6 7 5 4  ), (1 2 3 6 7 5 4  ), (3 2 1 6 7 4 5  ), (3 1 2 6 7 4 5  ), (2 3 1 6 7 4 5  ), (1 3 2 6 7 4 5  ), (2 1 3 6 7 4 5  ), (1 2 3 6 7 4 5  ), (3 2 1 5 7 6 4  ), (3 1 2 5 7 6 4  ), (2 3 1 5 7 6 4  ), (1 3 2 5 7 6 4  ), (2 1 3 5 7 6 4  ), (1 2 3 5 7 6 4  ), (3 2 1 4 7 6 5  ), (3 1 2 4 7 6 5  ), (2 3 1 4 7 6 5  ), (1 3 2 4 7 6 5  ), (2 1 3 4 7 6 5  ), (1 2 3 4 7 6 5  ), (3 2 1 5 7 4 6  ), (3 1 2 5 7 4 6  ), (2 3 1 5 7 4 6  ), (1 3 2 5 7 4 6  ), (2 1 3 5 7 4 6  ), (1 2 3 5 7 4 6  ), (3 2 1 4 7 5 6  ), (3 1 2 4 7 5 6  ), (2 3 1 4 7 5 6  ), (1 3 2 4 7 5 6  ), (2 1 3 4 7 5 6  ), (1 2 3 4 7 5 6  ), (3 2 1 6 5 7 4  ), (3 1 2 6 5 7 4  ), (2 3 1 6 5 7 4  ), (1 3 2 6 5 7 4  ), (2 1 3 6 5 7 4  ), (1 2 3 6 5 7 4  ), (3 2 1 6 4 7 5  ), (3 1 2 6 4 7 5  ), (2 3 1 6 4 7 5  ), (1 3 2 6 4 7 5  ), (2 1 3 6 4 7 5  ), (1 2 3 6 4 7 5  ), (3 2 1 5 6 7 4  ), (3 1 2 5 6 7 4  ), (2 3 1 5 6 7 4  ), (1 3 2 5 6 7 4  ), (2 1 3 5 6 7 4  ), (1 2 3 5 6 7 4  ), (3 2 1 4 6 7 5  ), (3 1 2 4 6 7 5  ), (2 3 1 4 6 7 5  ), (1 3 2 4 6 7 5  ), (2 1 3 4 6 7 5  ), (1 2 3 4 6 7 5  ), (3 2 1 5 4 7 6  ), (3 1 2 5 4 7 6  ), (2 3 1 5 4 7 6  ), (1 3 2 5 4 7 6  ), (2 1 3 5 4 7 6  ), (1 2 3 5 4 7 6  ), (3 2 1 4 5 7 6  ), (3 1 2 4 5 7 6  ), (2 3 1 4 5 7 6  ), (1 3 2 4 5 7 6  ), (2 1 3 4 5 7 6  ), (1 2 3 4 5 7 6  ), (3 2 1 6 5 4 7  ), (3 1 2 6 5 4 7  ), (2 3 1 6 5 4 7  ), (1 3 2 6 5 4 7  ), (2 1 3 6 5 4 7  ), (1 2 3 6 5 4 7  ), (3 2 1 6 4 5 7  ), (3 1 2 6 4 5 7  ), (2 3 1 6 4 5 7  ), (1 3 2 6 4 5 7  ), (2 1 3 6 4 5 7  ), (1 2 3 6 4 5 7  ), (3 2 1 5 6 4 7  ), (3 1 2 5 6 4 7  ), (2 3 1 5 6 4 7  ), (1 3 2 5 6 4 7  ), (2 1 3 5 6 4 7  ), (1 2 3 5 6 4 7  ), (3 2 1 4 6 5 7  ), (3 1 2 4 6 5 7  ), (2 3 1 4 6 5 7  ), (1 3 2 4 6 5 7  ), (2 1 3 4 6 5 7  ), (1 2 3 4 6 5 7  ), (3 2 1 5 4 6 7  ), (3 1 2 5 4 6 7  ), (2 3 1 5 4 6 7  ), (1 3 2 5 4 6 7  ), (2 1 3 5 4 6 7  ), (1 2 3 5 4 6 7  ), (3 2 1 4 5 6 7  ), (3 1 2 4 5 6 7  ), (2 3 1 4 5 6 7  ), (1 3 2 4 5 6 7  ), (2 1 3 4 5 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+Invariant group of Orbit 2
+\begin{enumerate}
+\item Group Size is $48$.
+\item Elements are : (4 3 2 1 7 6 5  ), (4 3 1 2 7 6 5  ), (3 4 2 1 7 6 5  ), (3 4 1 2 7 6 5  ), (2 1 4 3 7 6 5  ), (1 2 4 3 7 6 5  ), (2 1 3 4 7 6 5  ), (1 2 3 4 7 6 5  ), (4 3 2 1 7 5 6  ), (4 3 1 2 7 5 6  ), (3 4 2 1 7 5 6  ), (3 4 1 2 7 5 6  ), (2 1 4 3 7 5 6  ), (1 2 4 3 7 5 6  ), (2 1 3 4 7 5 6  ), (1 2 3 4 7 5 6  ), (4 3 2 1 6 7 5  ), (4 3 1 2 6 7 5  ), (3 4 2 1 6 7 5  ), (3 4 1 2 6 7 5  ), (2 1 4 3 6 7 5  ), (1 2 4 3 6 7 5  ), (2 1 3 4 6 7 5  ), (1 2 3 4 6 7 5  ), (4 3 2 1 5 7 6  ), (4 3 1 2 5 7 6  ), (3 4 2 1 5 7 6  ), (3 4 1 2 5 7 6  ), (2 1 4 3 5 7 6  ), (1 2 4 3 5 7 6  ), (2 1 3 4 5 7 6  ), (1 2 3 4 5 7 6  ), (4 3 2 1 6 5 7  ), (4 3 1 2 6 5 7  ), (3 4 2 1 6 5 7  ), (3 4 1 2 6 5 7  ), (2 1 4 3 6 5 7  ), (1 2 4 3 6 5 7  ), (2 1 3 4 6 5 7  ), (1 2 3 4 6 5 7  ), (4 3 2 1 5 6 7  ), (4 3 1 2 5 6 7  ), (3 4 2 1 5 6 7  ), (3 4 1 2 5 6 7  ), (2 1 4 3 5 6 7  ), (1 2 4 3 5 6 7  ), (2 1 3 4 5 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+Invariant group of Orbit 3
+\begin{enumerate}
+\item Group Size is $20$.
+\item Elements are : (5 4 3 2 1 7 6  ), (5 3 4 1 2 7 6  ), (4 5 2 3 1 7 6  ), (3 5 1 4 2 7 6  ), (4 2 5 1 3 7 6  ), (3 1 5 2 4 7 6  ), (2 4 1 5 3 7 6  ), (1 3 2 5 4 7 6  ), (2 1 4 3 5 7 6  ), (1 2 3 4 5 7 6  ), (5 4 3 2 1 6 7  ), (5 3 4 1 2 6 7  ), (4 5 2 3 1 6 7  ), (3 5 1 4 2 6 7  ), (4 2 5 1 3 6 7  ), (3 1 5 2 4 6 7  ), (2 4 1 5 3 6 7  ), (1 3 2 5 4 6 7  ), (2 1 4 3 5 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+Invariant group of Orbit 4
+\begin{enumerate}
+\item Group Size is $12$.
+\item Elements are : (6 5 4 3 2 1 7  ), (6 4 5 3 1 2 7  ), (5 6 4 2 3 1 7  ), (4 6 5 1 3 2 7  ), (5 4 6 2 1 3 7  ), (4 5 6 1 2 3 7  ), (3 2 1 6 5 4 7  ), (3 1 2 6 4 5 7  ), (2 3 1 5 6 4 7  ), (1 3 2 4 6 5 7  ), (2 1 3 5 4 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+Invariant group of Orbit 5
+\begin{enumerate}
+\item Group Size is $14$.
+\item Elements are : (7 6 5 4 3 2 1  ), (7 5 6 3 4 1 2  ), (6 7 4 5 2 3 1  ), (5 7 3 6 1 4 2  ), (6 4 7 2 5 1 3  ), (5 3 7 1 6 2 4  ), (4 6 2 7 1 5 3  ), (3 5 1 7 2 6 4  ), (4 2 6 1 7 3 5  ), (3 1 5 2 7 4 6  ), (2 4 1 6 3 7 5  ), (1 3 2 5 4 7 6  ), (2 1 4 3 6 5 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+Invariant group of Orbit 6
+\begin{enumerate}
+\item Group Size is $8$.
+\item Elements are : (1 6 3 5 4 2 7  ), (1 6 3 4 5 2 7  ), (3 5 1 6 2 4 7  ), (3 4 1 6 2 5 7  ), (3 5 1 2 6 4 7  ), (3 4 1 2 6 5 7  ), (1 2 3 5 4 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+Invariant group of Orbit 7
+\begin{enumerate}
+\item Group Size is $8$.
+\item Elements are : (1 2 6 5 4 3 7  ), (1 2 6 4 5 3 7  ), (2 1 5 6 3 4 7  ), (2 1 4 6 3 5 7  ), (2 1 5 3 6 4 7  ), (2 1 4 3 6 5 7  ), (1 2 3 5 4 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+Invariant group of Orbit 8
+\begin{enumerate}
+\item Group Size is $4$.
+\item Elements are : (1 2 3 5 4 7 6  ), (1 2 3 4 5 7 6  ), (1 2 3 5 4 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+\section{The intrisic informations concerning the graph of facet rays of 4HMET7.ine}
+The graph considered is made of $63$ elements.\\
+The group acting on 4HMET7.ine is Group4hmet7\\
+Under the group action we have in fact only $2$ orbits to consider.\\
+The diameter of the graph is $2$.\\
+The list of orbits is with adjacency and Size info:
+\begin{center}
+\scriptsize
+\begin{tabular}{cccccccccccccccccccccc|c|c}
+F1:&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&1&60&21\\
+F2:&-1&0&1&0&1&0&0&1&0&0&0&1&0&0&0&0&1&0&0&0&0&56&42\\
+\end{tabular}
+\end{center}
+The representation matrix is:
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|cc|c|c|}
+\hline
+&F1&F2&Adj.&Size\\
+\hline
+F1& 20& 40&60&21\\
+F2& 20& 36&56&42\\
+\hline
+Size&21&42&&63\\
+\hline
+\end{tabular}
+\end{center}
+No complemented local graph of size inferior to $20$.
+\subsection{scalar product between elements of orbits}
+\noindent This subsection made sense only if the representation is orthogonal which is the usual case
+Considering Orbit 1
+\begin{enumerate}
+\item Orbit Size is $21$.
+\item Norm of elements is $1$.
+\item Possible scalar product : $0$
+\end{enumerate}
+Considering Orbit 2
+\begin{enumerate}
+\item Orbit Size is $42$.
+\item Norm of elements is $6$.
+\item Possible scalar product : $-1$, $1$, $2$
+\end{enumerate}
+\subsection{invariant group of Orbits}
+\noindent The invariant group of $x$ is the set of $g$ such that g(x)=x denoted b $G_x$.\\
+If $x$ and $y$ are in the same orbit then the groups $G_x$ and  $G_x$ are conjuguate.\\
+Invariant group of Orbit 1
+\begin{enumerate}
+\item Group Size is $240$.
+\item Elements are : (2 1 7 6 5 4 3  ), (1 2 7 6 5 4 3  ), (2 1 7 6 5 3 4  ), (1 2 7 6 5 3 4  ), (2 1 7 6 4 5 3  ), (1 2 7 6 4 5 3  ), (2 1 7 6 3 5 4  ), (1 2 7 6 3 5 4  ), (2 1 7 6 4 3 5  ), (1 2 7 6 4 3 5  ), (2 1 7 6 3 4 5  ), (1 2 7 6 3 4 5  ), (2 1 7 5 6 4 3  ), (1 2 7 5 6 4 3  ), (2 1 7 5 6 3 4  ), (1 2 7 5 6 3 4  ), (2 1 7 4 6 5 3  ), (1 2 7 4 6 5 3  ), (2 1 7 3 6 5 4  ), (1 2 7 3 6 5 4  ), (2 1 7 4 6 3 5  ), (1 2 7 4 6 3 5  ), (2 1 7 3 6 4 5  ), (1 2 7 3 6 4 5  ), (2 1 7 5 4 6 3  ), (1 2 7 5 4 6 3  ), (2 1 7 5 3 6 4  ), (1 2 7 5 3 6 4  ), (2 1 7 4 5 6 3  ), (1 2 7 4 5 6 3  ), (2 1 7 3 5 6 4  ), (1 2 7 3 5 6 4  ), (2 1 7 4 3 6 5  ), (1 2 7 4 3 6 5  ), (2 1 7 3 4 6 5  ), (1 2 7 3 4 6 5  ), (2 1 7 5 4 3 6  ), (1 2 7 5 4 3 6  ), (2 1 7 5 3 4 6  ), (1 2 7 5 3 4 6  ), (2 1 7 4 5 3 6  ), (1 2 7 4 5 3 6  ), (2 1 7 3 5 4 6  ), (1 2 7 3 5 4 6  ), (2 1 7 4 3 5 6  ), (1 2 7 4 3 5 6  ), (2 1 7 3 4 5 6  ), (1 2 7 3 4 5 6  ), (2 1 6 7 5 4 3  ), (1 2 6 7 5 4 3  ), (2 1 6 7 5 3 4  ), (1 2 6 7 5 3 4  ), (2 1 6 7 4 5 3  ), (1 2 6 7 4 5 3  ), (2 1 6 7 3 5 4  ), (1 2 6 7 3 5 4  ), (2 1 6 7 4 3 5  ), (1 2 6 7 4 3 5  ), (2 1 6 7 3 4 5  ), (1 2 6 7 3 4 5  ), (2 1 5 7 6 4 3  ), (1 2 5 7 6 4 3  ), (2 1 5 7 6 3 4  ), (1 2 5 7 6 3 4  ), (2 1 4 7 6 5 3  ), (1 2 4 7 6 5 3  ), (2 1 3 7 6 5 4  ), (1 2 3 7 6 5 4  ), (2 1 4 7 6 3 5  ), (1 2 4 7 6 3 5  ), (2 1 3 7 6 4 5  ), (1 2 3 7 6 4 5  ), (2 1 5 7 4 6 3  ), (1 2 5 7 4 6 3  ), (2 1 5 7 3 6 4  ), (1 2 5 7 3 6 4  ), (2 1 4 7 5 6 3  ), (1 2 4 7 5 6 3  ), (2 1 3 7 5 6 4  ), (1 2 3 7 5 6 4  ), (2 1 4 7 3 6 5  ), (1 2 4 7 3 6 5  ), (2 1 3 7 4 6 5  ), (1 2 3 7 4 6 5  ), (2 1 5 7 4 3 6  ), (1 2 5 7 4 3 6  ), (2 1 5 7 3 4 6  ), (1 2 5 7 3 4 6  ), (2 1 4 7 5 3 6  ), (1 2 4 7 5 3 6  ), (2 1 3 7 5 4 6  ), (1 2 3 7 5 4 6  ), (2 1 4 7 3 5 6  ), (1 2 4 7 3 5 6  ), (2 1 3 7 4 5 6  ), (1 2 3 7 4 5 6  ), (2 1 6 5 7 4 3  ), (1 2 6 5 7 4 3  ), (2 1 6 5 7 3 4  ), (1 2 6 5 7 3 4  ), (2 1 6 4 7 5 3  ), (1 2 6 4 7 5 3  ), (2 1 6 3 7 5 4  ), (1 2 6 3 7 5 4  ), (2 1 6 4 7 3 5  ), (1 2 6 4 7 3 5  ), (2 1 6 3 7 4 5  ), (1 2 6 3 7 4 5  ), (2 1 5 6 7 4 3  ), (1 2 5 6 7 4 3  ), (2 1 5 6 7 3 4  ), (1 2 5 6 7 3 4  ), (2 1 4 6 7 5 3  ), (1 2 4 6 7 5 3  ), (2 1 3 6 7 5 4  ), (1 2 3 6 7 5 4  ), (2 1 4 6 7 3 5  ), (1 2 4 6 7 3 5  ), (2 1 3 6 7 4 5  ), (1 2 3 6 7 4 5  ), (2 1 5 4 7 6 3  ), (1 2 5 4 7 6 3  ), (2 1 5 3 7 6 4  ), (1 2 5 3 7 6 4  ), (2 1 4 5 7 6 3  ), (1 2 4 5 7 6 3  ), (2 1 3 5 7 6 4  ), (1 2 3 5 7 6 4  ), (2 1 4 3 7 6 5  ), (1 2 4 3 7 6 5  ), (2 1 3 4 7 6 5  ), (1 2 3 4 7 6 5  ), (2 1 5 4 7 3 6  ), (1 2 5 4 7 3 6  ), (2 1 5 3 7 4 6  ), (1 2 5 3 7 4 6  ), (2 1 4 5 7 3 6  ), (1 2 4 5 7 3 6  ), (2 1 3 5 7 4 6  ), (1 2 3 5 7 4 6  ), (2 1 4 3 7 5 6  ), (1 2 4 3 7 5 6  ), (2 1 3 4 7 5 6  ), (1 2 3 4 7 5 6  ), (2 1 6 5 4 7 3  ), (1 2 6 5 4 7 3  ), (2 1 6 5 3 7 4  ), (1 2 6 5 3 7 4  ), (2 1 6 4 5 7 3  ), (1 2 6 4 5 7 3  ), (2 1 6 3 5 7 4  ), (1 2 6 3 5 7 4  ), (2 1 6 4 3 7 5  ), (1 2 6 4 3 7 5  ), (2 1 6 3 4 7 5  ), (1 2 6 3 4 7 5  ), (2 1 5 6 4 7 3  ), (1 2 5 6 4 7 3  ), (2 1 5 6 3 7 4  ), (1 2 5 6 3 7 4  ), (2 1 4 6 5 7 3  ), (1 2 4 6 5 7 3  ), (2 1 3 6 5 7 4  ), (1 2 3 6 5 7 4  ), (2 1 4 6 3 7 5  ), (1 2 4 6 3 7 5  ), (2 1 3 6 4 7 5  ), (1 2 3 6 4 7 5  ), (2 1 5 4 6 7 3  ), (1 2 5 4 6 7 3  ), (2 1 5 3 6 7 4  ), (1 2 5 3 6 7 4  ), (2 1 4 5 6 7 3  ), (1 2 4 5 6 7 3  ), (2 1 3 5 6 7 4  ), (1 2 3 5 6 7 4  ), (2 1 4 3 6 7 5  ), (1 2 4 3 6 7 5  ), (2 1 3 4 6 7 5  ), (1 2 3 4 6 7 5  ), (2 1 5 4 3 7 6  ), (1 2 5 4 3 7 6  ), (2 1 5 3 4 7 6  ), (1 2 5 3 4 7 6  ), (2 1 4 5 3 7 6  ), (1 2 4 5 3 7 6  ), (2 1 3 5 4 7 6  ), (1 2 3 5 4 7 6  ), (2 1 4 3 5 7 6  ), (1 2 4 3 5 7 6  ), (2 1 3 4 5 7 6  ), (1 2 3 4 5 7 6  ), (2 1 6 5 4 3 7  ), (1 2 6 5 4 3 7  ), (2 1 6 5 3 4 7  ), (1 2 6 5 3 4 7  ), (2 1 6 4 5 3 7  ), (1 2 6 4 5 3 7  ), (2 1 6 3 5 4 7  ), (1 2 6 3 5 4 7  ), (2 1 6 4 3 5 7  ), (1 2 6 4 3 5 7  ), (2 1 6 3 4 5 7  ), (1 2 6 3 4 5 7  ), (2 1 5 6 4 3 7  ), (1 2 5 6 4 3 7  ), (2 1 5 6 3 4 7  ), (1 2 5 6 3 4 7  ), (2 1 4 6 5 3 7  ), (1 2 4 6 5 3 7  ), (2 1 3 6 5 4 7  ), (1 2 3 6 5 4 7  ), (2 1 4 6 3 5 7  ), (1 2 4 6 3 5 7  ), (2 1 3 6 4 5 7  ), (1 2 3 6 4 5 7  ), (2 1 5 4 6 3 7  ), (1 2 5 4 6 3 7  ), (2 1 5 3 6 4 7  ), (1 2 5 3 6 4 7  ), (2 1 4 5 6 3 7  ), (1 2 4 5 6 3 7  ), (2 1 3 5 6 4 7  ), (1 2 3 5 6 4 7  ), (2 1 4 3 6 5 7  ), (1 2 4 3 6 5 7  ), (2 1 3 4 6 5 7  ), (1 2 3 4 6 5 7  ), (2 1 5 4 3 6 7  ), (1 2 5 4 3 6 7  ), (2 1 5 3 4 6 7  ), (1 2 5 3 4 6 7  ), (2 1 4 5 3 6 7  ), (1 2 4 5 3 6 7  ), (2 1 3 5 4 6 7  ), (1 2 3 5 4 6 7  ), (2 1 4 3 5 6 7  ), (1 2 4 3 5 6 7  ), (2 1 3 4 5 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+Invariant group of Orbit 2
+\begin{enumerate}
+\item Group Size is $120$.
+\item Elements are : (5 4 3 2 1 6 7  ), (5 4 3 1 2 6 7  ), (5 4 2 3 1 6 7  ), (5 4 1 3 2 6 7  ), (5 4 2 1 3 6 7  ), (5 4 1 2 3 6 7  ), (5 3 4 2 1 6 7  ), (5 3 4 1 2 6 7  ), (5 2 4 3 1 6 7  ), (5 1 4 3 2 6 7  ), (5 2 4 1 3 6 7  ), (5 1 4 2 3 6 7  ), (5 3 2 4 1 6 7  ), (5 3 1 4 2 6 7  ), (5 2 3 4 1 6 7  ), (5 1 3 4 2 6 7  ), (5 2 1 4 3 6 7  ), (5 1 2 4 3 6 7  ), (5 3 2 1 4 6 7  ), (5 3 1 2 4 6 7  ), (5 2 3 1 4 6 7  ), (5 1 3 2 4 6 7  ), (5 2 1 3 4 6 7  ), (5 1 2 3 4 6 7  ), (4 5 3 2 1 6 7  ), (4 5 3 1 2 6 7  ), (4 5 2 3 1 6 7  ), (4 5 1 3 2 6 7  ), (4 5 2 1 3 6 7  ), (4 5 1 2 3 6 7  ), (3 5 4 2 1 6 7  ), (3 5 4 1 2 6 7  ), (2 5 4 3 1 6 7  ), (1 5 4 3 2 6 7  ), (2 5 4 1 3 6 7  ), (1 5 4 2 3 6 7  ), (3 5 2 4 1 6 7  ), (3 5 1 4 2 6 7  ), (2 5 3 4 1 6 7  ), (1 5 3 4 2 6 7  ), (2 5 1 4 3 6 7  ), (1 5 2 4 3 6 7  ), (3 5 2 1 4 6 7  ), (3 5 1 2 4 6 7  ), (2 5 3 1 4 6 7  ), (1 5 3 2 4 6 7  ), (2 5 1 3 4 6 7  ), (1 5 2 3 4 6 7  ), (4 3 5 2 1 6 7  ), (4 3 5 1 2 6 7  ), (4 2 5 3 1 6 7  ), (4 1 5 3 2 6 7  ), (4 2 5 1 3 6 7  ), (4 1 5 2 3 6 7  ), (3 4 5 2 1 6 7  ), (3 4 5 1 2 6 7  ), (2 4 5 3 1 6 7  ), (1 4 5 3 2 6 7  ), (2 4 5 1 3 6 7  ), (1 4 5 2 3 6 7  ), (3 2 5 4 1 6 7  ), (3 1 5 4 2 6 7  ), (2 3 5 4 1 6 7  ), (1 3 5 4 2 6 7  ), (2 1 5 4 3 6 7  ), (1 2 5 4 3 6 7  ), (3 2 5 1 4 6 7  ), (3 1 5 2 4 6 7  ), (2 3 5 1 4 6 7  ), (1 3 5 2 4 6 7  ), (2 1 5 3 4 6 7  ), (1 2 5 3 4 6 7  ), (4 3 2 5 1 6 7  ), (4 3 1 5 2 6 7  ), (4 2 3 5 1 6 7  ), (4 1 3 5 2 6 7  ), (4 2 1 5 3 6 7  ), (4 1 2 5 3 6 7  ), (3 4 2 5 1 6 7  ), (3 4 1 5 2 6 7  ), (2 4 3 5 1 6 7  ), (1 4 3 5 2 6 7  ), (2 4 1 5 3 6 7  ), (1 4 2 5 3 6 7  ), (3 2 4 5 1 6 7  ), (3 1 4 5 2 6 7  ), (2 3 4 5 1 6 7  ), (1 3 4 5 2 6 7  ), (2 1 4 5 3 6 7  ), (1 2 4 5 3 6 7  ), (3 2 1 5 4 6 7  ), (3 1 2 5 4 6 7  ), (2 3 1 5 4 6 7  ), (1 3 2 5 4 6 7  ), (2 1 3 5 4 6 7  ), (1 2 3 5 4 6 7  ), (4 3 2 1 5 6 7  ), (4 3 1 2 5 6 7  ), (4 2 3 1 5 6 7  ), (4 1 3 2 5 6 7  ), (4 2 1 3 5 6 7  ), (4 1 2 3 5 6 7  ), (3 4 2 1 5 6 7  ), (3 4 1 2 5 6 7  ), (2 4 3 1 5 6 7  ), (1 4 3 2 5 6 7  ), (2 4 1 3 5 6 7  ), (1 4 2 3 5 6 7  ), (3 2 4 1 5 6 7  ), (3 1 4 2 5 6 7  ), (2 3 4 1 5 6 7  ), (1 3 4 2 5 6 7  ), (2 1 4 3 5 6 7  ), (1 2 4 3 5 6 7  ), (3 2 1 4 5 6 7  ), (3 1 2 4 5 6 7  ), (2 3 1 4 5 6 7  ), (1 3 2 4 5 6 7  ), (2 1 3 4 5 6 7  ), (1 2 3 4 5 6 7  ), 
+\end{enumerate}
+\section{The two incidence matrix}
+Incidence between Orbit of Extreme rays and Orbits of Facets
+\begin{equation*}
+\begin{array}{|c|cc|c|}
+\hline
+&F1&F2&Inc\\
+\hline
+E1&18&30&48\\
+E2&17&26&43\\
+E3&16&22&38\\
+E4&15&18&33\\
+E5&14&14&28\\
+E6&14&16&30\\
+E7&13&12&25\\
+E8&13&12&25\\
+\hline
+\end{array}
+\end{equation*}
+Incidence between Orbits of Facets and Orbits of Extreme Rays
+\begin{equation*}
+\begin{array}{|c|cccccccc|c|}
+\hline
+&E1&E2&E3&E4&E5&E6&E7&E8&Inc\\
+\hline
+F1&30&85&192&300&240&420&390&780&2437\\
+F2&25&65&132&180&120&240&180&360&1302\\
+\hline
+\end{array}
+\end{equation*}
+\end{document}

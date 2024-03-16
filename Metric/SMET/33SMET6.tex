@@ -1,0 +1,339 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,amssymb,amsmath,vmargin,multicol}
+\usepackage[english]{babel}
+\title{The Cone 33SMET6}
+\setpapersize{custom}{21cm}{29.7cm}
+\setmarginsrb{1cm}{1cm}{1cm}{2cm}{0pt}{0pt}{0pt}{0pt}
+\begin{document}
+\maketitle
+\section{The intrisic informations concerning the graph of extreme rays of 33SMET6.ext}
+The graph considered is made of $1138$ elements.\\
+The group acting on 33SMET6.ext is Group3hmet6\\
+Under the group action we have in fact only $12$ orbits to consider.\\
+The diameter of the graph is $3$.\\
+The list of orbits is with adjacency and Size info:
+\begin{center}
+\scriptsize
+\begin{tabular}{cccccccccccccccc|c|c}
+E1:&0&0&1&0&1&1&0&1&1&1&0&1&1&1&1&650&6\\
+E2:&0&1&1&1&1&0&1&1&1&1&1&1&1&1&0&449&15\\
+E3:&0&3&3&3&3&0&3&3&3&3&3&3&3&3&4&93&45\\
+E4:&1&1&1&2&2&2&2&2&2&1&2&2&2&1&1&57&10\\
+E5:&0&2&2&2&2&1&2&2&1&1&2&2&2&2&2&56&60\\
+E6:&1&1&3&2&2&2&2&3&3&1&2&3&3&1&3&51&90\\
+E7:&1&1&2&2&1&2&2&2&1&1&2&2&2&2&2&30&72\\
+E8:&0&3&3&3&3&2&3&3&2&4&3&3&2&4&4&27&60\\
+E9:&0&4&4&4&4&2&4&4&2&5&4&4&4&5&5&23&180\\
+E10:&1&2&4&3&3&2&3&4&4&1&3&4&4&3&4&18&360\\
+E11:&1&3&3&4&4&4&4&4&5&2&4&4&5&2&5&18&180\\
+E12:&3&3&3&6&6&6&6&6&6&3&6&6&6&3&7&14&60\\
+\end{tabular}
+\end{center}
+The representation matrix is:
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|cccccccccccc|c|c|}
+\hline
+&E1&E2&E3&E4&E5&E6&E7&E8&E9&E10&E11&E12&Adj.&Size\\
+\hline
+E1& 5& 15& 30& 10& 50& 90& 60& 30& 90& 180& 60& 30&650&6\\
+E2& 6& 14& 39& 6& 36& 48& 24& 36& 72& 72& 72& 24&449&15\\
+E3& 4& 13& 2& 2& 4& 16& 8& 4& 8& 24& 8& 0&93&45\\
+E4& 6& 9& 9& 0& 6& 9& 0& 0& 0& 0& 18& 0&57&10\\
+E5& 5& 9& 3& 1& 0& 6& 6& 0& 6& 12& 6& 2&56&60\\
+E6& 6& 8& 8& 1& 4& 4& 0& 4& 4& 8& 4& 0&51&90\\
+E7& 5& 5& 5& 0& 5& 0& 0& 0& 5& 5& 0& 0&30&72\\
+E8& 3& 9& 3& 0& 0& 6& 0& 0& 3& 0& 3& 0&27&60\\
+E9& 3& 6& 2& 0& 2& 2& 2& 1& 0& 4& 1& 0&23&180\\
+E10& 3& 3& 3& 0& 2& 2& 1& 0& 2& 2& 0& 0&18&360\\
+E11& 2& 6& 2& 1& 2& 2& 0& 1& 1& 0& 0& 1&18&180\\
+E12& 3& 6& 0& 0& 2& 0& 0& 0& 0& 0& 3& 0&14&60\\
+\hline
+Size&6&15&45&10&60&90&72&60&180&360&180&60&&1138\\
+\hline
+\end{tabular}
+\end{center}
+\subsection{The local graphs}
+The complemented local graph are:\\
+We consider graph with cardinal inferior or equal to $20$\\
+The complemented local graph for orbit $10$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&4&:&\,\,3\,\,4\,\,5\,\,6\\
+2&8&:&\,\,3\,\,4\,\,5\,\,6\,\,7\,\,10\,\,11\,\,15\\
+3&8&:&\,\,1\,\,2\,\,5\,\,8\,\,13\,\,14\,\,15\,\,17\\
+4&6&:&\,\,1\,\,2\,\,6\,\,8\,\,14\,\,15\\
+5&4&:&\,\,1\,\,2\,\,3\,\,7\\
+6&5&:&\,\,1\,\,2\,\,4\,\,13\,\,14\\
+7&4&:&\,\,2\,\,5\,\,8\,\,13\\
+8&6&:&\,\,3\,\,4\,\,7\,\,11\,\,13\,\,15\\
+9&0&:&\\
+10&1&:&\,\,2\\
+11&5&:&\,\,2\,\,8\,\,12\,\,13\,\,14\\
+12&3&:&\,\,11\,\,14\,\,15\\
+13&5&:&\,\,3\,\,6\,\,7\,\,8\,\,11\\
+14&5&:&\,\,3\,\,4\,\,6\,\,11\,\,12\\
+15&5&:&\,\,2\,\,3\,\,4\,\,8\,\,12\\
+16&0&:&\\
+17&1&:&\,\,3\\
+18&0&:&\\
+\end{array}
+\end{equation*}
+The complemented local graph for orbit $11$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&0&:&\\
+2&7&:&\,\,6\,\,7\,\,8\,\,9\,\,10\,\,12\,\,13\\
+3&4&:&\,\,5\,\,6\,\,8\,\,12\\
+4&0&:&\\
+5&4&:&\,\,3\,\,6\,\,8\,\,13\\
+6&4&:&\,\,2\,\,3\,\,5\,\,10\\
+7&2&:&\,\,2\,\,9\\
+8&4&:&\,\,2\,\,3\,\,5\,\,10\\
+9&2&:&\,\,2\,\,7\\
+10&3&:&\,\,2\,\,6\,\,8\\
+11&0&:&\\
+12&3&:&\,\,2\,\,3\,\,13\\
+13&3&:&\,\,2\,\,5\,\,12\\
+14&0&:&\\
+15&0&:&\\
+16&0&:&\\
+17&0&:&\\
+18&0&:&\\
+\end{array}
+\end{equation*}
+The complemented local graph for orbit $12$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&0&:&\\
+2&1&:&\,\,7\\
+3&3&:&\,\,4\,\,6\,\,10\\
+4&3&:&\,\,3\,\,6\,\,13\\
+5&0&:&\\
+6&3&:&\,\,3\,\,4\,\,14\\
+7&1&:&\,\,2\\
+8&0&:&\\
+9&0&:&\\
+10&1&:&\,\,3\\
+11&0&:&\\
+12&0&:&\\
+13&1&:&\,\,4\\
+14&1&:&\,\,6\\
+\end{array}
+\end{equation*}
+\subsection{scalar product between elements of orbits}
+\noindent This subsection made sense only if the representation is orthogonal which is the usual case
+Considering Orbit 1
+\begin{enumerate}
+\item Orbit Size is $6$.
+\item Norm of elements is $10$.
+\item Possible scalar product : $6$
+\end{enumerate}
+Considering Orbit 2
+\begin{enumerate}
+\item Orbit Size is $15$.
+\item Norm of elements is $12$.
+\item Possible scalar product : $9$, $10$
+\end{enumerate}
+Considering Orbit 3
+\begin{enumerate}
+\item Orbit Size is $45$.
+\item Norm of elements is $124$.
+\item Possible scalar product : $102$, $105$, $106$, $108$, $114$
+\end{enumerate}
+Considering Orbit 4
+\begin{enumerate}
+\item Orbit Size is $10$.
+\item Norm of elements is $42$.
+\item Possible scalar product : $38$
+\end{enumerate}
+Considering Orbit 5
+\begin{enumerate}
+\item Orbit Size is $60$.
+\item Norm of elements is $47$.
+\item Possible scalar product : $40$, $41$, $42$, $43$, $44$, $45$
+\end{enumerate}
+Considering Orbit 6
+\begin{enumerate}
+\item Orbit Size is $90$.
+\item Norm of elements is $78$.
+\item Possible scalar product : $65$, $66$, $67$, $68$, $69$, $71$, $72$, $74$, $76$
+\end{enumerate}
+Considering Orbit 7
+\begin{enumerate}
+\item Orbit Size is $72$.
+\item Norm of elements is $45$.
+\item Possible scalar product : $40$, $41$, $42$, $43$
+\end{enumerate}
+Considering Orbit 8
+\begin{enumerate}
+\item Orbit Size is $60$.
+\item Norm of elements is $132$.
+\item Possible scalar product : $112$, $116$, $120$, $124$
+\end{enumerate}
+Considering Orbit 9
+\begin{enumerate}
+\item Orbit Size is $180$.
+\item Norm of elements is $227$.
+\item Possible scalar product : $192$, $194$, $196$, $197$, $198$, $199$, $200$, $201$, $202$, $203$, $204$, $205$, $209$, $211$, $217$, $223$
+\end{enumerate}
+Considering Orbit 10
+\begin{enumerate}
+\item Orbit Size is $360$.
+\item Norm of elements is $151$.
+\item Possible scalar product : $128$, $129$, $130$, $131$, $132$, $133$, $134$, $135$, $136$, $137$, $138$, $139$, $140$, $141$, $142$, $143$, $144$, $145$, $147$, $149$
+\end{enumerate}
+Considering Orbit 11
+\begin{enumerate}
+\item Orbit Size is $180$.
+\item Norm of elements is $214$.
+\item Possible scalar product : $182$, $184$, $188$, $190$, $191$, $192$, $194$, $195$, $196$, $199$, $200$, $202$, $203$, $204$, $207$, $208$
+\end{enumerate}
+Considering Orbit 12
+\begin{enumerate}
+\item Orbit Size is $60$.
+\item Norm of elements is $418$.
+\item Possible scalar product : $366$, $378$, $382$, $390$, $402$
+\end{enumerate}
+\subsection{invariant group of Orbits}
+\noindent The invariant group of $x$ is the set of $g$ such that $g(x)=x$ denoted by $G_x$.\\
+If $x$ and $y$ are in the same orbit then the groups $G_x$ and  $G_y$ are conjuguate.\\
+For any element $x$ we denote $O_x$ its Orbit, we have $|O_x|\times |G_x|=|G|$
+We print only nontrivial groups
+Invariant group of Orbit $1$:
+\begin{enumerate}
+\item Group Size is $120$.
+\item Elements are : (5 4 3 2 1 6  ), (5 4 3 1 2 6  ), (5 4 2 3 1 6  ), (5 4 1 3 2 6  ), (5 4 2 1 3 6  ), (5 4 1 2 3 6  ), (5 3 4 2 1 6  ), (5 3 4 1 2 6  ), (5 2 4 3 1 6  ), (5 1 4 3 2 6  ), (5 2 4 1 3 6  ), (5 1 4 2 3 6  ), (5 3 2 4 1 6  ), (5 3 1 4 2 6  ), (5 2 3 4 1 6  ), (5 1 3 4 2 6  ), (5 2 1 4 3 6  ), (5 1 2 4 3 6  ), (5 3 2 1 4 6  ), (5 3 1 2 4 6  ), (5 2 3 1 4 6  ), (5 1 3 2 4 6  ), (5 2 1 3 4 6  ), (5 1 2 3 4 6  ), (4 5 3 2 1 6  ), (4 5 3 1 2 6  ), (4 5 2 3 1 6  ), (4 5 1 3 2 6  ), (4 5 2 1 3 6  ), (4 5 1 2 3 6  ), (3 5 4 2 1 6  ), (3 5 4 1 2 6  ), (2 5 4 3 1 6  ), (1 5 4 3 2 6  ), (2 5 4 1 3 6  ), (1 5 4 2 3 6  ), (3 5 2 4 1 6  ), (3 5 1 4 2 6  ), (2 5 3 4 1 6  ), (1 5 3 4 2 6  ), (2 5 1 4 3 6  ), (1 5 2 4 3 6  ), (3 5 2 1 4 6  ), (3 5 1 2 4 6  ), (2 5 3 1 4 6  ), (1 5 3 2 4 6  ), (2 5 1 3 4 6  ), (1 5 2 3 4 6  ), (4 3 5 2 1 6  ), (4 3 5 1 2 6  ), (4 2 5 3 1 6  ), (4 1 5 3 2 6  ), (4 2 5 1 3 6  ), (4 1 5 2 3 6  ), (3 4 5 2 1 6  ), (3 4 5 1 2 6  ), (2 4 5 3 1 6  ), (1 4 5 3 2 6  ), (2 4 5 1 3 6  ), (1 4 5 2 3 6  ), (3 2 5 4 1 6  ), (3 1 5 4 2 6  ), (2 3 5 4 1 6  ), (1 3 5 4 2 6  ), (2 1 5 4 3 6  ), (1 2 5 4 3 6  ), (3 2 5 1 4 6  ), (3 1 5 2 4 6  ), (2 3 5 1 4 6  ), (1 3 5 2 4 6  ), (2 1 5 3 4 6  ), (1 2 5 3 4 6  ), (4 3 2 5 1 6  ), (4 3 1 5 2 6  ), (4 2 3 5 1 6  ), (4 1 3 5 2 6  ), (4 2 1 5 3 6  ), (4 1 2 5 3 6  ), (3 4 2 5 1 6  ), (3 4 1 5 2 6  ), (2 4 3 5 1 6  ), (1 4 3 5 2 6  ), (2 4 1 5 3 6  ), (1 4 2 5 3 6  ), (3 2 4 5 1 6  ), (3 1 4 5 2 6  ), (2 3 4 5 1 6  ), (1 3 4 5 2 6  ), (2 1 4 5 3 6  ), (1 2 4 5 3 6  ), (3 2 1 5 4 6  ), (3 1 2 5 4 6  ), (2 3 1 5 4 6  ), (1 3 2 5 4 6  ), (2 1 3 5 4 6  ), (1 2 3 5 4 6  ), (4 3 2 1 5 6  ), (4 3 1 2 5 6  ), (4 2 3 1 5 6  ), (4 1 3 2 5 6  ), (4 2 1 3 5 6  ), (4 1 2 3 5 6  ), (3 4 2 1 5 6  ), (3 4 1 2 5 6  ), (2 4 3 1 5 6  ), (1 4 3 2 5 6  ), (2 4 1 3 5 6  ), (1 4 2 3 5 6  ), (3 2 4 1 5 6  ), (3 1 4 2 5 6  ), (2 3 4 1 5 6  ), (1 3 4 2 5 6  ), (2 1 4 3 5 6  ), (1 2 4 3 5 6  ), (3 2 1 4 5 6  ), (3 1 2 4 5 6  ), (2 3 1 4 5 6  ), (1 3 2 4 5 6  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $2$:
+\begin{enumerate}
+\item Group Size is $48$.
+\item Elements are : (6 5 4 3 2 1  ), (6 5 4 3 1 2  ), (6 5 3 4 2 1  ), (6 5 3 4 1 2  ), (6 5 2 1 4 3  ), (6 5 1 2 4 3  ), (6 5 2 1 3 4  ), (6 5 1 2 3 4  ), (5 6 4 3 2 1  ), (5 6 4 3 1 2  ), (5 6 3 4 2 1  ), (5 6 3 4 1 2  ), (5 6 2 1 4 3  ), (5 6 1 2 4 3  ), (5 6 2 1 3 4  ), (5 6 1 2 3 4  ), (4 3 6 5 2 1  ), (4 3 6 5 1 2  ), (3 4 6 5 2 1  ), (3 4 6 5 1 2  ), (2 1 6 5 4 3  ), (1 2 6 5 4 3  ), (2 1 6 5 3 4  ), (1 2 6 5 3 4  ), (4 3 5 6 2 1  ), (4 3 5 6 1 2  ), (3 4 5 6 2 1  ), (3 4 5 6 1 2  ), (2 1 5 6 4 3  ), (1 2 5 6 4 3  ), (2 1 5 6 3 4  ), (1 2 5 6 3 4  ), (4 3 2 1 6 5  ), (4 3 1 2 6 5  ), (3 4 2 1 6 5  ), (3 4 1 2 6 5  ), (2 1 4 3 6 5  ), (1 2 4 3 6 5  ), (2 1 3 4 6 5  ), (1 2 3 4 6 5  ), (4 3 2 1 5 6  ), (4 3 1 2 5 6  ), (3 4 2 1 5 6  ), (3 4 1 2 5 6  ), (2 1 4 3 5 6  ), (1 2 4 3 5 6  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $3$:
+\begin{enumerate}
+\item Group Size is $16$.
+\item Elements are : (2 1 6 5 4 3  ), (1 2 6 5 4 3  ), (2 1 6 5 3 4  ), (1 2 6 5 3 4  ), (2 1 5 6 4 3  ), (1 2 5 6 4 3  ), (2 1 5 6 3 4  ), (1 2 5 6 3 4  ), (2 1 4 3 6 5  ), (1 2 4 3 6 5  ), (2 1 3 4 6 5  ), (1 2 3 4 6 5  ), (2 1 4 3 5 6  ), (1 2 4 3 5 6  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $4$:
+\begin{enumerate}
+\item Group Size is $72$.
+\item Elements are : (6 5 4 3 2 1  ), (6 5 4 3 1 2  ), (6 5 4 2 3 1  ), (6 5 4 1 3 2  ), (6 5 4 2 1 3  ), (6 5 4 1 2 3  ), (6 4 5 3 2 1  ), (6 4 5 3 1 2  ), (6 4 5 2 3 1  ), (6 4 5 1 3 2  ), (6 4 5 2 1 3  ), (6 4 5 1 2 3  ), (5 6 4 3 2 1  ), (5 6 4 3 1 2  ), (5 6 4 2 3 1  ), (5 6 4 1 3 2  ), (5 6 4 2 1 3  ), (5 6 4 1 2 3  ), (4 6 5 3 2 1  ), (4 6 5 3 1 2  ), (4 6 5 2 3 1  ), (4 6 5 1 3 2  ), (4 6 5 2 1 3  ), (4 6 5 1 2 3  ), (5 4 6 3 2 1  ), (5 4 6 3 1 2  ), (5 4 6 2 3 1  ), (5 4 6 1 3 2  ), (5 4 6 2 1 3  ), (5 4 6 1 2 3  ), (4 5 6 3 2 1  ), (4 5 6 3 1 2  ), (4 5 6 2 3 1  ), (4 5 6 1 3 2  ), (4 5 6 2 1 3  ), (4 5 6 1 2 3  ), (3 2 1 6 5 4  ), (3 1 2 6 5 4  ), (2 3 1 6 5 4  ), (1 3 2 6 5 4  ), (2 1 3 6 5 4  ), (1 2 3 6 5 4  ), (3 2 1 6 4 5  ), (3 1 2 6 4 5  ), (2 3 1 6 4 5  ), (1 3 2 6 4 5  ), (2 1 3 6 4 5  ), (1 2 3 6 4 5  ), (3 2 1 5 6 4  ), (3 1 2 5 6 4  ), (2 3 1 5 6 4  ), (1 3 2 5 6 4  ), (2 1 3 5 6 4  ), (1 2 3 5 6 4  ), (3 2 1 4 6 5  ), (3 1 2 4 6 5  ), (2 3 1 4 6 5  ), (1 3 2 4 6 5  ), (2 1 3 4 6 5  ), (1 2 3 4 6 5  ), (3 2 1 5 4 6  ), (3 1 2 5 4 6  ), (2 3 1 5 4 6  ), (1 3 2 5 4 6  ), (2 1 3 5 4 6  ), (1 2 3 5 4 6  ), (3 2 1 4 5 6  ), (3 1 2 4 5 6  ), (2 3 1 4 5 6  ), (1 3 2 4 5 6  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $5$:
+\begin{enumerate}
+\item Group Size is $12$.
+\item Elements are : (1 4 3 2 6 5  ), (1 4 2 3 6 5  ), (1 3 4 2 6 5  ), (1 2 4 3 6 5  ), (1 3 2 4 6 5  ), (1 2 3 4 6 5  ), (1 4 3 2 5 6  ), (1 4 2 3 5 6  ), (1 3 4 2 5 6  ), (1 2 4 3 5 6  ), (1 3 2 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $6$:
+\begin{enumerate}
+\item Group Size is $8$.
+\item Elements are : (5 4 6 2 1 3  ), (5 4 6 1 2 3  ), (4 5 6 2 1 3  ), (4 5 6 1 2 3  ), (2 1 3 5 4 6  ), (1 2 3 5 4 6  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $7$:
+\begin{enumerate}
+\item Group Size is $10$.
+\item Elements are : (1 6 5 4 3 2  ), (1 6 4 5 2 3  ), (1 5 6 3 4 2  ), (1 4 6 2 5 3  ), (1 5 3 6 2 4  ), (1 4 2 6 3 5  ), (1 3 5 2 6 4  ), (1 2 4 3 6 5  ), (1 3 2 5 4 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $8$:
+\begin{enumerate}
+\item Group Size is $12$.
+\item Elements are : (3 2 1 4 6 5  ), (3 1 2 4 6 5  ), (2 3 1 4 6 5  ), (1 3 2 4 6 5  ), (2 1 3 4 6 5  ), (1 2 3 4 6 5  ), (3 2 1 4 5 6  ), (3 1 2 4 5 6  ), (2 3 1 4 5 6  ), (1 3 2 4 5 6  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $9$:
+\begin{enumerate}
+\item Group Size is $4$.
+\item Elements are : (1 3 2 4 6 5  ), (1 2 3 4 6 5  ), (1 3 2 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $10$:
+\begin{enumerate}
+\item Group Size is $2$.
+\item Elements are : (1 5 6 4 2 3  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $11$:
+\begin{enumerate}
+\item Group Size is $4$.
+\item Elements are : (2 1 3 4 6 5  ), (1 2 3 4 6 5  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+Invariant group of Orbit $12$:
+\begin{enumerate}
+\item Group Size is $12$.
+\item Elements are : (2 1 3 6 5 4  ), (1 2 3 6 5 4  ), (2 1 3 6 4 5  ), (1 2 3 6 4 5  ), (2 1 3 5 6 4  ), (1 2 3 5 6 4  ), (2 1 3 4 6 5  ), (1 2 3 4 6 5  ), (2 1 3 5 4 6  ), (1 2 3 5 4 6  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+\section{The intrisic informations concerning the graph of facet rays of 33SMET6.ine}
+The graph considered is made of $30$ elements.\\
+The group acting on 33SMET6.ine is Group3hmet6\\
+Under the group action we have in fact only $1$ orbits to consider.\\
+The diameter of the graph is $1$.\\
+The list of orbits is with adjacency and Size info:
+\begin{center}
+\scriptsize
+\begin{tabular}{cccccccccccccccc|c|c}
+F1:&-3&0&1&0&1&0&0&1&0&0&0&1&0&0&0&29&30\\
+\end{tabular}
+\end{center}
+The representation matrix is:
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|c|c|c|}
+\hline
+&F1&Adj.&Size\\
+\hline
+F1& 29&29&30\\
+\hline
+Size&30&&30\\
+\hline
+\end{tabular}
+\end{center}
+No complemented local graph of size inferior to $20$.
+\subsection{scalar product between elements of orbits}
+\noindent This subsection made sense only if the representation is orthogonal which is the usual case
+Considering Orbit 1
+\begin{enumerate}
+\item Orbit Size is $30$.
+\item Norm of elements is $13$.
+\item Possible scalar product : $-3$, $1$, $9$
+\end{enumerate}
+\subsection{invariant group of Orbits}
+\noindent The invariant group of $x$ is the set of $g$ such that $g(x)=x$ denoted by $G_x$.\\
+If $x$ and $y$ are in the same orbit then the groups $G_x$ and  $G_y$ are conjuguate.\\
+For any element $x$ we denote $O_x$ its Orbit, we have $|O_x|\times |G_x|=|G|$
+We print only nontrivial groups
+Invariant group of Orbit $1$:
+\begin{enumerate}
+\item Group Size is $24$.
+\item Elements are : (4 3 2 1 5 6  ), (4 3 1 2 5 6  ), (4 2 3 1 5 6  ), (4 1 3 2 5 6  ), (4 2 1 3 5 6  ), (4 1 2 3 5 6  ), (3 4 2 1 5 6  ), (3 4 1 2 5 6  ), (2 4 3 1 5 6  ), (1 4 3 2 5 6  ), (2 4 1 3 5 6  ), (1 4 2 3 5 6  ), (3 2 4 1 5 6  ), (3 1 4 2 5 6  ), (2 3 4 1 5 6  ), (1 3 4 2 5 6  ), (2 1 4 3 5 6  ), (1 2 4 3 5 6  ), (3 2 1 4 5 6  ), (3 1 2 4 5 6  ), (2 3 1 4 5 6  ), (1 3 2 4 5 6  ), (2 1 3 4 5 6  ), (1 2 3 4 5 6  )
+\end{enumerate}
+\section{The two incidence matrix}
+Incidence between Orbit of Extreme rays and Orbits of Facets
+\begin{equation*}
+\begin{array}{|c|c|c|}
+\hline
+&F1&Inc\\
+\hline
+E1&25&25\\
+E2&24&24\\
+E3&18&18\\
+E4&18&18\\
+E5&17&17\\
+E6&18&18\\
+E7&15&15\\
+E8&16&16\\
+E9&15&15\\
+E10&15&15\\
+E11&15&15\\
+E12&14&14\\
+\hline
+\end{array}
+\end{equation*}
+Incidence between Orbits of Facets and Orbits of Extreme Rays
+\begin{equation*}
+\begin{array}{|c|cccccccccccc|c|}
+\hline
+&E1&E2&E3&E4&E5&E6&E7&E8&E9&E10&E11&E12&Inc\\
+\hline
+F1&5&12&27&6&34&54&36&32&90&180&90&28&594\\
+\hline
+\end{array}
+\end{equation*}
+\end{document}

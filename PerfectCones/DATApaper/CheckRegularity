@@ -1,0 +1,50 @@
+GetIrregularityInfoGeneral:=function(ListMat)
+  local n, ListVect, rnk, TotalRnk, NSP, TotalBasis, ListSol, eRedMat, TheIndex, DeltaSimp;
+  n:=Length(ListMat[1]);
+  ListVect:=List(ListMat, SymmetricMatrixToVector);
+  rnk:=RankMat(ListVect);
+  TotalRnk:=n*(n+1)/2;
+  if rnk=TotalRnk then
+    TotalBasis:=IdentityMat(TotalRnk);
+  else
+    NSP:=NullspaceIntMat(TransposedMat(ListVect));
+    TotalBasis:=NullspaceIntMat(TransposedMat(NSP));
+  fi;
+  ListSol:=List(ListVect, x->SolutionMat(TotalBasis, x));
+  eRedMat:=BaseIntMat(ListSol);
+  TheIndex:=AbsInt(DeterminantMat(eRedMat));
+  DeltaSimp:=Length(ListMat) - rnk;
+  return rec(TheIndex:=TheIndex, DeltaSimp:=DeltaSimp);
+end;
+
+
+GetIrregularityInformationSHV:=function(SHV)
+  local n, nbPair, SHVred, ListMat, ListVect, rnk, TotalRnk, NSP, TotalBasis, ListSol, eRedMat, TheIndex, DeltaSimp;
+  n:=Length(SHV[1]);
+  nbPair:=Length(SHV)/2;
+  SHVred:=List([1..nbPair], x->SHV[2*x-1]);
+  ListMat:=List(SHVred, x->TransposedMat([x])*[x]);
+  return GetIrregularityInfoGeneral(ListMat);
+end;
+
+
+ListIrreg:=[];
+for n in [4..9]
+do
+  for rnk in [n..9]
+  do
+    eFile:=Concatenation("DATApaper/ListSHV_n", String(n), "_rnk", String(rnk));
+    ListSHV:=ReadAsFunction(eFile)();
+    for eSHV in ListSHV
+    do
+      fSHV:=[];
+      for eLine in eSHV
+      do
+        Add(fSHV,  eLine);
+        Add(fSHV, -eLine);
+      od;
+      eIrreg:=GetIrregularityInformationSHV(fSHV);
+      Add(ListIrreg, eIrreg);
+    od;
+  od;
+od;

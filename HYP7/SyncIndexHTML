@@ -1,0 +1,16 @@
+#!/usr/bin/perl -w
+
+
+my @LFile=("out.html", "outs.html", "out_ind.html");
+
+for (my $iFile=0; $iFile<scalar(@LFile); $iFile++)
+{
+    my $eFile=$LFile[$iFile];
+    my $order1="curl -T ".$eFile." -u mathieudutour:vobvafurgi42 \"ftp://ftp.mathieudutour.altervista.org/Publications/".$eFile."\"";
+    print "order1=".$order1."\n";
+    if (system($order1) != 0) {
+	die "Error while uploading ".$eFile."\n";
+    }
+}
+
+

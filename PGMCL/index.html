@@ -1,0 +1,33 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<TITLE>PGMCL</TITLE>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+</head>
+<body>
+
+<center><h3>
+<b><font color="#D77A08"><font size=+0>Parallel Geophysical Model Coupling Library (PGMCL)</font></font></b>
+</h3></center>
+
+
+<UL>
+  <LI>Geophysical models need in many cases to be coupled between themselves (wave to circulation, circulation to atmosphere, etc.)</LI>
+  <LI>The great majority of geophysical are parallelized by the <b>MPI</b> parallel formalism, and in most cases the parallelization is done horizontally geographically</LI>
+  <LI>A simple coupling strategy is to use the <b>MPI</b> command <b>MPI_COMM_SPLIT</b> in order to split the set of processors in two groups that hence exchange data</LI>
+  <LI>The coupling is then done with each model sending data to the other and interpolating</LI>
+  <LI>The Parallel Geophysical Model Coupling Library does such a coupling by using the following information:
+  <UL>
+    <LI>The node matrix that tells for each model for numerical node, to which CPU(s) they belong</LI>
+    <LI>The sparse interpolation matrix between both models</LI>
+  </UL>
+and uses it in order to build the commands <b>MPI_INTERP_SEND</b> and <b>MPI_INTERP_RECV</b> from it. Those commands are almost optimal in terms of the size of data exchanged.</LI>
+  <LI>There is also commands for computing the sparse interpolation matrix</LI>
+  <LI>Code source is available from <A href="pgmcl.tar.gz">here</A>.</LI>
+  <LI>Please send comments to <i>mathieu.dutour@gmail.com</i></LI>
+</UL>
+
+
+
+</html>

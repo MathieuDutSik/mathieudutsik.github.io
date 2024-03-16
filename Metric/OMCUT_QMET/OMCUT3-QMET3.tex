@@ -1,0 +1,196 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,amssymb,amsmath,vmargin,multicol}
+\usepackage[english]{babel}
+\title{The Cone OMCUT3-QMET3}
+\setpapersize{custom}{21cm}{29.7cm}
+\setmarginsrb{1cm}{1cm}{1cm}{2cm}{0pt}{0pt}{0pt}{0pt}
+\begin{document}
+\maketitle
+\section{The intrisic informations concerning the graph of extreme rays of OMCUT3-QMET3.ext}
+The graph considered is made of $12$ elements.\\
+The group acting on OMCUT3-QMET3.ext is ReprS3revers\\
+Under the group action we have in fact only $2$ orbits to consider.\\
+The diameter of the graph is $2$.\\
+The list of orbits is with adjacency and Size info:
+\begin{center}
+\scriptsize
+\begin{tabular}{ccccccc|c|c}
+E1:&0&0&0&0&1&1&9&6\\
+E2:&0&0&1&0&1&1&6&6\\
+\end{tabular}
+\end{center}
+The representation matrix is:
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|cc|c|c|}
+\hline
+&E1&E2&Adj.&Size\\
+\hline
+E1& 5& 4&9&6\\
+E2& 4& 2&6&6\\
+\hline
+Size&6&6&&12\\
+\hline
+\end{tabular}
+\end{center}
+\subsection{The local graphs}
+The complemented local graph are:\\
+We consider graph with cardinal inferior or equal to $20$\\
+The complemented local graph for orbit $1$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&1&:&\,\,5\\
+2&4&:&\,\,4\,\,5\,\,6\,\,7\\
+3&4&:&\,\,5\,\,6\,\,8\,\,9\\
+4&2&:&\,\,2\,\,6\\
+5&4&:&\,\,1\,\,2\,\,3\,\,8\\
+6&4&:&\,\,2\,\,3\,\,4\,\,9\\
+7&1&:&\,\,2\\
+8&2&:&\,\,3\,\,5\\
+9&2&:&\,\,3\,\,6\\
+\end{array}
+\end{equation*}
+The complemented local graph for orbit $2$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&1&:&\,\,2\\
+2&2&:&\,\,1\,\,5\\
+3&1&:&\,\,4\\
+4&2&:&\,\,3\,\,6\\
+5&1&:&\,\,2\\
+6&1&:&\,\,4\\
+\end{array}
+\end{equation*}
+\subsection{scalar product between elements of orbits}
+\noindent This subsection made sense only if the representation is orthogonal which is the usual case
+Considering Orbit 1
+\begin{enumerate}
+\item Orbit Size is $6$.
+\item Norm of elements is $2$.
+\item Possible scalar product : $0$, $1$
+\end{enumerate}
+Considering Orbit 2
+\begin{enumerate}
+\item Orbit Size is $6$.
+\item Norm of elements is $3$.
+\item Possible scalar product : $0$, $1$, $2$
+\end{enumerate}
+\subsection{invariant group of Orbits}
+\noindent The invariant group of $x$ is the set of $g$ such that g(x)=x denoted b $G_x$.\\
+If $x$ and $y$ are in the same orbit then the groups $G_x$ and  $G_x$ are conjuguate.\\
+Invariant group of Orbit 1
+\begin{enumerate}
+\item Group Size is $2$.
+\item Elements are : (6 5 4 3 2 1  reversal), (4 3 6 5 1 2  reversal), 
+\end{enumerate}
+Invariant group of Orbit 2
+\begin{enumerate}
+\item Group Size is $2$.
+\item Elements are : (6 5 4 3 2 1  reversal), (2 1 5 6 3 4  reversal), 
+\end{enumerate}
+\section{The intrisic informations concerning the graph of facet rays of OMCUT3-QMET3.ine}
+The graph considered is made of $12$ elements.\\
+The group acting on OMCUT3-QMET3.ine is ReprS3revers\\
+Under the group action we have in fact only $2$ orbits to consider.\\
+The diameter of the graph is $2$.\\
+The list of orbits is with adjacency and Size info:
+\begin{center}
+\scriptsize
+\begin{tabular}{ccccccc|c|c}
+F1:&-1&1&0&0&0&1&8&6\\
+F2:&0&0&0&0&0&1&7&6\\
+\end{tabular}
+\end{center}
+The representation matrix is:
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|cc|c|c|}
+\hline
+&F1&F2&Adj.&Size\\
+\hline
+F1& 3& 5&8&6\\
+F2& 5& 2&7&6\\
+\hline
+Size&6&6&&12\\
+\hline
+\end{tabular}
+\end{center}
+\subsection{The local graphs}
+The complemented local graph are:\\
+We consider graph with cardinal inferior or equal to $20$\\
+The complemented local graph for orbit $1$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&3&:&\,\,2\,\,3\,\,5\\
+2&2&:&\,\,1\,\,6\\
+3&2&:&\,\,1\,\,7\\
+4&3&:&\,\,5\,\,7\,\,8\\
+5&3&:&\,\,1\,\,4\,\,8\\
+6&3&:&\,\,2\,\,7\,\,8\\
+7&3&:&\,\,3\,\,4\,\,6\\
+8&3&:&\,\,4\,\,5\,\,6\\
+\end{array}
+\end{equation*}
+The complemented local graph for orbit $2$ is:
+\begin{equation*}
+\begin{array}{rrcl}
+1&2&:&\,\,2\,\,6\\
+2&2&:&\,\,1\,\,4\\
+3&2&:&\,\,4\,\,5\\
+4&2&:&\,\,2\,\,3\\
+5&2&:&\,\,3\,\,7\\
+6&2&:&\,\,1\,\,7\\
+7&2&:&\,\,5\,\,6\\
+\end{array}
+\end{equation*}
+\subsection{scalar product between elements of orbits}
+\noindent This subsection made sense only if the representation is orthogonal which is the usual case
+Considering Orbit 1
+\begin{enumerate}
+\item Orbit Size is $6$.
+\item Norm of elements is $3$.
+\item Possible scalar product : $-2$, $0$, $1$
+\end{enumerate}
+Considering Orbit 2
+\begin{enumerate}
+\item Orbit Size is $6$.
+\item Norm of elements is $1$.
+\item Possible scalar product : $0$
+\end{enumerate}
+\subsection{invariant group of Orbits}
+\noindent The invariant group of $x$ is the set of $g$ such that g(x)=x denoted b $G_x$.\\
+If $x$ and $y$ are in the same orbit then the groups $G_x$ and  $G_x$ are conjuguate.\\
+Invariant group of Orbit 1
+\begin{enumerate}
+\item Group Size is $2$.
+\item Elements are : (6 5 4 3 2 1  reversal), (6 5 4 3 2 1 ), 
+\end{enumerate}
+Invariant group of Orbit 2
+\begin{enumerate}
+\item Group Size is $2$.
+\item Elements are : (6 5 4 3 2 1  reversal), (3 4 1 2 6 5  reversal), 
+\end{enumerate}
+\section{The two incidence matrix}
+Incidence between Orbit of Extreme rays and Orbits of Facets
+\begin{equation*}
+\begin{array}{|c|cc|c|}
+\hline
+&F1&F2&Inc\\
+\hline
+E1&4&4&8\\
+E2&3&3&6\\
+\hline
+\end{array}
+\end{equation*}
+Incidence between Orbits of Facets and Orbits of Extreme Rays
+\begin{equation*}
+\begin{array}{|c|cc|c|}
+\hline
+&E1&E2&Inc\\
+\hline
+F1&4&3&7\\
+F2&4&3&7\\
+\hline
+\end{array}
+\end{equation*}
+\end{document}
