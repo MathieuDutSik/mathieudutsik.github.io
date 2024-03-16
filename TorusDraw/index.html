@@ -1,0 +1,73 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<TITLE>The Program TorusDraw</TITLE>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mathieu Dutour">
+</head>
+<body>
+
+
+<center><h3>
+<b><font color="#D77A08"><font size=+0>TorusDraw</font></font></b>
+</h3></center>
+
+<UL>
+  <LI>The program <A href="TorusDraw.zip">TorusDraw</A> is devoted to drawing Toroidal maps on the plane.</LI>
+  <LI>The best way to represent a toroidal map is to take its universal cover and put it on the plane</LI>
+  <LI>The maps are given combinatorially and the program extract a meaningful set of real coordinates by a circle packing algorithm explained in the paper <A href="http://www.sciencedirect.com/science?_ob=ArticleURL&_aset=B-WA-A-W-D-MsSAYWW-UUA-AAUVBECBZE-AAUAEDZAZE-DDYVWYUDZ-D-U&_rdoc=7&_fmt=summary&_udi=B6WDY-45M8T4P-5&_coverDate=10%2F31%2F1997&_cdi=6779&_orig=search&_st=13&_sort=d&view=c&_acct=C000050661&_version=1&_urlVersion=0&_userid=1034717&md5=565bf9d3aa3cdbba26414368e6d7563a">Circle packings of maps in polynomial time</A> by <A href="http://www.fmf.uni-lj.si/~mohar/">Bojan Mohar</A></LI>
+  <LI>The main feature of this program are:
+  <UL>
+    <LI>It is a <A href="http://www.mathworks.com/">matlab</A> program that does not need any toolbox. So, TorusDraw can export to postscript, bmp, etc.</LI>
+    <LI>It allows one to choose to draw the edges, the circles or the dual edges and dual circles.</LI>
+    <LI>The minimization of the error functionnal is done by a gradient method</LI>
+    <LI>The three files necessary for one minimization are created by the plangraph function <I>PlanGraphToTorusDraw</I></LI>
+  </UL>
+  </LI>
+<LI><b>Examples of usage</b>
+The example below are done for a specific structure: <A href="thetest.plg">thetest.plg</A>, <A href="thetest.spa">thetest.spa</A>, <A href="thetest.bip">thetest.bip</A>
+<UL>
+  <LI> using the command
+<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 0 1 0 0 0],[0 0],[1 0;0 1])</p>
+<p>edges</p>
+<img SRC="thetest1.jpg">
+      </LI>
+
+  <LI> using the command
+<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 0 1 1 0 0],[0 0],[1 0;0 1])</p>
+<p>edges + circles</p>
+<img SRC="thetest2.jpg">
+      </LI>
+  <LI> using the command
+<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[1 0 0 1 0 0],[0 0],[1 0;0 1])</p>
+<p>dual edges + circles</p>
+<img SRC="thetest3.jpg">
+      </LI>
+  <LI> using the command
+<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 1 1 0 0 0],[0 0],[1 0;0 1])</p>
+<p>edges + dual circles</p>
+<img SRC="thetest4.jpg">
+      </LI>
+  <LI> using the command
+<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 1 1 0 0 0],[0 0],[1 0;0 1])</p>
+<p>radial graph (map obtained by taking as vertex set the set of vertices and faces of the original map and edge set being of the form (v, F) if the vertex v belong to the face F)</p>
+<img SRC="thetest5.jpg">
+      </LI>
+  <LI> using the command
+<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 1 1 0 0 0],[0 0],[1 0;0 1])</p>
+<p>edges + fundamental domain</p>
+<img SRC="thetest6.jpg">
+      </LI>
+</UL>
+</LI>
+
+<center><H3>Illustrations</H3></center>
+<table>
+<td><img SRC="Example1.jpg"></td>
+<td><img SRC="Example2.jpg"></td>
+</table>
+<table>
+<td><img SRC="Example3.jpg"></td>
+<td><img SRC="Example4.jpg"></td>
+</table>
+</html>

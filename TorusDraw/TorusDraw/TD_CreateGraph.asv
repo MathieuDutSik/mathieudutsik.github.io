@@ -1,0 +1,104 @@
+function test=TD_CreateGraph(FileName, TheWindow, simiInfo, ListRequest, ePoint, MatUnimodular)
+% TD_CreateGraph(FileName, TheWindow, simiInfo, ListRequest, ePoint,
+% MatUnimodular)
+% The program TD_CreateGraph (with TD standing for TorusDraw)
+% draw the universal cover of the torus on the plane
+% the actual position, i.e. going from combinatorics to affine geometry
+% is done by CircleMapping theory
+%
+% argument are as follows
+% FileName is the name of the file treated.
+% three files are necessarz
+% FileName.plg (clockwise adjacencies)
+% FileName.spa (spanning tree)
+% FileName.bip (bipartition considered)
+% (Those files can be created using my PlanGraph GAP package)
+%
+% TheWindow of the drawing considered.
+% example [-10 10 -10 10]
+%
+% simiInfo information on the direct similitude considered
+% take at first [1 0 0 0]
+%
+% ListRequest a vector [x1, y1, x2, y2, x3]
+% x1=0 or 1: switch for graph edges
+% y1=0 or 1: switch for circle packing
+% x2=0 or 1: switch for dual edges
+% y2=0 or 1: switch for dual circle packing
+% x3=0 or 1: switch for edges of radial graph
+%
+% ePoint=[x y]
+% coordinates of the translation vector of the fundamental
+% domain. Take [0 0] at first
+% 
+% MatUnimodular a 2x2 integer matrix of determinant 1
+% the matrix which transform the basis of the fundamental group
+% found
+
+
+FileGraph=strcat(FileName, '.plg');
+plg=load(FileGraph);
+%disp('plg=');disp(plg);
+
+[nbv, maxval]=size(plg);
+TheMat(nbv, nbv)=0;
+for i=1:nbv
+    for j=1:maxval
+        val=plg(i,j);
+        if (val >0),
+            TheMat(i,val)=1;
+        end;
+    end;
+end;
+for i=1:nbv
+    for j=1:nbv
+        nb=0;
+        for u=1:maxval
+            val=plg(i,u);
+            if (val == j)
+                nb=nb+1;
+            end;
+        end;
+        if (nb>1)
+            strout=strcat('Vertex  ', int2str(j), ' appear  ', int2str(nb), ' times on vertex  ', int2str(i));
+            disp(strout);
+            disp('This torus cannot be drawn');
+            test=0;
+            return;
+        end;
+    end;
+end;
+
+minimal=0.0000005;
+tol=0.5;
+[RadiusVector, test]=TD_SeveralMinimization(TheMat, minimal);
+if (test == 0)
+    return;
+end;
+MaxRad=max(RadiusVector)
+
+
+FileBip=strcat(FileName, '.bip');
+ComponentVector=load(FileBip);
+%disp('component Vector='); disp(ComponentVector);
+
+FileSpa=strcat(FileName, '.spa');
+SPA=load(FileSpa);
+
+ListCoord=TD_ListCoord(RadiusVector, SPA, plg, maxval);
+%disp('ListCoord='); disp(ListCoord);
+
+axis(TheWindow);
+%set(gcf,'Color',[0,0,0])
+axis off;
+
+TheBasis=TD_TranslationVector(RadiusVector, ListCoord, plg, tol);
+if (ListRequest(6) == 1)
+  test=TD_FundamentalDomain(TheBasis, ePoint, simiInfo, MatUnimodular);
+end;
+
+ListPoint=TD_ListPoint(TheBasis, TheWindow, RadiusVector, simiInfo, ListCoord);
+ListRed=[ListRequest(1) ListRequest(2) ListRequest(5)];
+test=TD_TheActualDrawing(TheBasis, RadiusVector, ListPoint, TheWindow, ListCoord, ComponentVector, 1, simiInfo, plg, ListRed);
+ListRed=[ListRequest(3) ListRequest(4) 0];
+test=TD_TheActualDrawing(TheBasis, RadiusVector, ListPoint, TheWindow, ListCoord, ComponentVector, 2, simiInfo, plg, ListRed);

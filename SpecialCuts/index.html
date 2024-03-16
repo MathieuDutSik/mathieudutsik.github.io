@@ -1,0 +1,70 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<TITLE>Special Cuts</TITLE>
+</head>
+<body>
+<center><h3>
+<b><font color="#D77A08"><font size=+0>Special cuts of 600-cell</font></font></b>
+</h3></center>
+
+
+<UL>
+  <LI>
+600-cell is a regular polytope with 120 vertices whose facets are 600 tetrahedra.
+  </LI>
+
+  <LI>
+A <I>special cut</I> is a family S of vertices of 600-cells such that no two vertices in S are adjacent.
+  </LI>
+
+  <LI>
+Given a special cut, one obtains a regular faced polytope by taking the convex hull of vertices not in S. The vertices in S correspond to icosahedra in this convex hull.
+  </LI>
+
+  <LI>
+The symmetry group of 600-cell is the coxeter group H4. It has 14400 elements. Two special cuts, which are equivalent under this group correspond to isometric corresponding regular faced polytopes.
+  </LI>
+
+
+  <LI>
+The number of vertices in S is at most 24. The case of 24 corresponds to a special semiregular polytope named snub 24-cell.
+  </LI>
+</UL>
+We enumerated the orbits of special cuts up to isomorphism. In the list below <I>s</I> is the number of vertices of <I>S</I>:
+<UL>
+  <LI><I>s=1</I>: 1 orbit <A href="SAV/File1">File1</A></LI>
+  <LI><I>s=2</I>: 7 orbits <A href="SAV/File2">File2</A></LI>
+  <LI><I>s=3</I>: 39 orbits <A href="SAV/File3">File3</A></LI>
+  <LI><I>s=4</I>: 436 orbits <A href="SAV/File4">File4</A></LI>
+  <LI><I>s=5</I>: 4776 orbits <A href="SAV/File5">File5</A></LI>
+  <LI><I>s=6</I>: 45775 orbits <A href="SAV/File6">File6</A></LI>
+  <LI><I>s=7</I>: 334380 orbits <A href="SAV/File7">File7</A></LI>
+  <LI><I>s=8</I>: 1826415 orbits <A href="SAV/File8.gz">File8.gz</A></LI>
+  <LI><I>s=9</I>: 7355498 orbits <A href="SAV/File9.gz">File9.gz</A></LI>
+  <LI><I>s=10</I>: 21671527 orbits <A href="SAV/File10.gz">File10.gz</A></LI>
+  <LI><I>s=11</I>: 46176020 orbits <A href="SAV/File11.gz">File11.gz</A></LI>
+  <LI><I>s=12</I>: 70145269 orbits <A href="SAV/File12.gz">File12.gz</A></LI>
+  <LI><I>s=13</I>: 74619659 orbits <A href="SAV/File13.gz">File13.gz</A></LI>
+  <LI><I>s=14</I>: 54482049 orbits <A href="SAV/File14.gz">File14.gz</A></LI>
+  <LI><I>s=15</I>: 26749384 orbits <A href="SAV/File15.gz">File15.gz</A></LI>
+  <LI><I>s=16</I>: 8690111 orbits <A href="SAV/File16.gz">File16.gz</A></LI>
+  <LI><I>s=17</I>: 1856685 orbits <A href="SAV/File17.gz">File17.gz</A></LI>
+  <LI><I>s=18</I>: 263268 orbits <A href="SAV/File18">File18</A></LI>
+  <LI><I>s=19</I>: 25265 orbits <A href="SAV/File19">File19</A></LI>
+  <LI><I>s=20</I>: 1683 orbits <A href="SAV/File20">File20</A></LI>
+  <LI><I>s=21</I>: 86 orbits <A href="SAV/File21">File21</A></LI>
+  <LI><I>s=22</I>: 9 orbits <A href="SAV/File22">File22</A></LI>
+  <LI><I>s=23</I>: 1 orbit <A href="SAV/File23">File23</A></LI>
+  <LI><I>s=24</I>: 1 orbit <A href="SAV/File24">File24</A></LI>
+</UL>
+Additional data and programs:
+<UL>
+  <LI>The vertices of the orbits are indicated with respect to the following <A href="AdjMat">adjacency matrix</A>.</LI>
+  <LI>The elements of the group are listed <A href="TheBigGroup.txt">here</A>.</LI>
+  <LI>The program used for the enumeration are <A href="SpecialCutFunctions.tar.gz">here</A>.</LI>
+  <LI>Some Case analysis <A href="CaseAnalysis.tar.gz">here</A>.</LI>
+</UL>
+The program used here is good for enumerating cliques in graph up to symmetry. It scales well to parallel computers. But it is not recommended if one is only interested in the cliques of maximal size.
+</body>
+</html>
