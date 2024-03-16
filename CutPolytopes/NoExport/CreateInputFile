@@ -1,0 +1,59 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+
+my $order;
+
+my $TmpFile="/tmp/ListFilePDF";
+$order="ls *.pdf > ".$TmpFile;
+print $order."\n";
+if (system($order) != 0) {
+    die "Error while listing the files\n";
+}
+
+
+
+open(INFILE, $TmpFile) or die "impossible to open ".$TmpFile;
+my @B=<INFILE>;
+close(INFILE);
+
+
+my $FileOut="index.html";
+open(OUT, "> ".$FileOut);
+#
+print OUT "<!doctype html public \"-//w3c//dtd html 4.0 transitional//en\">\n";
+print OUT "<html>\n";
+print OUT "<head>\n";
+print OUT "<TITLE>Dual description of some cut polytopes</TITLE>\n";
+print OUT "</head>\n";
+print OUT "<body>\n";
+print OUT "<center><h3>\n";
+print OUT "<b><font color=\"#D77A08\"><font size=+0>Dual description of some cut polytopes</font></font></b>\n";
+print OUT "</h3></center>\n";
+print OUT "<UL>\n";
+#
+my $nbLine=scalar(@B);
+for (my $iLine=0; $iLine<$nbLine; $iLine++)
+{
+    $_=$B[$iLine];
+    s/\n//;
+    my $eLine=$_;
+    #
+    my @GH=split("", $eLine);
+    my $strRed="";
+    for (my $iChar=4; $iChar<scalar(@GH)-4; $iChar++)
+    {
+	my $eChar=$GH[$iChar];
+	$strRed=$strRed.$eChar;
+    }
+    print "iLine=".$iLine." strRed=".$strRed."\n";
+    #
+    print OUT "  <LI>".$strRed.": <A href=\"Data".$strRed."\">Data".$strRed." (gap file)</A>, <A href=\"Data".$strRed.".pdf\">Data".$strRed.".pdf</A></LI>\n";
+}
+#
+print OUT "</UL>\n";
+print OUT "</body>\n";
+print OUT "</html>\n";
+    
+close(OUT);
+print "CreateInputFile for index.html has been run\n";

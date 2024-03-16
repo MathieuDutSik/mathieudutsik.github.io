@@ -1,0 +1,40 @@
+Read("../CubeTiling.g");
+n:=1;
+
+
+PathName:=Concatenation("EnumWorkDim", String(n), "/");
+Exec("mkdir -p ", PathName);
+
+FuncStor1:=function(Clique)
+  return false;
+end;
+
+FuncStor2:=function(Clique)
+  if IsCubePackingDetermining(Clique, [0,1,2,3])=true then
+    return true;
+  fi;
+  return false;
+end;
+
+FuncStor:=FuncStor2;
+
+
+
+for i in [1..2^n]
+do
+  Print("\n");
+  Print("Doing step, ", i, "\n");
+  FileNew:=Concatenation(PathName, "Enum", String(n), "_iter_", String(i));
+  FileOld:=Concatenation(PathName, "Enum", String(n), "_iter_", String(i-1));
+  if IsExistingFile(FileNew)=false then
+    if i=1 then
+      eClique:=[1];
+      LS:=rec(ListRed:=[eClique]);
+    else
+      U:=ReadAsFunction(FileOld)();
+      LS:=OneStepEnumeration(n, IsAdjacent, U.ListRed, FuncStor);
+      Print("|ListRed|=", Length(LS.ListRed), "  |Block|=", Length(LS.ListBlock), "   |Stor|=", Length(LS.ListStor), "\n");
+    fi;
+    SaveDataToFile(FileNew, LS);
+  fi;
+od;

@@ -1,0 +1,44 @@
+Read("../CubeTiling.g");
+n:=4;
+FileName:=Concatenation("ListTilingDim", String(n));
+LER:=ReadAsFunction(FileName)();
+VE:=SymmetryGroup(n);
+
+OrdStab:=function(Desc)
+  local U, Stab;
+  U:=Set(List(Desc, x->Position(VE.VertexSet, x)));
+  Stab:=Stabilizer(VE.SymmetryGroup, U, OnSets);
+  return Order(Stab);
+end;
+
+
+
+#
+FileOutput:=Concatenation("ListCT", String(n), ".html");
+output:=OutputTextFile(FileOutput, true);;
+#
+AppendTo(output, "<!doctype html public \"-//w3c//dtd html 4.0 transitional//en\">\n");
+AppendTo(output, "<html>\n");
+AppendTo(output, "<head>\n");
+AppendTo(output, "<TITLE>Structure of the ", n, "-dimensional cube tilings</TITLE>\n");
+AppendTo(output, "   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n");
+AppendTo(output, "   <meta name=\"GENERATOR\" content=\"Mozilla/6.00 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]\">\n");
+AppendTo(output, "</head>\n");
+AppendTo(output, "<body>\n");
+AppendTo(output, "\n");
+AppendTo(output, "<center><font size=+4>Structure of the ", n, "-dimensional cube tilings</font></center>\n");
+
+
+
+AppendTo(output, "<UL>\n");
+for i in [1..Length(LER)]
+do
+  eCliq:=LER[i];
+  AppendTo(output, "<LI>");
+  AppendTo(output, "Orbit ", i, "  has a stabilizer of order ", OrdStab(eCliq), " and second moment ", ComputeMoment(eCliq, 4, 2));
+  AppendTo(output, "</LI>\n");
+od;
+AppendTo(output, "</UL>\n");
+AppendTo(output, "</body>\n");
+AppendTo(output, "</html>\n");
+CloseStream(output);
