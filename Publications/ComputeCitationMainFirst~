@@ -1,0 +1,648 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+
+
+my $uu=scalar(@ARGV);
+
+if ($uu ne 1)
+{
+    print "The script is used as CountCitation [File]\n";
+    print "with File = index.html of the publication list\n";
+    die;
+}
+my $eFile=$ARGV[0];
+
+open(INFILE, $eFile) or die "impossible to open ".$eFile;
+my @B=<INFILE>;
+close(INFILE);
+
+my $nbTotalCitation=0;
+my @Paper_Title=();
+my @Paper_Cit=();
+my @Paper_Main=();
+my @Paper_First=();
+my @Paper_CC=();
+my @Paper_SCI=();
+my @Paper_AMS=();
+my @Paper_NatureWork=();
+my @Paper_pretVZS=();
+my @Paper_QualityFactor=();
+my @Paper_WoSCC_IF=();
+my @Paper_Year=();
+#
+my $LIstring = "";
+my $IsFirst  = -1;
+my $IsMain   = -1;
+my $IsCC     = -1;
+my $IsSCI    = -1;
+my $IsAMS    = -1;
+my $Year     = -1;
+# 0:article, 1:chapter, 2:book, 3:techrep, 4:thesis, 5:proceeding
+my @Lnature=("article", "chapter", "book", "techrep", "thesis", "proceeding");
+my $natureWork=-1;
+
+my @ListYears=();
+for (my $idx=1999; $idx<2025; $idx++)
+{
+    my $eYear="".$idx;
+    $ListYears[scalar(@ListYears)]=$eYear;
+}
+
+my $TheKey = "2023 Oct";
+
+my $iWork=0;
+my $DocpubStatus = "unset";
+for (my $iLine=0; $iLine<scalar(@B); $iLine++)
+{
+#    print "iLine=".$iLine."\n";
+    my $eLine=$B[$iLine];
+    my @LChar=split("", $eLine);
+    #
+    # Determining first authorness
+    #
+    my $strFI="";
+    if (scalar(@LChar) >= 6)
+    {
+	for (my $iChar=0; $iChar<6; $iChar++)
+	{
+	    my $eChar=$LChar[$iChar];
+	    $strFI=$strFI.$eChar;
+	}
+    }
+#    print "strFI=".$strFI."\n";
+    if ($strFI eq "  <LI>")
+    {
+        my @Lsplit = split("<LI>Mathieu Dutour", $eLine);
+	$LIstring = $eLine;
+        if (scalar(@Lsplit) eq 2)
+	{
+	    $IsFirst=1;
+	}
+	else
+	{
+	    $IsFirst=0;
+	}
+    }
+    #
+    # Deciding CC, SCI, AMS, mainness, worknature status
+    #
+    my @LDoc=split("docpub", $eLine);
+    if (scalar(@LDoc) eq 2)
+    {
+        if ($DocpubStatus ne "unset")
+        {
+            print "Failed to assign citation for\n";
+            print "DocpubStatus=".$DocpubStatus."\n";
+#            die;
+        }
+        $DocpubStatus = $eLine;
+        my $articleLine="XXX".$B[$iLine-2]."XXX";
+        my $nbMatch = 0;
+        my @ListPair=("()", " \n", " .", " ,", "  ");
+        for (my $iYear=0; $iYear<scalar(@ListYears); $iYear++)
+        {
+            my @VKL=split($ListYears[$iYear], $articleLine);
+            for (my $iEnt=1; $iEnt<scalar(@VKL); $iEnt++)
+            {
+                my @str0 = split("", $VKL[$iEnt-1]);
+                my $len0 = scalar(@str0);
+                my @str1 = split("", $VKL[$iEnt]);
+                for (my $iPair=0; $iPair<scalar(@ListPair); $iPair++)
+                {
+                    my @PairChar=split("", $ListPair[$iPair]);
+                    my $ch0 = $PairChar[0];
+                    my $ch1 = $PairChar[1];
+                    if (@str0[$len0-1] eq $ch0 && @str1[0] eq $ch1) {
+                        $Year = $ListYears[$iYear];
+                        $nbMatch = $nbMatch + 1;
+                    }
+                }
+            }
+        }
+        if ($Year eq -1)
+        {
+            print "iLine=".$iLine."\n";
+            print "articleLine=".$articleLine."\n";
+            print "Failed to find the year for the article\n";
+            die;
+        }
+        if ($nbMatch > 1)
+        {
+            print "nbMatch=".$nbMatch."\n";
+            print "iLine=".$iLine."\n";
+            print "articleLine=".$articleLine."\n";
+            print "We should have just one matching\n";
+            die;
+        }
+        #
+	my @Lcc=split("CC", $eLine);
+	if (scalar(@Lcc) eq 2)
+	{
+	    $IsCC=1;
+	}
+	else
+	{
+	    $IsCC=0;
+	}
+	my @Lsci=split("isi", $eLine);
+	if (scalar(@Lsci) eq 2)
+	{
+	    $IsSCI=1;
+	}
+	else
+	{
+	    $IsSCI=0;
+	}
+	my @Lams=split("AMS", $eLine);
+	if (scalar(@Lams) eq 2)
+	{
+	    $IsAMS=1;
+	}
+	else
+	{
+	    $IsAMS=0;
+	}
+	my @Lmain=split(", main", $eLine);
+	if (scalar(@Lmain) eq 2)
+	{
+	    $IsMain=1;
+	}
+	my @Lnomain=split(", nomain", $eLine);
+	if (scalar(@Lnomain) eq 2)
+	{
+	    $IsMain=0;
+	}
+	if ($IsMain eq -1)
+	{
+	    print "We failed to assign the mainness status\n";
+	    die;
+	}
+	#
+	for (my $iNature=0; $iNature<scalar(@Lnature); $iNature++)
+	{
+	    my $eNature=$Lnature[$iNature];
+	    my @Uwork=split($eNature, $eLine);
+	    if (scalar(@Uwork) eq 2)
+	    {
+		$natureWork=$iNature;
+	    }
+	}
+	if ($natureWork eq -1)
+	{
+            for (my $jLine=-10; $jLine<=0; $jLine++)
+            {
+                my $kLine=$jLine+$iLine;
+                print "kLine=".$kLine." eLine=".$B[$kLine];
+            }
+	    print "Failed to find the correct nature of the work.\n";
+            print "Possibilities: article, chapter, book, techrep, thesis, proceeding\n";
+	    die;
+	}
+    }
+    #
+    # Eventually concluding, maybe.
+    #
+    my $nbCit = -1;
+    my $QualityFactor = -1;
+    my $pretVZS = -1;
+    my $paperWoSCC_IF = -1;
+    my @U1=split("nocitation ", $eLine);
+    if (scalar(@U1) eq 2)
+    {
+	$nbCit=0;
+	$pretVZS=0;
+    }
+    my @U2=split($TheKey, $eLine);
+    my $IsCorrectEntry = 0;
+    if (scalar(@U2) eq 2)
+    {
+        $IsCorrectEntry = 1;
+    }
+    my @U3=split(", citation ", $eLine);
+    if (scalar(@U3) eq 2 && $IsCorrectEntry eq 1)
+    {
+	$pretVZS=0;
+	$QualityFactor=0;
+	# Doing a flush of the arrays
+	my $str2=$U3[1];
+	my @W2=split(" ", $str2);
+	my @W3=split(",", $W2[0]);
+	$nbCit=$W3[0];
+	my @VS1=split("Q", $eLine);
+	if (scalar(@VS1) > 1)
+	{
+	    my @VS2=split(",", $VS1[1]);
+	    my @VS3=split(" ", $VS2[0]);
+	    $QualityFactor=$VS3[0];
+	}
+        if ($QualityFactor eq 0)
+        {
+            print "Failed to find the quality factor for\n";
+            print "eLine=".$eLine."\n";
+#            die;
+        }
+	my @VG1=split("pretVZS", $eLine);
+	if (scalar(@VG1) > 1)
+	{
+	    $pretVZS=1;
+	}
+	my @VT1=split("IF", $eLine);
+	if (scalar(@VT1) > 1)
+	{
+	    my @VT2=split(",", $VT1[1]);
+	    my @VT3=split(" ", $VT2[0]);
+	    $paperWoSCC_IF=$VT3[0];
+	}
+    }
+    #
+#    print "nbCit=".$nbCit."\n";
+    if ($nbCit >= 0)
+    {
+	print "iWork=".$iWork." nbCit=".$nbCit."\n";
+	$nbTotalCitation = $nbTotalCitation + $nbCit;
+	if ($IsCC eq -1 || $IsAMS eq -1 || $IsSCI eq -1 || $IsMain eq -1 || $IsFirst eq -1 || $natureWork eq -1)
+	{
+	    print "Some variables are not assigned\n";
+	    print "LIstring=".$LIstring."\n";
+	    print "IsCC=".$IsCC." IsAMS=".$IsAMS." IsSCI=".$IsSCI." IsMain=".$IsMain." IsFirst=".$IsFirst." natureWork=".$natureWork."\n";
+	    die;
+	}
+        $Paper_Title[$iWork] = $LIstring;
+	$Paper_Cit  [$iWork] = $nbCit;
+	$Paper_CC   [$iWork] = $IsCC;
+	$Paper_AMS  [$iWork] = $IsAMS;
+	$Paper_SCI  [$iWork] = $IsSCI;
+	$Paper_Main [$iWork] = $IsMain;
+	$Paper_Year [$iWork] = $Year;
+	$Paper_First[$iWork] = $IsFirst;
+	$Paper_NatureWork[$iWork] = $natureWork;
+	$Paper_pretVZS[$iWork] = $pretVZS;
+	$Paper_QualityFactor[$iWork] = $QualityFactor;
+	$Paper_WoSCC_IF[$iWork] = $paperWoSCC_IF;
+#	print "iWork=".$iWork." paperWoSCC_IF=".$paperWoSCC_IF." qualFact=".$QualityFactor."\n";
+	#
+	$IsAMS   = -1;
+	$IsCC    = -1;
+	$IsSCI   = -1;
+	$Year    = -1;
+	$IsFirst = -1;
+	$IsMain  = -1;
+	$natureWork = -1;
+	$iWork=$iWork+1;
+        $DocpubStatus = "unset";
+    }
+#    print "After assignation in the citation\n";
+}
+my $nbWork = $iWork;
+
+my $Hindex=0;
+while(1)
+{
+    my $nbOK=0;
+    for (my $iWork=0; $iWork<$nbWork; $iWork++)
+    {
+	if ($Paper_Cit[$iWork] >= $Hindex)
+	{
+	    $nbOK=$nbOK+1
+	}
+    }
+    if ($nbOK < $Hindex)
+    {
+	$Hindex=$Hindex-1;
+	last;
+    }
+    $Hindex=$Hindex+1;
+}
+print "nbTotalCitation=".$nbTotalCitation." Hindex=".$Hindex."\n";
+
+my $nbCC=0;
+my $nbCCmain=0;
+my $nbCCfirst=0;
+my $nbCCmainfirst=0;
+for (my $iWork=0; $iWork<$nbWork; $iWork++)
+{
+    if ($Paper_CC[$iWork] eq 1)
+    {
+	$nbCC = $nbCC + 1;
+	if ($Paper_Main[$iWork] eq 1)
+	{
+	    $nbCCmain = $nbCCmain + 1;
+	}
+	if ($Paper_First[$iWork] eq 1)
+	{
+	    $nbCCfirst = $nbCCfirst + 1;
+	}
+	if ($Paper_Main[$iWork] eq 1 && $Paper_First[$iWork] eq 1)
+	{
+	    $nbCCmainfirst = $nbCCmainfirst + 1;
+	}
+    }
+}
+print "nbCC=".$nbCC." nbCCmain=".$nbCCmain." nbCCfirst=".$nbCCfirst." nbCCmainfirst=".$nbCCmainfirst."\n";
+
+
+my $nbSCI=0;
+my $nbSCImain=0;
+my $nbSCIfirst=0;
+my $nbSCImainfirst=0;
+for (my $iWork=0; $iWork<$nbWork; $iWork++)
+{
+    if ($Paper_SCI[$iWork] eq 1)
+    {
+	$nbSCI=$nbSCI + 1;
+	if ($Paper_Main[$iWork] eq 1)
+	{
+	    $nbSCImain=$nbSCImain + 1;
+	}
+	if ($Paper_First[$iWork] eq 1)
+	{
+	    $nbSCIfirst=$nbSCIfirst + 1;
+	}
+	if ($Paper_Main[$iWork] eq 1 && $Paper_First[$iWork] eq 1)
+	{
+	    $nbSCImainfirst=$nbSCImainfirst + 1;
+	}
+    }
+}
+print "nbSCI=".$nbSCI." nbSCImain=".$nbSCImain." nbSCIfirst=".$nbSCIfirst." nbSCImainfirst=".$nbSCImainfirst."\n";
+
+
+
+
+my $nbSCInoCC=0;
+my $nbSCInoCCmain=0;
+my $nbSCInoCCfirst=0;
+my $nbSCInoCCmainfirst=0;
+for (my $iWork=0; $iWork<$nbWork; $iWork++)
+{
+    if ($Paper_SCI[$iWork] eq 1 && $Paper_CC[$iWork] eq 0)
+    {
+	$nbSCInoCC=$nbSCInoCC+1;
+	if ($Paper_Main[$iWork] eq 1)
+	{
+	    $nbSCInoCCmain=$nbSCInoCCmain+1;
+	}
+	if ($Paper_First[$iWork] eq 1)
+	{
+	    $nbSCInoCCfirst=$nbSCInoCCfirst+1;
+	}
+	if ($Paper_Main[$iWork] eq 1 && $Paper_First[$iWork] eq 1)
+	{
+	    $nbSCInoCCmainfirst=$nbSCInoCCmainfirst+1;
+	}
+    }
+}
+print "nbSCInoCC=".$nbSCInoCC." nbSCInoCCmain=".$nbSCInoCCmain." nbSCInoCCfirst=".$nbSCInoCCfirst." nbSCInoCCmainfirst=".$nbSCInoCCmainfirst."\n";
+
+
+
+sub RetrieveQualitypaperLine($$)
+{
+    my ($minSumPrviGlavni, $maxPretVZS) = @_;
+    my @NbQ = (0,0,0,0);
+    for (my $iWork=0; $iWork<$nbWork; $iWork++)
+    {
+	my $sumPrviGlavni = $Paper_Main[$iWork] + $Paper_First[$iWork];
+	my $qualFact = $Paper_QualityFactor[$iWork];
+	my $eSCI = $Paper_SCI[$iWork];
+	my $ePretVZS = $Paper_pretVZS[$iWork];
+#	print "iWork=".$iWork." sumPG=".$sumPrviGlavni." qual=".$qualFact."\n";
+	if ($eSCI eq 1)
+	{
+	    print "Matching qual=".$qualFact."\n";
+	    print "sumPrviGlavni=".$sumPrviGlavni."  minSumPrviGlavni=".$minSumPrviGlavni."\n";
+	    print "ePretVZS=".$ePretVZS."   maxPretVZS=".$maxPretVZS."\n";
+	    if ($sumPrviGlavni >= $minSumPrviGlavni && $ePretVZS <= $maxPretVZS)
+	    {
+                print "  Match 1\n";
+		if ($qualFact > 0)
+		{
+                    print "    Match 2\n";
+		    $NbQ[$qualFact-1] = $NbQ[$qualFact-1] + 1;
+		}
+	    }
+	}
+    }
+    my $nbQ1 = $NbQ[0];
+    my $nbQ2 = $NbQ[1];
+    my $nbQ3 = $NbQ[2];
+    my $nbQ4 = $NbQ[3];
+    my $nbQ12= $nbQ1 + $nbQ2;
+    my $nbQ13= $nbQ1 + $nbQ2 + $nbQ3;
+    my $nbQ14= $nbQ1 + $nbQ2 + $nbQ3 + $nbQ4;
+    my $str = $nbQ1." & ".$nbQ2." & ".$nbQ3." & ".$nbQ4."   &   ".$nbQ12." & ".$nbQ13." & ".$nbQ14;
+    return $str;
+}
+
+print "-----------------------------------------------------------\n";
+print "Ukupno Radova                 : ".RetrieveQualitypaperLine(0, 1)."\n";
+die;
+print "Glavni or nositelj            : ".RetrieveQualitypaperLine(1, 1)."\n";
+print "pretVZS : Ukupno Radova       : ".RetrieveQualitypaperLine(0, 0)."\n";
+print "pretVZS : Glavni or nositelj  : ".RetrieveQualitypaperLine(1, 0)."\n";
+print "-----------------------------------------------------------\n";
+
+
+my $maxWoSCC_IF = 0;
+my $minWoSCC_IF = 100000;
+my $sumWoSCC_IF = 0;
+my $nbWoSCC=0;
+for (my $iWork=0; $iWork<$nbWork; $iWork++)
+{
+    my $qualFact = $Paper_QualityFactor[$iWork];
+    my $paperWoSCC_IF = $Paper_WoSCC_IF[$iWork];
+    if ($qualFact > 0)
+    {
+	if ($paperWoSCC_IF > $maxWoSCC_IF)
+	{
+	    $maxWoSCC_IF = $paperWoSCC_IF;
+	}
+	if ($paperWoSCC_IF < $minWoSCC_IF)
+	{
+	    $minWoSCC_IF = $paperWoSCC_IF;
+	}
+	$sumWoSCC_IF = $sumWoSCC_IF + $paperWoSCC_IF;
+	$nbWoSCC = $nbWoSCC + 1;
+    }
+}
+my $avgWoSCC_IF = $sumWoSCC_IF / $nbWoSCC;
+print "minWoSCC_IF=".$minWoSCC_IF." maxWoSCC_IF=".$maxWoSCC_IF."\n";
+print "avgWoSCC_IF=".$avgWoSCC_IF."\n";
+
+
+
+my $nbDrugiRadovi=0;
+my $nbDrugiRadovimain=0;
+my $nbDrugiRadovifirst=0;
+my $nbDrugiRadovimainfirst=0;
+for (my $iWork=0; $iWork<$nbWork; $iWork++)
+{
+    if ($Paper_NatureWork[$iWork] ne 0)
+    {
+	$nbDrugiRadovi=$nbDrugiRadovi+1;
+	if ($Paper_Main[$iWork] eq 1)
+	{
+	    $nbDrugiRadovimain=$nbDrugiRadovimain+1;
+	}
+	if ($Paper_First[$iWork] eq 1)
+	{
+	    $nbDrugiRadovifirst=$nbDrugiRadovifirst+1;
+	}
+	if ($Paper_Main[$iWork] eq 1 && $Paper_First[$iWork] eq 1)
+	{
+	    $nbDrugiRadovimainfirst=$nbDrugiRadovimainfirst+1;
+	}
+    }
+}
+print "nbDrugiRadovi=".$nbDrugiRadovi." nbDrugiRadovimain=".$nbDrugiRadovimain." nbDrugiRadovifirst=".$nbDrugiRadovifirst." nbDrugiRadovimainfirst=".$nbDrugiRadovimainfirst."\n";
+
+
+
+
+
+
+
+my $nbPaperSCI_not_CC=0;
+my $nbPaper_not_SCI_CC=0;
+my $nbPaper=0;
+for (my $iWork=0; $iWork<$nbWork; $iWork++)
+{
+    if ($Paper_NatureWork[$iWork] eq 0)
+    {
+	$nbPaper=$nbPaper+1;
+    }
+    if ($Paper_SCI[$iWork] eq 1 && $Paper_CC[$iWork] eq 0)
+    {
+	$nbPaperSCI_not_CC=$nbPaperSCI_not_CC+1;
+    }
+    if ($Paper_NatureWork[$iWork] eq 0 && $Paper_SCI[$iWork] eq 0 && $Paper_CC[$iWork] eq 0)
+    {
+	$nbPaper_not_SCI_CC=$nbPaper_not_SCI_CC+1;
+    }
+}
+print "nbPaper=".$nbPaper." nbPaperSCI_not_CC=".$nbPaperSCI_not_CC." nbPaper_not_SCI_CC=".$nbPaper_not_SCI_CC."\n";
+
+
+print "----------------------------------------------------------------------\n";
+
+
+sub RetrieveDataFullArray($)
+{
+    my ($maxPretVZS) = @_;
+    my @NbQ_BrojRadova = (0,0,0,0);
+    my @NbQ_BrojRadova_Prvi = (0,0,0,0);
+    my @NbQ_BrojRadova_Glavni = (0,0,0,0);
+    my $nbPrvi=0;
+    my $nbGlavni=0;
+    my $nbPrviGlavni=0;
+    my $lowestIF = 50000;
+    my $highestIF = 0;
+    my $sumIF = 0;
+    my $nbMatch = 0;
+    my $nbMatchB = 0;
+    my $nbCitTotal = 0;
+    my $nbRadova = 0;
+    for (my $iWork=0; $iWork<$nbWork; $iWork++)
+    {
+	my $ePretVZS = $Paper_pretVZS[$iWork];
+        my $eSCI = $Paper_SCI[$iWork];
+        if ($eSCI eq 1 && $ePretVZS <= $maxPretVZS)
+        {
+            $nbMatch = $nbMatch + 1;
+            my $eMain = $Paper_Main[$iWork];
+            my $eFirst = $Paper_First[$iWork];
+            my $qualFact = $Paper_QualityFactor[$iWork];
+            if ($qualFact > 0)
+            {
+                $NbQ_BrojRadova[$qualFact-1] = $NbQ_BrojRadova[$qualFact-1] + 1;
+                $nbRadova = $nbRadova + 1;
+            }
+            if ($eMain eq 1)
+            {
+                if ($qualFact > 0)
+                {
+                    $NbQ_BrojRadova_Glavni[$qualFact-1] = $NbQ_BrojRadova_Glavni[$qualFact-1] + 1;
+                    $nbGlavni = $nbGlavni + 1;
+                }
+            }
+            if ($eFirst eq 1)
+            {
+                if ($qualFact > 0)
+                {
+                    $NbQ_BrojRadova_Prvi[$qualFact-1] = $NbQ_BrojRadova_Prvi[$qualFact-1] + 1;
+                    $nbPrvi = $nbPrvi + 1;
+                }
+            }
+            if ($eMain eq 1 || $eFirst eq 1)
+            {
+                if ($qualFact > 0)
+                {
+                    $nbPrviGlavni = $nbPrviGlavni + 1;
+                }
+            }
+            #
+            my $eIF = $Paper_WoSCC_IF[$iWork];
+            if ($eIF > 0)
+            {
+                if ($eIF > $highestIF)
+                {
+                    $highestIF = $eIF;
+                }
+                if ($eIF < $lowestIF)
+                {
+                    $lowestIF = $eIF;
+                }
+                $sumIF = $sumIF + $eIF;
+                $nbMatchB = $nbMatchB + 1;
+#                print "IF=".$eIF."  Q".$qualFact."  title=".$Paper_Title[$iWork]."\n";
+                #
+            }
+            my $nbCit = $Paper_Cit[$iWork];
+            $nbCitTotal = $nbCitTotal + $nbCit;
+        }
+    }
+    #
+    my $avgIF = $sumIF / $nbMatchB;
+    print "minIF=".$lowestIF."   maxIF=".$highestIF."  avgIF=".$avgIF."\n";
+    #
+    print "nbRadova=".$nbRadova." nbPrviGlavni=".$nbPrviGlavni."  nbPrvi=".$nbPrvi."  nbGlavni=".$nbGlavni."\n";
+    for (my $iQ=1; $iQ<=4; $iQ++)
+    {
+        print "Q".$iQ."  nbRad=".$NbQ_BrojRadova[$iQ-1]."  nbPrvi=".$NbQ_BrojRadova_Prvi[$iQ-1]."  nbGlavni=".$NbQ_BrojRadova_Glavni[$iQ-1]."\n";
+    }
+    #
+    my $avgCitPerWork = $nbCitTotal / $nbMatch;
+    print "total number citation=".$nbCitTotal."  avgCitPerWork=".$avgCitPerWork."\n";
+}
+
+print "            TOTAL  INFORMATION\n";
+RetrieveDataFullArray(1);
+
+print "          FROM  PREVIOUS  CHOICE\n";
+RetrieveDataFullArray(0);
+
+
+my $TotalNbCit=0;
+for (my $iYear=0; $iYear<scalar(@ListYears); $iYear++)
+{
+    my $eYear=$ListYears[$iYear];
+    my $nbCitation = 0;
+    my $nbPaper = 0;
+    my $nbPaperSCI = 0;
+    for (my $iW=0; $iW<scalar(@Paper_Year); $iW++)
+    {
+        if ($Paper_Year[$iW] eq $eYear)
+        {
+            $nbCitation = $nbCitation + $Paper_Cit[$iW];
+            $nbPaper = $nbPaper + 1;
+            if ($Paper_SCI[$iW] eq 1)
+            {
+                $nbPaperSCI = $nbPaperSCI + 1;
+            }
+        }
+    }
+    $TotalNbCit=$TotalNbCit + $nbCitation;
+    print $eYear."   nbCitation=".$nbCitation."   nbPaper=".$nbPaper."   nbPaperSCI=".$nbPaperSCI."\n";
+}
+print "TotalNbCit=".$TotalNbCit."\n";
