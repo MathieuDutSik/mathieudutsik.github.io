@@ -1,0 +1,16 @@
+7
+H2O      solvent    0
+H+       dissolved  1
+OH-      dissolved  -1
+
+H3PO4    dissolved  0
+H2PO4-   dissolved  -1
+HPO4--   dissolved  -2
+PO4---   dissolved  -3
+
+4
+3 : 1 H+    1 OH-    -1 H2O       K 1.1e-14
+
+3 : 1 H+    1 H2PO4-     -1 H3PO4        K 6.22e-3
+3 : 1 H+    1 HPO4--     -1 H2PO4-       K 6.18e-8
+3 : 1 H+    1 PO4---     -1 HPO4--       K 6.84e-13
