@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bathymetry smoothing - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PersonnalInformation.html">Personal Info</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+                <li><a href="../Documents/CV_science.pdf">CV (PDF)</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <article class="research-item">
+                <div class="research-content">
+                    <div class="research-text">
+                        <h3>Bathymetry smoothing</h3>
+                        <p>The depth of many seas, particularly in the Adriatic Sea, has the inconvenience of varying too much for realistic oceanic modelling. The problem showed up in the computation of pressure difference in terrain following models. When the depths vary too much, artificial currents occur which compromise the stability of the model.</p>
+                        
+                        <div class="image-gallery">
+                            <figure>
+                                <img src="../Research/RawBathy.png" alt="Raw depth of the Adriatic Sea">
+                                <figcaption>Raw depth of the Adriatic Sea</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="../Research/Hydro.jpg" alt="Region of hydrodynamic stability">
+                                <figcaption>Region of hydrodynamic stability (blue) and instability (red)</figcaption>
+                            </figure>
+                        </div>
+
+                        <p>So, it is necessary to smooth the bathymetry in oceanic models, but one wants to use a bathymetry, which is as near as possible as the real one. We proposed a new <b>linear programming method</b> which performs much better than existing methods.</p>
+                    </div>
+                    <div class="research-citation">
+                        <p><a href="http://www.sciencedirect.com/science?_ob=ArticleURL&_udi=B6VPS-4W15KY6-1&_user=4761862&_coverDate=12%2F31%2F2009&_alid=930443189&_rdoc=1&_fmt=high&_orig=search&_cdi=6214&_sort=d&_docanchor=&view=c&_ct=1&_acct=C000050661&_version=1&_urlVersion=0&_userid=4761862&md5=b9a5597a5ed3c075e0069f84d84dae56">L</a> M. Dutour Sikirić, I. Janeković, M. Kuzmić, <i>A new approach to bathymetry smoothing in sigma-coordinate ocean models</i>, Ocean Modelling 29 (2009) 128-136.</p>
+                    </div>
+                </div>
+            </article>
+            <p><a href="../PresentationScientificWork.html">&larr; Back to Scientific and Technical Work</a></p>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

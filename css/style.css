@@ -121,6 +121,21 @@ li {
 }
 
 /* Scientific Presentation Specifics */
+.research-item-summary {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.research-item-summary h3 {
+    margin-bottom: 5px;
+}
+
+.research-item-summary p {
+    margin: 0;
+    color: #555;
+}
+
 .research-item {
     margin-bottom: 40px;
     border-bottom: 1px solid var(--border-color);
