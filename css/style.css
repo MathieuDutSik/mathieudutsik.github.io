@@ -198,6 +198,17 @@ li {
     margin-bottom: 30px;
 }
 
+.contact-address {
+    font-family: "Georgia", serif;
+    font-style: normal;
+    line-height: 1.4;
+    background: #fff;
+    padding: 15px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin: 10px 0;
+}
+
 pre {
     background: #f4f4f4;
     padding: 15px;
