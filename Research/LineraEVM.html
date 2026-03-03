@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVM Support in Linera - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <article class="research-item">
+                <div class="research-content">
+                    <div class="research-text">
+                        <h3>EVM Support in Linera</h3>
+                        <p>I implemented support for the Ethereum Virtual Machine (EVM) within the <a href="https://linera.io/">Linera protocol</a>. This integration allows standard Ethereum-based applications to run seamlessly on Linera's high-performance microchain architecture.</p>
+                        
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>Native Integration:</strong> The implementation resides within the Linera execution layer (<code>linera-execution/src/evm</code>).</li>
+                            <li><strong>Full Functionality:</strong> All native Linera features, such as cross-chain messaging and multi-chain coordination, are made accessible to EVM smart contracts through specialized <strong>precompiles</strong>.</li>
+                            <li><strong>Compatibility:</strong> To ensure maximum developer ease, the only significant change from standard <a href="https://ethereum.org/">Ethereum</a> is the contract address scheme, which was adapted for Linera's environment. All other EVM behaviors remain identical.</li>
+                            <li><strong>Real-world Validation:</strong> The robustness of this implementation is demonstrated by the successful execution of complex DeFi protocols, including <a href="https://morpho.org/">Morpho</a> smart contracts.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            <p><a href="../PresentationScientificWork.html">&larr; Back to Scientific and Technical Work</a></p>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
