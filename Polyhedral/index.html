@@ -1,33 +1,73 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>The Package Polyhedral</TITLE>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyhedral - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Polyhedral</font></font></b>
-</h3></center>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
+        <main>
+            <h2>Polyhedral</h2>
+            
+            <p>The <strong>Polyhedral</strong> package is a high-performance library devoted to the study of polytopes and lattices, with a strong focus on symmetry-assisted computations.</p>
 
+            <section>
+                <h3>Main Functionalities</h3>
+                <ul>
+                    <li><strong>Symmetry-Reduced Dual Description:</strong> Efficiently computes dual descriptions of polytopes by leveraging symmetries.</li>
+                    <li><strong>Geometric Properties:</strong> Computes automorphism groups, volumes, and K-skeletons of polytopes.</li>
+                    <li><strong>Advanced Constructions:</strong> Full support for Wythoff constructions.</li>
+                    <li><strong>Lattice Theory:</strong> Computes Delaunay tessellations for lattices in R<sup>n</sup>.</li>
+                    <li><strong>Space Analysis:</strong> Tools for dealing with L-type domains (spaces of lattices).</li>
+                    <li><strong>Unimodular Systems:</strong> Computation with unimodular vector systems.</li>
+                    <li><strong>Group Theory:</strong> Recognition of affine and spherical Coxeter Dynkin diagrams.</li>
+                    <li><strong>T-Spaces:</strong> Enumeration of perfect forms in T-spaces.</li>
+                </ul>
+            </section>
 
-<p><br>The package <A href="polyhedral.tar.bz2">Polyhedral</A> is devoted to polytopes and lattices. Its main functionalities are:
-<UL>
-  <LI>Computing dual description of polytopes by using symmetries for reducing the size of the computation.</LI>
-  <LI>Compute the automorphism group of a polytope</LI>
-  <LI>Compute the volume of a polytope</LI>
-  <LI>Compute the K-skeleton of a polytope</LI>
-  <LI>Compute the Wythoff construction of a polytope</LI> 
-  <LI>Compute the Delaunay tesselation corresponding to a lattice of Rn</LI>
-  <LI>Deal with L-type domains, i.e. spaces of lattices</LI>
-  <LI>Compute with unimodular vector systems</LI>
-  <LI>Recognize affine and spherical Coxeter Dynkin diagrams</LI>
-  <LI>Enumerate perfect forms in T-spaces</LI>
-</UL>
-<p><br>A manual is available here <A href="manual.pdf">manual.pdf</A>
-<p>The current version was released on 8 september 2013
+            <section>
+                <h3>Documentation & Setup</h3>
+                <ul>
+                    <li><a href="manual.pdf">User Manual (PDF)</a></li>
+                    <li><a href="Dockerfile">Dockerfile</a>: A containerized setup for easy compilation and deployment.</li>
+                </ul>
+                <p><em>Latest release: 8 September 2013</em></p>
+            </section>
 
-<p>A <A href="Dockerfile">Dockerfile</A> is available for compiling the system and making it usable.
+            <section>
+                <h3>Download & Source</h3>
+                <p>The original source package is available here:</p>
+                <ul>
+                    <li><a href="polyhedral.tar.bz2">Polyhedral Source (tar.bz2)</a></li>
+                </ul>
+                <p>Modern development and high-performance implementations are available on GitHub:</p>
+                <ul>
+                    <li><a href="https://github.com/MathieuDutSik/polyhedral_common">MathieuDutSik/polyhedral_common</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
 </html>

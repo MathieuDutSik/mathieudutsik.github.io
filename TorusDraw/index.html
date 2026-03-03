@@ -1,73 +1,109 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>The Program TorusDraw</TITLE>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Mathieu Dutour">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorusDraw - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>TorusDraw</font></font></b>
-</h3></center>
+        <main>
+            <h2>TorusDraw</h2>
+            
+            <p><strong>TorusDraw</strong> is a Matlab-based program designed for drawing toroidal maps on a 2D plane by representing their universal covers. It utilizes advanced circle packing algorithms to transform combinatorial map data into meaningful geometric coordinates.</p>
 
-<UL>
-  <LI>The program <A href="TorusDraw.zip">TorusDraw</A> is devoted to drawing Toroidal maps on the plane.</LI>
-  <LI>The best way to represent a toroidal map is to take its universal cover and put it on the plane</LI>
-  <LI>The maps are given combinatorially and the program extract a meaningful set of real coordinates by a circle packing algorithm explained in the paper <A href="http://www.sciencedirect.com/science?_ob=ArticleURL&_aset=B-WA-A-W-D-MsSAYWW-UUA-AAUVBECBZE-AAUAEDZAZE-DDYVWYUDZ-D-U&_rdoc=7&_fmt=summary&_udi=B6WDY-45M8T4P-5&_coverDate=10%2F31%2F1997&_cdi=6779&_orig=search&_st=13&_sort=d&view=c&_acct=C000050661&_version=1&_urlVersion=0&_userid=1034717&md5=565bf9d3aa3cdbba26414368e6d7563a">Circle packings of maps in polynomial time</A> by <A href="http://www.fmf.uni-lj.si/~mohar/">Bojan Mohar</A></LI>
-  <LI>The main feature of this program are:
-  <UL>
-    <LI>It is a <A href="http://www.mathworks.com/">matlab</A> program that does not need any toolbox. So, TorusDraw can export to postscript, bmp, etc.</LI>
-    <LI>It allows one to choose to draw the edges, the circles or the dual edges and dual circles.</LI>
-    <LI>The minimization of the error functionnal is done by a gradient method</LI>
-    <LI>The three files necessary for one minimization are created by the plangraph function <I>PlanGraphToTorusDraw</I></LI>
-  </UL>
-  </LI>
-<LI><b>Examples of usage</b>
-The example below are done for a specific structure: <A href="thetest.plg">thetest.plg</A>, <A href="thetest.spa">thetest.spa</A>, <A href="thetest.bip">thetest.bip</A>
-<UL>
-  <LI> using the command
-<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 0 1 0 0 0],[0 0],[1 0;0 1])</p>
-<p>edges</p>
-<img SRC="thetest1.jpg">
-      </LI>
+            <section>
+                <h3>Core Features</h3>
+                <ul>
+                    <li><strong>Pure Matlab Implementation:</strong> Does not require any external toolboxes. Supports exports to PostScript, BMP, and other standard formats.</li>
+                    <li><strong>Flexible Visualization:</strong> Choose to render edges, primary circles, dual edges, or dual circles.</li>
+                    <li><strong>Numerical Optimization:</strong> Employs a gradient-based method to minimize the error functional of the circle packing.</li>
+                    <li><strong>Integration:</strong> Seamlessly works with the <strong>PlanGraph</strong> package via the <code>PlanGraphToTorusDraw</code> function to generate necessary input files.</li>
+                </ul>
+            </section>
 
-  <LI> using the command
-<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 0 1 1 0 0],[0 0],[1 0;0 1])</p>
-<p>edges + circles</p>
-<img SRC="thetest2.jpg">
-      </LI>
-  <LI> using the command
-<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[1 0 0 1 0 0],[0 0],[1 0;0 1])</p>
-<p>dual edges + circles</p>
-<img SRC="thetest3.jpg">
-      </LI>
-  <LI> using the command
-<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 1 1 0 0 0],[0 0],[1 0;0 1])</p>
-<p>edges + dual circles</p>
-<img SRC="thetest4.jpg">
-      </LI>
-  <LI> using the command
-<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 1 1 0 0 0],[0 0],[1 0;0 1])</p>
-<p>radial graph (map obtained by taking as vertex set the set of vertices and faces of the original map and edge set being of the form (v, F) if the vertex v belong to the face F)</p>
-<img SRC="thetest5.jpg">
-      </LI>
-  <LI> using the command
-<p>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 1 1 0 0 0],[0 0],[1 0;0 1])</p>
-<p>edges + fundamental domain</p>
-<img SRC="thetest6.jpg">
-      </LI>
-</UL>
-</LI>
+            <section>
+                <h3>Algorithm Reference</h3>
+                <p>The coordinate extraction is based on the polynomial-time circle packing methodology defined by:</p>
+                <blockquote>
+                    Bojan Mohar, <em>"Circle packings of maps in polynomial time"</em>, European Journal of Combinatorics (1997).
+                </blockquote>
+            </section>
 
-<center><H3>Illustrations</H3></center>
-<table>
-<td><img SRC="Example1.jpg"></td>
-<td><img SRC="Example2.jpg"></td>
-</table>
-<table>
-<td><img SRC="Example3.jpg"></td>
-<td><img SRC="Example4.jpg"></td>
-</table>
+            <section>
+                <h3>Examples & Usage</h3>
+                <p>The following examples demonstrate different visualization modes using the test structure: <a href="thetest.plg">thetest.plg</a>, <a href="thetest.spa">thetest.spa</a>, <a href="thetest.bip">thetest.bip</a>.</p>
+                
+                <div class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Edges Only</h4>
+                            <code>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 0 1 0 0 0],[0 0],[1 0;0 1])</code>
+                        </div>
+                        <figure><img src="thetest1.jpg" alt="Edges visualization"></figure>
+                    </div>
+                </div>
+
+                <div class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Edges + Circles</h4>
+                            <code>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 0 1 1 0 0],[0 0],[1 0;0 1])</code>
+                        </div>
+                        <figure><img src="thetest2.jpg" alt="Edges and circles visualization"></figure>
+                    </div>
+                </div>
+
+                <div class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Radial Graph</h4>
+                            <p>Map obtained by taking the union of vertices and faces as the new vertex set.</p>
+                            <code>TD_CreateGraph('thetest',[-10 10 -10 10],[1 0 0 0],[0 1 1 0 0 0],[0 0],[1 0;0 1])</code>
+                        </div>
+                        <figure><img src="thetest5.jpg" alt="Radial graph visualization"></figure>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Illustrations</h3>
+                <div class="image-gallery">
+                    <figure><img src="Example1.jpg" alt="Example 1"></figure>
+                    <figure><img src="Example2.jpg" alt="Example 2"></figure>
+                    <figure><img src="Example3.jpg" alt="Example 3"></figure>
+                    <figure><img src="Example4.jpg" alt="Example 4"></figure>
+                </div>
+            </section>
+
+            <section>
+                <h3>Download</h3>
+                <ul>
+                    <li><a href="TorusDraw.zip">TorusDraw Package (ZIP)</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
 </html>

@@ -1,623 +1,113 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>ms-supermetrics</TITLE>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(m,s)-Super-metrics - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<center><h3>
-<b><font color="#D77A08"><font size=+0>(m,s)-super-metrics cone</font></font></b>
-</h3></center>
-
-<ul>
-<li>
-An <i>(m,s)-super-metric</i> d is a function defined over all (m+1)-uples
-of {1,...,n} such that</li>
-
-<ul>
-<li>
-d(x_1,....,x_[m+1]) is invariant by permutation of the x_i</li>
-
-<li>
-d(x_1,....,x_[m+1])=0 if two x_i are identical</li>
-
-<li>
-d(x_1,....,x_[m+1])>=0</li>
-
-<li>
-sd(x_1,....,x_[m+1])&lt;=sum_{i=1}^{m+1} d(x_1,....,x_[i-1},x_[i+1],...,x_[m+1])</li>
-</ul>
-
-<li>
-The <i>(m,s)-super-metric cone</i> SMET^[m,s]_n is the polyhedral cone
-of all (m,s)-super-metrics</li>
-
-<li>
-The <i>(m,s)-super-cut cone</i> SCUT^[m,s]_n is the positive span of all
-(0,1)-valued extreme rays of SMET^[m,s]_n</li>
-</ul>
-
-<hr>
-<br>&nbsp;
-<p>SMET^[2,2]_5
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>10</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(5)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>132 in 6 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>20 in one orbit</td>
-</tr>
-</table>
-<p>see files <a href="22SMET5.tex">22SMET5.tex </a> and <a href="22SMET5.ps">22SMET5.ps</a> for details
-
-
-<p>SCUT^[2,2]_5
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>10</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(5)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>20 in two orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>220 in six orbits</td>
-</tr>
-</table>
-<p>see files <a href="22BRO5.tex">22BRO5.tex </a> and <a href="22BRO5.ps">22BRO5.ps</a> for details
-
-<p>
-<hr WIDTH="100%">
-<p>SMET^{3,3/2}_6
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>15</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>331989 in 596 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>45 in two orbits</td>
-</tr>
-</table>
-
-<p>
-<hr WIDTH="100%">
-<br>SMET^[3,2]_6
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>15</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>12670 in 40 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>45 in two orbits</td>
-</tr>
-
-</table>
-<p>see files <a href="32SMET6.tex">32SMET6.tex </a> and <a href="32SMET6.ps">32SMET6.ps</a> for details
-
-<p>SCUT^[3,2]_6
-<br>(the description is conjectured to be complete)
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>15</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>247 in five orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>866745 in&nbsp; 1345 orbits</td>
-</tr>
-</table>
-<p>see files <a href="List1345_32SCUT6.txt">List1345_32SCUT6</a> for details
-
-<p>
-<hr WIDTH="100%">
-<p>SMET^[3,5/2]_6
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>15</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>85504 in 201 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>45 in two orbits</td>
-</tr>
-</table>
-
-<p>
-<hr WIDTH="100%">
-<br>SMET^[3,3]_6
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>15</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>1138 in 12 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>30 in one orbits</td>
-</tr>
-</table>
-<p>see files <a href="33SMET6.tex">33SMET6.tex </a> and <a href="33SMET6.ps">33SMET6.ps</a> for details
-
-<p>SCUT^[3,3]_6
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>15</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>21 in 2 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>150 in 3 orbits</td>
-</tr>
-</table>
-<p>see files <a href="33BRO6.tex">33BRO6.tex </a> and <a href="33BRO6.ps">33BRO6.ps</a> for details
-
-<p>
-<hr WIDTH="100%">
-<p>SMET^[4,2]_7
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>21</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(7)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>2561166 in 661 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>63 in two orbits</td>
-</tr>
-</table>
-<p>see files <a href="List661_42SMET7.txt">List661_42SMET7</a> for details
-
-<p>
-<hr WIDTH="100%">
-<p>SMET^[4,3]_7
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>21</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(7)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>838729 in 274 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>63 in two orbits</td>
-</tr>
-</table>
-<p>see files <a href="List274_43SMET7.txt">List274_43SMET7</a> for details
-
-<p>
-<hr WIDTH="100%">
-<br>SMET^[4,4]_7
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>21</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(7)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>39406 in 37 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>42 in one orbit</td>
-</tr>
-</table>
-<p>see files <a href="44SMET7.tex">44SMET7.tex </a> and <a href="44SMET7.ps">44SMET7.ps</a> for details
-
-<p>SCUT^[4,4]_7
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>21</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(7)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>112 in two orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>148554 in 114 orbits</td>
-</tr>
-</table>
-<p>see files <a href="List114_44SCUT7.txt">List114_44SCUT7</a> for details
-
-
-<p>
-<hr WIDTH="100%">
-<p>SMET^[5,2]_8
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>28</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(8)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>at least 222891598 in at least 6228 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>84 in two orbits</td>
-</tr>
-</table>
-
-<p>
-<hr WIDTH="100%">
-<br>SMET^[5,3]_8
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>28</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(8)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>at least 422241164 in at least 11641 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>84 in two orbits</td>
-</tr>
-</table>
-
-<hr WIDTH="100%">
-<br>SMET^[5,4]_8
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>28</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(8)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>at least 84711675 in at least 2764 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>84 in two orbits</td>
-</tr>
-</table>
-
-<p>
-<hr WIDTH="100%">
-<br>SMET^[5,5]_8
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>28</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(8)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>775807 in 92 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>56 in one orbit</td>
-</tr>
-</table>
-
-<p>
-<hr WIDTH="100%">
-<br>SMET[2,2]_6 (this description is conjectured to be complete)
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>20</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>21775425 in&nbsp; 30827 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>60 in one orbit</td>
-</tr>
-</table>
-<p>see files <a href="List30827_22SMET6.txt">List30827_22SMET6</a> for details
-
-<p>SCUT^[2,2]_6
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>20</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>96 in three orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>at least 243692840 in at least 341551 orbits</td>
-</tr>
-</table>
-
-<hr WIDTH="100%">
-<br>SMET^[3,3]_7
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>35</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(7)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>at least 594481939 in at least 119732 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>105 in one orbit</td>
-</tr>
-</table>
-
-<hr WIDTH="100%">
-<br>SMET^[2,2]_7
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>35</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(7)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>at least 465468248 in at least 93128 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>140 in one orbit</td>
-</tr>
-</table>
-
-<br>&nbsp;
+    <div class="container">
+        <header>
+             <img src="../../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../../Publications/index.html">Publications</a></li>
+                <li><a href="../../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../../Presentations/index.html">Lectures</a></li>
+                <li><a href="../../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>(m,s)-Super-metric and Super-cut Cones</h2>
+            
+            <section>
+                <h3>Definitions</h3>
+                <ul>
+                    <li><strong>(m,s)-Super-metric:</strong> A function <em>d</em> defined over (m+1)-tuples of {1,...,n} that is invariant under permutation, equals 0 if any two elements are identical, is non-negative, and satisfies the <em>(m,s)-super-metric triangle inequality</em>: <code>s &middot; d(x<sub>1</sub>,...,x<sub>m+1</sub>) &le; &sum; d(x<sub>1</sub>,...,x<sub>i-1</sub>,x<sub>i+1</sub>,...,x<sub>m+1</sub>)</code>.</li>
+                    <li><strong>Super-metric Cone (SMET<sup>m,s</sup><sub>n</sub>):</strong> The polyhedral cone of all (m,s)-super-metrics.</li>
+                    <li><strong>Super-cut Cone (SCUT<sup>m,s</sup><sub>n</sub>):</strong> The positive span of all (0,1)-valued extreme rays of SMET<sup>m,s</sup><sub>n</sub>.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Computational Results</h3>
+
+                <div class="research-item">
+                    <h4>Cones for n=5</h4>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr><th>Cone</th><th>Dim</th><th>Group</th><th>Extreme Rays</th><th>Facets</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMET<sup>2,2</sup><sub>5</sub></td><td>10</td><td>Sym(5)</td><td>132 (6 orbits)</td><td>20 (1 orbit)</td><td><a href="22SMET5.tex">TeX</a> | <a href="22SMET5.ps">PS</a></td></tr>
+                            <tr><td>SCUT<sup>2,2</sup><sub>5</sub></td><td>10</td><td>Sym(5)</td><td>20 (2 orbits)</td><td>220 (6 orbits)</td><td><a href="22BRO5.tex">TeX</a> | <a href="22BRO5.ps">PS</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="research-item">
+                    <h4>Cones for n=6</h4>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr><th>Cone</th><th>Dim</th><th>Group</th><th>Extreme Rays</th><th>Facets</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMET<sup>3,3/2</sup><sub>6</sub></td><td>15</td><td>Sym(6)</td><td>331,989 (596 orbits)</td><td>45 (2 orbits)</td><td>—</td></tr>
+                            <tr><td>SMET<sup>3,2</sup><sub>6</sub></td><td>15</td><td>Sym(6)</td><td>12,670 (40 orbits)</td><td>45 (2 orbits)</td><td><a href="32SMET6.tex">TeX</a> | <a href="32SMET6.ps">PS</a></td></tr>
+                            <tr><td>SCUT<sup>3,2</sup><sub>6</sub></td><td>15</td><td>Sym(6)</td><td>247 (5 orbits)</td><td>866,745 (1345 orbits)</td><td><a href="List1345_32SCUT6.txt">List</a></td></tr>
+                            <tr><td>SMET<sup>3,5/2</sup><sub>6</sub></td><td>15</td><td>Sym(6)</td><td>85,504 (201 orbits)</td><td>45 (2 orbits)</td><td>—</td></tr>
+                            <tr><td>SMET<sup>3,3</sup><sub>6</sub></td><td>15</td><td>Sym(6)</td><td>1,138 (12 orbits)</td><td>30 (1 orbit)</td><td><a href="33SMET6.tex">TeX</a> | <a href="33SMET6.ps">PS</a></td></tr>
+                            <tr><td>SCUT<sup>3,3</sup><sub>6</sub></td><td>15</td><td>Sym(6)</td><td>21 (2 orbits)</td><td>150 (3 orbits)</td><td><a href="33BRO6.tex">TeX</a> | <a href="33BRO6.ps">PS</a></td></tr>
+                            <tr><td>SMET<sup>2,2</sup><sub>6</sub></td><td>20</td><td>Sym(6)</td><td>21,775,425 (30827 orbits)</td><td>60 (1 orbit)</td><td><a href="List30827_22SMET6.txt">List</a></td></tr>
+                            <tr><td>SCUT<sup>2,2</sup><sub>6</sub></td><td>20</td><td>Sym(6)</td><td>96 (3 orbits)</td><td>&ge; 243,692,840</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="research-item">
+                    <h4>Cones for n=7</h4>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr><th>Cone</th><th>Dim</th><th>Group</th><th>Extreme Rays</th><th>Facets</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMET<sup>4,2</sup><sub>7</sub></td><td>21</td><td>Sym(7)</td><td>2,561,166 (661 orbits)</td><td>63 (2 orbits)</td><td><a href="List661_42SMET7.txt">List</a></td></tr>
+                            <tr><td>SMET<sup>4,3</sup><sub>7</sub></td><td>21</td><td>Sym(7)</td><td>838,729 (274 orbits)</td><td>63 (2 orbits)</td><td><a href="List274_43SMET7.txt">List</a></td></tr>
+                            <tr><td>SMET<sup>4,4</sup><sub>7</sub></td><td>21</td><td>Sym(7)</td><td>39,406 (37 orbits)</td><td>42 (1 orbit)</td><td><a href="44SMET7.tex">TeX</a> | <a href="44SMET7.ps">PS</a></td></tr>
+                            <tr><td>SCUT<sup>4,4</sup><sub>7</sub></td><td>21</td><td>Sym(7)</td><td>112 (2 orbits)</td><td>148,554 (114 orbits)</td><td><a href="List114_44SCUT7.txt">List</a></td></tr>
+                            <tr><td>SMET<sup>3,3</sup><sub>7</sub></td><td>35</td><td>Sym(7)</td><td>&ge; 594,481,939</td><td>105 (1 orbit)</td><td>—</td></tr>
+                            <tr><td>SMET<sup>2,2</sup><sub>7</sub></td><td>35</td><td>Sym(7)</td><td>&ge; 465,468,248</td><td>140 (1 orbit)</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="research-item">
+                    <h4>Cones for n=8</h4>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr><th>Cone</th><th>Dim</th><th>Group</th><th>Extreme Rays</th><th>Facets</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMET<sup>5,2</sup><sub>8</sub></td><td>28</td><td>Sym(8)</td><td>&ge; 222,891,598</td><td>84 (2 orbits)</td></tr>
+                            <tr><td>SMET<sup>5,3</sup><sub>8</sub></td><td>28</td><td>Sym(8)</td><td>&ge; 422,241,164</td><td>84 (2 orbits)</td></tr>
+                            <tr><td>SMET<sup>5,4</sup><sub>8</sub></td><td>28</td><td>Sym(8)</td><td>&ge; 84,711,675</td><td>84 (2 orbits)</td></tr>
+                            <tr><td>SMET<sup>5,5</sup><sub>8</sub></td><td>28</td><td>Sym(8)</td><td>775,807 (92 orbits)</td><td>56 (1 orbit)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>

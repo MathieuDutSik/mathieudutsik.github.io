@@ -1,52 +1,77 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>Data on periodic triangulations of n-dimensional lattice</TITLE>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periodic Triangulations - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Data on periodic triangulations of n-dimensional lattice</font></font></b>
-</h3></center>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
+        <main>
+            <h2>Periodic Triangulations of n-Dimensional Lattices</h2>
+            
+            <p>This page provides technical data and enumeration results accompanying the paper <strong>"Periodic triangulations of Z<sup>n</sup>"</strong> by Mathieu Dutour Sikirić and Alexey Garber.</p>
 
-In this web page we give some technical information on our paper <b>Periodic triangulations of Z<sup>n</sup></b> by Mathieu Dutour Sikiric and Alexey Garber.
+            <section>
+                <h3>5-Dimensional Lattice Triangulations</h3>
+                <p>We investigated methods to generate periodic triangulations, starting from known Delaunay triangulations and applying bistellar flipping operations.</p>
+                <ul>
+                    <li><strong>Triangulation Count:</strong> Iterative search and isomorphism checking yielded a set of 950 triangulations.</li>
+                    <li><strong>Symmetry & Type:</strong>
+                        <ul>
+                            <li>222 are Delaunay and centrally symmetric.</li>
+                            <li>23 are centrally symmetric but not Delaunay.</li>
+                            <li>705 are neither Delaunay nor centrally symmetric.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Data Files:</strong>
+                        <ul>
+                            <li><a href="ListOfTriangulationsInvariant_5.pdf">Invariants List (PDF)</a></li>
+                            <li><a href="ListOfTriangulation_5.gz">Full Triangulations List (gz)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
 
-<p></p>
+            <section>
+                <h3>Non-Regular Triangulations</h3>
+                <p>Our research confirmed the existence of non-regular triangulations in higher dimensions.</p>
+                <ul>
+                    <li><strong>Dimension 5:</strong> Identified at least one non-regular triangulation (Entry #430 in our list).</li>
+                    <li><strong>Proof Data:</strong> <a href="Configuration430_proving_NonRegularity.gz">Simplices configuration (gz)</a> – contains 3,264 simplices that cannot be represented regularly.</li>
+                    <li><strong>Dimension 4:</strong> Regularity remains an open question for certain identified triangulations.</li>
+                </ul>
+            </section>
 
-<b><i><font color="#000099"><font size=+1>
-Periodic triangulations of 5-dimensional lattice
-</font></font></i></b>
-<UL>
-  <LI>We consider here some way to generate periodic triangulations of n-dimensional lattice</LI>
-  <LI>We know from previous work 222 triangulations coming from Delaunay triangulations</LI>
-  <LI>The idea is to take a triangulation and do bistellar flipping when possible</LI>
-  <LI>By iterating and checking for isomorphism we get 950 triangulations</LI>
-  <LI>This could be the complete list of triangulations in dimension 5, but we do not know</LI>
-  <LI>Of those 950 triangulations, 222 are Delaunay and centrally symmetric, 23 are not Delaunay but are centrally symmetric and 705 are not Delaunay and not centrally symmetric</LI>
-  <LI>The list of invariant is available at <A href="ListOfTriangulationsInvariant_5.pdf">ListOfTriangulationsInvariant_5.pdf</A></LI>
-  <LI>The list of triangulations is available at <A href="ListOfTriangulation_5.gz">ListOfTriangulation_5.gz</A>. In this file the list of triangles is given</LI>
-</UL>
+            <section>
+                <h3>4-Dimensional Enumeration</h3>
+                <p>We determined the possible adjacencies between triangles in the 4D case.</p>
+                <ul>
+                    <li><strong>Source Code:</strong> <a href="enumerationtiling.tar.bz2">Enumeration Program (tar.bz2)</a></li>
+                </ul>
+            </section>
+        </main>
 
-
-<b><i><font color="#000099"><font size=+1>
-Non-regular triangulation
-</font></font></i></b>
-<UL>
-  <LI>In dimension 5 there is a triangulation which is not regular</LI>
-  <LI>The open case is dimension 4. There is a triangulation for which we do not know if it is regular or not</LI>
-  <LI>In dimension 5 there is at least one triangulation which is not regular. It is represented by triangulation number 430 in the above list</LI>
-  <LI>The list of 3264 simplices that cannot be represented is available at <A href="Configuration430_proving_NonRegularity.gz">Configuration430_proving_NonRegularity.gz</A></LI>
-</UL>
-
-
-
-<b><i><font color="#000099"><font size=+1>
-Enumeration of triangulations in dimension 4
-</font></font></i></b>
-<UL>
-  <LI>In dimension 4 we are able to determine the possible adjacencies between triangles</LI>
-  <LI>The code for the enumeration in dimension 4 is <A href="enumerationtiling.tar.bz2">enumerationtiling.tar.bz2</A></LI>
-</UL>
-
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
 </html>

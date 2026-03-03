@@ -1,23 +1,71 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>Some perfect cones</TITLE>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Cones - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Some perfect cones</font></font></b>
-</h3></center>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
+        <main>
+            <h2>Perfect Cones</h2>
+            
+            <p>In a given dimension <em>n</em>, there exists only a finite number of orbits of perfect cones of rank <em>k</em>. This page provides data and references for their enumeration across several dimensions and ranks.</p>
 
+            <section>
+                <h3>Research Highlights</h3>
+                <ul>
+                    <li><strong>Rank 9 Support:</strong> To analyze the perfect form compactification of <em>A<sub>g</sub></em>, we enumerated perfect cones of rank up to 9.</li>
+                    <li><strong>Lattice Correspondences:</strong> Perfect cones of dimension <em>n</em> and rank <em>n</em> correspond to specific configurations of shortest vectors.</li>
+                    <li><strong>Classifications:</strong>
+                        <ul>
+                            <li>Dimensions <em>n &le; 9</em>: Classification based on Minkowskian sublattices.</li>
+                            <li>Faces of cones (Dimension &le; 7): Detailed enumeration available in our cohomology study.</li>
+                            <li>Rank 9, Dimension 8: Specific enumeration for the compactification of <em>A<sub>g</sub></em>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
 
-<UL>
-  <LI>In a given dimension n, there are only a finite number of orbits of perfect cones of rank k.</LI>
-  <LI>In order to solve the problem considered in <A href="http://arxiv.org/abs/1303.5846">Smoothness and singularities of the perfect form compactification of Ag</A> we needed to enumerate the perfect cones of rank up to 9.</LI>
-  <LI>The perfect cones of dimension n and rank n correspond to certain configurations of shortest vectors and are enumerated for dimension n<=9 in <A href="http://arxiv.org/abs/0904.3110">On classifying Minkowskian sublattices</A></LI> and references therein.</LI>
-  <LI>The faces of the cones of dimension at most 7 are enumerated in <A href="http://arxiv.org/abs/1001.0789">Perfect forms and the cohomology of modular groups</A></LI>
-  <LI>The faces of rank 9 and dimension 8 are enumerated in <A href="http://arxiv.org/abs/1303.5846">Smoothness and singularities of the perfect form compactification of Ag</A>.</LI>
-  <LI>Merged data set is available at <A href="DATApaper.tar.gz">DATApaper.tar.gz</A>. Data can be read in GAP by doing ReadAsFunction(File)() with File one of the files of the archive.</LI>
-</UL>
+            <section>
+                <h3>References</h3>
+                <ul>
+                    <li><a href="http://arxiv.org/abs/1303.5846">Smoothness and singularities of the perfect form compactification of A<sub>g</sub></a></li>
+                    <li><a href="http://arxiv.org/abs/0904.3110">On classifying Minkowskian sublattices</a></li>
+                    <li><a href="http://arxiv.org/abs/1001.0789">Perfect forms and the cohomology of modular groups</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Download Data</h3>
+                <p>A merged dataset containing results from these investigations is available:</p>
+                <ul>
+                    <li><a href="DATApaper.tar.gz">DATApaper.tar.gz</a></li>
+                </ul>
+                <p><em>Note: Data can be read in GAP using the <code>ReadAsFunction(File)()</code> command.</em></p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>

@@ -1,28 +1,55 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>FEM to FD</TITLE>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEM to FD - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>FEM to FD</font></font></b>
-</h3></center>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
+        <main>
+            <h2>FEM to FD</h2>
+            
+            <p><strong>FEM_to_FD</strong> is a utility designed to convert finite difference (FD) grids into finite element (FE) meshes, a common requirement when bridging different modeling environments.</p>
 
-<UL>
-  <LI>Sometimes we have a finite difference grid and we need to obtain from it a finite felement mesh for another purpose.</LI>
-  <LI>The program <b>FEM_to_FD</b> does that:
-     <UL>
-       <LI>In the middle of the ocean it simply splits squares in two.</LI>
-       <LI>But it adds points near the coast so that no straits is closed and no isthmus opened.</LI>
-    </UL>
-  <LI>A more manual (with pictures) is available <A href="Manual.pdf">here</A>.</LI>
-  <LI>The archive (with Mfiles, manual and example) is available <A href="FEM_to_FD.tar.gz">here</A>.</LI>
-</UL>
+            <section>
+                <h3>How it Works</h3>
+                <p>The program employs a context-aware splitting strategy:</p>
+                <ul>
+                    <li><strong>Open Water:</strong> Squares in the middle of the ocean are simply split into two triangles.</li>
+                    <li><strong>Coastal Preservation:</strong> Near shorelines, it intelligently adds points to ensure that geographical features like straits remain open and isthmuses remain closed, preserving the topological integrity of the domain.</li>
+                </ul>
+            </section>
 
+            <section>
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="Manual.pdf">Manual (PDF)</a>: Detailed instructions with illustrative pictures.</li>
+                    <li><a href="FEM_to_FD.tar.gz">FEM_to_FD Archive (tar.gz)</a>: Contains Matlab M-files, manual, and usage examples.</li>
+                </ul>
+            </section>
+        </main>
 
-
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
 </html>

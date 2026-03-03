@@ -1,290 +1,547 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>Uniform partition of 3-space</TITLE>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uniform Partition of 3-space - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Uniform partition of 3-space</font></font></b>
-</h3></center>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-<UL>
-   <LI>A tiling is said to be an uniform partition of 3-space if it is formed by Archimedean polyhedra and the symmetry group is transitive on vertices.</LI>
-   <LI>Such tilings were correctly enumerated in 
-      <UL>
-         <LI>M. Deza and M. Shtogrin, Uniform partitions of 3-space, their relatives and embedding (with M.Shtogrin), papers/mathematics/9906034 of LANL archive, European Journal of Combinatorics, Special Issue `` Discrete Metric Spaces'', <b>21-6</b> (2000) 807--814</LI>
-         <LI>B. Grunbaum, Uniform tiling of 3-space, Geombinatorics <b>4</b> (1996) 49-56.</LI>
-         <LI>N. Johnson, Uniform polytopes, manuscript 1991.</LI>
-      </UL>
-   </LI>
-   <LI>Wrong enumeration and listings are for example:
-      <UL>
-         <LI>A. Andreini, Sulle reti di poliedri regolari e semiregolari e sulle corrispondenti reti correlative, Mem. Soc. Italiana della Scienze, Ser. 3, 14 (1905), 75.129.</LI>
-         <LI>K. Critchlow, Order in Space, Viking Press, New York, 1970.</LI>
-         <LI>P. Pearce, Structure in Nature is a Strategy for Design, The MIT Press, Cambridge, MA, 1978</LI>
-         <LI>R. Williams, Natural Structure, Eudaeman Press, Moorpark Ca. 1972; reprinted as The Geometrical Foundation of Natural Structure, Dover, New York, 1979.</LI>
-         <LI>R. V. Galiulin, Lectures on Geometric Foundations of Crystallography (in Russian), Chelyabinsk University, 1989.</LI>
-      </UL>
-    </LI>
-    <LI>Thus, we give pictures of those partitions which are not available from the correct enumerations and only partially from the incorrect ones</LI>
-    <LI>After this small work was done, I found that different pictures are availablke from <A href="http://rcsr.anu.edu.au/rcsr_nets/search">Reticular Chemistry Structure Resource</A></LI>
-    <LI>The program that we used for making the picture is <A href="http://gavrog.sourceforge.net/"><b>3dt</b></A> by Olaf Delgado which is a very efficient program for drawing pictures from combinatorial informations</LI>
-    <LI>We give pictures, a short description and the Delaney symbol, which encode the structure (please see articles by Delgado, Huson, Dress for description of the Delaney symbol)</LI>
-    <LI>Many tilings were obtained from the database <b>small.ds</b> of the program <b>3dt</b> while others were obtained from <A href="http://drobilica.irb.hr/~mathieu/Polyhedral/">polyhedral</A> with the scripts available <A href="Uniform.tar.gz">here</A> </LI>
-    <LI>For the space groups description we refer to following references:
-        <UL>
-         <LI><A href="http://en.wikipedia.org/wiki/List_of_the_230_crystallographic_3D_space_groups#Table_of_space_groups_in_3_dimensions">Wikipedia</A> for the simple description</LI>
-         <LI><A href="http://www.cryst.ehu.es/cgi-bin/cryst/programs/nph-normsets?choose=choose&from=wycksets&gnum=204">Symbol list</A> for the Wyckoff positions</A></LI>
-        </UL>
-      </LI>
-    <LI>We follow the nomenclature of Grunbaum, which is the clearest and  give the nomenclature as follows: G-x, DS-x, J-x, C-x, P-x whenever possible for Grunbaum, Deza-Shrogrin, Johnson, Critchlow and Pierce</LI>
-    <LI>Structure number 1 (DS-5, A-2, C, W-9, J-21)
-       <UL>
-          <LI>Picture:<br> <img src="TetrOctahedron_A.png" height="200"><br> </LI>
-          <LI><A href="TetrOctahedron_A.ds">Delaney symbol</A></LI>
-          <LI>This is the Delaunay tesselation of A3 lattice</LI>
-          <LI>tetrahedra, octahedra, ratio 1:2, vertex figure 8:6</LI> 
-          <LI>Space group Fm-3m</LI> 
-       </UL>
-      </LI>
-    <LI>Structure number 2 (DS-24, A-2', J-52)
-       <UL>
-          <LI>Picture:<br> <img src="SlabS12.png" height="200"><br> </LI>
-          <LI><A href="Struct36.ds">Delaney symbol</A></LI>
-          <LI>There is a continuum of tesselations by tetrahedron and octahedron obtained by slicing layers of tetrahedron, octahedron. Only two are vertex transitive, the above and this one</LI>
-          <LI>tetrahedra, octahedra, ratio 1:2, vertex figure 8:6</LI> 
-          <LI>Space group P63/mmc</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 3 (DS-25, J-61)
-       <UL>
-          <LI>Picture:<br> <img src="Lamination_Case1.png" height="200"><br> </LI>
-          <LI><A href="Lamination_Case1_red.ds">Delaney symbol</A></LI>
-          <LI>Insert a layer of Prism3 between the layers of structure number 1</LI>
-          <LI>tetrahedron, octahedron, Prism3, ratio 2:1:3, vertex figure 4:3:6</LI>
-          <LI>Space group R-3m</LI> 
-       </UL>
-      </LI>
-    <LI>Structure number 4 (DS-26, J-62)
-       <UL>
-          <LI>Picture:<br> <img src="Lamination_Case2.png" height="200"><br> </LI>
-          <LI><A href="Lamination_Case2_red.ds">Delaney symbol</A></LI>
-          <LI>Insert a layer of Prism3 between the layers of structure number 2</LI>
-          <LI>tetrahedron, octahedron, Prism3, ratio 2:1:3, vertex figure 4:3:6</LI>
-          <LI>Space group P63/mmc</LI> 
-       </UL>
-      </LI>
-    <LI>Structure number 5 (DS-19, A-16, C, W-11, J-23)
-       <UL>
-          <LI>Picture:<br> <img src="Struct18_cube_tetrahedron_Cube01.png" height="200"><br> </LI>
-          <LI><A href="Struct18.ds">Delaney symbol</A></LI>
-          <LI>Tetrahedron, rhombicuboctahedron, cube, ratio 2:1:1, vertex figure 1:3:1</LI>
-          <LI>Space group Fm-3m</LI> 
-       </UL>
-      </LI>
-    <LI>Structure number 6 (DS-6, A-13, C, W-10, J-25)
-       <UL>
-          <LI>Picture:<br> <img src="Struct09_truncatedTetrahedronTetrahedron.png" height="200"><br> </LI>
-          <LI><A href="Struct09.ds">Delaney symbol</A></LI>
-          <LI>tetrahedron, truncated tetrahedron, ratio 1:1, vertex figure 2:6</LI>
-          <LI>Space group Fd-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 7 (DS-8, A-15, C, W-14, J-12)
-       <UL>
-          <LI>Picture:<br> <img src="Struct05_cuboctahedronOctahedron.png" height="200"><br> </LI>
-          <LI><A href="Struct05.ds">Delaney symbol</A></LI>
-          <LI>octahedron, cuboctahedron, ratio 1:1, vertex figure 2:4</LI>
-          <LI>Space group Pm-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 8 (DS-7, A-14, C, W-15, J-13)
-       <UL>
-<!---          <LI>Picture:<br> <img src="Struct08_OctahedronTruncatedcube.png" height="200"><br> </LI> --->
-          <LI>Picture:<br> <img src="Struct08.png" height="200"><br> </LI>
-          <LI><A href="Struct08.ds">Delaney symbol</A></LI>
-          <LI>octahedron, truncated cube, ratio 1:1, vertex figure 1:4</LI>
-          <LI>Space group Pm-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 9 (DS-18, A-17, C, W-12, J-14)
-       <UL>
-          <LI>Picture:<br> <img src="Struct72_Cube01_cuboctahedron_cube.png" height="200"><br> </LI>
-          <LI><A href="Struct72.ds">Delaney symbol</A></LI>
-          <LI>cuboctahedron, rhombicuboctahedra, cube, ratio 1:1:3, vertex figure 1:2:2</LI>
-          <LI>Space group Pm-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 10 (DS-20, A-21, C, W-17, J-22)
-       <UL>
-          <LI>Picture:<br> <img src="Struct37_truncOcta_cuboctahedron_trunctetrahedron.png" height="200"><br> </LI>
-          <LI><A href="Struct37.ds">Delaney symbol</A></LI>
-          <LI>cuboctahedron, truncated tetrahedron, truncated octahedron, ratio 1:2:1, vertex figure 1:2:2</LI>
-          <LI>Space group Fm-3m</LI> 
-       </UL>
-      </LI>
-    <LI>Structure number 11 (DS-3, A-2, C, W-9, J-21)
-       <UL>
-          <LI>Picture:<br> <img src="Struct06_Prism3.png" height="200"><br> </LI>
-          <LI><A href="Struct06.ds">Delaney symbol</A></LI>
-          <LI>lamination over plane tiling by triangles</LI>
-          <LI>Prism3, vertex figure 12</LI>
-          <LI>Space group P6/mmm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 12 (DS-27, J-63)
-       <UL>
-          <LI>Picture:<br> <img src="SolveS14twisted.png" height="200"><br> </LI>
-          <LI><A href="SolveS14twisted.ds">Delaney symbol</A> and the <A href="SolveS14twisted.g">program</A> to generate it</LI>
-          <LI>Triangle prisms form one layer with square faces. Another layer is superimposed with a twisting and so on</LI>
-          <LI>Prism3, vertex figure 12</LI>
-          <LI>Space group I41/amd</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 13 (DS-13, A-11', C, J-65)
-       <UL>
-          <LI>Picture:<br> <img src="LaminationS2.png" height="200"><br> </LI>
-          <LI><A href="LaminationS2_red.ds">Delaney symbol</A></LI>
-          <LI>Prism3, cube, ratio 2:1, vertex figure 6:4</LI>
-          <LI>Space group Cmmm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 14 (DS-14, A-11, J-44)
-       <UL>
-          <LI>Picture:<br> <img src="LaminationOverTwistedSquareTrig.png" height="200"><br> </LI>
-          <LI><A href="SolveSquareTrigLamination_red.ds">Delaney symbol</A></LI>
-          <LI>Lamination over tiling by squares and triangles</LI>
-          <LI>Prism3, cube, ratio 2:1, vertex figure 6:4</LI>
-          <LI>Space group P4/mbm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 15 (DS-28, J-64)
-       <UL>
-          <LI>Picture:<br> <img src="S14_S8twisted.png" height="200"><br> </LI>
-          <LI><A href="SolveS14_S8twisted_red.ds">Delaney symbol</A></LI>
-          <LI>Same as 12 but with layer of cubes put between</LI>
-          <LI>Prism3, cube, ratio 2:1, vertex figure 6:4</LI>
-          <LI>Space group I41/amd</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 16 (DS-21, A-9, C, J-47)
-       <UL>
-          <LI>Picture:<br> <img src="LaminationS4.png" height="200"><br> </LI>
-          <LI><A href="LaminationS4_red.ds">Delaney symbol</A></LI>
-          <LI>Prism3, Prism4, Prism6, ratio 2:3:1, vertex figure 2:4:2</LI>
-          <LI>Space group P6/mmm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 17 (DS-12, A-12, C, J-48)
-       <UL>
-          <LI>Picture:<br> <img src="LaminationS5.png" height="200"><br> </LI>
-          <LI><A href="LaminationS5_red.ds">Delaney symbol</A></LI>
-          <LI>Prism3, Prism6, ratio 8:1, vertex figure 8:2</LI>
-          <LI>Space group P6/m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 18 (DS-11, A-8, C, J-43)
-       <UL>
-<!---          <LI>Picture:<br> <img src="Struct22_Prism6_Prism3.png" height="200"><br> </LI> --->
-          <LI>Picture:<br> <img src="Struct22.png" height="200"><br> </LI>
-          <LI><A href="Struct22.ds">Delaney symbol</A></LI>
-          <LI>lamination over kagome</LI>
-          <LI>Prism3, Prism6, ratio 2:1, vertex figure 4:4</LI>
-          <LI>Space group P6/mmm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 19 (DS-15, A-7, J-46)
-       <UL>
-<!---          <LI>Picture:<br> <img src="Struct70_Prism12_Prism3.png" height="200"><br> </LI> --->
-          <LI>Picture:<br> <img src="Struct70.png" height="200"><br> </LI>
-          <LI><A href="Struct70.ds">Delaney symbol</A></LI>
-          <LI>Prism3, Prism12, ratio 2:1, vertex figure 2:4</LI>
-          <LI>Space group P6/mmm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 20 (DS-10, A-19, W-19, J-18)
-       <UL>
-          <LI>Picture:<br> <img src="Rhombicubot_TruncCube_cube_octPrism.png" height="200"><br> </LI>
-          <LI><A href="Wythoff_CT_oth2_red.ds">Delaney symbol</A></LI>
-          <LI>rhombicuboctahedron, truncated cube, cube, Prism8, ratio 1:1:3:3, vertex figure 1:1:1:2</LI>
-          <LI>Space group Pm-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 21 (DS-17, A-20, W-19, J-18)
-       <UL>
-          <LI>Picture:<br> <img src="Struct21.png" height="200"><br> </LI>
-          <LI><A href="Wythoff_CT_Struct21_red.ds">Delaney symbol</A></LI>
-          <LI>truncated tetrahedron, truncated cube, truncated cuboctahedron, ratio 2:1:1, vertex figure 1:1:2</LI>
-          <LI>Space group Fm-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 22 (DS-1, A-1, C, W-1, J-11)
-       <UL>
-<!---          <LI>Picture:<br> <img src="Struct01_cubeTiling.png" height="200"><br> </LI> --->
-          <LI>Picture:<br> <img src="Struct01.png" height="200"><br> </LI>
-          <LI><A href="Struct01.ds">Delaney symbol</A></LI>
-          <LI>Is any description needed?</LI>
-          <LI>Cube, vertex figure 8</LI>
-          <LI>Space group Pm-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 23 (DS-22, A-10, C, W-8, J-49)
-       <UL>
-          <LI>Picture:<br> <img src="LaminationS9.png" height="200"><br> </LI>
-          <LI><A href="LaminationS9_red.ds">Delaney symbol</A></LI>
-          <LI>Cube, Prism6, Prism12, ratio 3:2:1, vertex figure 2:2:2</LI>
-          <LI>Space group P6/mmm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 24 (DS-10, A-6, C, J-45)
-       <UL>
-<!---          <LI>Picture:<br> <img src="Struct71_Prism8_Prism4.png" height="200"><br> </LI>--->
-          <LI>Picture:<br> <img src="Struct71.png" height="200"><br> </LI>
-          <LI><A href="Struct71.ds">Delaney symbol</A></LI>
-          <LI>Cube, Prism8, ratio 1:1, vertex figure 2:4</LI>
-          <LI>Space group P4/mmm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 25 (DS-16, A-18, C, W-13, J-17)
-       <UL>
-          <LI>Picture:<br> <img src="Cube_TruncOct_TruncCuboct.png" height="200"><br> </LI>
-          <LI><A href="Wythoff_CT_oth_red.ds">Delaney symbol</A></LI>
-          <LI>Take Delaunay polytopes of orbit of (0,1/4,1/5) in the cube lattice</LI>
-          <LI>cube, truncated octahedron, truncated cuboctahedron, ratio 3:1:1, vertex figure 1:1:2</LI>
-          <LI>Space group Pm-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 26 (DS-4, A-18, C, W-13, J-17)
-       <UL>
-          <LI>Picture:<br> <img src="LaminationS11.png" height="200"><br> </LI>
-          <LI><A href="LaminationS11_red.ds">Delaney symbol</A></LI>
-          <LI>Prism6, vertex figure 6</LI>
-          <LI>Space group P6/mmm</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 27 (DS-9, A-22, C, W-18, J-19)
-       <UL>
-          <LI>Picture:<br> <img src="OctPrism_TruncCuboct.png" height="200"><br> </LI>
-          <LI><A href="Wythoff012_CT_red.ds">Delaney symbol</A></LI>
-          <LI>Take the Delaunay polytopes of the orbit of the vector (1/3, 1/4, 1/5) in the cube lattice</LI>
-          <LI>Prism8, truncated cuboctahedron, ratio 3:1, vertex figure 2:2</LI>
-          <LI>Space group Im-3m</LI>
-       </UL>
-      </LI>
-    <LI>Structure number 28 (DS-2, A-3, C, W-2, J-16)
-       <UL>
-          <LI>Picture:<br> <img src="Struct07_KelvinPartition.png" height="200"><br> </LI>
-          <LI><A href="Struct07.ds">Delaney symbol</A></LI>
-          <LI>This is the Voronoi polytope of the A3 lattice, also called Kelvin polytope </LI>
-          <LI>truncated octahedron, vertex figure 4</LI>
-          <LI>Space group Im-3m</LI>
-       </UL>
-      </LI>
+        <main>
+            <h2>Uniform Partition of 3-space</h2>
+            
+            <p>A tiling is defined as a <strong>uniform partition of 3-space</strong> if it is composed of Archimedean polyhedra and its symmetry group is transitive on its vertices. This page provides visual representations, Delaney symbols, and technical data for these structures.</p>
 
+            <section>
+                <h3>Historical Context & Corrections</h3>
+                <p>Correct enumerations can be found in the works of <strong>Deza & Shtogrin (2000)</strong>, <strong>Gr&uuml;nbaum (1996)</strong>, and <strong>Johnson (1991)</strong>. Historical listings by Andreini, Critchlow, and others often contained errors or omissions, which this resource aims to clarify.</p>
+            </section>
 
-</UL>
+            <section>
+                <h3>Technical Details</h3>
+                <ul>
+                    <li><strong>Visualization:</strong> Pictures generated using <a href="http://gavrog.sourceforge.net/">3dt</a> by Olaf Delgado.</li>
+                    <li><strong>Encoding:</strong> Structures are encoded using Delaney symbols.</li>
+                    <li><strong>Space Groups:</strong> Referred to standard crystallographic nomenclature (see <a href="http://en.wikipedia.org/wiki/List_of_the_230_crystallographic_3D_space_groups">Wikipedia</a>).</li>
+                    <li><strong>Scripts:</strong> Scripts for generating these tilings are available <a href="Uniform.tar.gz">here</a>.</li>
+                </ul>
+            </section>
 
+            <section class="research-gallery">
+                <h3>The 28 Uniform Partitions</h3>
+                
+                <!-- Structure 1 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 1 (DS-5, A-2, J-21)</h4>
+                            <p>Delaunay tessellation of the A3 lattice.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Tetrahedra & Octahedra (Ratio 1:2)</li>
+                                <li><strong>Space Group:</strong> Fm-3m</li>
+                                <li><a href="TetrOctahedron_A.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="TetrOctahedron_A.png" height="200" alt="Structure 1">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 2 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 2 (DS-24, A-2', J-52)</h4>
+                            <p>One of only two vertex-transitive tessellations in the tetrahedron-octahedron continuum.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Tetrahedra & Octahedra (Ratio 1:2)</li>
+                                <li><strong>Space Group:</strong> P63/mmc</li>
+                                <li><a href="Struct36.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="SlabS12.png" height="200" alt="Structure 2">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 3 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 3 (DS-25, J-61)</h4>
+                            <p>Created by inserting a layer of Prism3 between layers of structure 1.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Tetrahedron, Octahedron, Prism3 (2:1:3)</li>
+                                <li><strong>Space Group:</strong> R-3m</li>
+                                <li><a href="Lamination_Case1_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Lamination_Case1.png" height="200" alt="Structure 3">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 4 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 4 (DS-26, J-62)</h4>
+                            <p>Created by inserting a layer of Prism3 between layers of structure 2.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Tetrahedron, Octahedron, Prism3 (2:1:3)</li>
+                                <li><strong>Space Group:</strong> P63/mmc</li>
+                                <li><a href="Lamination_Case2_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Lamination_Case2.png" height="200" alt="Structure 4">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 5 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 5 (DS-19, A-16, J-23)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Tetrahedron, Rhombicuboctahedron, Cube (2:1:1)</li>
+                                <li><strong>Space Group:</strong> Fm-3m</li>
+                                <li><a href="Struct18.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct18_cube_tetrahedron_Cube01.png" height="200" alt="Structure 5">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 6 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 6 (DS-6, A-13, J-25)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Tetrahedron, Truncated Tetrahedron (1:1)</li>
+                                <li><strong>Space Group:</strong> Fd-3m</li>
+                                <li><a href="Struct09.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct09_truncatedTetrahedronTetrahedron.png" height="200" alt="Structure 6">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 7 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 7 (DS-8, A-15, J-12)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Octahedron, Cuboctahedron (1:1)</li>
+                                <li><strong>Space Group:</strong> Pm-3m</li>
+                                <li><a href="Struct05.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct05_cuboctahedronOctahedron.png" height="200" alt="Structure 7">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 8 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 8 (DS-7, A-14, J-13)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Octahedron, Truncated Cube (1:1)</li>
+                                <li><strong>Space Group:</strong> Pm-3m</li>
+                                <li><a href="Struct08.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct08.png" height="200" alt="Structure 8">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 9 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 9 (DS-18, A-17, J-14)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Cuboctahedron, Rhombicuboctahedron, Cube (1:1:3)</li>
+                                <li><strong>Space Group:</strong> Pm-3m</li>
+                                <li><a href="Struct72.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct72_Cube01_cuboctahedron_cube.png" height="200" alt="Structure 9">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 10 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 10 (DS-20, A-21, J-22)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Cuboctahedron, Truncated Tetrahedron, Truncated Octahedron (1:2:1)</li>
+                                <li><strong>Space Group:</strong> Fm-3m</li>
+                                <li><a href="Struct37.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct37_truncOcta_cuboctahedron_trunctetrahedron.png" height="200" alt="Structure 10">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 11 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 11 (DS-3, A-2, J-21)</h4>
+                            <p>Lamination over plane tiling by triangles.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3</li>
+                                <li><strong>Space Group:</strong> P6/mmm</li>
+                                <li><a href="Struct06.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct06_Prism3.png" height="200" alt="Structure 11">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 12 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 12 (DS-27, J-63)</h4>
+                            <p>Superimposed layers of twisted triangle prisms.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3</li>
+                                <li><strong>Space Group:</strong> I41/amd</li>
+                                <li><a href="SolveS14twisted.ds">Delaney symbol</a> / <a href="SolveS14twisted.g">Program</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="SolveS14twisted.png" height="200" alt="Structure 12">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 13 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 13 (DS-13, A-11', J-65)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3, Cube (2:1)</li>
+                                <li><strong>Space Group:</strong> Cmmm</li>
+                                <li><a href="LaminationS2_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="LaminationS2.png" height="200" alt="Structure 13">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 14 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 14 (DS-14, A-11, J-44)</h4>
+                            <p>Lamination over tiling by squares and triangles.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3, Cube (2:1)</li>
+                                <li><strong>Space Group:</strong> P4/mbm</li>
+                                <li><a href="SolveSquareTrigLamination_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="LaminationOverTwistedSquareTrig.png" height="200" alt="Structure 14">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 15 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 15 (DS-28, J-64)</h4>
+                            <p>Similar to Structure 12 but with intermediate cube layers.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3, Cube (2:1)</li>
+                                <li><strong>Space Group:</strong> I41/amd</li>
+                                <li><a href="SolveS14_S8twisted_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="S14_S8twisted.png" height="200" alt="Structure 15">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 16 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 16 (DS-21, A-9, J-47)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3, Prism4, Prism6 (2:3:1)</li>
+                                <li><strong>Space Group:</strong> P6/mmm</li>
+                                <li><a href="LaminationS4_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="LaminationS4.png" height="200" alt="Structure 16">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 17 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 17 (DS-12, A-12, J-48)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3, Prism6 (8:1)</li>
+                                <li><strong>Space Group:</strong> P6/m</li>
+                                <li><a href="LaminationS5_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="LaminationS5.png" height="200" alt="Structure 17">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 18 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 18 (DS-11, A-8, J-43)</h4>
+                            <p>Lamination over Kagome.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3, Prism6 (2:1)</li>
+                                <li><strong>Space Group:</strong> P6/mmm</li>
+                                <li><a href="Struct22.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct22.png" height="200" alt="Structure 18">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 19 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 19 (DS-15, A-7, J-46)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism3, Prism12 (2:1)</li>
+                                <li><strong>Space Group:</strong> P6/mmm</li>
+                                <li><a href="Struct70.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct70.png" height="200" alt="Structure 19">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 20 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 20 (DS-10, A-19, J-18)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Rhombicuboctahedron, Truncated Cube, Cube, Prism8 (1:1:3:3)</li>
+                                <li><strong>Space Group:</strong> Pm-3m</li>
+                                <li><a href="Wythoff_CT_oth2_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Rhombicubot_TruncCube_cube_octPrism.png" height="200" alt="Structure 20">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 21 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 21 (DS-17, A-20, J-18)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Truncated Tetrahedron, Truncated Cube, Truncated Cuboctahedron (2:1:1)</li>
+                                <li><strong>Space Group:</strong> Fm-3m</li>
+                                <li><a href="Wythoff_CT_Struct21_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct21.png" height="200" alt="Structure 21">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 22 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 22 (DS-1, A-1, J-11)</h4>
+                            <p>The standard cubic tiling.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Cube</li>
+                                <li><strong>Space Group:</strong> Pm-3m</li>
+                                <li><a href="Struct01.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct01.png" height="200" alt="Structure 22">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 23 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 23 (DS-22, A-10, J-49)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Cube, Prism6, Prism12 (3:2:1)</li>
+                                <li><strong>Space Group:</strong> P6/mmm</li>
+                                <li><a href="LaminationS9_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="LaminationS9.png" height="200" alt="Structure 23">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 24 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 24 (DS-10, A-6, J-45)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Cube, Prism8 (1:1)</li>
+                                <li><strong>Space Group:</strong> P4/mmm</li>
+                                <li><a href="Struct71.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct71.png" height="200" alt="Structure 24">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 25 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 25 (DS-16, A-18, J-17)</h4>
+                            <p>Delaunay polytopes of orbit (0, 1/4, 1/5) in the cube lattice.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Cube, Truncated Octahedron, Truncated Cuboctahedron (3:1:1)</li>
+                                <li><strong>Space Group:</strong> Pm-3m</li>
+                                <li><a href="Wythoff_CT_oth_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Cube_TruncOct_TruncCuboct.png" height="200" alt="Structure 25">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 26 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 26 (DS-4, A-18, J-17)</h4>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism6</li>
+                                <li><strong>Space Group:</strong> P6/mmm</li>
+                                <li><a href="LaminationS11_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="LaminationS11.png" height="200" alt="Structure 26">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 27 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 27 (DS-9, A-22, J-19)</h4>
+                            <p>Delaunay polytopes of orbit (1/3, 1/4, 1/5) in the cube lattice.</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Prism8, Truncated Cuboctahedron (3:1)</li>
+                                <li><strong>Space Group:</strong> Im-3m</li>
+                                <li><a href="Wythoff012_CT_red.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="OctPrism_TruncCuboct.png" height="200" alt="Structure 27">
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Structure 28 -->
+                <article class="research-item">
+                    <div class="research-content">
+                        <div class="research-text">
+                            <h4>Structure 28 (DS-2, A-3, J-16)</h4>
+                            <p>Voronoi polytope of the A3 lattice (Kelvin polytope).</p>
+                            <ul>
+                                <li><strong>Composition:</strong> Truncated Octahedron</li>
+                                <li><strong>Space Group:</strong> Im-3m</li>
+                                <li><a href="Struct07.ds">Delaney symbol</a></li>
+                            </ul>
+                        </div>
+                        <figure>
+                            <img src="Struct07_KelvinPartition.png" height="200" alt="Structure 28">
+                        </figure>
+                    </div>
+                </article>
+
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
 </html>

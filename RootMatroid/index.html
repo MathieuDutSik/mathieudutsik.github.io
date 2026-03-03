@@ -1,27 +1,53 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>Root matroid</TITLE>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Matroid - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Root matroid</font></font></b>
-</h3></center>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
+        <main>
+            <h2>Root Matroid</h2>
+            
+            <p>The <strong>Root Matroid</strong> GAP package is designed for computing the automorphism groups of matroid root systems, a task critical in combinatorial representation theory and geometry.</p>
 
+            <section>
+                <h3>Technical Overview</h3>
+                <ul>
+                    <li><strong>Computation Engine:</strong> Utilizes the external <a href="http://cs.anu.edu.au/~bdm/nauty/">nauty</a> program for efficient isomorphism and automorphism group calculations.</li>
+                    <li><strong>Specialized Implementation:</strong> Unlike the standard GRAPE implementation in GAP, this package is specifically optimized to handle vertex coloring, which is essential for matroid root systems.</li>
+                </ul>
+            </section>
 
-<p><br>
+            <section>
+                <h3>Download</h3>
+                <ul>
+                    <li><a href="MatroidRootProgs.tar.gz">Matroid Root Systems GAP Package (tar.gz)</a></li>
+                </ul>
+            </section>
+        </main>
 
-<UL>
-  <LI>The GAP package <A href="MatroidRootProgs.tar.gz">Matroid Root Systems</A> allows to compute the automorphism group of matroid root systems.</LI>
-  <LI>It depends on the external program nauty for realizing the computations</LI>
-  <LI>We do not use the GRAPE implementation because it does not deal with vertex coloring.</LI>
-</UL>
-
-
-
-
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
 </html>

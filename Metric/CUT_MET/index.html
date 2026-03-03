@@ -1,385 +1,104 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>Metrics</TITLE>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut and Metric Cones - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Cut and Metric Cones</font></font></b>
-</h3></center>
-<p>see page <a href="http://www.cas.mcmaster.ca/~deza/metric.html">http://www.cas.mcmaster.ca/~deza/metric.html</a>
-for the <i>metric polytopes and cones</i>
-<p>see page <a href="http://www.iwr.uni-heidelberg.de/groups/comopt/software/SMAPO/cut/cut.html">http://www.iwr.uni-heidelberg.de/groups/comopt/software/SMAPO/cut/cut.html</a>
-for the <i>cut polytopes</i>
-<p>The <i>metric cone</i> MET_n is defined by the following n(n-1)(n-2)/2
-<i>triangle
-inequalities</i>:
-<ul>
-<li>
-x_{ij}+x_{jk}-x_{ik} >= 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for all triples
-{i,j,k} of {1,...,n}</li>
-</ul>
-For any subset S of {1,...,n}, the <i>cut vector</i> is defined by
-<ul>
-<li>
-Delta(S)ij=1, if i\in S and j\notin S</li>
-
-<li>
-Delta(S)ij=1, if i\notin S and j\in S</li>
-
-<li>
-Delta(S)ij=0, if i\notin S and j\notin S</li>
-
-<li>
-Delta(S)ij=0, if i\in S and j\in S</li>
-</ul>
-The <i>cut cone</i> CUT_is defined as the positive span of the 2^{n-1}-1
-cut vectors
-<p>Here I give a list of metric cones. All computations were done using
-cdd and perl scripts.
-<p>
-<hr WIDTH="100%">
-<br>The cone CUT_3=MET_3
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>3</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(3)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>3 in one orbit</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>3 in one orbit</td>
-</tr>
-</table>
-
-<p>see files <a href="CUT3.tex">CUT3.tex </a>and
-<a href="CUT3.ps">CUT3.ps
-</a>for details
-<p>
-<hr WIDTH="100%">
-<br>The cone CUT_4=MET_4
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>6</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(4)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>7 in two orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>12 in one orbit</td>
-</tr>
-</table>
-
-<p>see files <a href="CUT4.tex">CUT4.tex </a>and
-<a href="CUT4.ps">CUT4.ps
-</a>for details
-<p>
-<hr WIDTH="100%">
-<br>The cone CUT_5
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>10</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(5)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>15 in two orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>40 in two orbits</td>
-</tr>
-</table>
-
-<p>see files <a href="CUT5.tex">CUT5.tex </a>and
-<a href="CUT5.ps">CUT5.ps
-</a>for details
-<br>&nbsp;
-<p>The cone MET_5
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>10</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(5)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>25 in three orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>30 in one orbit</td>
-</tr>
-</table>
-
-<p>see files <a href="MET5.tex">MET5.tex </a>and
-<a href="MET5.ps">MET5.ps
-</a>for details
-<p>
-<hr WIDTH="100%">
-<br>The cone CUT_6
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>15</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>31 in three orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>210 in four orbits</td>
-</tr>
-</table>
-
-<p>see files <a href="CUT6.tex">CUT6.tex </a>and
-<a href="CUT6.ps">CUT6.ps
-</a>for details
-<br>&nbsp;
-<p>The cone MET_6
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>15</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(6)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>296 in seven orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>60 in one orbit</td>
-</tr>
-</table>
-
-<p>see files <a href="MET6.tex">MET6.tex </a>and
-<a href="MET6.ps">MET6.ps
-</a>for details
-<p>
-<hr WIDTH="100%">
-<br>The cone CUT_7
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>21</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(7)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>63 in three orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>38780 in 36 orbits</td>
-</tr>
-</table>
-
-<p>see files <a href="CUT7.tex">CUT7.tex </a>and
-<a href="CUT7.ps">CUT7.ps
-</a>for details
-<p>The cone MET_7
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>21</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(7)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>55226 in 46 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>105 in 1 orbits</td>
-</tr>
-</table>
-
-<p>see files <a href="MET7.tex">MET7.tex </a>and
-<a href="MET7.ps">MET7.ps
-</a>for details
-<p>
-<hr WIDTH="100%">
-<p>The cone CUT_8
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>28</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(8)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>127 in 4 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>49604520 in 2169 orbits</td>
-</tr>
-</table>
-
-<p>see files <a href="List2169_CUT8.txt">List2169_CUT8</a>
-for details
-<p>The cone MET_8
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>28</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(8)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>119269588 in 3918 orbits</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>168 in one orbit</td>
-</tr>
-</table>
-
-<p>see files <a href="List3918_MET8.txt">List3918_MET8</a>
-for details
-<p>
-<hr WIDTH="100%">
-<br>The cone CUT_9
-<br>(description possibly complete)
-<table BORDER COLS=2 WIDTH="100%" NOSAVE >
-<tr>
-<td>dimension</td>
-
-<td>36</td>
-</tr>
-
-<tr>
-<td>group</td>
-
-<td>Sym(9)</td>
-</tr>
-
-<tr>
-<td>extreme rays</td>
-
-<td>255</td>
-</tr>
-
-<tr>
-<td>facets</td>
-
-<td>at least 12246651158320 facets in 164506 classes (under switching +
-permutation)</td>
-</tr>
-</table>
-
-<br>&nbsp;
+    <div class="container">
+        <header>
+             <img src="../../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../../Publications/index.html">Publications</a></li>
+                <li><a href="../../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../../Presentations/index.html">Lectures</a></li>
+                <li><a href="../../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>Cut and Metric Cones</h2>
+            
+            <p>This page provides definitions and computational results for various metric and cut cones. For broader context, see the pages by <a href="http://www.cas.mcmaster.ca/~deza/metric.html">Michel Deza</a> and the <a href="http://www.iwr.uni-heidelberg.de/groups/comopt/software/SMAPO/cut/cut.html">SMAPO project</a>.</p>
+
+            <section>
+                <h3>Definitions</h3>
+                <ul>
+                    <li><strong>Metric Cone (MET<sub>n</sub>):</strong> Defined by <em>n(n-1)(n-2)/2</em> triangle inequalities: <code>x<sub>ij</sub> + x<sub>jk</sub> - x<sub>ik</sub> &ge; 0</code> for all triples {i,j,k}.</li>
+                    <li><strong>Cut Vector:</strong> For any subset <em>S</em> of {1,...,n}, <code>&delta;(S)<sub>ij</sub> = 1</code> if one element is in <em>S</em> and the other is not, and <code>0</code> otherwise.</li>
+                    <li><strong>Cut Cone (CUT<sub>n</sub>):</strong> The positive span of the <em>2<sup>n-1</sup>-1</em> non-zero cut vectors.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Computed Metric Cones</h3>
+                <p>All computations were performed using <code>cdd</code> and specialized Perl scripts.</p>
+
+                <div class="research-item">
+                    <h4>Cones for n=3, 4</h4>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr><th>Cone</th><th>Dim</th><th>Group</th><th>Extreme Rays</th><th>Facets</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CUT<sub>3</sub> = MET<sub>3</sub></td><td>3</td><td>Sym(3)</td><td>3 (1 orbit)</td><td>3 (1 orbit)</td><td><a href="CUT3.tex">TeX</a> | <a href="CUT3.ps">PS</a></td></tr>
+                            <tr><td>CUT<sub>4</sub> = MET<sub>4</sub></td><td>6</td><td>Sym(4)</td><td>7 (2 orbits)</td><td>12 (1 orbit)</td><td><a href="CUT4.tex">TeX</a> | <a href="CUT4.ps">PS</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="research-item">
+                    <h4>Cones for n=5, 6</h4>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr><th>Cone</th><th>Dim</th><th>Group</th><th>Extreme Rays</th><th>Facets</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CUT<sub>5</sub></td><td>10</td><td>Sym(5)</td><td>15 (2 orbits)</td><td>40 (2 orbits)</td><td><a href="CUT5.tex">TeX</a> | <a href="CUT5.ps">PS</a></td></tr>
+                            <tr><td>MET<sub>5</sub></td><td>10</td><td>Sym(5)</td><td>25 (3 orbits)</td><td>30 (1 orbit)</td><td><a href="MET5.tex">TeX</a> | <a href="MET5.ps">PS</a></td></tr>
+                            <tr><td>CUT<sub>6</sub></td><td>15</td><td>Sym(6)</td><td>31 (3 orbits)</td><td>210 (4 orbits)</td><td><a href="CUT6.tex">TeX</a> | <a href="CUT6.ps">PS</a></td></tr>
+                            <tr><td>MET<sub>6</sub></td><td>15</td><td>Sym(6)</td><td>296 (7 orbits)</td><td>60 (1 orbit)</td><td><a href="MET6.tex">TeX</a> | <a href="MET6.ps">PS</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="research-item">
+                    <h4>Cones for n=7, 8</h4>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr><th>Cone</th><th>Dim</th><th>Group</th><th>Extreme Rays</th><th>Facets</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CUT<sub>7</sub></td><td>21</td><td>Sym(7)</td><td>63 (3 orbits)</td><td>38,780 (36 orbits)</td><td><a href="CUT7.tex">TeX</a> | <a href="CUT7.ps">PS</a></td></tr>
+                            <tr><td>MET<sub>7</sub></td><td>21</td><td>Sym(7)</td><td>55,226 (46 orbits)</td><td>105 (1 orbit)</td><td><a href="MET7.tex">TeX</a> | <a href="MET7.ps">PS</a></td></tr>
+                            <tr><td>CUT<sub>8</sub></td><td>28</td><td>Sym(8)</td><td>127 (4 orbits)</td><td>49,604,520 (2169 orbits)</td><td><a href="List2169_CUT8.txt">List</a></td></tr>
+                            <tr><td>MET<sub>8</sub></td><td>28</td><td>Sym(8)</td><td>119,269,588 (3918 orbits)</td><td>168 (1 orbit)</td><td><a href="List3918_MET8.txt">List</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="research-item">
+                    <h4>Cone for n=9</h4>
+                    <ul>
+                        <li><strong>Dimension:</strong> 36 | <strong>Group:</strong> Sym(9)</li>
+                        <li><strong>Extreme Rays:</strong> 255</li>
+                        <li><strong>Facets:</strong> At least 12,246,651,158,320 facets in 164,506 classes (under switching and permutation).</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>

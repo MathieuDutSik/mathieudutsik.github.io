@@ -1,33 +1,66 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>PGMCL</TITLE>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGMCL - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Parallel Geophysical Model Coupling Library (PGMCL)</font></font></b>
-</h3></center>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
+        <main>
+            <h2>Parallel Geophysical Model Coupling Library (PGMCL)</h2>
+            
+            <p>Geophysical models (wave, circulation, atmosphere, etc.) frequently require coupling to accurately simulate complex environmental systems. The <strong>PGMCL</strong> provides an efficient framework for this integration using MPI-based parallelization.</p>
 
-<UL>
-  <LI>Geophysical models need in many cases to be coupled between themselves (wave to circulation, circulation to atmosphere, etc.)</LI>
-  <LI>The great majority of geophysical are parallelized by the <b>MPI</b> parallel formalism, and in most cases the parallelization is done horizontally geographically</LI>
-  <LI>A simple coupling strategy is to use the <b>MPI</b> command <b>MPI_COMM_SPLIT</b> in order to split the set of processors in two groups that hence exchange data</LI>
-  <LI>The coupling is then done with each model sending data to the other and interpolating</LI>
-  <LI>The Parallel Geophysical Model Coupling Library does such a coupling by using the following information:
-  <UL>
-    <LI>The node matrix that tells for each model for numerical node, to which CPU(s) they belong</LI>
-    <LI>The sparse interpolation matrix between both models</LI>
-  </UL>
-and uses it in order to build the commands <b>MPI_INTERP_SEND</b> and <b>MPI_INTERP_RECV</b> from it. Those commands are almost optimal in terms of the size of data exchanged.</LI>
-  <LI>There is also commands for computing the sparse interpolation matrix</LI>
-  <LI>Code source is available from <A href="pgmcl.tar.gz">here</A>.</LI>
-  <LI>Please send comments to <i>mathieu.dutour@gmail.com</i></LI>
-</UL>
+            <section>
+                <h3>Coupling Strategy</h3>
+                <p>The library utilizes horizontal geographic parallelization and optimized MPI communication:</p>
+                <ul>
+                    <li><strong>Group Splitting:</strong> Uses <code>MPI_COMM_SPLIT</code> to partition processors into distinct groups for concurrent model execution.</li>
+                    <li><strong>Optimized Exchange:</strong> Implements custom <code>MPI_INTERP_SEND</code> and <code>MPI_INTERP_RECV</code> commands for near-optimal data exchange.</li>
+                    <li><strong>Sparse Interpolation:</strong> Manages coupling through a sparse interpolation matrix, with built-in commands for its automated computation.</li>
+                </ul>
+            </section>
 
+            <section>
+                <h3>Technical Requirements</h3>
+                <p>To establish a coupling, the library processes the following information:</p>
+                <ul>
+                    <li>The <strong>Node Matrix</strong>: Maps numerical nodes to specific CPUs for each model.</li>
+                    <li>The <strong>Interpolation Matrix</strong>: Defines the sparse relationship between model grids.</li>
+                </ul>
+            </section>
 
+            <section>
+                <h3>Download & Latest Work</h3>
+                <ul>
+                    <li><a href="pgmcl.tar.gz">PGMCL Source Code (tar.gz)</a></li>
+                </ul>
+                <p>For latest developments in parallel geophysical modeling and implicit schemes, visit my GitHub profile: <a href="https://github.com/MathieuDutSik">github.com/MathieuDutSik</a>.</p>
+                <p>Please send comments or technical inquiries to: <em>mathieu.dutour@gmail.com</em></p>
+            </section>
+        </main>
 
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
 </html>

@@ -1,137 +1,91 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>The package DelaunaySix</TITLE>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Six Dimensional Delaunay Polytopes - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Six Dimensional Delaunay polytopes</font></font></b>
-</h3></center>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-<p>The enumeration program <a href="DelaunaySix.tar.gz">DelaunaySix</a> do a listing of all combinatorial types of Delaunay polytopes in dimension <i>six</i> (requires <a href="http://www.gap-system.org/">GAP</a> and <a href="http://cs.anu.edu.au/~bdm/nauty/">nauty </a>)
-<br><H3>Results</H3>
-<UL>
-  <LI><I>Corank 1 (rank 20)<A href="Corank1WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank1WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
+        <main>
+            <h2>Six Dimensional Delaunay Polytopes</h2>
+            
+            <p>The <strong>DelaunaySix</strong> program provides a comprehensive enumeration of all combinatorial types of Delaunay polytopes in dimension six.</p>
 
-<UL>
-  <LI><I>Corank 2 (rank 19)<A href="Corank2WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank2WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
+            <section>
+                <h3>Software Requirements</h3>
+                <p>To run the enumeration, the following software is required:</p>
+                <ul>
+                    <li><a href="http://www.gap-system.org/">GAP</a> (Groups, Algorithms, Programming)</li>
+                    <li><a href="http://cs.anu.edu.au/~bdm/nauty/">nauty</a> (Graph Isomorphism Tool)</li>
+                </ul>
+            </section>
 
-<UL>
-  <LI><I>Corank 3 (rank 18)<A href="Corank3WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank3WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
+            <section>
+                <h3>Download</h3>
+                <ul>
+                    <li><a href="DelaunaySix.tar.gz">DelaunaySix Source (tar.gz)</a></li>
+                </ul>
+            </section>
 
-<UL>
-  <LI><I>Corank 4 (rank 17)<A href="Corank4WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank4WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
+            <section>
+                <h3>Classification Results</h3>
+                <p>The results are categorized by corank and rank. Each category links to Delaunay polytopes related to the Schläfli polytope and those related to cuts (metrics expressed as a sum of cuts).</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Corank / Rank</th>
+                            <th>Related to Schläfli</th>
+                            <th>Related to Cuts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Corank 1 (Rank 20)</td><td><a href="Corank1WithSchlafli.txt">View</a></td><td><a href="Corank1WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 2 (Rank 19)</td><td><a href="Corank2WithSchlafli.txt">View</a></td><td><a href="Corank2WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 3 (Rank 18)</td><td><a href="Corank3WithSchlafli.txt">View</a></td><td><a href="Corank3WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 4 (Rank 17)</td><td><a href="Corank4WithSchlafli.txt">View</a></td><td><a href="Corank4WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 5 (Rank 16)</td><td><a href="Corank5WithSchlafli.txt">View</a></td><td><a href="Corank5WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 6 (Rank 15)</td><td><a href="Corank6WithSchlafli.txt">View</a></td><td><a href="Corank6WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 7 (Rank 14)</td><td><a href="Corank7WithSchlafli.txt">View</a></td><td><a href="Corank7WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 8 (Rank 13)</td><td><a href="Corank8WithSchlafli.txt">View</a></td><td><a href="Corank8WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 9 (Rank 12)</td><td><a href="Corank9WithSchlafli.txt">View</a></td><td><a href="Corank9WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 10 (Rank 11)</td><td><a href="Corank10WithSchlafli.txt">View</a></td><td><a href="Corank10WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 11 (Rank 10)</td><td><a href="Corank11WithSchlafli.txt">View</a></td><td><a href="Corank11WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 12 (Rank 9)</td><td><a href="Corank12WithSchlafli.txt">View</a></td><td><a href="Corank12WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 13 (Rank 8)</td><td><a href="Corank13WithSchlafli.txt">View</a></td><td><a href="Corank13WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 14 (Rank 7)</td><td><a href="Corank14WithSchlafli.txt">View</a></td><td><a href="Corank14WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 15 (Rank 6)</td><td><a href="Corank15WithSchlafli.txt">View</a></td><td><a href="Corank15WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 16 (Rank 5)</td><td><a href="Corank16WithSchlafli.txt">View</a></td><td><a href="Corank16WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 17 (Rank 4)</td><td><a href="Corank17WithSchlafli.txt">View</a></td><td><a href="Corank17WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 18 (Rank 3)</td><td><a href="Corank18WithSchlafli.txt">View</a></td><td><a href="Corank18WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 19 (Rank 2)</td><td><a href="Corank19WithSchlafli.txt">View</a></td><td><a href="Corank19WithoutSchlafli.txt">View</a></td></tr>
+                        <tr><td>Corank 20 (Rank 1)</td><td><a href="Corank20WithSchlafli.txt">View</a></td><td><a href="Corank20WithoutSchlafli.txt">View</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
 
-<UL>
-  <LI><I>Corank 5 (rank 16)<A href="Corank5WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank5WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 6 (rank 15)<A href="Corank6WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank6WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 7 (rank 14)<A href="Corank7WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank7WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 8 (rank 13)<A href="Corank8WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank8WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 9 (rank 12)<A href="Corank9WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank9WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 10 (rank 11)<A href="Corank10WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank10WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 11 (rank 10)<A href="Corank11WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank11WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 12 (rank 9)<A href="Corank12WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank12WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 13 (rank 8)<A href="Corank13WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank13WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 14 (rank 7)<A href="Corank14WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank14WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 15 (rank 6)<A href="Corank15WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank15WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 16 (rank 5)<A href="Corank16WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank16WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 17 (rank 4)<A href="Corank17WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank17WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 18 (rank 3)<A href="Corank18WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank18WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 19 (rank 2)<A href="Corank19WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank19WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
-<UL>
-  <LI><I>Corank 20 (rank 1)<A href="Corank20WithSchlafli.txt">Delaunay polytopes related to Schlafli</A>(their face in HYP7 contains a Schlafli extreme ray) <A href="Corank20WithoutSchlafli.txt">Delaunay polytopes related to cuts</A> (their metric is expressed as a sum of cuts)
-</I>
-</LI>
-</UL>
-
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>

@@ -1,46 +1,104 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>Point Groups of 3-space</TITLE>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Groups - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .group-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+        .group-list li {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            padding: 5px 15px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .group-list img {
+            height: 24px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Point Groups</font></font></b>
-</h3></center>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
+        <main>
+            <h2>Point Groups of 3-Space</h2>
+            
+            <p>Point Groups are finite subgroups of the group <strong>O(3)</strong> of isometries of three-dimensional Euclidean space. They play a fundamental role in the study of symmetry in chemistry, crystallography, and geometry.</p>
 
-<UL>
-   <LI>Point Groups are finite subgroup of the group O3 of isometries of the three dimensional space</LI>
-   <LI>They are classified in several infinite families and a few exceptional cases.</LI>
-   <LI>The algebraic symmetry group of 3-connected planar graphs is realized as the isometry group of a polytope and so as a point group.</LI>
-   <LI>Some classification results are obtained in <a href="Classification.html">Some Classification results</a></LI>
-</UL>
+            <section>
+                <h3>Overview</h3>
+                <ul>
+                    <li><strong>Classification:</strong> Point groups are categorized into several infinite families and a finite set of exceptional cases.</li>
+                    <li><strong>Graph Theory Link:</strong> The algebraic symmetry group of any 3-connected planar graph can be realized as the isometry group of a convex polytope, and thus corresponds to a point group.</li>
+                    <li><strong>Results:</strong> See <a href="Classification.html">Some Classification Results</a> for detailed findings.</li>
+                </ul>
+            </section>
 
-<b><i><font color="#000099"><font size=+1>Infinite families</font></font></i></b>
-<UL>
-  <LI><a href="Cm.html">The groups </a><img SRC="Cm.gif">
-  <LI><a href="Cmh.html">The groups </a><img SRC="Cmh.gif">
-  <LI><a href="Cmv.html">The groups </a><img SRC="Cmv.gif">
-  <LI><a href="Dm.html">The groups </a><img SRC="Dm.gif">
-  <LI><a href="Dmh.html">The groups </a><img SRC="Dmh.gif">
-  <LI><a href="Dmd.html">The groups </a><img SRC="Dmd.gif">
-  <LI><a href="SN.html">The groups </a><img SRC="SN.gif">
-</LI></UL>
-<b><i><font color="#000099"><font size=+1>Particular cases</font></font></i></b>
-<UL>
-  <LI><a href="Cm.html">The group </a><img SRC="C1.gif">
-  <LI><a href="Cmh.html">The group </a><img SRC="Cs.gif">
-  <LI><a href="SN.html">The group </a><img SRC="Ci.gif">
-</LI></UL>
-<b><i><font color="#000099"><font size=+1>Exceptional cases</font></font></i></b>
-<UL>
-  <LI><a href="T.html">The group </a><img SRC="T.gif">
-  <LI><a href="Td.html">The group </a><img SRC="Td.gif">
-  <LI><a href="Th.html">The group </a><img SRC="Th.gif">
-  <LI><a href="O.html">The group </a><img SRC="O.gif">
-  <LI><a href="Oh.html">The group </a><img SRC="Oh.gif">
-  <LI><a href="I.html">The group </a><img SRC="I.gif">
-  <LI><a href="Ih.html">The group </a><img SRC="Ih.gif">
-</LI></UL>
+            <section>
+                <h3>Infinite Families</h3>
+                <ul class="group-list">
+                    <li><a href="Cm.html">C<sub>m</sub></a> <img src="Cm.gif" alt="Cm"></li>
+                    <li><a href="Cmh.html">C<sub>mh</sub></a> <img src="Cmh.gif" alt="Cmh"></li>
+                    <li><a href="Cmv.html">C<sub>mv</sub></a> <img src="Cmv.gif" alt="Cmv"></li>
+                    <li><a href="Dm.html">D<sub>m</sub></a> <img src="Dm.gif" alt="Dm"></li>
+                    <li><a href="Dmh.html">D<sub>mh</sub></a> <img src="Dmh.gif" alt="Dmh"></li>
+                    <li><a href="Dmd.html">D<sub>md</sub></a> <img src="Dmd.gif" alt="Dmd"></li>
+                    <li><a href="SN.html">S<sub>N</sub></a> <img src="SN.gif" alt="SN"></li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Particular Cases</h3>
+                <ul class="group-list">
+                    <li><a href="Cm.html">C<sub>1</sub></a> <img src="C1.gif" alt="C1"></li>
+                    <li><a href="Cmh.html">C<sub>s</sub></a> <img src="Cs.gif" alt="Cs"></li>
+                    <li><a href="SN.html">C<sub>i</sub></a> <img src="Ci.gif" alt="Ci"></li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Exceptional Cases</h3>
+                <ul class="group-list">
+                    <li><a href="T.html">T</a> <img src="T.gif" alt="T"></li>
+                    <li><a href="Td.html">T<sub>d</sub></a> <img src="Td.gif" alt="Td"></li>
+                    <li><a href="Th.html">T<sub>h</sub></a> <img src="Th.gif" alt="Th"></li>
+                    <li><a href="O.html">O</a> <img src="O.gif" alt="O"></li>
+                    <li><a href="Oh.html">O<sub>h</sub></a> <img src="Oh.gif" alt="Oh"></li>
+                    <li><a href="I.html">I</a> <img src="I.gif" alt="I"></li>
+                    <li><a href="Ih.html">I<sub>h</sub></a> <img src="Ih.gif" alt="Ih"></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
 </html>

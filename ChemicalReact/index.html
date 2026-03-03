@@ -1,26 +1,55 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<TITLE>Chemical concentration computation software</TITLE>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemicalReact - Mathieu Dutour Sikirić</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<center><h3>
-<b><font color="#D77A08"><font size=+0>Chemical concentration computation software</font></font></b>
-</h3></center>
+    <div class="container">
+        <header>
+             <img src="../Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
 
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../PresentationScientificWork.html">Scientific and Technical Work</a></li>
+                <li><a href="../Publications/index.html">Publications</a></li>
+                <li><a href="../OtherInformation.html">Programs & Data</a></li>
+                <li><a href="../Presentations/index.html">Lectures</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
+        <main>
+            <h2>ChemicalReact</h2>
+            
+            <p><strong>ChemicalReact</strong> is a computational tool designed to determine equilibrium concentrations of chemical species given their initial concentrations and reaction parameters.</p>
 
+            <section>
+                <h3>Workflow</h3>
+                <ol>
+                    <li><strong>Load Reaction Data:</strong> Import your reaction file (e.g., <a href="PhosphoricAcid_react">PhosphoricAcid_react</a>).</li>
+                    <li><strong>Define Concentrations:</strong> Import the initial concentration values (e.g., <a href="PhosphoricAcid_conc">PhosphoricAcid_conc</a>).</li>
+                    <li><strong>Compute:</strong> Execute the solver to find the equilibrium state.</li>
+                    <li><strong>Export:</strong> Save the resulting data for further analysis.</li>
+                </ol>
+            </section>
 
-<UL>
-  <LI>This software computes the equilibrium concentrations given an initial concentration.</LI>
-  <LI>Software can be downloaded here <A href="concwin.exe">concwin.exe</A></LI>
-  <LI>Steps of use are:
-    <UL>
-      <LI>Read the reaction file. Example <A href="PhosphoricAcid_react">PhosphoricAcid_react</A> </LI>
-      <LI>Read the initial concentration file. Example <A href="PhosphoricAcid_conc">PhosphoricAcid_conc</A> </LI>
-      <LI>Run the solver</LI>
-      <LI>Save the result</LI>
-    </UL></LI>
-</UL>
+            <section>
+                <h3>Download</h3>
+                <ul>
+                    <li><a href="concwin.exe">ChemicalReact Executable (Windows)</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
