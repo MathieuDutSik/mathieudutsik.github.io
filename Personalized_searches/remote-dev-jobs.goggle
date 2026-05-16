@@ -1,0 +1,114 @@
+! name: Remote Dev Jobs (EU-friendly)
+! description: Boosts remote-friendly job boards and ATS pages for backend/systems/Rust/C++/web3 roles; downranks generic aggregators that mostly list non-EU or stale postings.
+! public: false
+! author: Mathieu Dutour Sikiric
+! avatar: #0a84ff
+! homepage: https://mathieudutsik.github.io/Personalized_searches/
+
+! ---------------------------------------------------------------
+! Usage:
+!   1. This file is hosted at:
+!        https://mathieudutsik.github.io/Personalized_searches/remote-dev-jobs.goggle
+!   2. Go to https://search.brave.com/goggles and add that URL.
+!   3. Then any Brave Search query can be scoped via the Goggle
+!      dropdown, or via URL param &goggles_id=<id>.
+! Syntax cheatsheet:
+!   $boost=N,site=domain.tld      boost results from domain (N=1..10)
+!   $discard,site=domain.tld      remove results from domain
+!   $downrank=N,site=domain.tld   push down (N=1..10)
+!   ,inurl=/path/                 extra path filter
+!   ,intitle=word                 extra title filter
+! ---------------------------------------------------------------
+
+! ===== Tier 1: high-signal remote job boards =====
+$boost=10,site=weworkremotely.com
+$boost=10,site=remoterocketship.com
+$boost=10,site=remoteok.com
+$boost=9,site=wellfound.com
+$boost=9,site=workatastartup.com
+$boost=9,site=otta.com
+$boost=9,site=welcometothejungle.com
+$boost=8,site=remote.co
+$boost=8,site=justremote.co
+$boost=8,site=nodesk.co
+$boost=8,site=jobspresso.co
+$boost=8,site=workingnomads.com
+$boost=8,site=4dayweek.io
+$boost=8,site=himalayas.app
+
+! ===== Tier 1b: EU-focused boards =====
+$boost=10,site=remoteineurope.com
+$boost=10,site=euremotejobs.com
+$boost=10,site=europeanstartupjobs.com
+$boost=9,site=wearedevelopers.com
+$boost=9,site=nextleveljobs.eu
+$boost=8,site=relocate.me
+$boost=8,site=arbeitnow.com
+$boost=8,site=eujobs.com
+
+! ===== ATS pages (where jobs actually live before aggregators index them) =====
+$boost=8,site=boards.greenhouse.io
+$boost=8,site=jobs.lever.co
+$boost=8,site=jobs.ashbyhq.com
+$boost=8,site=apply.workable.com
+$boost=7,site=jobs.smartrecruiters.com
+$boost=7,site=jobs.gohire.io
+$boost=7,site=careers.gem.com
+$boost=7,site=jobs.gem.com
+
+! ===== Stack-specific: Rust =====
+$boost=10,site=rustjobs.dev
+$boost=10,site=rustjobs.com
+$boost=8,site=filtra.io,inurl=rust
+$boost=8,site=arc.dev,inurl=rust
+
+! ===== Stack-specific: C++ / systems =====
+$boost=9,site=cppjobs.io
+$boost=8,site=hntoolbox.com,inurl=cpp
+
+! ===== Stack-specific: Python / backend =====
+$boost=7,site=pythonjobs.github.io
+$boost=7,site=djangojobs.net
+
+! ===== Web3 / blockchain / crypto =====
+$boost=10,site=web3.career
+$boost=10,site=cryptocurrencyjobs.co
+$boost=9,site=crypto.jobs
+$boost=9,site=cryptojobslist.com
+$boost=9,site=useweb3.xyz,inurl=jobs
+$boost=8,site=cryptojobs.com
+
+! ===== HN Who's Hiring (high signal, manual filter) =====
+$boost=10,site=news.ycombinator.com,inurl=item
+$boost=8,site=hnhiring.com
+$boost=8,site=hnresumes.com
+
+! ===== Path-level boosts =====
+$boost=3,inurl=/careers/
+$boost=3,inurl=/jobs/
+$boost=3,intitle=remote
+$boost=2,intitle=EMEA
+$boost=2,intitle=Europe
+
+! ===== Downrank: noisy aggregators-of-aggregators =====
+$downrank=8,site=indeed.com
+$downrank=8,site=glassdoor.com
+$downrank=8,site=monster.com
+$downrank=8,site=ziprecruiter.com
+$downrank=8,site=careerbuilder.com
+$downrank=8,site=simplyhired.com
+$downrank=6,site=jooble.org
+$downrank=6,site=neuvoo.com
+$downrank=6,site=jobrapido.com
+$downrank=6,site=adzuna.com
+$downrank=6,site=careerjet.com
+
+! ===== Discard: irrelevant or known-bad =====
+$discard,site=clickbus.com
+$discard,site=clickjobs.io
+$discard,inurl=/internship
+$discard,intitle=intern
+
+! ===== Downrank LinkedIn (often expired, login-walled, US-biased) =====
+! Keep visible but lower than direct boards.
+$downrank=4,site=linkedin.com
