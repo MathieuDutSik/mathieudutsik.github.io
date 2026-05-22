@@ -93,6 +93,31 @@ nav a:hover {
     color: var(--link-hover-color);
 }
 
+nav a.is-active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+nav a.is-active:hover {
+    background-color: var(--link-hover-color);
+    color: #fff;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    padding: 8px 12px;
+    background: var(--primary-color);
+    color: #fff;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
 /* Main Content */
 main {
     padding: 20px 0;
@@ -215,6 +240,76 @@ pre {
     border-radius: 4px;
     overflow-x: auto;
     font-family: "Courier New", Courier, monospace;
+}
+
+/* Home page profile links */
+.profile-links {
+    list-style: none;
+    padding-left: 0;
+}
+
+.profile-links li {
+    margin-bottom: 6px;
+}
+
+.profile-links a {
+    font-weight: 600;
+}
+
+/* Table of contents on long pages */
+nav.toc {
+    background: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px 20px;
+    margin: 20px 0 30px;
+}
+
+nav.toc h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+}
+
+nav.toc ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+nav.toc li {
+    margin-bottom: 4px;
+}
+
+.research-group {
+    margin-bottom: 30px;
+}
+
+.research-group h2 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 4px;
+}
+
+/* Tools page */
+.tool-card {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+.badge-soon {
+    background: var(--accent-color);
+    color: #fff;
 }
 
 /* Footer */

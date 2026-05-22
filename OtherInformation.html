@@ -1,143 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programs and Data sets - Mathieu Dutour Sikirić</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <img src="Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
-            <h1>Mathieu Dutour Sikirić</h1>
-        </header>
+---
+layout: default
+title: Programs & Data
+description: >-
+  Open-source programs and research data sets by Mathieu Dutour Sikirić,
+  covering polyhedral geometry, lattices, plane graphs, oceanography,
+  chemistry, and more.
+---
+<h2>Programs and Data sets</h2>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="PresentationScientificWork.html">Scientific and Technical Work</a></li>
-                <li><a href="Publications/index.html">Publications</a></li>
-                <li><a href="OtherInformation.html">Programs & Data</a></li>
-                <li><a href="Presentations/index.html">Lectures</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-            </ul>
-        </nav>
+<p class="update-note">UPDATE 2021: Most new development now takes place on GitHub at <a href="{{ site.person.github }}">github:MathieuDutSik</a>.</p>
 
-        <main>
-            <h2>Programs and Data sets</h2>
+<section>
+    <h3>Programs for geometric applications</h3>
+    <ul>
+        <li><a href="PlanGraph/index.html">PlanGraph</a> a package for handling planar graphs</li>
+        <li><a href="Polyhedral/index.html">Polyhedral</a> a package for handling polytopes and lattices</li>
+        <li><a href="PosetProg/index.html">Poset</a> programs for working with posets (mostly petrie schemes)</li>
+    </ul>
+</section>
 
-            <p class="update-note">UPDATE 2021: Most new development are now taking place on github in <a href="https://github.com/MathieuDutSik">github:MathieuDutSik</a>.</p>
+<section>
+    <h3>Programs for oceanographic applications</h3>
+    <ul>
+        <li><a href="PGMCL/index.html">PGMCL</a> a simple set of fortran procedure for coupling geophysical models</li>
+        <li><a href="Bathymetry/index.html">BathymetryROMS</a> a set of matlab scripts for handling bathymetry in ROMS</li>
+        <li><a href="FEM_to_FD/index.html">FEM_to_FD</a> a script for getting a finite element mesh from a finite difference mesh</li>
+    </ul>
+</section>
 
-            <section>
-                <h3>Programs for geometric applications</h3>
-                <ul>
-                    <li><a href="PlanGraph/index.html">PlanGraph</a> a package for handling planar graphs</li>
-                    <li><a href="Polyhedral/index.html">Polyhedral</a> a package for handling polytopes and lattices</li>
-                    <li><a href="PosetProg/index.html">Poset</a> programs for working with posets (mostly petrie schemes)</li>
-                </ul>
-            </section>
+<section>
+    <h3>Programs for chemical applications</h3>
+    <ul>
+        <li><a href="ChemicalReact/index.html">ChemicalReact</a> a program for computing chemical equilibrium</li>
+    </ul>
+</section>
 
-            <section>
-                <h3>Programs for oceanographic applications</h3>
-                <ul>
-                    <li><a href="PGMCL/index.html">PGMCL</a> a simple set of fortran procedure for coupling geophysical models</li>
-                    <li><a href="Bathymetry/index.html">BathymetryROMS</a> a set of matlab scripts for handling bathymetry in ROMS</li>
-                    <li><a href="FEM_to_FD/index.html">FEM_to_FD</a> a script for getting a finite element mesh from a finite difference mesh</li>
-                </ul>
-            </section>
+<section>
+    <h3>Drawing programs</h3>
+    <ul>
+        <li><a href="TorusDraw/index.html">TorusDraw</a> a program for drawing toroidal maps based on primal dual circle packings</li>
+        <li><a href="CirclePack/index.html">CirclePack</a> a program for drawing spherical maps based on primal dual circle packings</li>
+    </ul>
+</section>
 
-            <section>
-                <h3>Programs for chemical applications</h3>
-                <ul>
-                    <li><a href="ChemicalReact/index.html">ChemicalReact</a> a program for computing chemical equilibrium</li>
-                </ul>
-            </section>
+<section>
+    <h3>Programs for manipulating programs</h3>
+    <ul>
+        <li><a href="MatlabScript/index.html">MatlabScript</a> a set of script for handling matlab Mfiles</li>
+        <li><a href="TexScript/index.html">LatexScript</a> a set of script for handling papers written in latex</li>
+    </ul>
+</section>
 
-            <section>
-                <h3>Drawing programs</h3>
-                <ul>
-                    <li><a href="TorusDraw/index.html">TorusDraw</a> a program for drawing toroidal maps based on primal dual circle packings</li>
-                    <li><a href="CirclePack/index.html">CirclePack</a> a program for drawing spherical maps based on primal dual circle packings</li>
-                </ul>
-            </section>
+<section>
+    <h3>One purpose programs</h3>
+    <ul>
+        <li><a href="DelaunaySix/index.html">DelaunaySix</a> a program for enumerating all six-dimensional Delaunay polytopes</li>
+        <li><a href="HYP7/index.html">EXT-HYP7</a> enumeration of extreme rays of the hypermetric cone on seven vertices</li>
+        <li><a href="Documents/PackingProbability.tar.gz">PackingProbability.tar.gz</a> a set of programs for dealing with continuous torus cube packings</li>
+        <li><a href="RootMatroid/index.html">Root matroid</a> a set of programs for computing automorphism groups of root systems</li>
+    </ul>
+</section>
 
-            <section>
-                <h3>Programs for manipulating programs</h3>
-                <ul>
-                    <li><a href="MatlabScript/index.html">MatlabScript</a> a set of script for handling matlab Mfiles</li>
-                    <li><a href="TexScript/index.html">LatexScript</a> a set of script for handling papers written in latex</li>
-                </ul>
-            </section>
+<section>
+    <h3>Result of specific investigations</h3>
+    <ul>
+        <li><a href="http://fma2.math.uni-magdeburg.de/~latgeo/perfect-forms-dim8.txt">Perfect form in dimension 8</a> the list of them from the polyhedral computation</li>
+        <li><a href="SpecialCuts/index.html">SpecialCuts</a> the list of orbits of special cuts of 600-cell with the program used for their enumeration.</li>
+        <li><a href="PeriodicTriangulation/index.html">PeriodicTriangulations</a> Data on periodic triangulations of n-dimensional lattice.</li>
+        <li><a href="CutPolytopes/index.html">CutPolytopes</a> the list of orbits of facets of the cut polytopes of some graphs.</li>
+        <li><a href="ConvCoxeter/index.html">ConvCoxeter</a> the list of orbits of facets of some Coxeter groups.</li>
+        <li><a href="PerfectCones/index.html">PerfectCones</a> the list of low rank faces of the perfect cone tesselation.</li>
+        <li><a href="BOOK_Polycycles/index.html">Additional information</a> on the investigations of the book <a href="http://www.cambridge.org/catalogue/catalogue.asp?ISBN=9780521873079">Geometry of Chemical Graphs: Polycycles and Two-faced Maps</a></li>
+        <li><a href="CubeTiling/index.html">Cube tilings and packings</a> some programs and data set used for their enumeration.</li>
+        <li><a href="RigidLattice/IsomorphyClassesRigidLattice.txt">Rigid lattices</a> some Gram matrices of about 20000 rigid lattices in dimension 6.</li>
+        <li><a href="SpaceFullerene/index.html">SpaceFullerenes</a> some data for space fullerenes.</li>
+    </ul>
+</section>
 
-            <section>
-                <h3>One purpose programs</h3>
-                <ul>
-                    <li><a href="DelaunaySix/index.html">DelaunaySix</a> a program for enumerating all six-dimensional Delaunay polytopes</li>
-                    <li><a href="HYP7/index.html">EXT-HYP7</a> enumeration of extreme rays of the hypermetric cone on seven vertices</li>
-                    <li><a href="Documents/PackingProbability.tar.gz">PackingProbability.tar.gz</a> a set of programs for dealing with continuous torus cube packings</li>
-                    <li><a href="RootMatroid/index.html">Root matroid</a> a set of programs for computing automorphism groups of root systems</li>
-                </ul>
-            </section>
+<section>
+    <h3>Information available elsewhere</h3>
+    <ul>
+        <li><a href="PointGroup/index.html">Point Groups</a> a description of the point groups of 3 dimensional polytopes and plane graphs</li>
+        <li><a href="Regular/index.html">Regular posets</a> a description of the regular, semiregular, regular faced and Archimedean polytopes</li>
+        <li>The Leech lattice has 307 orbits of Delaunay polytopes, information at <a href="GeometryLatt/DelaunayLeech.tar.gz">DelaunayLeech.tar.gz</a></li>
+        <li><a href="UniformTiling/index.html">Uniform partition of 3-space</a> the list of 28 partition of Euclidean space by vertex transitive archimedean polyhedra</li>
+    </ul>
+</section>
 
-            <section>
-                <h3>Result of specific investigations</h3>
-                <ul>
-                    <li><a href="http://fma2.math.uni-magdeburg.de/~latgeo/perfect-forms-dim8.txt">Perfect form in dimension 8</a> the list of them from the polyhedral computation</li>
-                    <li><a href="SpecialCuts/index.html">SpecialCuts</a> the list of orbits of special cuts of 600-cell with the program used for their enumeration.</li>
-                    <li><a href="PeriodicTriangulation/index.html">PeriodicTriangulations</a> Data on periodic triangulations of n-dimensional lattice.</li>
-                    <li><a href="CutPolytopes/index.html">CutPolytopes</a> the list of orbits of facets of the cut polytopes of some graphs.</li>
-                    <li><a href="ConvCoxeter/index.html">ConvCoxeter</a> the list of orbits of facets of some Coxeter groups.</li>
-                    <li><a href="PerfectCones/index.html">PerfectCones</a> the list of low rank faces of the perfect cone tesselation.</li>
-                    <li><a href="BOOK_Polycycles/index.html">Additional information</a> on the investigations of the book <a href="http://www.cambridge.org/catalogue/catalogue.asp?ISBN=9780521873079">Geometry of Chemical Graphs: Polycycles and Two-faced Maps</a></li>
-                    <li><a href="CubeTiling/index.html">Cube tilings and packings</a> some programs and data set used for their enumeration.</li>
-                    <li><a href="RigidLattice/IsomorphyClassesRigidLattice.txt">Rigid lattices</a> some Gram matrices of about 20000 rigid lattices in dimension 6.</li>
-                    <li><a href="SpaceFullerene/index.html">SpaceFullerenes</a> some data for space fullerenes.</li>
-                </ul>
-            </section>
+<section>
+    <h3>Data on metric cones</h3>
+    <ul>
+        <li><a href="Metric/CUT_MET/index.html">Metric and cut cones</a></li>
+        <li><a href="Metric/OMCUT_QMET/OrientedCones.html">Oriented semi-metric and Oriented Multicut cone</a></li>
+        <li><a href="Metric/HMET/m-hemimetric.html">m-hemi-metric</a></li>
+        <li><a href="Metric/SMET/ms-supermetric.html">(m,s)-super-metric</a></li>
+    </ul>
+</section>
 
-            <section>
-                <h3>Information available elsewhere</h3>
-                <ul>
-                    <li><a href="PointGroup/index.html">Point Groups</a> a description of the point groups of 3 dimensional polytopes and plane graphs</li>
-                    <li><a href="Regular/index.html">Regular posets</a> a description of the regular, semiregular, regular faced and Archimedean polytopes</li>
-                    <li>The Leech lattice has 307 orbits of Delaunay polytopes, information at <a href="GeometryLatt/DelaunayLeech.tar.gz">DelaunayLeech.tar.gz</a></li>
-                    <li><a href="UniformTiling/index.html">Uniform partition of 3-space</a> the list of 28 partition of Euclidean space by vertex transitive archimedean polyhedra</li>
-                </ul>
-            </section>
+<section>
+    <h3>Delaunay tesselations of lattices</h3>
+    <ul>
+        <li>Delaunay polytopes of 14 out of 23 Niemeier lattices: <a href="https://data.mendeley.com/datasets/39h6sfhh5z/1">Mendeley data set</a></li>
+        <li><a href="GeometryLatt/DelaunayO23.tar.gz">DelaunayO23.tar.gz</a> O23 (<a href="http://www.research.att.com/~njas/lattices/P23.1.html">The Shorter Leech lattice</a>) has 5 orbits of Delaunay polytopes</li>
+        <li><a href="GeometryLatt/DelaunayLambda23.tar.gz">DelaunayLambda23.tar.gz</a> The lattice Lambda23 has 709 orbits of Delaunay polytopes</li>
+        <li><a href="GeometryLatt/DelaunayCutLattice.tar.gz">DelaunayCutLattice.tar.gz</a> Delaunay tesselation of some cut lattices</li>
+    </ul>
+</section>
 
-            <section>
-                <h3>Data on metric cones</h3>
-                <ul>
-                    <li><a href="Metric/CUT_MET/index.html">Metric and cut cones</a></li>
-                    <li><a href="Metric/OMCUT_QMET/OrientedCones.html">Oriented semi-metric and Oriented Multicut cone</a></li>
-                    <li><a href="Metric/HMET/m-hemimetric.html">m-hemi-metric</a></li>
-                    <li><a href="Metric/SMET/ms-supermetric.html">(m,s)-super-metric</a></li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>Delaunay tesselations of lattices</h3>
-                <ul>
-                    <li>Delaunay polytopes of 14 out of 23 Niemeier lattices: <a href="https://data.mendeley.com/datasets/39h6sfhh5z/1">Mendeley data set</a></li>
-                    <li><a href="GeometryLatt/DelaunayO23.tar.gz">DelaunayO23.tar.gz</a> O23 (<a href="http://www.research.att.com/~njas/lattices/P23.1.html">The Shorter Leech lattice</a>) has 5 orbits of Delaunay polytopes</li>
-                    <li><a href="GeometryLatt/DelaunayLambda23.tar.gz">DelaunayLambda23.tar.gz</a> The lattice Lambda23 has 709 orbits of Delaunay polytopes</li>
-                    <li><a href="GeometryLatt/DelaunayCutLattice.tar.gz">DelaunayCutLattice.tar.gz</a> Delaunay tesselation of some cut lattices</li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>Contact polytopes of lattices</h3>
-                <ul>
-                    <li><a href="GeometryLatt/ContactPolytopeLeech.tar.gz">ContactPolytopeLeech.tar.gz</a> the contact polytope of the Leech lattice has 232 orbits of vertices</li>
-                </ul>
-            </section>
-
-        </main>
-
-        <footer>
-            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
-        </footer>
-    </div>
-</body>
-</html>
+<section>
+    <h3>Contact polytopes of lattices</h3>
+    <ul>
+        <li><a href="GeometryLatt/ContactPolytopeLeech.tar.gz">ContactPolytopeLeech.tar.gz</a> the contact polytope of the Leech lattice has 232 orbits of vertices</li>
+    </ul>
+</section>

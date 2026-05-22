@@ -1,0 +1,53 @@
+{%- assign desc = page.description | default: site.description | strip_newlines | strip -%}
+{%- assign page_title = page.title | default: site.title -%}
+{%- assign full_title = page_title -%}
+{%- if page.title -%}{%- assign full_title = page.title | append: " — " | append: site.title -%}{%- endif -%}
+{%- assign is_home = false -%}
+{%- if page.url == "/" or page.url == "/index.html" -%}{%- assign is_home = true -%}{%- endif -%}
+
+<meta name="description" content="{{ desc }}">
+<meta name="author" content="{{ site.author }}">
+
+<meta property="og:type" content="{% if is_home %}profile{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ full_title }}">
+<meta property="og:description" content="{{ desc }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ '/Documents/Identity.png' | absolute_url }}">
+{%- if is_home %}
+<meta property="profile:first_name" content="Mathieu">
+<meta property="profile:last_name" content="Dutour Sikirić">
+{%- endif %}
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ full_title }}">
+<meta name="twitter:description" content="{{ desc }}">
+<meta name="twitter:image" content="{{ '/Documents/Identity.png' | absolute_url }}">
+
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+{%- if is_home %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ site.person.name }}",
+  "url": "{{ site.url }}{{ site.baseurl }}/",
+  "image": "{{ '/Documents/Identity.png' | absolute_url }}",
+  "jobTitle": "{{ site.person.job_title }}",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ORCID",
+    "value": "{{ site.person.orcid }}"
+  },
+  "sameAs": [
+    "https://orcid.org/{{ site.person.orcid }}",
+    "{{ site.person.scholar }}",
+    "{{ site.person.arxiv_search }}",
+    "{{ site.person.github }}",
+    "{{ site.person.linkedin }}",
+    "{{ site.person.mathoverflow }}"
+  ]
+}
+</script>
+{%- endif %}

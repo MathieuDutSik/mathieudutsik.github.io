@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    {% include seo.html %}
+    <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+    <link rel="icon" type="image/png" href="{{ '/Documents/Identity.png' | relative_url }}">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="container">
+        <header>
+            <img src="{{ '/Documents/Identity.png' | relative_url }}" alt="" class="profile-photo">
+            <h1>Mathieu Dutour Sikirić</h1>
+        </header>
+
+        <nav aria-label="Primary">
+            <ul>
+                {% assign u = page.url %}
+                <li><a href="{{ '/index.html' | relative_url }}"{% if u == '/' or u == '/index.html' %} class="is-active" aria-current="page"{% endif %}>Home</a></li>
+                <li><a href="{{ '/PresentationScientificWork.html' | relative_url }}"{% if u == '/PresentationScientificWork.html' %} class="is-active" aria-current="page"{% endif %}>Scientific and Technical Work</a></li>
+                <li><a href="{{ '/Publications/index.html' | relative_url }}"{% if u contains '/Publications/' %} class="is-active" aria-current="page"{% endif %}>Publications</a></li>
+                <li><a href="{{ '/OtherInformation.html' | relative_url }}"{% if u == '/OtherInformation.html' %} class="is-active" aria-current="page"{% endif %}>Programs & Data</a></li>
+                <li><a href="{{ '/Presentations/index.html' | relative_url }}"{% if u contains '/Presentations/' %} class="is-active" aria-current="page"{% endif %}>Lectures</a></li>
+                <li><a href="{{ '/Tools.html' | relative_url }}"{% if u == '/Tools.html' %} class="is-active" aria-current="page"{% endif %}>Tools</a></li>
+                <li><a href="{{ '/Contact.html' | relative_url }}"{% if u == '/Contact.html' %} class="is-active" aria-current="page"{% endif %}>Contact</a></li>
+            </ul>
+        </nav>
+
+        <main id="main">
+            {{ content }}
+        </main>
+
+        <footer>
+            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

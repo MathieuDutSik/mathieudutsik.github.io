@@ -1,116 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific and Technical Work - Mathieu Dutour Sikirić</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-             <img src="Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
-            <h1>Mathieu Dutour Sikirić</h1>
-        </header>
+---
+layout: default
+title: Scientific and Technical Work
+description: >-
+  Research overview by Mathieu Dutour Sikirić across lattice theory and
+  Delaunay geometry, polytopes and tilings, plane graphs and polycycles,
+  mathematical physics, geophysical modelling, and blockchain systems.
+---
+<h2>Scientific and Technical Work</h2>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="PresentationScientificWork.html">Scientific and Technical Work</a></li>
-                <li><a href="Publications/index.html">Publications</a></li>
-                <li><a href="OtherInformation.html">Programs & Data</a></li>
-                <li><a href="Presentations/index.html">Lectures</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-            </ul>
-        </nav>
+<nav class="toc" aria-label="Sections">
+    <h3>Contents</h3>
+    <ol>
+        <li><a href="#lattices">Lattices, quadratic forms &amp; Delaunay geometry</a></li>
+        <li><a href="#polytopes">Polytopes, tilings &amp; polyhedral computation</a></li>
+        <li><a href="#plane-graphs">Plane graphs, polycycles &amp; combinatorial structures</a></li>
+        <li><a href="#math-physics">Mathematical physics</a></li>
+        <li><a href="#geophysical">Geophysical modelling</a></li>
+        <li><a href="#blockchain">Blockchain &amp; systems engineering</a></li>
+    </ol>
+</nav>
 
-        <main>
-            <h2>Scientific and Technical Work</h2>
+<section class="research-group" id="lattices">
+    <h2>Lattices, quadratic forms &amp; Delaunay geometry</h2>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/SpaceFullerenes.html">Space fullerenes</a></h3>
-                <p>Space fullerenes are tilings of Euclidean space by fullerenes, occurring in metallurgy, crystallography, and optimization. I performed the enumeration of small space fullerenes and new Frank-Kasper structures.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/Hermite9.html">The Hermite constant in dimension 9</a></h3>
+        <p>We solved the lattice packing problem in dimension 9 using a highly optimized implementation of Voronoi's algorithm. This work determined the exact value of the Hermite constant &gamma;<sub>9</sub> and classified all extreme lattices in this dimension.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/Hermite9.html">The Hermite constant in dimension 9</a></h3>
-                <p>We solved the lattice packing problem in dimension 9 using a highly optimized implementation of Voronoi's algorithm. This work determined the exact value of the Hermite constant &gamma;<sub>9</sub> and classified all extreme lattices in this dimension.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/GeometryOfNumbers.html">Geometry of Numbers</a></h3>
+        <p>We designed specific algorithms for enumerating Delaunay polytopes in lattices under symmetry. These polytopes form tessellations dual to Voronoi partitions, which are essential in computational geometry and physics.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/GeometryOfNumbers.html">Geometry of Numbers</a></h3>
-                <p>We designed specific algorithms for enumerating Delaunay polytopes in lattices under symmetry. These polytopes form tessellations dual to Voronoi partitions, which are essential in computational geometry and physics.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/CombinatorialTypes.html">Combinatorial types</a></h3>
+        <p>Building on Fedorov's 1885 classification of 3D lattice Delaunay polytopes, I enumerated them in dimension 6. This research identified over 6,000 distinct combinatorial types.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/CombinatorialTypes.html">Combinatorial types</a></h3>
-                <p>Building on Fedorov's 1885 classification of 3D lattice Delaunay polytopes, I enumerated them in dimension 6. This research identified over 6,000 distinct combinatorial types.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/PerfectDelaunay.html">Perfect Delaunay polytopes</a></h3>
+        <p>Perfect Delaunay polytopes correspond to the extreme rays of the Erdahl polyhedral cone. I introduced combinatorial optimization techniques to find extreme Delaunay polytopes in dimensions 7 and 8.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/PerfectDelaunay.html">Perfect Delaunay polytopes</a></h3>
-                <p>Perfect Delaunay polytopes correspond to the extreme rays of the Erdahl polyhedral cone. I introduced combinatorial optimization techniques to find extreme Delaunay polytopes in dimensions 7 and 8.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/LatticeCovering.html">L-type domains and the lattice covering problem</a></h3>
+        <p>Using semidefinite programming, we optimized covering densities over L-type domains. This allowed us to find record lattice coverings in dimensions 9 through 15 and classify thin algebraic number fields.</p>
+    </article>
+</section>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/LatticeCovering.html">L-type domains and the lattice covering problem</a></h3>
-                <p>Using semidefinite programming, we optimized covering densities over L-type domains. This allowed us to find record lattice coverings in dimensions 9 through 15 and classify thin algebraic number fields.</p>
-            </article>
+<section class="research-group" id="polytopes">
+    <h2>Polytopes, tilings &amp; polyhedral computation</h2>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/PolyhedralSymmetry.html">Polyhedral computation with symmetry</a></h3>
-                <p>I developed highly efficient algorithms for computing the dual description of polytopes with symmetry. This led to the classification of 10,916 perfect forms in dimension 8, a feat previously deemed impossible.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/SpaceFullerenes.html">Space fullerenes</a></h3>
+        <p>Space fullerenes are tilings of Euclidean space by fullerenes, occurring in metallurgy, crystallography, and optimization. I performed the enumeration of small space fullerenes and new Frank-Kasper structures.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/PolycyclesFaceRegular.html">Elementary polycycles and Face regular maps</a></h3>
-                <p>We classified elementary elliptic (R,q)-polycycles to create an efficient enumeration technique. This method was successfully applied to the classification and study of face-regular spheres and tori.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/PolyhedralSymmetry.html">Polyhedral computation with symmetry</a></h3>
+        <p>I developed highly efficient algorithms for computing the dual description of polytopes with symmetry. This led to the classification of 10,916 perfect forms in dimension 8, a feat previously deemed impossible.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/ZigzagsCentralCircuits.html">Zigzags and central circuits</a></h3>
-                <p>We studied the structure of zigzags and central circuits in 3- and 4-valent plane graphs. This led to classification results for 2-connected graphs and new insights into the Goldberg-Coxeter construction.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/WythoffPolytopes.html">Wythoff polytopes</a></h3>
+        <p>The Wythoff construction was used to determine L1-embeddable polytopes derived from regular polytopes. It was also applied to compute the third homology group of the Mathieu group M24.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/SimplicialComplexes.html">Simplicial complexes</a></h3>
-                <p>All simplicial n-complexes with specific face containment properties have been classified. This work provides a classification based on the partitions of set elements related to the dimension of the complex.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/CubeTilings.html">Cube packings and tilings</a></h3>
+        <p>We investigated periodic cube packings and tilings in R^n, proving extensibility theorems for dense packings. Our research provides lower bounds on non-extendible packings and explores their continuous parametrization.</p>
+    </article>
+</section>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/WythoffPolytopes.html">Wythoff polytopes</a></h3>
-                <p>The Wythoff construction was used to determine L1-embeddable polytopes derived from regular polytopes. It was also applied to compute the third homology group of the Mathieu group M24.</p>
-            </article>
+<section class="research-group" id="plane-graphs">
+    <h2>Plane graphs, polycycles &amp; combinatorial structures</h2>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/CubeTilings.html">Cube packings and tilings</a></h3>
-                <p>We investigated periodic cube packings and tilings in R^n, proving extensibility theorems for dense packings. Our research provides lower bounds on non-extendible packings and explores their continuous parametrization.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/PolycyclesFaceRegular.html">Elementary polycycles and Face regular maps</a></h3>
+        <p>We classified elementary elliptic (R,q)-polycycles to create an efficient enumeration technique. This method was successfully applied to the classification and study of face-regular spheres and tori.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/GinzburgLandau.html">Ginzburg Landau model</a></h3>
-                <p>I established the phase diagram for the bulk Ginzburg-Landau model of superconductivity using complex hermitian geometry. This included establishing the Abrikosov asymptotic expansion for minimal energy states.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/ZigzagsCentralCircuits.html">Zigzags and central circuits</a></h3>
+        <p>We studied the structure of zigzags and central circuits in 3- and 4-valent plane graphs. This led to classification results for 2-connected graphs and new insights into the Goldberg-Coxeter construction.</p>
+    </article>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/LineraEVM.html">EVM Support in Linera</a></h3>
-                <p>I implemented Ethereum Virtual Machine (EVM) support within the Linera protocol, allowing Ethereum-based applications to run on microchains. The implementation supports complex protocols like Morpho using specialized precompiles.</p>
-            </article>
+    <article class="research-item-summary">
+        <h3><a href="Research/SimplicialComplexes.html">Simplicial complexes</a></h3>
+        <p>All simplicial n-complexes with specific face containment properties have been classified. This work provides a classification based on the partitions of set elements related to the dimension of the complex.</p>
+    </article>
+</section>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/BathymetrySmoothing.html">Bathymetry smoothing</a></h3>
-                <p>We proposed a new linear programming method for smoothing sea depths in terrain-following oceanic models. This approach performs significantly better than existing methods by maintaining stability while staying near the real bathymetry.</p>
-            </article>
+<section class="research-group" id="math-physics">
+    <h2>Mathematical physics</h2>
 
-            <article class="research-item-summary">
-                <h3><a href="Research/WaveModelCoupling.html">Coupling of circulation and wave models</a></h3>
-                <p>I coupled the circulation model ROMS with the wave model WWM to study their interactions. This coupling revealed significant effects on wave height in regions like the Bura jet and the Istrian coast.</p>
-            </article>
-        </main>
+    <article class="research-item-summary">
+        <h3><a href="Research/GinzburgLandau.html">Ginzburg Landau model</a></h3>
+        <p>I established the phase diagram for the bulk Ginzburg-Landau model of superconductivity using complex hermitian geometry. This included establishing the Abrikosov asymptotic expansion for minimal energy states.</p>
+    </article>
+</section>
 
-        <footer>
-            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
-        </footer>
-    </div>
-</body>
-</html>
+<section class="research-group" id="geophysical">
+    <h2>Geophysical modelling</h2>
+
+    <article class="research-item-summary">
+        <h3><a href="Research/BathymetrySmoothing.html">Bathymetry smoothing</a></h3>
+        <p>We proposed a new linear programming method for smoothing sea depths in terrain-following oceanic models. This approach performs significantly better than existing methods by maintaining stability while staying near the real bathymetry.</p>
+    </article>
+
+    <article class="research-item-summary">
+        <h3><a href="Research/WaveModelCoupling.html">Coupling of circulation and wave models</a></h3>
+        <p>I coupled the circulation model ROMS with the wave model WWM to study their interactions. This coupling revealed significant effects on wave height in regions like the Bura jet and the Istrian coast.</p>
+    </article>
+</section>
+
+<section class="research-group" id="blockchain">
+    <h2>Blockchain &amp; systems engineering</h2>
+
+    <article class="research-item-summary">
+        <h3><a href="Research/LineraEVM.html">EVM Support in Linera</a></h3>
+        <p>I implemented Ethereum Virtual Machine (EVM) support within the Linera protocol, allowing Ethereum-based applications to run on microchains. The implementation supports complex protocols like Morpho using specialized precompiles.</p>
+    </article>
+</section>

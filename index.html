@@ -1,42 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page of Mathieu Dutour Sikirić</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <img src="Documents/Identity.png" alt="Mathieu Dutour Sikirić" class="profile-photo">
-            <h1>Mathieu Dutour Sikirić</h1>
-        </header>
+---
+layout: default
+title: Home
+description: >-
+  Mathieu Dutour Sikirić — mathematician and systems engineer working on
+  computational algebra, discrete geometry, lattice theory, and high-performance
+  algorithm design. Provable systems from lattice theory to blockchain
+  execution environments.
+---
+<section class="intro">
+    <p><strong>Mathematician &amp; Systems Engineer</strong><br>
+    Specializing in computational algebra, discrete geometry, and high-performance algorithm design.<br>
+    Building provable systems for real-world applications — from lattice theory to blockchain execution environments.</p>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="PresentationScientificWork.html">Scientific and Technical Work</a></li>
-                <li><a href="Publications/index.html">Publications</a></li>
-                <li><a href="OtherInformation.html">Programs & Data</a></li>
-                <li><a href="Presentations/index.html">Lectures</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <p>See <a href="{{ '/Documents/CV_tech.pdf' | relative_url }}">my CV</a> (PDF).</p>
 
-        <main>
-            <section class="intro">
-                <p><strong>Mathematician & Systems Engineer</strong><br>
-                Specializing in computational algebra, discrete geometry, and high-performance algorithm design.<br>
-                Building provable systems for real-world applications — from lattice theory to blockchain execution environments.</p>
-                <p>See <a href="Documents/CV_tech.pdf">my CV</a> (PDF).</p>
-                <p>See <a href="https://github.com/MathieuDutSik">GitHub</a> for my open source programs.</p>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; Mathieu Dutour Sikirić. All rights reserved.</p>
-        </footer>
-    </div>
-</body>
-</html>
+    <h3>Profiles &amp; code</h3>
+    <ul class="profile-links">
+        <li><a href="{{ site.person.github }}" rel="me">GitHub</a> — open-source programs</li>
+        <li><a href="{{ site.person.scholar }}" rel="me">Google Scholar</a> — citations and publication metrics</li>
+        <li><a href="{{ site.person.arxiv_search }}" rel="me">arXiv</a> — preprints</li>
+        <li><a href="https://orcid.org/{{ site.person.orcid }}" rel="me">ORCID</a> — {{ site.person.orcid }}</li>
+    </ul>
+</section>

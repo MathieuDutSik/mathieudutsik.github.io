@@ -1,0 +1,40 @@
+---
+layout: default
+title: Interactive Tools
+description: >-
+  Interactive in-browser tools by Mathieu Dutour Sikirić — including the
+  upcoming WebAssembly build of Polyhedral_common for polyhedral and
+  lattice computations directly in the browser.
+---
+<h2>Interactive Tools</h2>
+
+<p>This page hosts in-browser tools compiled from the underlying C++ research code.
+Computations run locally in your browser via WebAssembly — no server upload, no installation.</p>
+
+<section id="polyhedral-common-wasm" class="tool-card">
+    <h3>Polyhedral_common (WebAssembly) <span class="badge badge-soon">Coming soon</span></h3>
+
+    <p><a href="https://github.com/MathieuDutSik/polyhedral_common">Polyhedral_common</a>
+    is a C++ library for polyhedral and lattice computations: dual descriptions of
+    polytopes under symmetry, enumeration of Delaunay polytopes, lattice isometry
+    testing, and related operations used throughout the
+    <a href="{{ '/PresentationScientificWork.html' | relative_url }}">research projects</a>
+    listed on this site.</p>
+
+    <p>A WebAssembly build is in preparation so that selected entry points can be
+    invoked directly from this page. Planned features:</p>
+
+    <ul>
+        <li>Run small polyhedral / lattice computations in the browser with no install.</li>
+        <li>Paste a Gram matrix or vertex list and inspect the output interactively.</li>
+        <li>Reproducible examples linked from individual research pages.</li>
+    </ul>
+
+    <p>The interactive widget will appear here once the WASM build lands.
+    In the meantime, the native library is available from the
+    <a href="https://github.com/MathieuDutSik/polyhedral_common">GitHub repository</a>.</p>
+
+    <noscript>
+        <p><strong>Note:</strong> the interactive tools on this page require JavaScript and WebAssembly.</p>
+    </noscript>
+</section>
