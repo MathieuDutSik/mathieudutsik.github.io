@@ -139,6 +139,12 @@
         }[c]));
     }
 
+    function formatElapsed(ms) {
+        if (ms < 1) return ms.toFixed(2) + " ms";
+        if (ms < 1000) return ms.toFixed(1) + " ms";
+        return (ms / 1000).toFixed(2) + " s";
+    }
+
     async function runTest() {
         els.result.innerHTML = "";
         setStatus("Loading module…");
@@ -146,14 +152,16 @@
             const m = await loadModule();
             const { n, entries } = readMatrix();
             setStatus("Computing…");
+            const t0 = performance.now();
             const r = m.testCopositivity(n, entries);
+            const elapsedMs = performance.now() - t0;
             if (r.error) {
                 els.result.innerHTML = "";
                 setStatus(r.error, "error");
                 return;
             }
             renderResult(r);
-            setStatus("Done.", "ok");
+            setStatus(`Done in ${formatElapsed(elapsedMs)}.`, "ok");
         } catch (err) {
             setStatus("Error: " + (err && err.message ? err.message : String(err)), "error");
             console.error(err);
