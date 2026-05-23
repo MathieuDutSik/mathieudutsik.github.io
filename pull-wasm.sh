@@ -19,8 +19,10 @@ fi
 
 mkdir -p wasm
 
-# Copy each binding's .js + .wasm pair. New bindings: add their basename here.
-for binding in copos; do
+# Copy each binding's .js + .wasm pair. The current module bundles every
+# WASM entry point into one binary; add new module basenames here if/when
+# you split the build.
+for binding in polyhedral; do
     for ext in js wasm; do
         src="$SRC/dist/${binding}.${ext}"
         dst="wasm/${binding}.${ext}"

@@ -214,5 +214,5 @@ AM1 AM2 ... AMN</pre>
 
 {%- assign wasm_v = site.time | date: '%s' -%}
 <script>window.__WASM_BUST = "{{ wasm_v }}";</script>
-<script src="{{ '/wasm/copos.js' | relative_url }}?v={{ wasm_v }}"></script>
-<script src="{{ '/assets/copos-ui.js' | relative_url }}?v={{ wasm_v }}"></script>
+<script src="{{ '/wasm/polyhedral.js' | relative_url }}?v={{ wasm_v }}"></script>
+<script src="{{ '/assets/polyhedral-ui.js' | relative_url }}?v={{ wasm_v }}"></script>

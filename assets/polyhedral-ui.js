@@ -7,7 +7,8 @@
 //   "square"  — one n × n grid (default; used by copositivity-type tests).
 //   "rect"    — separate rows / cols inputs (used by SHV inputs).
 //
-// Depends on /wasm/copos.js (Emscripten module factory) being loaded first.
+// Depends on /wasm/polyhedral.js (Emscripten module factory) being loaded
+// first; that script exposes a global `createPolyhedralModule`.
 
 (function () {
     "use strict";
@@ -194,12 +195,12 @@
     let modulePromise = null;
     function loadModule() {
         if (modulePromise) return modulePromise;
-        if (typeof createCoposModule !== "function") {
+        if (typeof createPolyhedralModule !== "function") {
             return Promise.reject(new Error(
-                "copos.js (Emscripten module) failed to load"));
+                "polyhedral.js (Emscripten module) failed to load"));
         }
         const bust = window.__WASM_BUST ? "?v=" + window.__WASM_BUST : "";
-        modulePromise = createCoposModule({
+        modulePromise = createPolyhedralModule({
             locateFile: (path) => path.endsWith(".wasm") ? "/wasm/" + path + bust : path,
         });
         return modulePromise;
