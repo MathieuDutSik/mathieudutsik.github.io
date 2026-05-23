@@ -2,9 +2,10 @@
 layout: default
 title: Interactive Tools
 description: >-
-  Interactive in-browser tools by Mathieu Dutour Sikirić — copositivity and
-  strict-copositivity tests for symmetric matrices, run locally in your
-  browser via WebAssembly with exact arbitrary-precision arithmetic.
+  Interactive in-browser tools by Mathieu Dutour Sikirić — copositivity tests,
+  copositive factorization, shortest-vector realizability and automorphism
+  groups, and Gram-matrix canonicalization. Run locally in your browser via
+  WebAssembly with exact arbitrary-precision arithmetic.
 ---
 <h2>Interactive Tools</h2>
 
@@ -32,8 +33,8 @@ AM1 AM2 ... AMN</pre>
 
     <div class="copos-controls">
         <label>
-            Dimension
-            <select class="copos-dim"></select>
+            Dimension n
+            <input class="copos-rows" type="number" min="1" max="50" value="3">
         </label>
         <label>
             Preset
@@ -71,8 +72,8 @@ AM1 AM2 ... AMN</pre>
 
     <div class="copos-controls">
         <label>
-            Dimension
-            <select class="copos-dim"></select>
+            Dimension n
+            <input class="copos-rows" type="number" min="1" max="50" value="3">
         </label>
         <label>
             Preset
@@ -89,6 +90,119 @@ AM1 AM2 ... AMN</pre>
     </div>
 
     <div class="copos-grid" aria-label="Matrix entries"></div>
+
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
+</details>
+
+<details class="tool-card copos-tool" data-mode="shvRealizability" id="shv-realizability">
+    <summary>Shortest-vector realizability</summary>
+
+    <p>Given an integer matrix whose rows are vectors in ℤ<sup>n</sup>,
+    decide whether there exists a positive-definite quadratic form for which
+    this set is exactly the family of (orbits of) shortest vectors.
+    On success the tool returns one such Gram matrix G.</p>
+
+    <p>The underlying routine is
+    <code>SHORT_TestRealizabilityShortestFamily</code>; in practice the input
+    must be square (a basis of n vectors in n-dim) — non-square inputs may
+    not be accepted by the kernel.</p>
+
+    <div class="copos-controls">
+        <label>
+            Rows
+            <input class="copos-rows" type="number" min="1" max="50" value="3">
+        </label>
+        <label>
+            Cols
+            <input class="copos-cols" type="number" min="1" max="50" value="3">
+        </label>
+        <label>
+            Preset
+            <select class="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <label>
+            Load from file
+            <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+        </label>
+        <button class="copos-run primary" type="button">Test realizability</button>
+    </div>
+
+    <div class="copos-grid" aria-label="SHV entries"></div>
+
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
+</details>
+
+<details class="tool-card copos-tool" data-mode="shvAutomorphism" id="shv-automorphism">
+    <summary>Shortest-vector automorphism group</summary>
+
+    <p>Given an integer matrix whose rows are vectors in ℤ<sup>n</sup>,
+    compute the subgroup of GL(n, ℤ) that stabilises the configuration
+    (as a set, up to sign). The tool returns a list of integer-matrix
+    generators of that group.</p>
+
+    <p>Same shape constraint as the realizability tool — square inputs work,
+    arbitrary rectangular inputs are not guaranteed to.</p>
+
+    <div class="copos-controls">
+        <label>
+            Rows
+            <input class="copos-rows" type="number" min="1" max="50" value="3">
+        </label>
+        <label>
+            Cols
+            <input class="copos-cols" type="number" min="1" max="50" value="3">
+        </label>
+        <label>
+            Preset
+            <select class="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <label>
+            Load from file
+            <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+        </label>
+        <button class="copos-run primary" type="button">Compute automorphism group</button>
+    </div>
+
+    <div class="copos-grid" aria-label="SHV entries"></div>
+
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
+</details>
+
+<details class="tool-card copos-tool" data-mode="gramCanonical" id="gram-canonical">
+    <summary>Gram-matrix canonicalization</summary>
+
+    <p>Given a positive-definite rational symmetric matrix G (a Gram matrix),
+    compute an integer basis change B ∈ GL(n, ℤ) so that B · G · B<sup>T</sup>
+    is a canonical representative of G's GL(n, ℤ)-orbit. Two Gram matrices
+    have the same canonical form iff they are integrally equivalent.</p>
+
+    <div class="copos-controls">
+        <label>
+            Dimension n
+            <input class="copos-rows" type="number" min="1" max="50" value="3">
+        </label>
+        <label>
+            Preset
+            <select class="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <label>
+            Load from file
+            <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+        </label>
+        <button class="copos-symmetrize" type="button">Symmetrize (copy upper → lower)</button>
+        <button class="copos-run primary" type="button">Canonicalize</button>
+    </div>
+
+    <div class="copos-grid" aria-label="Gram matrix entries"></div>
 
     <p class="copos-status" aria-live="polite"></p>
     <div class="copos-result" aria-live="polite"></div>

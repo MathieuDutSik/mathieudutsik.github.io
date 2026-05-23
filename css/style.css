@@ -374,13 +374,19 @@ details.tool-card[open] > *:last-child {
 }
 
 .copos-controls select,
-.copos-controls button {
+.copos-controls button,
+.copos-controls input[type="number"] {
     font-size: 0.95rem;
     padding: 6px 10px;
     border-radius: 4px;
     border: 1px solid var(--border-color);
     background: #fff;
     cursor: pointer;
+}
+
+.copos-controls input[type="number"] {
+    width: 5rem;
+    cursor: text;
 }
 
 .copos-controls button.primary {
