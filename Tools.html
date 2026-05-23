@@ -2,39 +2,61 @@
 layout: default
 title: Interactive Tools
 description: >-
-  Interactive in-browser tools by Mathieu Dutour Sikirić — including the
-  upcoming WebAssembly build of Polyhedral_common for polyhedral and
-  lattice computations directly in the browser.
+  Interactive in-browser tools by Mathieu Dutour Sikirić — including a
+  WebAssembly build of the polyhedral_common copositivity test that runs
+  locally in your browser with no server upload.
 ---
 <h2>Interactive Tools</h2>
 
-<p>This page hosts in-browser tools compiled from the underlying C++ research code.
-Computations run locally in your browser via WebAssembly — no server upload, no installation.</p>
+<p>Computations on this page run locally in your browser. Results are exact.</p>
 
-<section id="polyhedral-common-wasm" class="tool-card">
-    <h3>Polyhedral_common (WebAssembly) <span class="badge badge-soon">Coming soon</span></h3>
+<section id="copositivity" class="tool-card">
+    <h3>Copositivity test</h3>
 
-    <p><a href="https://github.com/MathieuDutSik/polyhedral_common">Polyhedral_common</a>
-    is a C++ library for polyhedral and lattice computations: dual descriptions of
-    polytopes under symmetry, enumeration of Delaunay polytopes, lattice isometry
-    testing, and related operations used throughout the
-    <a href="{{ '/PresentationScientificWork.html' | relative_url }}">research projects</a>
-    listed on this site.</p>
+    <p>A real symmetric matrix A is <em>copositive</em> if v<sup>T</sup>A v ≥ 0
+    for every vector v with non-negative entries. When the matrix is not
+    copositive the tool returns a non-negative witness vector v with
+    v<sup>T</sup>A v &lt; 0.</p>
 
-    <p>A WebAssembly build is in preparation so that selected entry points can be
-    invoked directly from this page. Planned features:</p>
+    <p>Enter entries as integers (<code>3</code>, <code>-2</code>) or rationals
+    in <code>p/q</code> form (<code>1/2</code>, <code>-7/3</code>). You can also
+    upload a text file with the format:</p>
 
-    <ul>
-        <li>Run small polyhedral / lattice computations in the browser with no install.</li>
-        <li>Paste a Gram matrix or vertex list and inspect the output interactively.</li>
-        <li>Reproducible examples linked from individual research pages.</li>
-    </ul>
+    <pre>nRows nCols
+A11 A12 ... A1N
+A21 A22 ... A2N
+.
+.
+AM1 AM2 ... AMN</pre>
 
-    <p>The interactive widget will appear here once the WASM build lands.
-    In the meantime, the native library is available from the
-    <a href="https://github.com/MathieuDutSik/polyhedral_common">GitHub repository</a>.</p>
+    <div class="copos-controls">
+        <label>
+            Dimension
+            <select id="copos-dim"></select>
+        </label>
+        <label>
+            Preset
+            <select id="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <label>
+            Load from file
+            <input id="copos-file" type="file" accept=".txt,.dat,text/plain">
+        </label>
+        <button id="copos-symmetrize" type="button">Symmetrize (copy upper → lower)</button>
+        <button id="copos-run" type="button" class="primary">Test copositivity</button>
+    </div>
+
+    <div id="copos-grid" class="copos-grid" aria-label="Matrix entries"></div>
+
+    <p id="copos-status" class="copos-status" aria-live="polite"></p>
+    <div id="copos-result" class="copos-result" aria-live="polite"></div>
 
     <noscript>
-        <p><strong>Note:</strong> the interactive tools on this page require JavaScript and WebAssembly.</p>
+        <p><strong>Note:</strong> this tool requires JavaScript and WebAssembly.</p>
     </noscript>
 </section>
+
+<script src="{{ '/wasm/copos.js' | relative_url }}"></script>
+<script src="{{ '/assets/copos-ui.js' | relative_url }}"></script>

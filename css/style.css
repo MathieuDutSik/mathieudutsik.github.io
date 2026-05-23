@@ -312,6 +312,89 @@ nav.toc li {
     color: #fff;
 }
 
+/* Copositivity widget */
+.copos-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: end;
+    margin: 16px 0;
+}
+
+.copos-controls label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.copos-controls select,
+.copos-controls button {
+    font-size: 0.95rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    cursor: pointer;
+}
+
+.copos-controls button.primary {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    font-weight: 600;
+}
+
+.copos-controls button.primary:hover {
+    background: var(--link-hover-color);
+    border-color: var(--link-hover-color);
+}
+
+.copos-grid {
+    display: grid;
+    gap: 6px;
+    margin: 16px 0;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.copos-grid input {
+    width: 100%;
+    padding: 6px;
+    font-family: "Courier New", Courier, monospace;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+}
+
+.copos-status {
+    font-style: italic;
+    color: #666;
+    min-height: 1.4em;
+    margin: 6px 0;
+}
+
+.copos-status.ok { color: #2a7a2a; font-style: normal; }
+.copos-status.error { color: #b00020; font-style: normal; }
+
+.copos-result .verdict {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+.copos-result .verdict-yes { color: #2a7a2a; }
+.copos-result .verdict-no { color: #b00020; }
+
+.copos-result pre {
+    background: #f4f4f4;
+    padding: 10px;
+    margin: 6px 0;
+    overflow-x: auto;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.95rem;
+}
+
 /* Footer */
 footer {
     text-align: center;
