@@ -294,6 +294,51 @@ nav.toc li {
     border-radius: 6px;
     padding: 20px;
     background: #fff;
+    margin-bottom: 12px;
+}
+
+/* When a tool-card is a <details>, collapse the inner padding to the summary
+   line and give the title some weight. */
+details.tool-card {
+    padding: 0;
+}
+
+details.tool-card > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    border-radius: 6px;
+    user-select: none;
+}
+
+details.tool-card > summary::-webkit-details-marker { display: none; }
+
+details.tool-card > summary::before {
+    content: "▸";
+    display: inline-block;
+    width: 1em;
+    color: var(--accent-color);
+    transition: transform 0.15s ease;
+}
+
+details.tool-card[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+details.tool-card > summary:hover {
+    background: var(--nav-bg);
+}
+
+/* Everything after the summary gets the normal card padding. */
+details.tool-card > *:not(summary) {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+details.tool-card[open] > *:last-child {
     margin-bottom: 20px;
 }
 

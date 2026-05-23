@@ -8,11 +8,10 @@ description: >-
 ---
 <h2>Interactive Tools</h2>
 
-<p>Computations on this page run locally in your browser. Results are exact.</p>
-
-<p>Both tools accept entries as integers (<code>3</code>, <code>-2</code>) or
-rationals in <code>p/q</code> form (<code>1/2</code>, <code>-7/3</code>). The
-file-upload format is:</p>
+<p>Computations on this page run locally in your browser. Results are exact.
+Entries can be integers (<code>3</code>, <code>-2</code>) or rationals in
+<code>p/q</code> form (<code>1/2</code>, <code>-7/3</code>). The file-upload
+format is:</p>
 
 <pre>nRows nCols
 A11 A12 ... A1N
@@ -21,8 +20,10 @@ A21 A22 ... A2N
 .
 AM1 AM2 ... AMN</pre>
 
-<section id="copositivity" class="tool-card copos-tool" data-mode="copositivity">
-    <h3>Copositivity test</h3>
+<p>Click a tool to expand it:</p>
+
+<details class="tool-card copos-tool" data-mode="copositivity" id="copositivity">
+    <summary>Copositivity test</summary>
 
     <p>A real symmetric matrix A is <em>copositive</em> if
     v<sup>T</sup>A v ≥ 0 for every vector v with non-negative entries.
@@ -52,10 +53,10 @@ AM1 AM2 ... AMN</pre>
 
     <p class="copos-status" aria-live="polite"></p>
     <div class="copos-result" aria-live="polite"></div>
-</section>
+</details>
 
-<section id="copositive-factorization" class="tool-card copos-tool" data-mode="factorization">
-    <h3>Copositive factorization test</h3>
+<details class="tool-card copos-tool" data-mode="factorization" id="copositive-factorization">
+    <summary>Copositive factorization test</summary>
 
     <p>A real symmetric matrix A admits a <em>copositive factorization</em>
     if it can be written as</p>
@@ -91,7 +92,7 @@ AM1 AM2 ... AMN</pre>
 
     <p class="copos-status" aria-live="polite"></p>
     <div class="copos-result" aria-live="polite"></div>
-</section>
+</details>
 
 <noscript>
     <p><strong>Note:</strong> these tools require JavaScript and WebAssembly.</p>
