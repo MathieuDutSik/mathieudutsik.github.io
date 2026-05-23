@@ -2,63 +2,102 @@
 layout: default
 title: Interactive Tools
 description: >-
-  Interactive in-browser tools by Mathieu Dutour Sikirić — including a
-  WebAssembly build of the polyhedral_common copositivity test that runs
-  locally in your browser with no server upload.
+  Interactive in-browser tools by Mathieu Dutour Sikirić — copositivity and
+  strict-copositivity tests for symmetric matrices, run locally in your
+  browser via WebAssembly with exact arbitrary-precision arithmetic.
 ---
 <h2>Interactive Tools</h2>
 
 <p>Computations on this page run locally in your browser. Results are exact.</p>
 
-<section id="copositivity" class="tool-card">
-    <h3>Copositivity tests</h3>
+<p>Both tools accept entries as integers (<code>3</code>, <code>-2</code>) or
+rationals in <code>p/q</code> form (<code>1/2</code>, <code>-7/3</code>). The
+file-upload format is:</p>
 
-    <p>A real symmetric matrix A is <em>copositive</em> if v<sup>T</sup>A v ≥ 0
-    for every v ≥ 0, and <em>strictly copositive</em> if v<sup>T</sup>A v &gt; 0
-    for every v ≥ 0, v ≠ 0. When a matrix fails one of these tests the tool
-    returns a non-negative witness vector v with v<sup>T</sup>A v &lt; 0
-    (resp. ≤ 0 with v ≠ 0).</p>
-
-    <p>Enter entries as integers (<code>3</code>, <code>-2</code>) or rationals
-    in <code>p/q</code> form (<code>1/2</code>, <code>-7/3</code>). You can also
-    upload a text file with the format:</p>
-
-    <pre>nRows nCols
+<pre>nRows nCols
 A11 A12 ... A1N
 A21 A22 ... A2N
 .
 .
 AM1 AM2 ... AMN</pre>
 
+<section id="copositivity" class="tool-card copos-tool" data-mode="copositivity">
+    <h3>Copositivity test</h3>
+
+    <p>A real symmetric matrix A is <em>copositive</em> if
+    v<sup>T</sup>A v ≥ 0 for every vector v with non-negative entries.
+    When A is not copositive the tool returns a witness vector
+    v ≥ 0 with v<sup>T</sup>A v &lt; 0.</p>
+
     <div class="copos-controls">
         <label>
             Dimension
-            <select id="copos-dim"></select>
+            <select class="copos-dim"></select>
         </label>
         <label>
             Preset
-            <select id="copos-presets">
+            <select class="copos-presets">
                 <option value="">(choose one)</option>
             </select>
         </label>
         <label>
             Load from file
-            <input id="copos-file" type="file" accept=".txt,.dat,text/plain">
+            <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
         </label>
-        <button id="copos-symmetrize" type="button">Symmetrize (copy upper → lower)</button>
-        <button id="copos-run" type="button" class="primary" data-mode="copositivity">Test copositivity</button>
-        <button id="copos-run-strict" type="button" class="primary" data-mode="strict">Test strict copositivity</button>
+        <button class="copos-symmetrize" type="button">Symmetrize (copy upper → lower)</button>
+        <button class="copos-run primary" type="button">Test copositivity</button>
     </div>
 
-    <div id="copos-grid" class="copos-grid" aria-label="Matrix entries"></div>
+    <div class="copos-grid" aria-label="Matrix entries"></div>
 
-    <p id="copos-status" class="copos-status" aria-live="polite"></p>
-    <div id="copos-result" class="copos-result" aria-live="polite"></div>
-
-    <noscript>
-        <p><strong>Note:</strong> this tool requires JavaScript and WebAssembly.</p>
-    </noscript>
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
 </section>
 
-<script src="{{ '/wasm/copos.js' | relative_url }}"></script>
-<script src="{{ '/assets/copos-ui.js' | relative_url }}"></script>
+<section id="copositive-factorization" class="tool-card copos-tool" data-mode="factorization">
+    <h3>Copositive factorization test</h3>
+
+    <p>A real symmetric matrix A admits a <em>copositive factorization</em>
+    if it can be written as</p>
+
+    <pre>A = α₁ v₁ v₁ᵀ + α₂ v₂ v₂ᵀ + ... + αₘ vₘ vₘᵀ</pre>
+
+    <p>with v<sub>i</sub> ∈ ℤ<sub>≥0</sub><sup>n</sup> and α<sub>i</sub> ∈ ℚ<sub>≥0</sub>.
+    (Matrices with such a factorization are also called <em>completely positive</em>.)
+    On success the tool returns the family (α<sub>i</sub>, v<sub>i</sub>).
+    On failure it returns a copositive certificate matrix C with
+    ⟨C, A⟩ &lt; 0, which proves no such factorization exists.</p>
+
+    <div class="copos-controls">
+        <label>
+            Dimension
+            <select class="copos-dim"></select>
+        </label>
+        <label>
+            Preset
+            <select class="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <label>
+            Load from file
+            <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+        </label>
+        <button class="copos-symmetrize" type="button">Symmetrize (copy upper → lower)</button>
+        <button class="copos-run primary" type="button">Test copositive factorization</button>
+    </div>
+
+    <div class="copos-grid" aria-label="Matrix entries"></div>
+
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
+</section>
+
+<noscript>
+    <p><strong>Note:</strong> these tools require JavaScript and WebAssembly.</p>
+</noscript>
+
+{%- assign wasm_v = site.time | date: '%s' -%}
+<script>window.__WASM_BUST = "{{ wasm_v }}";</script>
+<script src="{{ '/wasm/copos.js' | relative_url }}?v={{ wasm_v }}"></script>
+<script src="{{ '/assets/copos-ui.js' | relative_url }}?v={{ wasm_v }}"></script>
