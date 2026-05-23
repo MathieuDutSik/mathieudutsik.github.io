@@ -38,6 +38,7 @@
         dim: document.getElementById("copos-dim"),
         grid: document.getElementById("copos-grid"),
         run: document.getElementById("copos-run"),
+        runStrict: document.getElementById("copos-run-strict"),
         symmetrize: document.getElementById("copos-symmetrize"),
         presets: document.getElementById("copos-presets"),
         file: document.getElementById("copos-file"),
@@ -114,18 +115,31 @@
         els.status.className = "copos-status" + (kind ? " " + kind : "");
     }
 
-    function renderResult(r) {
+    const MODES = {
+        copositivity: {
+            method: "testCopositivity",
+            label: "copositive",
+            witnessCondition: "v ≥ 0 with v<sup>T</sup>Av &lt; 0",
+        },
+        strict: {
+            method: "testStrictCopositivity",
+            label: "strictly copositive",
+            witnessCondition: "v ≥ 0, v ≠ 0 with v<sup>T</sup>Av ≤ 0",
+        },
+    };
+
+    function renderResult(r, mode) {
         const out = [];
         if (r.isCopositive) {
-            out.push('<p class="verdict verdict-yes">Matrix is copositive.</p>');
+            out.push(`<p class="verdict verdict-yes">Matrix is ${mode.label}.</p>`);
             out.push(`<p>Reason: <code>${escapeHtml(r.nature)}</code></p>`);
         } else {
-            out.push('<p class="verdict verdict-no">Matrix is NOT copositive.</p>');
+            out.push(`<p class="verdict verdict-no">Matrix is NOT ${mode.label}.</p>`);
             out.push(`<p>Nature of violation: <code>${escapeHtml(r.nature)}</code></p>`);
             if (r.witness && r.witness.size && r.witness.size() > 0) {
                 const v = [];
                 for (let i = 0; i < r.witness.size(); i++) v.push(r.witness.get(i));
-                out.push(`<p>Witness vector v ≥ 0 with v<sup>T</sup>Av &lt; 0:</p>`);
+                out.push(`<p>Witness vector ${mode.witnessCondition}:</p>`);
                 out.push(`<pre>v = (${v.map(escapeHtml).join(", ")})</pre>`);
             }
         }
@@ -145,7 +159,12 @@
         return (ms / 1000).toFixed(2) + " s";
     }
 
-    async function runTest() {
+    async function runTest(modeKey) {
+        const mode = MODES[modeKey];
+        if (!mode) {
+            setStatus("Unknown mode: " + modeKey, "error");
+            return;
+        }
         els.result.innerHTML = "";
         setStatus("Loading module…");
         try {
@@ -153,14 +172,14 @@
             const { n, entries } = readMatrix();
             setStatus("Computing…");
             const t0 = performance.now();
-            const r = m.testCopositivity(n, entries);
+            const r = m[mode.method](n, entries);
             const elapsedMs = performance.now() - t0;
             if (r.error) {
                 els.result.innerHTML = "";
                 setStatus(r.error, "error");
                 return;
             }
-            renderResult(r);
+            renderResult(r, mode);
             setStatus(`Done in ${formatElapsed(elapsedMs)}.`, "ok");
         } catch (err) {
             setStatus("Error: " + (err && err.message ? err.message : String(err)), "error");
@@ -246,7 +265,8 @@
             setStatus("");
         });
         els.symmetrize.addEventListener("click", symmetrize);
-        els.run.addEventListener("click", runTest);
+        els.run.addEventListener("click", (e) => runTest(e.currentTarget.dataset.mode));
+        els.runStrict.addEventListener("click", (e) => runTest(e.currentTarget.dataset.mode));
         els.presets.addEventListener("change", (e) => {
             applyPreset(e.target.value);
             e.target.value = "";

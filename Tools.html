@@ -11,12 +11,13 @@ description: >-
 <p>Computations on this page run locally in your browser. Results are exact.</p>
 
 <section id="copositivity" class="tool-card">
-    <h3>Copositivity test</h3>
+    <h3>Copositivity tests</h3>
 
     <p>A real symmetric matrix A is <em>copositive</em> if v<sup>T</sup>A v ≥ 0
-    for every vector v with non-negative entries. When the matrix is not
-    copositive the tool returns a non-negative witness vector v with
-    v<sup>T</sup>A v &lt; 0.</p>
+    for every v ≥ 0, and <em>strictly copositive</em> if v<sup>T</sup>A v &gt; 0
+    for every v ≥ 0, v ≠ 0. When a matrix fails one of these tests the tool
+    returns a non-negative witness vector v with v<sup>T</sup>A v &lt; 0
+    (resp. ≤ 0 with v ≠ 0).</p>
 
     <p>Enter entries as integers (<code>3</code>, <code>-2</code>) or rationals
     in <code>p/q</code> form (<code>1/2</code>, <code>-7/3</code>). You can also
@@ -45,7 +46,8 @@ AM1 AM2 ... AMN</pre>
             <input id="copos-file" type="file" accept=".txt,.dat,text/plain">
         </label>
         <button id="copos-symmetrize" type="button">Symmetrize (copy upper → lower)</button>
-        <button id="copos-run" type="button" class="primary">Test copositivity</button>
+        <button id="copos-run" type="button" class="primary" data-mode="copositivity">Test copositivity</button>
+        <button id="copos-run-strict" type="button" class="primary" data-mode="strict">Test strict copositivity</button>
     </div>
 
     <div id="copos-grid" class="copos-grid" aria-label="Matrix entries"></div>
