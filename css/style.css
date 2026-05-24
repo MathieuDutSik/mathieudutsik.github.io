@@ -459,6 +459,27 @@ details.tool-card[open] > *:last-child {
     vertical-align: top;
 }
 
+/* Publications page: view-toggle radio buttons */
+.pub-view-toggle {
+    display: inline-flex;
+    gap: 16px;
+    padding: 8px 14px;
+    margin: 12px 0 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--nav-bg);
+    font-size: 0.95rem;
+}
+
+.pub-view-toggle label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.pub-view-toggle input[type="radio"] {
+    margin-right: 6px;
+}
+
 /* Footer */
 footer {
     text-align: center;
