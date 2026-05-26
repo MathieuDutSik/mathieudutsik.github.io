@@ -25,6 +25,11 @@ description: >-
     <h2>Blockchain &amp; systems engineering</h2>
 
     <article class="research-item-summary">
+        <h3><a href="https://github.com/linera-io/linera-protocol/pull/6032">Persistent WebAssembly instances in Linera</a></h3>
+        <p>In the Linera protocol, each contract call previously instantiated a fresh WebAssembly runtime and re-loaded the contract module, paying the module-instantiation and JIT cost on every invocation. This <a href="https://github.com/linera-io/linera-protocol/pull/6032">pull request</a> persists the Wasm execution instances across calls, reusing the already-compiled and initialized runtime instead of recreating it. On realistic workloads this yields roughly a 3&times; speedup of the execution layer.</p>
+    </article>
+
+    <article class="research-item-summary">
         <h3><a href="Research/LineraEVM.html">EVM Support in Linera</a></h3>
         <p>I implemented Ethereum Virtual Machine (EVM) support within the Linera protocol, allowing Ethereum-based applications to run on microchains. The implementation supports complex protocols like Morpho using specialized precompiles.</p>
     </article>
