@@ -256,6 +256,13 @@ pre {
     font-weight: 600;
 }
 
+.contact-pointer {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+    color: #666;
+}
+
 /* Table of contents on long pages */
 nav.toc {
     background: var(--nav-bg);
