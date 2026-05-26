@@ -8,13 +8,62 @@ description: >-
 ---
 <h2>Programs and Data sets</h2>
 
-<p class="update-note">UPDATE 2021: Most new development now takes place on GitHub at <a href="{{ site.person.github }}">github:MathieuDutSik</a>.</p>
+<section id="polyhedral-ecosystem">
+    <h3>Polyhedral ecosystem</h3>
+    <p><a href="https://github.com/MathieuDutSik/polyhedral_common">polyhedral_common</a>
+    is the core C++ library powering most of the
+    <a href="Portfolio.html#polytopes">polyhedral, lattice, and Delaunay-geometry work</a>
+    on this site. It is templated over an arbitrary exact arithmetic type
+    (rational or integer) and shipped as a stack of related repositories so
+    the same routines can be called from several environments:</p>
+
+    <dl class="repo-list">
+        <dt><a href="https://github.com/MathieuDutSik/polyhedral_common">polyhedral_common</a></dt>
+        <dd>Core C++ library: dual descriptions of polytopes under symmetry,
+        Delaunay-polytope enumeration, lattice isometry, copositivity tests,
+        shortest-vector realizability, Gram-matrix canonicalization, and
+        many related polyhedral and lattice algorithms.</dd>
+
+        <dt><a href="https://github.com/MathieuDutSik/basic_common_cpp">basic_common_cpp</a></dt>
+        <dd>Lower-level C++ building blocks shared by polyhedral_common and
+        its bindings: matrix and vector containers, sparse / robin / hopscotch
+        hash maps, number-theory wrappers around Boost.Multiprecision.</dd>
+
+        <dt><a href="https://github.com/MathieuDutSik/gap_polyhedral">gap_polyhedral</a></dt>
+        <dd>GAP package exposing polyhedral_common's routines to the GAP
+        computer-algebra system, for use in research workflows around
+        group theory and discrete geometry.</dd>
+
+        <dt><a href="https://github.com/MathieuDutSik/py_polyhedral">py_polyhedral</a></dt>
+        <dd>Python bindings to polyhedral_common, for interactive use
+        from Jupyter / NumPy-style scripts.</dd>
+
+        <dt><a href="https://github.com/MathieuDutSik/rust_polyhedral_common">rust_polyhedral_common</a></dt>
+        <dd>Rust bindings to polyhedral_common, for integration into
+        Rust-native systems.</dd>
+
+        <dt><a href="https://github.com/MathieuDutSik/wasm_polyhedral">wasm_polyhedral</a></dt>
+        <dd>WebAssembly bindings (Emscripten + embind) compiling polyhedral_common
+        to run directly in the browser. Powers the interactive
+        <a href="Tools.html">Tools</a> page on this site.</dd>
+
+        <dt><a href="https://github.com/MathieuDutSik/mcp_polyhedral">mcp_polyhedral</a></dt>
+        <dd>Model Context Protocol (MCP) server exposing polyhedral_common
+        operations to AI agents and other MCP-aware clients.</dd>
+
+        <dt><a href="Polyhedral/index.html">Polyhedral (legacy GAP)</a></dt>
+        <dd>The first version of the polyhedral codes: a standalone GAP
+        package predating the C++ rewrite. Now maintained as part of
+        <a href="https://github.com/MathieuDutSik/GAPpackages">GAPpackages</a>;
+        superseded by <code>polyhedral_common</code> and <code>gap_polyhedral</code>
+        above, but kept available for reference.</dd>
+    </dl>
+</section>
 
 <section>
     <h3>Programs for geometric applications</h3>
     <ul>
         <li><a href="PlanGraph/index.html">PlanGraph</a> a package for handling planar graphs</li>
-        <li><a href="Polyhedral/index.html">Polyhedral</a> a package for handling polytopes and lattices</li>
         <li><a href="PosetProg/index.html">Poset</a> programs for working with posets (mostly petrie schemes)</li>
     </ul>
 </section>

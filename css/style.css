@@ -459,6 +459,25 @@ details.tool-card[open] > *:last-child {
     vertical-align: top;
 }
 
+/* Repo list (Programs & Data: polyhedral ecosystem section) */
+.repo-list {
+    margin: 12px 0 0;
+}
+
+.repo-list dt {
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.repo-list dt a {
+    font-family: "Courier New", Courier, monospace;
+}
+
+.repo-list dd {
+    margin: 4px 0 0 16px;
+    color: #444;
+}
+
 /* Publications page: view-toggle radio buttons */
 .pub-view-toggle {
     display: inline-flex;
