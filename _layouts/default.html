@@ -20,7 +20,7 @@
             <ul>
                 {% assign u = page.url %}
                 <li><a href="{{ '/index.html' | relative_url }}"{% if u == '/' or u == '/index.html' %} class="is-active" aria-current="page"{% endif %}>Home</a></li>
-                <li><a href="{{ '/PresentationScientificWork.html' | relative_url }}"{% if u == '/PresentationScientificWork.html' %} class="is-active" aria-current="page"{% endif %}>Scientific and Technical Work</a></li>
+                <li><a href="{{ '/PresentationScientificWork.html' | relative_url }}"{% if u == '/PresentationScientificWork.html' %} class="is-active" aria-current="page"{% endif %}>Portfolio</a></li>
                 <li><a href="{{ '/Publications/index.html' | relative_url }}"{% if u contains '/Publications/' %} class="is-active" aria-current="page"{% endif %}>Publications</a></li>
                 <li><a href="{{ '/OtherInformation.html' | relative_url }}"{% if u == '/OtherInformation.html' %} class="is-active" aria-current="page"{% endif %}>Programs & Data</a></li>
                 <li><a href="{{ '/Presentations/index.html' | relative_url }}"{% if u contains '/Presentations/' %} class="is-active" aria-current="page"{% endif %}>Lectures</a></li>
