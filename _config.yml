@@ -32,3 +32,13 @@ exclude:
   - "#Prompts_web_page#"
   - ".#Prompts_web_page"
   - README.md
+  - Demo/two_dim_simulation/src
+  - Demo/two_dim_simulation/node_modules
+  - Demo/two_dim_simulation/index.html
+  - Demo/two_dim_simulation/package.json
+  - Demo/two_dim_simulation/pnpm-lock.yaml
+  - Demo/two_dim_simulation/pnpm-workspace.yaml
+  - Demo/two_dim_simulation/vite.config.js
+  - build-demo.sh
+  - pull-wasm.sh
+  - serve.sh

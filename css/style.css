@@ -538,3 +538,25 @@ footer {
         flex-direction: column;
     }
 }
+
+/* Demo page */
+.demo-frame {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 16px 0;
+    background: #111827;
+}
+
+.demo-frame iframe {
+    display: block;
+    width: 100%;
+    height: 600px;
+    border: 0;
+}
+
+@media (max-width: 600px) {
+    .demo-frame iframe {
+        height: 450px;
+    }
+}

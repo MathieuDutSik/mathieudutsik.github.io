@@ -1,0 +1,6 @@
+# esbuild's install script only pre-validates its native binary; the build
+# works without it. Allow it, but do not fail the install when scripts are
+# disabled globally (ignore-scripts=true in ~/.npmrc).
+allowBuilds:
+  esbuild: true
+strictDepBuilds: false
