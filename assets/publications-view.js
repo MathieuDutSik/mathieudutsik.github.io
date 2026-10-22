@@ -14,7 +14,8 @@
     "use strict";
 
     const THEMES = [
-        ["lattices",            "Lattices & Delaunay geometry"],
+        ["delaunay",            "Delaunay polytopes"],
+        ["lattices",            "Lattices"],
         ["polytopes",           "Polytopes"],
         ["tilings",             "Tilings"],
         ["plane-graphs",        "Plane graphs & polycycles"],
