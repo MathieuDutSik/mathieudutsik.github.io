@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zone Diagram Sweep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <div class="stage">
+    <canvas id="view" aria-label="Zone diagram of the sites"></canvas>
+    <p class="readout" id="readout"></p>
+    <p class="hint">Click to add a site · drag a site to move it · double-click a site to remove it · drag the background to pan · scroll to zoom</p>
+  </div>
+  <aside>
+    <header>
+      <h1>Zone diagram sweep</h1>
+      <p class="lede">Each zone R<sub>i</sub> is the set of points at least as close to its site p<sub>i</sub> as to every other zone. The zones are grown from their sites and each boundary ray is fixed in increasing order of its distance to the site, like Dijkstra's algorithm. No pixel grid and no global iteration. The α slider moves continuously from the Voronoi diagram to the zone diagram.</p>
+    </header>
+
+    <section>
+      <h2>Sites</h2>
+      <div class="row">
+        <select id="preset" aria-label="Example configuration">
+          <option value="two">Two sites: distance trisector</option>
+          <option value="third">Two sites and a third</option>
+          <option value="collinear">Three collinear sites</option>
+          <option value="pair">Close pair and a lone site</option>
+          <option value="hexagon">Hexagon with centre</option>
+          <option value="random" selected>Twelve random sites</option>
+        </select>
+        <button id="reload" type="button">Load</button>
+        <button id="clear" type="button">Clear</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>From Voronoi cells to zones</h2>
+      <div class="level">
+        <span class="mono">α</span>
+        <input id="alpha" type="range" min="0" max="1" step="0.01" value="1" aria-label="Alpha">
+        <span id="alphaValue" class="mono">1.00</span>
+      </div>
+      <div class="row">
+        <button id="alphaVoronoi" type="button">Voronoi, α = 0</button>
+        <button id="alphaZone" type="button">Zone diagram, α = 1</button>
+      </div>
+      <p class="note">Each zone competes with the other zones shrunk towards their sites, S<sub>j</sub> = p<sub>j</sub> + α (R<sub>j</sub> − p<sub>j</sub>). At α = 0 the competitors are the sites alone and the zones are the Voronoi cells.</p>
+    </section>
+
+    <section>
+      <h2>Sweep level</h2>
+      <div class="level">
+        <button id="play" type="button" class="primary">Grow</button>
+        <input id="level" type="range" min="0" max="1000" value="1000" aria-label="Sweep level">
+        <span id="levelValue" class="mono">all</span>
+      </div>
+      <p class="note" id="levelNote">At level s the picture shows R<sub>i</sub> ∩ B(p<sub>i</sub>, s). Everything below s is final: what lies further out never changes it.</p>
+    </section>
+
+    <section>
+      <h2>Display</h2>
+      <label><input id="showFacing" type="checkbox" checked> Colour each boundary arc by the zone it faces</label>
+      <label><input id="showMarks" type="checkbox" checked> Contacts and corners</label>
+      <label><input id="showVoronoi" type="checkbox"> Voronoi diagram</label>
+      <label><input id="showShrunk" type="checkbox"> Shrunk competitors αR<sub>j</sub></label>
+      <label><input id="showChain" type="checkbox" checked> Dependency chain under the pointer</label>
+      <label>Rays per zone
+        <select id="rays">
+          <option value="360">360</option>
+          <option value="720" selected>720</option>
+          <option value="1440">1440</option>
+          <option value="2880">2880</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>Legend</h2>
+      <div class="legend">
+        <div><svg width="28" height="10" aria-hidden="true"><line x1="1" y1="5" x2="27" y2="5" stroke="currentColor" stroke-width="2.5"/></svg><span>arc of the bisector of p<sub>i</sub> and a smooth part of R<sub>j</sub></span></div>
+        <div><svg width="28" height="10" aria-hidden="true"><line x1="1" y1="5" x2="27" y2="5" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3"/></svg><span>straight segment facing a corner of R<sub>j</sub></span></div>
+        <div><svg width="28" height="12" aria-hidden="true"><path d="M14 1 L19 6 L14 11 L9 6 Z" fill="currentColor"/></svg><span>contact: two zones touch while both grow</span></div>
+        <div><svg width="28" height="12" aria-hidden="true"><circle cx="14" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>corner: the facing zone changes</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Combinatorial skeleton</h2>
+      <p class="note">Boundary arcs of each zone in counterclockwise order, named by the zone they face.</p>
+      <div id="skeleton" class="skeleton"></div>
+    </section>
+
+    <section>
+      <h2>Computation</h2>
+      <dl class="stats" id="stats"></dl>
+      <div class="row">
+        <button id="check" type="button">Check fixed point</button>
+        <span id="checkResult" class="mono"></span>
+      </div>
+      <p class="note">The check measures max |ρ<sub>i</sub>(u) − d(tip, ∪<sub>j≠i</sub> R<sub>j</sub>)| over the boundary. It is zero exactly for the zone diagram.</p>
+    </section>
+  </aside>
+</div>
+<script src="zone2d.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

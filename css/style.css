@@ -555,8 +555,17 @@ footer {
     border: 0;
 }
 
+/* For demos with a side panel next to the drawing. */
+.demo-frame-tall iframe {
+    height: 780px;
+}
+
 @media (max-width: 600px) {
     .demo-frame iframe {
         height: 450px;
+    }
+
+    .demo-frame-tall iframe {
+        height: 900px;
     }
 }

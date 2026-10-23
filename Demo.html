@@ -4,10 +4,14 @@ title: Demo
 description: >-
   Interactive demonstrations by Mathieu Dutour Sikirić — a two-dimensional
   simulation of the k-covering radius of a lattice, where the basis vectors
-  can be dragged and the covering circles update in real time.
+  can be dragged and the covering circles update in real time, and zone
+  diagrams of points in the plane computed in WebAssembly.
 ---
-<section id="k-covering-2d">
-    <h3>k-covering radius of a two-dimensional lattice</h3>
+<p>The demonstrations below run in your browser. Click a demonstration to
+expand it:</p>
+
+<details class="tool-card" id="k-covering-2d">
+    <summary>k-covering radius of a two-dimensional lattice</summary>
 
     <p>The <em>k-covering radius</em> of a lattice L is the smallest r such that
     every point of the plane lies within distance r of at least k lattice
@@ -25,7 +29,30 @@ description: >-
                 title="Two-dimensional k-covering simulation"
                 loading="lazy"></iframe>
     </div>
-</section>
+</details>
+
+<details class="tool-card" id="zone-diagram">
+    <summary>Zone diagrams of points in the plane</summary>
+
+    <p>The <em>zone diagram</em> of sites p<sub>1</sub>, …, p<sub>n</sub>
+    (Asano, Matoušek and Tokuyama) is the unique family of regions
+    R<sub>1</sub>, …, R<sub>n</sub> in which R<sub>i</sub> is the set of
+    points at least as close to p<sub>i</sub> as to all the other regions.
+    Unlike the Voronoi diagram it is defined implicitly, and already for two
+    sites its boundary is a transcendental curve, the distance trisector.</p>
+
+    <p>Drag the sites, play the growth with the sweep level, and hover a
+    boundary to see the chain of points it depends on. The slider α
+    interpolates between the Voronoi diagram (α = 0) and the zone diagram
+    (α = 1): each region competes with the others shrunk towards their sites
+    by the factor α.</p>
+
+    <div class="demo-frame demo-frame-tall">
+        <iframe src="{{ '/Demo/zone_diagram/index.html' | relative_url }}"
+                title="Zone diagrams of points in the plane"
+                loading="lazy"></iframe>
+    </div>
+</details>
 
 <noscript>
     <p><strong>Note:</strong> this demo requires JavaScript.</p>
