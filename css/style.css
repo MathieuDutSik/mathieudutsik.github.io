@@ -379,27 +379,6 @@ pre {
     font-family: "Courier New", Courier, monospace;
 }
 
-/* Home page profile links */
-.profile-links {
-    list-style: none;
-    padding-left: 0;
-}
-
-.profile-links li {
-    margin-bottom: 6px;
-}
-
-.profile-links a {
-    font-weight: 600;
-}
-
-.contact-pointer {
-    margin-top: 28px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border-color);
-    color: #666;
-}
-
 /* Table of contents on long pages */
 nav.toc {
     background: var(--nav-bg);
@@ -657,15 +636,6 @@ details.tool-card[open] > *:last-child {
 }
 
 /* Footer */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.9rem;
-    color: #666;
-}
-
 /* Responsive adjustments */
 @media (max-width: 600px) {
     header img.profile-photo {
