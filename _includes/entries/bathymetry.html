@@ -1,0 +1,16 @@
+<p>Many ocean circulation models, such as ROMS, use <em>terrain-following</em> (sigma) coordinates: each water column is divided into the same number of vertical layers, which follow the shape of the sea floor. This gives good resolution of the bottom boundary layer, but it has a well-known weakness. Where the depth changes quickly between neighboring grid cells, the layers become steep, and the horizontal pressure gradient is the difference of two large terms that do not cancel exactly. The error creates artificial currents, which can spoil the solution or make the model unstable.</p>
+<div class="image-gallery">
+    <figure>
+        <img src="{{ '/Research/RawBathy.png' | relative_url }}" alt="Raw depth of the Adriatic Sea" loading="lazy">
+        <figcaption>Raw depth of the Adriatic Sea.</figcaption>
+    </figure>
+    <figure>
+        <img src="{{ '/Research/Hydro.jpg' | relative_url }}" alt="Regions of hydrodynamic stability and instability" loading="lazy">
+        <figcaption>Regions of hydrodynamic stability (blue) and instability (red) of the raw bathymetry.</figcaption>
+    </figure>
+</div>
+<p>The Adriatic Sea is a difficult case. The northern part is a shallow shelf, the southern part has a basin deeper than 1200&nbsp;m, and the eastern coast is made of islands and narrow channels. Using the raw bathymetry is not possible, so the depth has to be smoothed. One wants to keep the smoothed bathymetry as close as possible to the real one, since every change moves islands, channels and slopes, and so the circulation.</p>
+<p>A standard measure of steepness is the <em>roughness factor</em> r<sub>0</sub> = |h<sub>i</sub> &minus; h<sub>j</sub>| / (h<sub>i</sub> + h<sub>j</sub>) between adjacent cells i and j, which must stay below a threshold for the model to be stable. The usual smoothing methods are local filters, applied again and again until the threshold is met. They have no control over the total change, and they modify the bathymetry far more than needed, even in regions that were already smooth.</p>
+<p>The key observation is that the condition r<sub>0</sub> &le; r is <em>linear</em> in the depths: it is equivalent to (1 &minus; r) h<sub>i</sub> &le; (1 + r) h<sub>j</sub> and the symmetric inequality. We can therefore search for the depths h that satisfy all the roughness constraints and are as close as possible to the raw depths in the L<sup>1</sup> sense, which is a linear program. Further requirements are also linear, for example keeping some depths fixed or allowing the depth only to increase, and are added easily. The linear program finds the smallest possible change that satisfies the constraints, and in practice it changes only a small part of the domain.</p>
+<p>On the Adriatic, the method gives a bathymetry that is stable and much closer to the real one than the classical methods.</p>
+<p class="read-more-refs">M. Dutour Sikirić, I. Janeković, M. Kuzmić, <em>A new approach to bathymetry smoothing in sigma-coordinate ocean models</em>, Ocean Modelling 29 (2009) 128&ndash;136.</p>

@@ -23,15 +23,13 @@ description: >-
     <h2>Blockchain &amp; systems engineering</h2>
 
     <article class="research-item-summary" id="linera-persistent-wasm">
-        <h3><a href="https://github.com/linera-io/linera-protocol/pull/6032">Persistent WebAssembly instances in Linera</a></h3>
+        <h3><a href="Research/LineraPersistentWasm.html">Persistent WebAssembly instances in Linera</a></h3>
         <p>In the Linera protocol, every message, operation or event stream processed by a contract used to instantiate the contract, run it and finalize it. This <a href="https://github.com/linera-io/linera-protocol/pull/6032">pull request</a> keeps the contract instances alive for the whole block, and uses snapshots of the running Wasm machine to roll back a failed transaction.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>Linera is a blockchain built on <em>microchains</em>: every user or application can own a chain, and the chains talk to each other through asynchronous messages. Smart contracts are compiled to WebAssembly and run in a virtual machine (<code>wasmer</code> or <code>wasmtime</code>) inside the validators and the clients. A block typically contains many incoming messages and operations, and several of them often target the same application.</p>
-            <p>In the original execution model, each of these was handled in isolation: the contract was instantiated, its state was loaded from storage, the entry point was run, and the contract was finalized and its state stored back. For a busy application, such as an order book receiving a burst of bids and asks, the same contract was thus loaded and saved dozens of times in one block. Interactions between contracts made it worse: when contract A handles a message that makes it call contract B, which in turn calls A, every step paid the full set-up cost.</p>
-            <p>The pull request changes this model: a contract instance is created the first time it is needed in a block and stays alive until the block ends. The SDK functions <code>load</code> and <code>store</code> are then called once per application and per block. This also gives a natural place for checks that only make sense at the level of the block. In a flash loan, contract A borrows tokens from a bank and contract B pays them back; if the bank's <code>terminate</code> function sees that the loan has not been repaid, the block cannot be created.</p>
-            <p>The difficulty is <em>checkpointing</em>. An incoming bundle of messages may fail, and its effects must then be undone. Saving the chain state is no longer enough, since the Wasm machine itself now holds state across transactions. The solution is to take snapshots of the running Wasm instances, implemented for both <code>wasmer</code> and <code>wasmtime</code>. They are small (about 1.1&nbsp;MB for the matching engine), fast, and cost no fuel, whereas a software <code>load</code>/<code>store</code> pair costs around 25,000 fuel units even for a trivial counter contract. In the browser, where Wasm instances cannot share memory, the snapshots are serialized and the instances are wound down after every transaction.</p>
-            <p>On a benchmark where 50 bids and 50 asks are sent to the same matching-engine application, processing the inbox goes from 760&nbsp;ms to 413&nbsp;ms. Since the contract API and the cost structure both change, this is a protocol-level change, which could not be backported to the running testnet.</p>
+            <div class="entry-body">
+{% include entries/linera-persistent-wasm.html %}
+            </div>
         </details>
     </article>
 
@@ -40,12 +38,9 @@ description: >-
         <p>I implemented Ethereum Virtual Machine (EVM) support within the Linera protocol, allowing Ethereum-based applications to run on microchains. The implementation supports complex protocols like Morpho using specialized precompiles.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>Most smart contracts in use today are written in Solidity and compiled to EVM bytecode. A new blockchain that only accepts its own contract format asks developers to rewrite and re-audit all that code, which they rarely do. Supporting the EVM inside <a href="https://linera.io/">Linera</a> lets existing Ethereum applications and tools be reused, while Linera keeps its own WebAssembly runtime for native applications.</p>
-            <p>The implementation lives in the execution layer of the protocol (<code>linera-execution/src/evm</code>) and is built on <a href="https://github.com/bluealloy/revm">revm</a>, the Rust implementation of the EVM. The main work is to connect two very different models. Ethereum has a single global state with synchronous calls between contracts. Linera has many microchains, each with its own state, and communication between chains goes through asynchronous messages.</p>
-            <p>The features that have no Ethereum equivalent, such as cross-chain messaging and multi-chain coordination, are exposed to Solidity code through <strong>precompiles</strong>: special addresses that, when called, run code from the host instead of EVM bytecode. A Solidity contract can thus use the multi-chain features of Linera with ordinary function calls.</p>
-            <p>Compatibility was a guiding principle. The only significant difference with <a href="https://ethereum.org/">Ethereum</a> is the scheme for contract addresses, which has to fit the way Linera identifies applications. Everything else behaves as on Ethereum, so standard compilers and tooling can be used unchanged.</p>
-            <p>The implementation was validated on real DeFi code: the <a href="https://morpho.org/">Morpho</a> lending protocol runs on Linera through this EVM layer. Morpho combines many interacting contracts, oracles and callbacks, which makes it a demanding test of correctness.</p>
-            <p class="read-more-links"><a href="Research/LineraEVM.html">Details page &rarr;</a></p>
+            <div class="entry-body">
+{% include entries/linera-evm.html %}
+            </div>
         </details>
     </article>
 </section>
@@ -58,23 +53,9 @@ description: >-
         <p>We proposed a new linear programming method for smoothing sea depths in terrain-following oceanic models. This approach performs significantly better than existing methods by maintaining stability while staying near the real bathymetry.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>Many ocean circulation models, such as ROMS, use <em>terrain-following</em> (sigma) coordinates: each water column is divided into the same number of vertical layers, which follow the shape of the sea floor. This gives good resolution of the bottom boundary layer, but it has a well-known weakness. Where the depth changes quickly between neighboring grid cells, the layers become steep, and the horizontal pressure gradient is the difference of two large terms that do not cancel exactly. The error creates artificial currents, which can spoil the solution or make the model unstable.</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/RawBathy.png" alt="Raw depth of the Adriatic Sea" loading="lazy">
-                    <figcaption>Raw depth of the Adriatic Sea.</figcaption>
-                </figure>
-                <figure>
-                    <img src="Research/Hydro.jpg" alt="Regions of hydrodynamic stability and instability" loading="lazy">
-                    <figcaption>Regions of hydrodynamic stability (blue) and instability (red) of the raw bathymetry.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/bathymetry.html %}
             </div>
-            <p>The Adriatic Sea is a difficult case. The northern part is a shallow shelf, the southern part has a basin deeper than 1200&nbsp;m, and the eastern coast is made of islands and narrow channels. Using the raw bathymetry is not possible, so the depth has to be smoothed. One wants to keep the smoothed bathymetry as close as possible to the real one, since every change moves islands, channels and slopes, and so the circulation.</p>
-            <p>A standard measure of steepness is the <em>roughness factor</em> r<sub>0</sub> = |h<sub>i</sub> &minus; h<sub>j</sub>| / (h<sub>i</sub> + h<sub>j</sub>) between adjacent cells i and j, which must stay below a threshold for the model to be stable. The usual smoothing methods are local filters, applied again and again until the threshold is met. They have no control over the total change, and they modify the bathymetry far more than needed, even in regions that were already smooth.</p>
-            <p>The key observation is that the condition r<sub>0</sub> &le; r is <em>linear</em> in the depths: it is equivalent to (1 &minus; r) h<sub>i</sub> &le; (1 + r) h<sub>j</sub> and the symmetric inequality. We can therefore search for the depths h that satisfy all the roughness constraints and are as close as possible to the raw depths in the L<sup>1</sup> sense, which is a linear program. Further requirements are also linear, for example keeping some depths fixed or allowing the depth only to increase, and are added easily. The linear program finds the smallest possible change that satisfies the constraints, and in practice it changes only a small part of the domain.</p>
-            <p>On the Adriatic, the method gives a bathymetry that is stable and much closer to the real one than the classical methods.</p>
-            <p class="read-more-links"><a href="Research/BathymetrySmoothing.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour Sikirić, I. Janeković, M. Kuzmić, <em>A new approach to bathymetry smoothing in sigma-coordinate ocean models</em>, Ocean Modelling 29 (2009) 128&ndash;136.</p>
         </details>
     </article>
 
@@ -83,31 +64,9 @@ description: >-
         <p>I coupled the circulation model ROMS with the wave model WWM to study their interactions. This coupling revealed significant effects on wave height in regions like the Bura jet and the Istrian coast.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>The ocean circulation and the surface waves are usually computed by two different models. A circulation model such as <a href="https://www.myroms.org/">ROMS</a> solves the primitive equations for currents, temperature and salinity. A spectral wave model such as WWM (Wind Wave Model, developed by Aron Roland and myself) evolves the energy spectrum of the waves, for every frequency and direction, under wind forcing, propagation, breaking and bottom friction. Each model acts on the other, but in most operational systems they run separately.</p>
-            <div class="image-gallery">
-                <figure class="small">
-                    <img src="Research/fig/TheWindB.jpg" alt="Wind field over the Adriatic" loading="lazy">
-                    <figcaption>Wind.</figcaption>
-                </figure>
-                <figure class="small">
-                    <img src="Research/fig/TheCurrentB.jpg" alt="Surface current of the Adriatic" loading="lazy">
-                    <figcaption>Surface current.</figcaption>
-                </figure>
-                <figure class="small">
-                    <img src="Research/fig/HwaveB.jpg" alt="Significant wave height of the coupled model" loading="lazy">
-                    <figcaption>Significant wave height H<sub>s</sub>, coupled model.</figcaption>
-                </figure>
-                <figure class="small">
-                    <img src="Research/fig/DiffHwaveB.jpg" alt="Difference of significant wave height between coupled and uncoupled runs" loading="lazy">
-                    <figcaption>Difference of H<sub>s</sub>, coupled minus uncoupled (cm).</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/wave-coupling.html %}
             </div>
-            <p>In a coupled system the two models exchange fields during the run. The circulation model gives the wave model the currents and the water level: the waves are refracted and Doppler-shifted by the currents, and their speed depends on the depth. The wave model gives back the radiation stress and the Stokes drift, which drive currents near the coast, and changes the stress that the wind exerts on the sea surface and the friction on the bottom. I implemented this two-way coupling between ROMS and WWM, with the exchange of fields between the two parallel codes and their different grids.</p>
-            <p>The Adriatic Sea is a good test. In winter it is struck by the <em>Bura</em> (bora), a cold and violent wind from the north-east that comes down the Dinaric mountains in narrow jets. These jets create strong currents and steep, short waves over a small sea. The hindcast of these events showed that the coupling reduces the significant wave height inside the Bura jets, where waves and currents run in the same direction, and increases it in front of the Istrian coast; the differences reach about 10&nbsp;cm. Such changes matter for storm forecasts, for coastal erosion and for shipping.</p>
-            <p>This work was continued in several directions: the operational wave forecast of the Adriatic, the modelling of North Atlantic storms, and an implicit, domain-decomposed parallel scheme for the wave model WAVEWATCH&nbsp;III, used for large-scale hurricane modelling.</p>
-            <p class="read-more-links"><a href="Research/WaveModelCoupling.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour Sikirić, A. Roland, I. Tomažić, I. Janeković, <em>Hindcasting the Adriatic Sea near-surface motions with a coupled wave-current model</em>, J. Geophys. Res. Oceans 117 (2012) C00J36.<br>
-            M. Dutour Sikirić, A. Roland, I. Janeković, I. Tomažić, M. Kuzmić, <em>Coupling of the Regional Ocean Modelling System and Wind Wave Model</em>, Ocean Modelling 72 (2013) 59&ndash;73.</p>
         </details>
     </article>
 </section>
@@ -120,19 +79,9 @@ description: >-
         <p>I established the phase diagram for the bulk Ginzburg-Landau model of superconductivity using complex hermitian geometry. This included establishing the Abrikosov asymptotic expansion for minimal energy states.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>The Ginzburg&ndash;Landau model describes a superconductor by two unknowns: a complex wave function &phi;, whose modulus |&phi;|<sup>2</sup> is the density of superconducting electrons, and the magnetic field inside the material. The state of the material minimizes an energy that depends on two parameters, the exterior magnetic field H<sub>ext</sub> and a structural constant &kappa; of the material. My PhD thesis studied the <em>bulk</em> version of the model, in which the material fills the whole space and the states are periodic with respect to a lattice.</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/DiagPhase.jpg" alt="Phase diagram of the Ginzburg-Landau model" loading="lazy">
-                    <figcaption>The phase diagram in the (&kappa;, H<sub>ext</sub>) plane, with the critical fields H<sub>c1</sub>(&kappa;) and H<sub>c2</sub>(&kappa;).</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/ginzburg-landau.html %}
             </div>
-            <p>Three kinds of states appear. In the <em>pure</em> state |&phi;| = 1, the material is superconducting everywhere and expels the magnetic field. In the <em>normal</em> state &phi; = 0, superconductivity is destroyed and the field goes through the material. In the <em>mixed</em> state both coexist: the field enters along vortex lines, around which &phi; vanishes, and these vortices arrange themselves in a periodic lattice. This is the Abrikosov lattice, predicted by Abrikosov in 1957 and observed later in type&nbsp;II superconductors.</p>
-            <p>The first result is the <em>phase diagram</em>: for every value of (&kappa;, H<sub>ext</sub>), which of the three states has the lowest energy. The physicists' picture had been obtained by formal arguments, and my thesis proved its classical form. The main tool comes from complex geometry. When the energy is written on the torus defined by the lattice, the wave function becomes a section of a line bundle, and the Bochner&ndash;Kodaira&ndash;Nakano formula gives the estimates that separate the regions of the diagram.</p>
-            <p>The second result concerns the transition from the normal state to the mixed state. Near the critical field the solutions bifurcate from &phi; = 0, and the minimal energy and the minimizing states have an asymptotic expansion, first computed formally by Abrikosov. I proved this expansion. The leading term is given by the lowest Landau level, a space of holomorphic sections described by theta functions, and the choice of the vortex lattice comes from the minimization of a quantity of the form &lang;|&phi;|<sup>4</sup>&rang; / &lang;|&phi;|<sup>2</sup>&rang;<sup>2</sup> over this space.</p>
-            <p class="read-more-links"><a href="Research/GinzburgLandau.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour, <em>Phase diagram for Abrikosov lattice</em>, J. Math. Phys. 42 (2001) 4915&ndash;4926.<br>
-            M. Dutour, <em>A result on the phase diagram of a Ginzburg-Landau problem</em>, HAIT J. Sci. Eng. 1 (2004) 23&ndash;40.</p>
         </details>
     </article>
 </section>
@@ -145,23 +94,9 @@ description: >-
         <p>We classified elementary elliptic (R,q)-polycycles to create an efficient enumeration technique. This method was successfully applied to the classification and study of face-regular spheres and tori.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>A <em>(R,q)-polycycle</em> is, roughly, a piece of a plane graph whose faces are i-gons with i in a set R, and whose vertices have degree q, except on the boundary of some holes. A typical example is a patch of a fullerene made only of pentagons. The polycycle is called <em>elliptic</em>, <em>parabolic</em> or <em>hyperbolic</em> if 1/q + 1/r &minus; 1/2 is positive, zero or negative, where r is the largest element of R. Elliptic polycycles are those of positive curvature: there are few of them, and they are the pieces that make a surface close up into a sphere.</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/Graph57red.jpg" alt="A (5,8)-sphere 8R2" loading="lazy">
-                    <figcaption>A (5,8)-sphere 8R<sub>2</sub>.</figcaption>
-                </figure>
-                <figure>
-                    <img src="Research/Graph59red.jpg" alt="A (5,9)-sphere 9R0" loading="lazy">
-                    <figcaption>A (5,9)-sphere 9R<sub>0</sub>.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/polycycles.html %}
             </div>
-            <p>Polycycles can be glued along their boundaries. An edge of a hole is <em>open</em> if both its end vertices have degree less than q, and a polycycle is <em>elementary</em> if it cannot be cut into smaller polycycles along open edges. Every polycycle is then obtained in a unique way by gluing elementary ones. With Michel Deza and Mikhail Shtogrin, we enumerated all elliptic elementary polycycles, that is the elementary ({2,3,4,5},3)-, ({2,3},4)- and ({2,3},5)-polycycles. They consist of finitely many sporadic examples and a few infinite series.</p>
-            <p>This list turns the study of a plane graph into a puzzle with known pieces. Take a 3-valent sphere whose faces are pentagons and q-gons, and look at the subgraph formed by its pentagons. It is a (5,3)-polycycle, so it is obtained by gluing elementary pieces from the list. The possible arrangements of the pentagons are then found by hand or by computer.</p>
-            <p>We applied this method to <em>face-regular</em> maps. A 3-valent map on the sphere or the torus with p-gonal and q-gonal faces is called pR<sub>i</sub> if every p-gonal face is adjacent to exactly i p-gonal faces, and qR<sub>j</sub> is defined in the same way. These classes include many structures studied by chemists, such as fullerenes in which the pentagons are isolated. For each class, we determined whether it is empty, finite or infinite, and gave the complete list when it is finite. The figures on the details page show two such spheres: a (5,8)-sphere 8R<sub>2</sub> and a (5,9)-sphere 9R<sub>0</sub>. This work forms a large part of the book <em>Geometry of Chemical Graphs</em> with Michel Deza.</p>
-            <p class="read-more-links"><a href="Research/PolycyclesFaceRegular.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Deza, M. Dutour Sikirić, M. Shtogrin, <em>Elementary elliptic (R,q)-polycycles</em>, in Analysis of Complex Networks, Wiley-Blackwell (2009) 351&ndash;376.<br>
-            M. Deza, M. Dutour Sikirić, <em>Geometry of Chemical Graphs: Polycycles and Two-faced Maps</em>, Cambridge University Press, Encyclopedia of Mathematics and its Applications 119 (2008).</p>
         </details>
     </article>
 
@@ -170,24 +105,9 @@ description: >-
         <p>We studied the structure of zigzags and central circuits in 3- and 4-valent plane graphs. This led to classification results for 2-connected graphs and new insights into the Goldberg-Coxeter construction.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>Walk along the edges of a plane graph, turning alternately left and right at every vertex. The circuit obtained is a <em>zigzag</em>: any two consecutive edges belong to a common face, but no three do. In a 4-valent graph one can instead go straight on at every vertex, which gives a <em>central circuit</em>. Every edge lies on exactly two zigzags (or on one central circuit), so these circuits form a canonical family of curves in the graph. They encode a lot of its structure, which makes them useful for the plane graphs of chemistry, such as fullerenes.</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/SimpleCC32_D4h_273thi.png" alt="Central circuit in a 4-valent plane graph" loading="lazy">
-                    <figcaption>A central circuit in a 4-valent plane graph.</figcaption>
-                </figure>
-                <figure>
-                    <img src="Research/Tight92_Thsec.png" alt="Zigzag in a 3-valent plane graph" loading="lazy">
-                    <figcaption>A zigzag in a 3-valent plane graph.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/zigzags.html %}
             </div>
-            <p>The <em>z-vector</em> of a graph lists the lengths of its zigzags and the way they intersect. With Michel Deza, we studied the z-vectors of 3-valent plane graphs with faces of size at most 6, and of 4-valent plane graphs with faces of size at most 4. A <em>railroad</em> is a circuit of hexagons (or squares) in which every face is adjacent to its two neighbors on opposite edges: it is a strip bounded by two parallel zigzags. A graph without railroad is <em>tight</em>. We completely described the zigzag structure of the (3,6)-spheres; for the (4,6)-spheres we described the possible symmetry groups, classified the tight graphs whose zigzags are simple, and proved that a tight graph has at most 9 zigzags. We also classified the graphs of these classes that are 2-connected but not 3-connected, and gave all possible symmetry groups. Railroads also gave rise to new extremal problems and to knot-like phenomena in fullerenes.</p>
-            <p>The <em>Goldberg&ndash;Coxeter construction</em> takes a 3- or 4-valent plane graph G and a pair of integers (k,l), and produces a larger graph GC<sub>k,l</sub>(G) with the same symmetry. It is the construction behind geodesic domes and the icosahedral capsids of viruses. We computed the zigzag and central circuit structure of GC<sub>k,l</sub>(G) from that of G. For this we introduced a product on pairs (k,l) and a finite index subgroup of SL<sub>2</sub>(Z), which together predict how the circuits split.</p>
-            <p>These results are collected in the book <em>Geometric Structure of Chemistry-relevant Graphs: zigzags and central circuits</em> (Springer, 2015), with Michel Deza and Mikhail Shtogrin.</p>
-            <p class="read-more-links"><a href="Research/ZigzagsCentralCircuits.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour, M. Deza, <em>Goldberg-Coxeter construction for 3- or 4-valent plane graphs</em>, Electron. J. Combin. 11 (2004) R20.<br>
-            M. Deza, M. Dutour, <em>Zigzag structure of simple two-faced polyhedra</em>, Combin. Probab. Comput. 14 (2005) 31&ndash;57.<br>
-            M. Deza, M. Dutour, P. Fowler, <em>Zigzags, railroads, and knots in fullerenes</em>, J. Chem. Inf. Comput. Sci. 44 (2004) 1282&ndash;1293.</p>
         </details>
     </article>
 
@@ -196,24 +116,9 @@ description: >-
         <p>All simplicial n-complexes with specific face containment properties have been classified. This work provides a classification based on the partitions of set elements related to the dimension of the complex.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>A closed simplicial n-complex is built by gluing n-dimensional simplices along their faces. One way to measure its local shape is the <em>link</em> of its (n&minus;2)-dimensional faces. In a triangulated surface (n = 2), the (n&minus;2)-faces are the vertices, and the link of a vertex is the cycle of triangles around it; its length is the degree of the vertex. Large links mean negative curvature, short links mean strong positive curvature.</p>
-            <div class="image-gallery">
-                <figure class="wide">
-                    <img src="Research/fig/short_links.svg" alt="Tetrahedron, triangular bipyramid and octahedron with their partitions" loading="lazy">
-                    <figcaption>The three closed 2-complexes with short links and their characteristic partitions.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/simplicial-complexes.html %}
             </div>
-            <p>With Michel Deza and Mikhail Shtogrin, we studied the extreme case of <em>short links</em>, where every (n&minus;2)-face lies in only 3 or 4 n-simplices. One expects such a strong condition to leave few possibilities, and indeed the complexes are completely classified. Each of them is determined by its <em>characteristic partition</em>, a partition of the set {1, &hellip;, n+1}. A part with k elements corresponds to the boundary of a k-dimensional simplex, and the complex is the join of these boundaries.</p>
-            <p>For surfaces, the three partitions of {1,2,3} give the three triangulations of the sphere whose vertices all have degree 3 or 4:</p>
-            <ul>
-                <li>{1,2,3}: the tetrahedron, with all vertices of degree 3;</li>
-                <li>{1,2}, {3}: the triangular bipyramid, with two vertices of degree 3 and three of degree 4;</li>
-                <li>{1}, {2}, {3}: the octahedron, with all vertices of degree 4.</li>
-            </ul>
-            <p>In higher dimensions the same rule produces, for example, the boundary of the (n+1)-simplex and the boundary of the cross-polytope, at the two ends of the list.</p>
-            <p>The same paper considers cubical complexes with short links, and the embedding of the skeletons of these complexes into hypercubes. This is one of several works with Michel Deza on the L<sub>1</sub>-embedding of graphs coming from geometry, of which the Wythoff polytopes below are another example.</p>
-            <p class="read-more-links"><a href="Research/SimplicialComplexes.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Deza, M. Dutour Sikirić, M. Shtogrin, <em>On simplicial and cubical complexes with short links</em>, Israel J. Math. 144 (2004) 109&ndash;124.</p>
         </details>
     </article>
 </section>
@@ -226,27 +131,9 @@ description: >-
         <p>Space fullerenes are tilings of Euclidean space by fullerenes, occurring in metallurgy, crystallography, and optimization. I performed the enumeration of small space fullerenes and new Frank-Kasper structures.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>A <em>fullerene</em> is a 3-valent polyhedron whose faces are pentagons and hexagons, like the C<sub>60</sub> molecule. A <em>space fullerene</em> is a tiling of three-dimensional space by fullerenes in which every edge is shared by three tiles and every vertex by four, the way soap bubbles meet in a foam. Only four fullerenes can occur in such a tiling: the dodecahedron and the polyhedra with 14, 15 and 16 faces, which have 2, 3 and 4 hexagons.</p>
-            <div class="image-gallery">
-                <figure class="small">
-                    <img src="Research/fig/SPA_IFM_A15_2.jpg" alt="The A15 space fullerene" loading="lazy">
-                </figure>
-                <figure class="small">
-                    <img src="Research/fig/SPA_Struct14_17.jpg" alt="A space fullerene" loading="lazy">
-                </figure>
-                <figure class="small">
-                    <img src="Research/fig/SPA_Struct18.jpg" alt="A space fullerene" loading="lazy">
-                </figure>
-                <figure class="small">
-                    <img src="Research/fig/SPA_Struct19.jpg" alt="A space fullerene" loading="lazy">
-                </figure>
+            <div class="entry-body">
+{% include entries/space-fullerenes.html %}
             </div>
-            <p class="gallery-caption">Pieces of periodic space fullerenes; the first one is the A15 structure.</p>
-            <p>These tilings appear in several sciences under different names. In metallurgy they are the <em>Frank&ndash;Kasper</em> phases of complex alloys, where the tiles are the coordination polyhedra of the atoms: the A15 phase of Cr<sub>3</sub>Si, the cubic Laves phase MgCu<sub>2</sub>, the &sigma; phase and others. In chemistry they describe the frameworks of clathrate hydrates and zeolites, where water or silicon atoms sit at the vertices and small molecules are trapped in the cells. In geometry they are candidates for the <em>Kelvin problem</em>, which asks how to divide space into cells of equal volume with the least surface area: the Weaire&ndash;Phelan foam, which improved on Kelvin's 1887 solution, is the A15 structure.</p>
-            <p>The known Frank&ndash;Kasper structures had been found one by one in real crystals. With Olaf Delgado-Friedrichs and Michel Deza, I designed a computer enumeration of periodic space fullerenes with a small number of tiles in a fundamental domain. The search builds the tiling step by step, using the strong local rules on edges and vertices, and recognizes identical structures with tools for the topology of periodic tilings. It found many new Frank&ndash;Kasper structures, and the second paper extends the search to larger fundamental domains. The resulting list is a catalogue of candidate structures for crystallographers.</p>
-            <p class="read-more-links"><a href="Research/SpaceFullerenes.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour Sikirić, O. Delgado-Friedrichs, M. Deza, <em>Space fullerenes: computer search for new Frank-Kasper structures</em>, Acta Cryst. A 66 (2010) 602&ndash;615.<br>
-            M. Dutour Sikirić, M. Deza, <em>Space fullerenes: computer search for new Frank-Kasper structures II</em>, Structural Chemistry 23 (2012) 1103&ndash;1114.</p>
         </details>
     </article>
 
@@ -255,17 +142,9 @@ description: >-
         <p>I developed highly efficient algorithms for computing the dual description of polytopes with symmetry. This led to the classification of 10,916 perfect forms in dimension 8, a feat previously deemed impossible.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>A polytope can be given in two ways: by its vertices, or by the inequalities of its facets. Going from one description to the other is the <em>dual description problem</em>, a basic task of computational geometry, solved in general by programs such as <strong>lrs</strong> and <strong>cdd</strong>. The size of the output can grow exponentially, and for the polytopes that appear in the geometry of numbers or in combinatorial optimization these programs often run out of memory or time.</p>
-            <p>These polytopes, however, have very large symmetry groups, and only one facet per orbit is needed. I developed, step by step, a set of methods that work up to symmetry. The <em>adjacency decomposition method</em>, which comes from Christof and Reinelt, explores the graph of the orbits of facets: starting from one facet, it computes the facets adjacent to it, keeps those in new orbits, and continues. Each step is a dual description problem in one dimension less, with the stabilizer of the facet as symmetry group, so the method can be applied recursively. Making this work at scale required many components: fast tests of equivalence of facets under the group, choosing at each step between a direct computation and a further decomposition, computing the symmetry group of a polyhedron with graph automorphism software, and running the computation in parallel. The methods are now in the C++ library <a href="Programs.html">polyhedral_common</a>.</p>
-            <p>Two computations show what this makes possible:</p>
-            <ul>
-                <li><strong>Perfect forms in dimension 8.</strong> Perfect forms are the vertices of Voronoi's theory of lattice packings (see the Hermite constant below). With Achill Schürmann and Frank Vallentin, we classified them in dimension 8 and found 10,916 of them. The hardest step was the dual description of a cone in dimension 36 with 120 extreme rays, coming from the lattice E<sub>8</sub>: it has about 25,075,566,937,584 facets, which fall into 83,092 orbits. The classification was later used to compute the cohomology of GL<sub>N</sub>(Z) for N &ge; 8 and to prove that the algebraic K-group K<sub>8</sub>(Z) is trivial.</li>
-                <li><strong>The contact polytope of the Leech lattice.</strong> The Leech lattice, in dimension 24, is the most remarkable lattice of the geometry of numbers. Its contact polytope is the convex hull of its 196,560 minimal vectors. It has 1,197,362,269,604,214,277,200 facets, in 232 orbits under the automorphism group.</li>
-            </ul>
-            <p class="read-more-links"><a href="Research/PolyhedralSymmetry.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">D. Bremner, M. Dutour Sikirić, A. Schürmann, <em>Polyhedral representation conversion up to symmetries</em>, CRM Proceedings 48 (2009) 45&ndash;72.<br>
-            M. Dutour Sikirić, A. Schürmann, F. Vallentin, <em>Classification of eight-dimensional perfect forms</em>, Electron. Res. Announc. Amer. Math. Soc. 13 (2007) 21&ndash;32.<br>
-            M. Dutour Sikirić, A. Schürmann, F. Vallentin, <em>The contact polytope of the Leech lattice</em>, Discrete Comput. Geom. 44 (2010) 904&ndash;911.</p>
+            <div class="entry-body">
+{% include entries/polyhedral-symmetry.html %}
+            </div>
         </details>
     </article>
 
@@ -274,18 +153,9 @@ description: >-
         <p>The Wythoff construction was used to determine L1-embeddable polytopes derived from regular polytopes. It was also applied to compute the third homology group of the Mathieu group M24.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>The <em>Wythoff construction</em> takes an n-dimensional polytope P, not necessarily convex, and a non-empty subset S of {0, &hellip;, n}, and returns a new n-dimensional polytope W(P,S), called a <em>Wythoffian</em>. Its vertices correspond to the flags of faces of P whose dimensions are given by S. Many classical operations are special cases: S = {0} gives P itself, S = {n} its dual, S = {1} the medial polytope, and S = {0, &hellip;, n} the most truncated form. Applied to the regular polytopes, the construction produces many of the uniform polytopes, and it keeps the full symmetry group of P.</p>
-            <div class="image-gallery">
-                <figure class="wide">
-                    <img src="Research/fig/wythoff_cube.svg" alt="The seven Wythoffians of the cube" loading="lazy">
-                    <figcaption>The seven Wythoffians W(P,S) of the cube P.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/wythoff.html %}
             </div>
-            <p><strong>Embedding into hypercubes.</strong> A graph is L<sub>1</sub>-embeddable if its path metric, possibly multiplied by a constant, can be realized by points of a hypercube with the Hamming distance. This property has links with cuts, with optimization and with the design of interconnection networks, and only special graphs have it. With Michel Deza and Sergey Shpectorov, we studied the skeletons of the Wythoffians W(P,S) of the regular polytopes P. We obtained a list of the L<sub>1</sub>-embeddable ones that we conjecture to be complete, with explicit embeddings.</p>
-            <p><strong>Homology of the Mathieu groups.</strong> The homology of a finite group G is computed from a free resolution of Z over the group ring ZG, which is hard to build for large groups. With Graham Ellis, we used the Wythoff construction to build such a resolution. If G acts on a Wythoff polytope, the polytope gives a contractible cell complex with a G-action, whose cells have known stabilizers. Perturbation techniques, implemented in Ellis' GAP package HAP, then turn it into an explicit free ZG-resolution. This gave, for example, H<sub>3</sub>(M<sub>24</sub>, Z) = Z<sub>12</sub> and H<sub>5</sub>(M<sub>23</sub>, Z) = Z<sub>7</sub> for the Mathieu sporadic simple groups. The method applies in principle to any finite group with a good geometric action.</p>
-            <p class="read-more-links"><a href="Research/WythoffPolytopes.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Deza, M. Dutour Sikirić, S. Shpectorov, <em>Hypercube embedding of Wythoffians</em>, Ars Math. Contemp. 1 (2008) 99&ndash;111.<br>
-            M. Dutour Sikirić, G. Ellis, <em>Wythoff polytopes and low-dimensional homology of Mathieu groups</em>, J. Algebra 322 (2009) 4143&ndash;4150.</p>
         </details>
     </article>
 
@@ -294,19 +164,9 @@ description: >-
         <p>We investigated periodic cube packings and tilings in R<sup>n</sup>, proving extensibility theorems for dense packings. Our research provides lower bounds on non-extendible packings and explores their continuous parametrization.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>Consider packings of R<sup>d</sup> by translates of the cube [0,2[<sup>d</sup> placed at integer positions, and periodic under the lattice 4Z<sup>d</sup>. Equivalently, we pack cubes of side 2 in a torus of side 4, which has room for exactly 2<sup>d</sup> cubes. When all 2<sup>d</sup> cubes are present, the packing is a <em>tiling</em>. Such tilings are much more varied than the regular one, since layers can slide against each other. They are closely related to <em>Keller's conjecture</em>, which says that every tiling of space by unit cubes has two cubes that share a full face, true in low dimensions and false in high dimensions.</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/DRA1sel.jpg" alt="Non-extendible cube packing in dimension 3" loading="lazy">
-                    <figcaption>A non-extendible cube packing in dimension 3 with 4 translation classes of cubes.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/cube-tilings.html %}
             </div>
-            <p>A packing is <em>non-extendible</em> if no cube can be added to it, although it is not a tiling. Such packings exist: in dimension 3 there is a unique non-extendible packing with 4 cubes, half of the 8 that a tiling would have. With Yoshiaki Itoh and Alexei Poyarkov, we described cube packings by the cliques of an associated graph. This allowed us to classify them completely in dimension d &le; 4 and to generate random examples in higher dimension. We proved that a packing with more than 2<sup>d</sup> &minus; 3 cubes can always be extended to a tiling, and we gave a lower bound on the number of cubes of a non-extendible packing. We also studied the <em>second moment</em>, the average of the square of the number of cubes in a window of side 4, and proved that the regular tiling maximizes it.</p>
-            <p>This research grew out of the study of <em>random sequential packing</em>: put cubes one after another at random positions, as long as there is room. In one dimension this is Rényi's parking problem. In the discrete setting the result is always a non-extendible packing, and the question is how many cubes one expects. With Yoshiaki Itoh we also considered the continuous version, where the cubes can be placed at any real position. Surprisingly, it is still amenable to combinatorial methods: the packings are organized into finitely many combinatorial types, each with a continuous parametrization.</p>
-            <p>This work is collected in the book <em>Random Sequential Packing of Cubes</em> (World Scientific, 2011) with Yoshiaki Itoh. It was later continued with a study of the two-periodic cube tilings of R<sup>4</sup> with Magdalena Łysakowska.</p>
-            <p class="read-more-links"><a href="Research/CubeTilings.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour Sikirić, Y. Itoh, A. Poyarkov, <em>Cube packings, second moment and holes</em>, European J. Combin. 28 (2007) 715&ndash;725.<br>
-            M. Dutour Sikirić, Y. Itoh, <em>Combinatorial cube packings in the cube and the torus</em>, European J. Combin. 31 (2010) 517&ndash;534.</p>
         </details>
     </article>
 </section>
@@ -319,22 +179,9 @@ description: >-
         <p>We solved the lattice packing problem in dimension 9 by running Voronoi's algorithm to completion. We found all 2,237,251,040 perfect lattices in dimension 9, which shows that the Hermite constant &gamma;<sub>9</sub> equals 2.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>How densely can equal balls be packed in n-dimensional space, if their centers form a lattice? In dimension 2 the answer is the hexagonal packing, and in dimension 3 it is the familiar stack of cannonballs, as proved by Gauss. The density of the best lattice packing is measured by the <em>Hermite constant</em> &gamma;<sub>n</sub>. It was known only in dimensions 1 to 8, and in dimension 24 where the Leech lattice is optimal. Dimension 8 was settled in the 1930s by Blichfeldt, and no new dimension had been solved by this method since.</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/TwoDimCirclePacking.svg" alt="Square and hexagonal circle packings" loading="lazy">
-                    <figcaption>Dimension 2: the square and the hexagonal lattice packing.</figcaption>
-                </figure>
-                <figure class="small">
-                    <img src="Research/fig/canonball_packing.jpg" alt="Cannonball packing" loading="lazy">
-                    <figcaption>Dimension 3: the &ldquo;cannonball&rdquo; packing.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/hermite9.html %}
             </div>
-            <p>In 1908 Voronoi gave an algorithm that solves the problem in any dimension in finite time. He proved that a lattice of locally maximal density must be <em>perfect</em>: it is determined, up to scaling, by its set of minimal vectors. There are finitely many perfect lattices in each dimension, and Voronoi's algorithm enumerates them by walking on a graph whose vertices are the perfect forms. Each step requires the facets of a polyhedral cone. The difficulty is the size of the problem. There are 33 perfect lattices in dimension 7 and 10,916 in dimension 8 (see the polyhedral computation above), and dimension 9 was out of reach.</p>
-            <p>With Wessel van Woerden, we completed Voronoi's algorithm in dimension 9. There are exactly <strong>2,237,251,040</strong> perfect lattices up to similarity. Handling two billion objects required a highly optimized implementation: every new perfect form must be compared with the ones already found, and every step of the walk requires a polyhedral computation. As a corollary, the laminated lattice &Lambda;<sub>9</sub> gives the densest lattice packing in dimension 9, and the Hermite constant is <strong>&gamma;<sub>9</sub> = 2</strong>.</p>
-            <p>The classification also answers other questions. Extending a result of Watson from 1971, we determined the set of all possible kissing numbers of lattices in dimension 9: it is 2 &middot; {1, &hellip;, 91, 99, 120, &hellip;, 129, 136}. The complete list of perfect forms is available on Zenodo.</p>
-            <p class="read-more-links"><a href="Research/Hermite9.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour Sikirić, W. van Woerden, <em>The lattice packing problem in dimension 9 by Voronoi's algorithm</em>, <a href="https://arxiv.org/abs/2508.20719">arXiv:2508.20719</a> (2025). Data at <a href="https://zenodo.org/records/15707640">Zenodo:15707640</a>.</p>
         </details>
     </article>
 
@@ -343,23 +190,9 @@ description: >-
         <p>We designed specific algorithms for enumerating Delaunay polytopes in lattices under symmetry. These polytopes form tessellations dual to Voronoi partitions, which are essential in computational geometry and physics.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>A lattice L is a discrete subgroup of Euclidean space, such as the integer points Z<sup>n</sup> or the centers of the hexagonal packing. Two tessellations of space are attached to it. The <em>Voronoi cell</em> of a lattice point is the set of points of space closer to it than to any other lattice point; its translates tile space. A sphere is <em>empty</em> if no lattice point lies inside it, and the convex hull of the lattice points on an empty sphere is a <em>Delaunay polytope</em>. The Delaunay polytopes also tile space, and the two tessellations are dual: the vertices of the Voronoi cell are the centers of the empty spheres.</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/fig/lattice_delaunay.svg" alt="Delaunay triangulation of a 2D lattice" loading="lazy">
-                    <figcaption>Delaunay triangulation of a lattice, with one empty circle.</figcaption>
-                </figure>
-                <figure>
-                    <img src="Research/fig/lattice_voronoi.svg" alt="Voronoi tessellation of a 2D lattice" loading="lazy">
-                    <figcaption>The dual Voronoi tessellation.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/geometry-of-numbers.html %}
             </div>
-            <p>Many properties of a lattice are read from these tessellations. The <em>covering radius</em>, which measures how well the lattice approximates every point of space, is the largest radius of an empty sphere. The <em>quantizer constant</em>, which measures the mean error when the lattice is used to round signals, is an integral over the Voronoi cell. The facets of the Voronoi cell give the closest vector problem, central in cryptography.</p>
-            <p>With Achill Schürmann and Frank Vallentin, we studied the computation of the Voronoi cell. On the negative side, we proved that computing the number of vertices of the Voronoi cell of a lattice given by a basis is #P-hard. On the positive side, we designed an algorithm that enumerates the Delaunay polytopes up to the symmetries of the lattice, walking from a Delaunay polytope to its neighbors across their facets. It works well in dimension up to about 12 and for highly symmetric lattices, where the symmetry group reduces the work by large factors. Our implementation was much faster than the computer algebra systems of the time, and we used it to compute the Voronoi cells, covering radii and quantizer constants of famous lattices.</p>
-            <p>These tools became the basis for later work on Voronoi cells: the classification of the 110,244 combinatorial types of five-dimensional Voronoi cells of lattices, the coloring of the Voronoi tessellation, and the Voronoi conjecture on parallelohedra.</p>
-            <p class="read-more-links"><a href="Research/GeometryOfNumbers.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour Sikirić, A. Schürmann, F. Vallentin, <em>Complexity and algorithms for computing Voronoi cells of lattices</em>, Math. Comp. 78 (2009) 1713&ndash;1731.<br>
-            M. Dutour Sikirić, A. Garber, A. Schürmann, C. Waldmann, <em>The complete classification of five-dimensional Dirichlet-Voronoi polyhedra of translational lattices</em>, Acta Cryst. A 72 (2016) 673&ndash;683.</p>
         </details>
     </article>
 
@@ -368,32 +201,9 @@ description: >-
         <p>Building on Fedorov's 1885 classification of 3D lattice Delaunay polytopes, I enumerated them in dimension 6. This research identified 6,241 distinct combinatorial types.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>Which polytopes can be Delaunay polytopes of a lattice? Two Delaunay polytopes have the same <em>combinatorial type</em> if their face lattices are isomorphic. In dimension 2 there are only two types, the triangle and the quadrilateral (Dirichlet, 1860). In dimension 3, Fedorov found five types in 1885. The classification was then extended by Erdahl and Ryshkov to dimension 4 (19 types), and by Kononenko to dimension 5 (138 types).</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/FedorovListNaked.jpg" alt="Fedorov's list of three-dimensional Delaunay polytopes" loading="lazy">
-                    <figcaption>Fedorov&rsquo;s five types in dimension 3.</figcaption>
-                </figure>
-                <figure>
-                    <table class="count-table">
-                        <thead><tr><th>Dim</th><th>Types</th><th>Author</th></tr></thead>
-                        <tbody>
-                            <tr><td>2</td><td>2</td><td>Dirichlet (1860)</td></tr>
-                            <tr><td>3</td><td>5</td><td>Fedorov (1885)</td></tr>
-                            <tr><td>4</td><td>19</td><td>Erdahl&ndash;Ryshkov (1987)</td></tr>
-                            <tr><td>5</td><td>138</td><td>Kononenko (1997)</td></tr>
-                            <tr><td>6</td><td>6241</td><td>Dutour (2004)</td></tr>
-                        </tbody>
-                    </table>
-                    <figcaption>Number of combinatorial types of lattice Delaunay polytopes.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/combinatorial-types.html %}
             </div>
-            <p>I extended it to dimension 6 and found <strong>6,241</strong> combinatorial types. The jump from 138 shows how quickly the complexity grows, and this classification is not possible by hand.</p>
-            <p>The method uses the <em>hypermetric cone</em> HYP<sub>n+1</sub>. A semimetric d on n+1 points is <em>hypermetric</em> if it satisfies the inequalities &sum; b<sub>i</sub> b<sub>j</sub> d(i,j) &le; 0 for all integer vectors b with &sum; b<sub>i</sub> = 1. These inequalities define a polyhedral cone, and its faces are related to the Delaunay polytopes of n-dimensional lattices: a point of the cone gives an empty sphere, and the face containing it describes the Delaunay polytope. With Michel Deza, I had computed the full face structure of HYP<sub>7</sub>, a polyhedral computation with a large symmetry group, the symmetric group on 7 elements. Going through the faces of this cone and identifying the Delaunay polytopes they give, up to combinatorial isomorphism, produces the complete list in dimension 6.</p>
-            <p>The details page shows Fedorov's list and a table of the known counts.</p>
-            <p class="read-more-links"><a href="Research/CombinatorialTypes.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Deza, M. Dutour, <em>The hypermetric cone on seven vertices</em>, Experiment. Math. 12 (2003) 433&ndash;440.<br>
-            M. Dutour, <em>The six-dimensional Delaunay polytopes</em>, European J. Combin. 25 (2004) 535&ndash;548.</p>
         </details>
     </article>
 
@@ -402,19 +212,9 @@ description: >-
         <p>Perfect Delaunay polytopes correspond to the extreme rays of the Erdahl polyhedral cone. I constructed an infinite series of them and classified those of dimension 7, of which there are exactly two.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>A Delaunay polytope can usually be deformed: if the lattice is changed slightly, the polytope changes shape but stays a Delaunay polytope. A Delaunay polytope is called <em>perfect</em> (or <em>extreme</em>) if this is impossible, that is, if every affine transformation that keeps it a Delaunay polytope is an isometry composed with a homothety. Perfect Delaunay polytopes are rare and rigid objects. Apart from the segment, they exist only in dimension n &ge; 6. The first example is the Schläfli polytope 2<sub>21</sub>, with 27 vertices, in the root lattice E<sub>6</sub>; it is related to the 27 lines on a cubic surface. In dimension 7 there is the Gosset polytope 3<sub>21</sub> of E<sub>7</sub>. These polytopes play a role in the study of the covering maxima of lattices.</p>
-            <p>There are two polyhedral cones in this theory. In the hypermetric cone, extreme Delaunay polytopes correspond to extreme rays. In the <em>Erdahl cone</em> of degree 2 polynomials that are nonnegative on the integer points, perfect Delaunay polytopes correspond to extreme rays too. This makes them accessible to polyhedral computation.</p>
-            <p>My main results on these polytopes are:</p>
-            <ul>
-                <li>an <strong>infinite series</strong> ED<sub>n</sub> of extreme Delaunay polytopes, one in every dimension n &ge; 6, which generalizes the Schläfli polytope; before, examples were known only in a few dimensions;</li>
-                <li>an <strong>adjacency method</strong> that finds new extreme Delaunay polytopes from a known one, by moving along the hypermetric cone and solving closest vector problems. It found 27 extreme Delaunay polytopes in dimension 8;</li>
-                <li>a <strong>complete classification in dimension 7</strong>, with a general enumeration algorithm based on the Erdahl cone: there are exactly two perfect Delaunay polytopes, 3<sub>21</sub> and the Erdahl&ndash;Rybnikov polytope. From this list we also obtained the 11 types of Delaunay simplices in dimension 7;</li>
-                <li>with Konstantin Rybnikov, perfect Delaunay polytopes derived from the Leech lattice, and perfect Delaunay polytopes that do not generate their lattice.</li>
-            </ul>
-            <p class="read-more-links"><a href="Research/PerfectDelaunay.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">M. Dutour, <em>Infinite serie of extreme Delaunay polytopes</em>, European J. Combin. 26 (2005) 129&ndash;132.<br>
-            M. Dutour Sikirić, <em>The seven dimensional perfect Delaunay polytopes and Delaunay simplices</em>, Canad. J. Math. 69 (2017) 1143&ndash;1168.<br>
-            M. Dutour Sikirić, K. Rybnikov, <em>Delaunay polytopes derived from the Leech lattice</em>, J. Théor. Nombres Bordeaux 26 (2014) 85&ndash;101.</p>
+            <div class="entry-body">
+{% include entries/perfect-delaunay.html %}
+            </div>
         </details>
     </article>
 
@@ -423,20 +223,9 @@ description: >-
         <p>Using semidefinite programming, we optimized covering densities over L-type domains. This allowed us to find record lattice coverings in dimensions 9 through 15 and classify thin algebraic number fields.</p>
         <details class="read-more">
             <summary><span class="more">…(Read More)</span><span class="less">(Read Less)</span></summary>
-            <p>The <em>covering problem</em> is the opposite of the packing problem. We cover space with balls of equal radius, so that every point lies in at least one ball, and want the thinnest covering, the one where points are covered as few times as possible on average. For lattice coverings, the radius needed is the covering radius of the lattice, which is the largest radius of its empty spheres. The problem is solved in dimension 2 and 3, and the best lattice covering is the lattice A<sub>n</sub><sup>*</sup> up to dimension 5. In higher dimensions only records are known.</p>
-            <div class="image-gallery">
-                <figure>
-                    <img src="Research/fig/lattice_covering.svg" alt="Covering of the plane by disks centered at lattice points" loading="lazy">
-                    <figcaption>Disks of radius the covering radius cover the plane; the blue circle marks a deep hole.</figcaption>
-                </figure>
+            <div class="entry-body">
+{% include entries/lattice-covering.html %}
             </div>
-            <p>Voronoi's <em>second reduction theory</em> gives the structure of the problem. The space of positive definite quadratic forms, that is of lattices up to isometry, is divided into polyhedral cones called <em>L-type domains</em>. All the lattices of one domain have the same Delaunay tessellation. Inside one L-type domain, the covering density can be computed from the Delaunay polytopes, and minimizing it is a convex problem that can be solved by <em>semidefinite programming</em>. If all L-type domains are known, solving each of these problems solves the lattice covering problem. In practice the number of domains explodes, and this works only up to dimension 5.</p>
-            <p>With Achill Schürmann and Frank Vallentin, we extended Voronoi's theory to quadratic forms in a linear subspace of the space of all forms, for example the forms that have a prescribed symmetry group. In such a subspace there are much fewer L-type domains, and the theory can be applied in much higher dimensions. Searching in suitable subspaces, we found new best known lattice coverings in all dimensions from 9 to 15.</p>
-            <p>The same theory applied to number theory: the subspaces given by totally real number fields allowed us to complete the classification of the totally real <em>thin</em> algebraic number fields, started by Bayer-Fluckiger and Nebe.</p>
-            <p>Related work continues today. With Sven Ahrend, we found a periodic point set that is not a lattice and beats the best lattice for the packing-covering constant in dimension five.</p>
-            <p class="read-more-links"><a href="Research/LatticeCovering.html">Details page &rarr;</a></p>
-            <p class="read-more-refs">A. Schürmann, M. Dutour Sikirić, F. Vallentin, <em>A generalization of Voronoi's reduction theory and its application</em>, Duke Math. J. 142 (2008) 127&ndash;164.<br>
-            S. Ahrend, M. Dutour Sikirić, <em>A non-lattice periodic point set beating the optimal lattice packing-covering constant in dimension five</em>, arXiv:2609.30513.</p>
         </details>
     </article>
 </section>

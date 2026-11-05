@@ -1,0 +1,24 @@
+<p>Which polytopes can be Delaunay polytopes of a lattice? Two Delaunay polytopes have the same <em>combinatorial type</em> if their face lattices are isomorphic. In dimension 2 there are only two types, the triangle and the quadrilateral (Dirichlet, 1860). In dimension 3, Fedorov found five types in 1885. The classification was then extended by Erdahl and Ryshkov to dimension 4 (19 types), and by Kononenko to dimension 5 (138 types).</p>
+<div class="image-gallery">
+    <figure>
+        <img src="{{ '/Research/FedorovListNaked.jpg' | relative_url }}" alt="Fedorov's list of three-dimensional Delaunay polytopes" loading="lazy">
+        <figcaption>Fedorov&rsquo;s five types in dimension 3.</figcaption>
+    </figure>
+    <figure>
+        <table class="count-table">
+            <thead><tr><th>Dim</th><th>Types</th><th>Author</th></tr></thead>
+            <tbody>
+                <tr><td>2</td><td>2</td><td>Dirichlet (1860)</td></tr>
+                <tr><td>3</td><td>5</td><td>Fedorov (1885)</td></tr>
+                <tr><td>4</td><td>19</td><td>Erdahl&ndash;Ryshkov (1987)</td></tr>
+                <tr><td>5</td><td>138</td><td>Kononenko (1997)</td></tr>
+                <tr><td>6</td><td>6241</td><td>Dutour (2004)</td></tr>
+            </tbody>
+        </table>
+        <figcaption>Number of combinatorial types of lattice Delaunay polytopes.</figcaption>
+    </figure>
+</div>
+<p>I extended it to dimension 6 and found <strong>6,241</strong> combinatorial types. The jump from 138 shows how quickly the complexity grows, and this classification is not possible by hand.</p>
+<p>The method uses the <em>hypermetric cone</em> HYP<sub>n+1</sub>. A semimetric d on n+1 points is <em>hypermetric</em> if it satisfies the inequalities &sum; b<sub>i</sub> b<sub>j</sub> d(i,j) &le; 0 for all integer vectors b with &sum; b<sub>i</sub> = 1. These inequalities define a polyhedral cone, and its faces are related to the Delaunay polytopes of n-dimensional lattices: a point of the cone gives an empty sphere, and the face containing it describes the Delaunay polytope. With Michel Deza, I had computed the full face structure of HYP<sub>7</sub>, a polyhedral computation with a large symmetry group, the symmetric group on 7 elements. Going through the faces of this cone and identifying the Delaunay polytopes they give, up to combinatorial isomorphism, produces the complete list in dimension 6.</p>
+<p class="read-more-refs">M. Deza, M. Dutour, <em>The hypermetric cone on seven vertices</em>, Experiment. Math. 12 (2003) 433&ndash;440.<br>
+M. Dutour, <em>The six-dimensional Delaunay polytopes</em>, European J. Combin. 25 (2004) 535&ndash;548.</p>

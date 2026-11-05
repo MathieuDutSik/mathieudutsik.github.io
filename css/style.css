@@ -195,60 +195,76 @@ details.read-more[open] > summary {
     margin-bottom: 8px;
 }
 
-.research-item-summary details.read-more p {
+.entry-body p {
     margin: 0 0 12px;
     color: var(--text-color);
 }
 
-.research-item-summary details.read-more ul {
+.entry-body ul {
     margin: 0 0 12px;
 }
 
-/* Figures inside an expanded entry: a common height for a row of pictures,
+/* A Portfolio entry on its own page (Research/*.html). */
+.entry-back {
+    margin: 0 0 4px;
+    font-size: 0.95rem;
+}
+
+.entry-page h2 {
+    margin-top: 0;
+}
+
+.entry-page .entry-lead {
+    color: #555;
+    font-size: 1.05rem;
+    margin: 0 0 16px;
+}
+
+/* Figures inside an entry: a common height for a row of pictures,
    never enlarged past their natural size; "wide" figures take the full width. */
-details.read-more .image-gallery {
+.entry-body .image-gallery {
     margin: 4px 0 12px;
     align-items: flex-start;
 }
 
-details.read-more .image-gallery figure {
+.entry-body .image-gallery figure {
     max-width: 100%;
 }
 
-details.read-more .image-gallery img {
+.entry-body .image-gallery img {
     max-height: 240px;
     width: auto;
 }
 
-details.read-more .image-gallery figure.small figcaption {
+.entry-body .image-gallery figure.small figcaption {
     max-width: 180px;
 }
 
-details.read-more .image-gallery figure.small img {
+.entry-body .image-gallery figure.small img {
     max-height: 150px;
 }
 
-details.read-more .image-gallery figure.wide {
+.entry-body .image-gallery figure.wide {
     width: 100%;
 }
 
-details.read-more .image-gallery figure.wide img {
+.entry-body .image-gallery figure.wide img {
     max-height: none;
     width: 100%;
     max-width: 660px;
 }
 
-details.read-more .image-gallery figcaption {
+.entry-body .image-gallery figcaption {
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
 }
 
-details.read-more .image-gallery figure.wide figcaption {
+.entry-body .image-gallery figure.wide figcaption {
     max-width: none;
 }
 
-.research-item-summary details.read-more p.gallery-caption {
+.entry-body p.gallery-caption {
     margin-top: -6px;
     text-align: center;
     font-size: 0.85rem;
@@ -277,7 +293,7 @@ details.read-more .image-gallery figure.wide figcaption {
     text-align: right;
 }
 
-.research-item-summary details.read-more p.read-more-refs {
+.entry-body p.read-more-refs {
     font-size: 0.9rem;
     color: #555;
     border-left: 3px solid var(--border-color);

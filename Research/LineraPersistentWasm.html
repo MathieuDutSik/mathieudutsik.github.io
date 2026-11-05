@@ -1,0 +1,18 @@
+---
+layout: default
+title: Persistent WebAssembly instances in Linera
+description: >-
+  In the Linera protocol, every message, operation or event stream processed
+  by a contract used to instantiate the contract, run it and finalize it.
+  This pull request keeps the contract instances alive for the whole block,
+  and uses snapshots of the running Wasm machine to roll back a failed
+  transaction.
+---
+<article class="entry-page">
+    <p class="entry-back"><a href="{{ '/Portfolio.html#linera-persistent-wasm' | relative_url }}">&larr; Portfolio</a></p>
+    <h2>Persistent WebAssembly instances in Linera</h2>
+    <p class="entry-lead">In the Linera protocol, every message, operation or event stream processed by a contract used to instantiate the contract, run it and finalize it. This <a href="https://github.com/linera-io/linera-protocol/pull/6032">pull request</a> keeps the contract instances alive for the whole block, and uses snapshots of the running Wasm machine to roll back a failed transaction.</p>
+    <div class="entry-body">
+{% include entries/linera-persistent-wasm.html %}
+    </div>
+</article>

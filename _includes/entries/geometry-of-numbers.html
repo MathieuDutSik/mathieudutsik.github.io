@@ -1,0 +1,16 @@
+<p>A lattice L is a discrete subgroup of Euclidean space, such as the integer points Z<sup>n</sup> or the centers of the hexagonal packing. Two tessellations of space are attached to it. The <em>Voronoi cell</em> of a lattice point is the set of points of space closer to it than to any other lattice point; its translates tile space. A sphere is <em>empty</em> if no lattice point lies inside it, and the convex hull of the lattice points on an empty sphere is a <em>Delaunay polytope</em>. The Delaunay polytopes also tile space, and the two tessellations are dual: the vertices of the Voronoi cell are the centers of the empty spheres.</p>
+<div class="image-gallery">
+    <figure>
+        <img src="{{ '/Research/fig/lattice_delaunay.svg' | relative_url }}" alt="Delaunay triangulation of a 2D lattice" loading="lazy">
+        <figcaption>Delaunay triangulation of a lattice, with one empty circle.</figcaption>
+    </figure>
+    <figure>
+        <img src="{{ '/Research/fig/lattice_voronoi.svg' | relative_url }}" alt="Voronoi tessellation of a 2D lattice" loading="lazy">
+        <figcaption>The dual Voronoi tessellation.</figcaption>
+    </figure>
+</div>
+<p>Many properties of a lattice are read from these tessellations. The <em>covering radius</em>, which measures how well the lattice approximates every point of space, is the largest radius of an empty sphere. The <em>quantizer constant</em>, which measures the mean error when the lattice is used to round signals, is an integral over the Voronoi cell. The facets of the Voronoi cell give the closest vector problem, central in cryptography.</p>
+<p>With Achill Schürmann and Frank Vallentin, we studied the computation of the Voronoi cell. On the negative side, we proved that computing the number of vertices of the Voronoi cell of a lattice given by a basis is #P-hard. On the positive side, we designed an algorithm that enumerates the Delaunay polytopes up to the symmetries of the lattice, walking from a Delaunay polytope to its neighbors across their facets. It works well in dimension up to about 12 and for highly symmetric lattices, where the symmetry group reduces the work by large factors. Our implementation was much faster than the computer algebra systems of the time, and we used it to compute the Voronoi cells, covering radii and quantizer constants of famous lattices.</p>
+<p>These tools became the basis for later work on Voronoi cells: the classification of the 110,244 combinatorial types of five-dimensional Voronoi cells of lattices, the coloring of the Voronoi tessellation, and the Voronoi conjecture on parallelohedra.</p>
+<p class="read-more-refs">M. Dutour Sikirić, A. Schürmann, F. Vallentin, <em>Complexity and algorithms for computing Voronoi cells of lattices</em>, Math. Comp. 78 (2009) 1713&ndash;1731.<br>
+M. Dutour Sikirić, A. Garber, A. Schürmann, C. Waldmann, <em>The complete classification of five-dimensional Dirichlet-Voronoi polyhedra of translational lattices</em>, Acta Cryst. A 72 (2016) 673&ndash;683.</p>

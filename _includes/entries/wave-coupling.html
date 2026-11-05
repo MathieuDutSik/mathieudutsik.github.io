@@ -1,0 +1,24 @@
+<p>The ocean circulation and the surface waves are usually computed by two different models. A circulation model such as <a href="https://www.myroms.org/">ROMS</a> solves the primitive equations for currents, temperature and salinity. A spectral wave model such as WWM (Wind Wave Model, developed by Aron Roland and myself) evolves the energy spectrum of the waves, for every frequency and direction, under wind forcing, propagation, breaking and bottom friction. Each model acts on the other, but in most operational systems they run separately.</p>
+<div class="image-gallery">
+    <figure class="small">
+        <img src="{{ '/Research/fig/TheWindB.jpg' | relative_url }}" alt="Wind field over the Adriatic" loading="lazy">
+        <figcaption>Wind.</figcaption>
+    </figure>
+    <figure class="small">
+        <img src="{{ '/Research/fig/TheCurrentB.jpg' | relative_url }}" alt="Surface current of the Adriatic" loading="lazy">
+        <figcaption>Surface current.</figcaption>
+    </figure>
+    <figure class="small">
+        <img src="{{ '/Research/fig/HwaveB.jpg' | relative_url }}" alt="Significant wave height of the coupled model" loading="lazy">
+        <figcaption>Significant wave height H<sub>s</sub>, coupled model.</figcaption>
+    </figure>
+    <figure class="small">
+        <img src="{{ '/Research/fig/DiffHwaveB.jpg' | relative_url }}" alt="Difference of significant wave height between coupled and uncoupled runs" loading="lazy">
+        <figcaption>Difference of H<sub>s</sub>, coupled minus uncoupled (cm).</figcaption>
+    </figure>
+</div>
+<p>In a coupled system the two models exchange fields during the run. The circulation model gives the wave model the currents and the water level: the waves are refracted and Doppler-shifted by the currents, and their speed depends on the depth. The wave model gives back the radiation stress and the Stokes drift, which drive currents near the coast, and changes the stress that the wind exerts on the sea surface and the friction on the bottom. I implemented this two-way coupling between ROMS and WWM, with the exchange of fields between the two parallel codes and their different grids.</p>
+<p>The Adriatic Sea is a good test. In winter it is struck by the <em>Bura</em> (bora), a cold and violent wind from the north-east that comes down the Dinaric mountains in narrow jets. These jets create strong currents and steep, short waves over a small sea. The hindcast of these events showed that the coupling reduces the significant wave height inside the Bura jets, where waves and currents run in the same direction, and increases it in front of the Istrian coast; the differences reach about 10&nbsp;cm. Such changes matter for storm forecasts, for coastal erosion and for shipping.</p>
+<p>This work was continued in several directions: the operational wave forecast of the Adriatic, the modelling of North Atlantic storms, and an implicit, domain-decomposed parallel scheme for the wave model WAVEWATCH&nbsp;III, used for large-scale hurricane modelling.</p>
+<p class="read-more-refs">M. Dutour Sikirić, A. Roland, I. Tomažić, I. Janeković, <em>Hindcasting the Adriatic Sea near-surface motions with a coupled wave-current model</em>, J. Geophys. Res. Oceans 117 (2012) C00J36.<br>
+M. Dutour Sikirić, A. Roland, I. Janeković, I. Tomažić, M. Kuzmić, <em>Coupling of the Regional Ocean Modelling System and Wind Wave Model</em>, Ocean Modelling 72 (2013) 59&ndash;73.</p>

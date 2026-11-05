@@ -1,0 +1,17 @@
+<p>Walk along the edges of a plane graph, turning alternately left and right at every vertex. The circuit obtained is a <em>zigzag</em>: any two consecutive edges belong to a common face, but no three do. In a 4-valent graph one can instead go straight on at every vertex, which gives a <em>central circuit</em>. Every edge lies on exactly two zigzags (or on one central circuit), so these circuits form a canonical family of curves in the graph. They encode a lot of its structure, which makes them useful for the plane graphs of chemistry, such as fullerenes.</p>
+<div class="image-gallery">
+    <figure>
+        <img src="{{ '/Research/SimpleCC32_D4h_273thi.png' | relative_url }}" alt="Central circuit in a 4-valent plane graph" loading="lazy">
+        <figcaption>A central circuit in a 4-valent plane graph.</figcaption>
+    </figure>
+    <figure>
+        <img src="{{ '/Research/Tight92_Thsec.png' | relative_url }}" alt="Zigzag in a 3-valent plane graph" loading="lazy">
+        <figcaption>A zigzag in a 3-valent plane graph.</figcaption>
+    </figure>
+</div>
+<p>The <em>z-vector</em> of a graph lists the lengths of its zigzags and the way they intersect. With Michel Deza, we studied the z-vectors of 3-valent plane graphs with faces of size at most 6, and of 4-valent plane graphs with faces of size at most 4. A <em>railroad</em> is a circuit of hexagons (or squares) in which every face is adjacent to its two neighbors on opposite edges: it is a strip bounded by two parallel zigzags. A graph without railroad is <em>tight</em>. We completely described the zigzag structure of the (3,6)-spheres; for the (4,6)-spheres we described the possible symmetry groups, classified the tight graphs whose zigzags are simple, and proved that a tight graph has at most 9 zigzags. We also classified the graphs of these classes that are 2-connected but not 3-connected, and gave all possible symmetry groups. Railroads also gave rise to new extremal problems and to knot-like phenomena in fullerenes.</p>
+<p>The <em>Goldberg&ndash;Coxeter construction</em> takes a 3- or 4-valent plane graph G and a pair of integers (k,l), and produces a larger graph GC<sub>k,l</sub>(G) with the same symmetry. It is the construction behind geodesic domes and the icosahedral capsids of viruses. We computed the zigzag and central circuit structure of GC<sub>k,l</sub>(G) from that of G. For this we introduced a product on pairs (k,l) and a finite index subgroup of SL<sub>2</sub>(Z), which together predict how the circuits split.</p>
+<p>These results are collected in the book <em>Geometric Structure of Chemistry-relevant Graphs: zigzags and central circuits</em> (Springer, 2015), with Michel Deza and Mikhail Shtogrin.</p>
+<p class="read-more-refs">M. Dutour, M. Deza, <em>Goldberg-Coxeter construction for 3- or 4-valent plane graphs</em>, Electron. J. Combin. 11 (2004) R20.<br>
+M. Deza, M. Dutour, <em>Zigzag structure of simple two-faced polyhedra</em>, Combin. Probab. Comput. 14 (2005) 31&ndash;57.<br>
+M. Deza, M. Dutour, P. Fowler, <em>Zigzags, railroads, and knots in fullerenes</em>, J. Chem. Inf. Comput. Sci. 44 (2004) 1282&ndash;1293.</p>
