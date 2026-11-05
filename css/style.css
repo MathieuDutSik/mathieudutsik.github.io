@@ -220,10 +220,12 @@ details.read-more .image-gallery img {
     width: auto;
 }
 
-details.read-more .image-gallery.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-content: center;
+details.read-more .image-gallery figure.small figcaption {
+    max-width: 180px;
+}
+
+details.read-more .image-gallery figure.small img {
+    max-height: 150px;
 }
 
 details.read-more .image-gallery figure.wide {
@@ -262,8 +264,17 @@ details.read-more .image-gallery figure.wide figcaption {
 .count-table th,
 .count-table td {
     padding: 3px 12px;
-    border-bottom: 1px solid var(--border-color);
+    border: 1px solid #999;
     text-align: left;
+}
+
+.count-table th {
+    background: var(--nav-bg);
+}
+
+.count-table td:nth-child(-n+2),
+.count-table th:nth-child(-n+2) {
+    text-align: right;
 }
 
 .research-item-summary details.read-more p.read-more-refs {
