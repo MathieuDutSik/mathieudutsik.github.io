@@ -31,9 +31,8 @@ body {
 
 header {
     text-align: center;
-    padding: 40px 0 20px;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 20px;
+    padding: 8px 0 12px;
+    margin-bottom: 12px;
 }
 
 header h1 {
@@ -62,7 +61,6 @@ header::after {
 nav {
     background-color: var(--nav-bg);
     padding: 10px 0;
-    border-bottom: 1px solid var(--border-color);
 }
 
 nav ul {
@@ -660,9 +658,13 @@ footer {
     header img.profile-photo {
         float: none;
         display: block;
-        margin: 0 auto 20px;
+        margin: 0 auto 8px;
     }
-    
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
     header {
         text-align: center;
     }
