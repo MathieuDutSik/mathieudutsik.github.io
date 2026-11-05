@@ -394,19 +394,20 @@ nav.toc h3 {
 }
 
 /* Two columns, filled top to bottom, each as wide as its longest entry. */
-nav.toc ol {
+nav.toc ul {
     margin: 0;
-    padding-left: 24px;
+    padding-left: 0;
+    list-style: none;
     display: grid;
     grid-template-rows: repeat(3, auto);
     grid-auto-flow: column;
     grid-auto-columns: auto;
     justify-content: start;
-    column-gap: 56px;
+    gap: 4px 56px;
 }
 
 @media (max-width: 600px) {
-    nav.toc ol {
+    nav.toc ul {
         display: block;
     }
 }
