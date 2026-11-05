@@ -44,7 +44,7 @@ header h1 {
 
 header img.profile-photo {
     float: right;
-    max-width: 150px;
+    max-width: 50px;
     height: auto;
     border-radius: 8px;
     margin-left: 20px;
