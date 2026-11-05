@@ -204,6 +204,68 @@ details.read-more[open] > summary {
     margin: 0 0 12px;
 }
 
+/* Figures inside an expanded entry: a common height for a row of pictures,
+   never enlarged past their natural size; "wide" figures take the full width. */
+details.read-more .image-gallery {
+    margin: 4px 0 12px;
+    align-items: flex-start;
+}
+
+details.read-more .image-gallery figure {
+    max-width: 100%;
+}
+
+details.read-more .image-gallery img {
+    max-height: 240px;
+    width: auto;
+}
+
+details.read-more .image-gallery.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+}
+
+details.read-more .image-gallery figure.wide {
+    width: 100%;
+}
+
+details.read-more .image-gallery figure.wide img {
+    max-height: none;
+    width: 100%;
+    max-width: 660px;
+}
+
+details.read-more .image-gallery figcaption {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+details.read-more .image-gallery figure.wide figcaption {
+    max-width: none;
+}
+
+.research-item-summary details.read-more p.gallery-caption {
+    margin-top: -6px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.count-table {
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 0 auto;
+}
+
+.count-table th,
+.count-table td {
+    padding: 3px 12px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
 .research-item-summary details.read-more p.read-more-refs {
     font-size: 0.9rem;
     color: #555;

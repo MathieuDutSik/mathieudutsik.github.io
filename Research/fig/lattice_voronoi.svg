@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+<rect width="300" height="200" fill="#fff"/>
+<defs><clipPath id="c"><rect x="0" y="0" width="300" height="200"/></clipPath></defs>
+<g clip-path="url(#c)">
+<polygon points="-67.00,118.05 -26.70,134.65 -5.00,118.05 -5.00,81.95 -45.30,65.35 -67.00,81.95" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="-45.30,65.35 -5.00,81.95 16.70,65.35 16.70,29.25 -23.60,12.65 -45.30,29.25" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="-23.60,12.65 16.70,29.25 38.40,12.65 38.40,-23.45 -1.90,-40.05 -23.60,-23.45" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="-48.40,223.45 -8.10,240.05 13.60,223.45 13.60,187.35 -26.70,170.75 -48.40,187.35" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="-26.70,170.75 13.60,187.35 35.30,170.75 35.30,134.65 -5.00,118.05 -26.70,134.65" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="-5.00,118.05 35.30,134.65 57.00,118.05 57.00,81.95 16.70,65.35 -5.00,81.95" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="16.70,65.35 57.00,81.95 78.70,65.35 78.70,29.25 38.40,12.65 16.70,29.25" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="38.40,12.65 78.70,29.25 100.40,12.65 100.40,-23.45 60.10,-40.05 38.40,-23.45" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="13.60,223.45 53.90,240.05 75.60,223.45 75.60,187.35 35.30,170.75 13.60,187.35" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="35.30,170.75 75.60,187.35 97.30,170.75 97.30,134.65 57.00,118.05 35.30,134.65" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="57.00,118.05 97.30,134.65 119.00,118.05 119.00,81.95 78.70,65.35 57.00,81.95" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="78.70,65.35 119.00,81.95 140.70,65.35 140.70,29.25 100.40,12.65 78.70,29.25" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="100.40,12.65 140.70,29.25 162.40,12.65 162.40,-23.45 122.10,-40.05 100.40,-23.45" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="75.60,223.45 115.90,240.05 137.60,223.45 137.60,187.35 97.30,170.75 75.60,187.35" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="97.30,170.75 137.60,187.35 159.30,170.75 159.30,134.65 119.00,118.05 97.30,134.65" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="119.00,118.05 159.30,134.65 181.00,118.05 181.00,81.95 140.70,65.35 119.00,81.95" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="140.70,65.35 181.00,81.95 202.70,65.35 202.70,29.25 162.40,12.65 140.70,29.25" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="162.40,12.65 202.70,29.25 224.40,12.65 224.40,-23.45 184.10,-40.05 162.40,-23.45" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="137.60,223.45 177.90,240.05 199.60,223.45 199.60,187.35 159.30,170.75 137.60,187.35" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="159.30,170.75 199.60,187.35 221.30,170.75 221.30,134.65 181.00,118.05 159.30,134.65" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="181.00,118.05 221.30,134.65 243.00,118.05 243.00,81.95 202.70,65.35 181.00,81.95" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="202.70,65.35 243.00,81.95 264.70,65.35 264.70,29.25 224.40,12.65 202.70,29.25" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="224.40,12.65 264.70,29.25 286.40,12.65 286.40,-23.45 246.10,-40.05 224.40,-23.45" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="199.60,223.45 239.90,240.05 261.60,223.45 261.60,187.35 221.30,170.75 199.60,187.35" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="221.30,170.75 261.60,187.35 283.30,170.75 283.30,134.65 243.00,118.05 221.30,134.65" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="243.00,118.05 283.30,134.65 305.00,118.05 305.00,81.95 264.70,65.35 243.00,81.95" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="264.70,65.35 305.00,81.95 326.70,65.35 326.70,29.25 286.40,12.65 264.70,29.25" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="286.40,12.65 326.70,29.25 348.40,12.65 348.40,-23.45 308.10,-40.05 286.40,-23.45" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="261.60,223.45 301.90,240.05 323.60,223.45 323.60,187.35 283.30,170.75 261.60,187.35" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="283.30,170.75 323.60,187.35 345.30,170.75 345.30,134.65 305.00,118.05 283.30,134.65" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="305.00,118.05 345.30,134.65 367.00,118.05 367.00,81.95 326.70,65.35 305.00,81.95" fill="none" stroke="#bbb" stroke-width="1.2"/>
+<polygon points="119.00,118.05 159.30,134.65 181.00,118.05 181.00,81.95 140.70,65.35 119.00,81.95" fill="#003366" fill-opacity="0.15" stroke="#003366" stroke-width="2.4"/>
+<circle cx="-36.00" cy="100.00" r="4" fill="#333"/>
+<circle cx="-14.30" cy="47.30" r="4" fill="#333"/>
+<circle cx="7.40" cy="-5.40" r="4" fill="#333"/>
+<circle cx="-17.40" cy="205.40" r="4" fill="#333"/>
+<circle cx="4.30" cy="152.70" r="4" fill="#333"/>
+<circle cx="26.00" cy="100.00" r="4" fill="#333"/>
+<circle cx="47.70" cy="47.30" r="4" fill="#333"/>
+<circle cx="69.40" cy="-5.40" r="4" fill="#333"/>
+<circle cx="44.60" cy="205.40" r="4" fill="#333"/>
+<circle cx="66.30" cy="152.70" r="4" fill="#333"/>
+<circle cx="88.00" cy="100.00" r="4" fill="#333"/>
+<circle cx="109.70" cy="47.30" r="4" fill="#333"/>
+<circle cx="131.40" cy="-5.40" r="4" fill="#333"/>
+<circle cx="106.60" cy="205.40" r="4" fill="#333"/>
+<circle cx="128.30" cy="152.70" r="4" fill="#333"/>
+<circle cx="150.00" cy="100.00" r="4" fill="#333"/>
+<circle cx="171.70" cy="47.30" r="4" fill="#333"/>
+<circle cx="193.40" cy="-5.40" r="4" fill="#333"/>
+<circle cx="168.60" cy="205.40" r="4" fill="#333"/>
+<circle cx="190.30" cy="152.70" r="4" fill="#333"/>
+<circle cx="212.00" cy="100.00" r="4" fill="#333"/>
+<circle cx="233.70" cy="47.30" r="4" fill="#333"/>
+<circle cx="255.40" cy="-5.40" r="4" fill="#333"/>
+<circle cx="230.60" cy="205.40" r="4" fill="#333"/>
+<circle cx="252.30" cy="152.70" r="4" fill="#333"/>
+<circle cx="274.00" cy="100.00" r="4" fill="#333"/>
+<circle cx="295.70" cy="47.30" r="4" fill="#333"/>
+<circle cx="317.40" cy="-5.40" r="4" fill="#333"/>
+<circle cx="292.60" cy="205.40" r="4" fill="#333"/>
+<circle cx="314.30" cy="152.70" r="4" fill="#333"/>
+<circle cx="336.00" cy="100.00" r="4" fill="#333"/>
+</g>
+<rect x="0.5" y="0.5" width="299" height="199" fill="none" stroke="#bbb" stroke-dasharray="4 3"/>
+</svg>
