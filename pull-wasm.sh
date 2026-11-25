@@ -8,8 +8,9 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-SRC_DEFAULT="$(cd ../../GITwasm_polyhedral/wasm_polyhedral && pwd)"
-SRC="${WASM_POLYHEDRAL:-$SRC_DEFAULT}"
+# The default is only resolved when the env var is unset: under `set -e` a
+# failing `cd` would otherwise abort the script even with an override.
+SRC="${WASM_POLYHEDRAL:-$(cd ../../GITwasm_polyhedral/wasm_polyhedral && pwd)}"
 
 if [ ! -d "$SRC/dist" ]; then
     echo "wasm_polyhedral/dist/ not found at $SRC" >&2

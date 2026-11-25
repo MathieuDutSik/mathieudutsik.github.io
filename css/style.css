@@ -596,6 +596,22 @@ details.tool-card[open] > *:last-child {
     vertical-align: top;
 }
 
+/* Packing / covering tool: the row labels v_1, v_2, ... of the vector grid,
+   and the expandable lists under the summary table. */
+.polynorm-row-label {
+    align-self: center;
+    padding-right: 4px;
+    font-style: italic;
+}
+
+.copos-result details {
+    margin: 6px 0;
+}
+
+.copos-result details > summary {
+    cursor: pointer;
+}
+
 /* Repo list (Programs & Data: polyhedral ecosystem section) */
 .repo-list {
     margin: 12px 0 0;

@@ -4,7 +4,8 @@ title: Interactive Tools
 description: >-
   Interactive in-browser tools by Mathieu Dutour Sikirić — copositivity tests,
   copositive factorization, shortest-vector realizability and automorphism
-  groups, and Gram-matrix canonicalization. Run locally in your browser via
+  groups, Gram-matrix canonicalization, and the packing and covering
+  densities of a polytope. Run locally in your browser via
   WebAssembly with exact arbitrary-precision arithmetic.
 ---
 <p>Computations on this page run locally in your browser. Results are exact.
@@ -206,6 +207,79 @@ AM1 AM2 ... AMN</pre>
     <div class="copos-result" aria-live="polite"></div>
 </details>
 
+<details class="tool-card polynorm-tool" id="polytope-packing-covering">
+    <summary>Packing and covering density of a polytope</summary>
+
+    <p>For a full-dimensional polytope P ⊂ ℝ<sup>n</sup>, compute the
+    <em>packing scalar</em> α, the largest α such that the translates
+    αP + z, z ∈ ℤ<sup>n</sup>, have pairwise disjoint interiors, and the
+    <em>covering radius</em> μ, the smallest μ such that the translates
+    μP + z cover ℝ<sup>n</sup>. The corresponding densities are</p>
+
+    <pre>packing density  = α<sup>n</sup> vol(P)  ≤ 1
+covering density = μ<sup>n</sup> vol(P)  ≥ 1</pre>
+
+    <p>P need not be centrally symmetric. The tool also returns the contact
+    vectors (the z for which αP and αP + z touch), a last covered point p and
+    the lattice points on the boundary of the empty translate p − μP.</p>
+
+    <p>Enter one vector v<sub>i</sub> per row. The polytope is</p>
+    <ul>
+        <li><strong>Vertices</strong>: P = conv(v<sub>1</sub>, …, v<sub>M</sub>);</li>
+        <li><strong>Inequalities</strong>: P = {x : v<sub>i</sub> · x ≤ 1 for all i},
+            which is bounded when 0 is in the interior of conv(v<sub>1</sub>, …, v<sub>M</sub>);</li>
+        <li><strong>Zonotope</strong>: P = v<sub>1</sub>[0,1] + … + v<sub>M</sub>[0,1].</li>
+    </ul>
+
+    <p>The covering radius is found by an exact branch and bound, which can
+    take a while from dimension 3 on; the computation runs in the background
+    and can be stopped.</p>
+
+    <div class="copos-controls">
+        <label>
+            Polytope given by
+            <select class="polynorm-input-type">
+                <option value="vertices">Vertices (convex hull)</option>
+                <option value="inequalities">Inequalities v · x ≤ 1</option>
+                <option value="zonotope">Zonotope Σ v[0,1]</option>
+            </select>
+        </label>
+        <label>
+            Vectors M
+            <input class="copos-rows" type="number" min="1" max="50" value="4">
+        </label>
+        <label>
+            Dimension n
+            <input class="copos-cols" type="number" min="1" max="10" value="2">
+        </label>
+        <label>
+            Compute
+            <select class="polynorm-what">
+                <option value="both">Packing and covering</option>
+                <option value="packing">Packing only</option>
+                <option value="covering">Covering only</option>
+            </select>
+        </label>
+        <label>
+            Preset
+            <select class="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <label>
+            Load from file
+            <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+        </label>
+        <button class="copos-run primary" type="button">Compute</button>
+        <button class="polynorm-stop" type="button" disabled>Stop</button>
+    </div>
+
+    <div class="copos-grid polynorm-grid" aria-label="Vectors v_i, one per row"></div>
+
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
+</details>
+
 <noscript>
     <p><strong>Note:</strong> these tools require JavaScript and WebAssembly.</p>
 </noscript>
@@ -214,3 +288,4 @@ AM1 AM2 ... AMN</pre>
 <script>window.__WASM_BUST = "{{ wasm_v }}";</script>
 <script src="{{ '/wasm/polyhedral.js' | relative_url }}?v={{ wasm_v }}"></script>
 <script src="{{ '/assets/polyhedral-ui.js' | relative_url }}?v={{ wasm_v }}"></script>
+<script src="{{ '/assets/polynorm-ui.js' | relative_url }}?v={{ wasm_v }}"></script>
