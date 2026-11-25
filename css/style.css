@@ -596,12 +596,17 @@ details.tool-card[open] > *:last-child {
     vertical-align: top;
 }
 
-/* Packing / covering tool: the row labels v_1, v_2, ... of the vector grid,
-   and the expandable lists under the summary table. */
+/* Polytope tools: the row labels v_1, v_2, ... of the vector grid, the
+   expandable lists under the summary table, and the method parameters,
+   hidden for the method not chosen (display: flex above would show them). */
 .polynorm-row-label {
     align-self: center;
     padding-right: 4px;
     font-style: italic;
+}
+
+.copos-controls label[hidden] {
+    display: none;
 }
 
 .copos-result details {

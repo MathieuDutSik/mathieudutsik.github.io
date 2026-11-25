@@ -4,8 +4,8 @@ title: Interactive Tools
 description: >-
   Interactive in-browser tools by Mathieu Dutour Sikirić — copositivity tests,
   copositive factorization, shortest-vector realizability and automorphism
-  groups, Gram-matrix canonicalization, and the packing and covering
-  densities of a polytope. Run locally in your browser via
+  groups, Gram-matrix canonicalization, the packing and covering densities
+  of a polytope, and minimal covering polytopes. Run locally in your browser via
   WebAssembly with exact arbitrary-precision arithmetic.
 ---
 <p>Computations on this page run locally in your browser. Results are exact.
@@ -207,7 +207,7 @@ AM1 AM2 ... AMN</pre>
     <div class="copos-result" aria-live="polite"></div>
 </details>
 
-<details class="tool-card polynorm-tool" id="polytope-packing-covering">
+<details class="tool-card polynorm-tool" data-mode="densities" id="polytope-packing-covering">
     <summary>Packing and covering density of a polytope</summary>
 
     <p>For a full-dimensional polytope P ⊂ ℝ<sup>n</sup>, compute the
@@ -259,6 +259,142 @@ covering density = μ<sup>n</sup> vol(P)  ≥ 1</pre>
                 <option value="packing">Packing only</option>
                 <option value="covering">Covering only</option>
             </select>
+        </label>
+        <label>
+            Preset
+            <select class="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <label>
+            Load from file
+            <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+        </label>
+        <button class="copos-run primary" type="button">Compute</button>
+        <button class="polynorm-stop" type="button" disabled>Stop</button>
+    </div>
+
+    <div class="copos-grid polynorm-grid" aria-label="Vectors v_i, one per row"></div>
+
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
+</details>
+
+<details class="tool-card polynorm-tool" data-mode="isMinimalCovering" id="minimal-covering-test">
+    <summary>Minimal covering polytope test</summary>
+
+    <p>A polytope P ⊂ ℝ<sup>n</sup> is <em>covering</em> if
+    P + ℤ<sup>n</sup> = ℝ<sup>n</sup>, and <em>minimal covering</em> if
+    moreover no convex body strictly contained in P is covering
+    (Codenotti, Freyer, Krivokuca, <em>Minimal covering bodies and
+    Brunn–Minkowski type inequalities for the covering radius</em>).
+    The test is exact and local: P is minimal covering exactly when no
+    vertex of P can be cut off keeping the covering. When P is covering
+    but not minimal, the tool lists the vertices that can be cut; when P
+    is not covering, it gives its covering radius μ &gt; 1.</p>
+
+    <p>The polytope P is entered as in the packing and covering tool: one
+    vector v<sub>i</sub> per row, read as its vertices, as inequalities
+    v<sub>i</sub> · x ≤ 1, or as zonotope generators.</p>
+
+    <div class="copos-controls">
+        <label>
+            Polytope given by
+            <select class="polynorm-input-type">
+                <option value="vertices">Vertices (convex hull)</option>
+                <option value="inequalities">Inequalities v · x ≤ 1</option>
+                <option value="zonotope">Zonotope Σ v[0,1]</option>
+            </select>
+        </label>
+        <label>
+            Vectors M
+            <input class="copos-rows" type="number" min="1" max="50" value="4">
+        </label>
+        <label>
+            Dimension n
+            <input class="copos-cols" type="number" min="1" max="10" value="2">
+        </label>
+        <label>
+            Preset
+            <select class="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <label>
+            Load from file
+            <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+        </label>
+        <button class="copos-run primary" type="button">Test</button>
+        <button class="polynorm-stop" type="button" disabled>Stop</button>
+    </div>
+
+    <div class="copos-grid polynorm-grid" aria-label="Vectors v_i, one per row"></div>
+
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
+</details>
+
+<details class="tool-card polynorm-tool" data-mode="minimalCovering" id="minimal-covering-polytope">
+    <summary>Find a minimal covering polytope</summary>
+
+    <p>Given a polytope P with covering radius μ ≤ 1 (so that P is covering),
+    find a minimal covering polytope Q contained in μP, and so in P. Two
+    methods:</p>
+    <ul>
+        <li><strong>Grid</strong> (default): Q is the convex hull of a set of
+            candidate points, the vertices of μP and its points in
+            (1/D)ℤ<sup>n</sup>, from which points are dropped as long as the
+            hull stays covering. D is N times the lcm of the denominators of
+            the vertices of μP. When the result is not proved minimal, the
+            finer grids (1/2D)ℤ<sup>n</sup>, (1/3D)ℤ<sup>n</sup>, … are tried,
+            up to the given number of rounds.</li>
+        <li><strong>Reduction</strong>: repeatedly remove a vertex, push a
+            facet inward, or cut a vertex as deep as the covering allows.
+            Each step is exact, but in dimension 3 the cuts can go on without
+            end, so the number of steps is bounded.</li>
+    </ul>
+    <p>The result says whether Q is proved minimal. Dimension 2 takes
+    seconds; dimension 3 can take minutes.</p>
+
+    <p>The polytope P is entered as in the packing and covering tool: one
+    vector v<sub>i</sub> per row, read as its vertices, as inequalities
+    v<sub>i</sub> · x ≤ 1, or as zonotope generators.</p>
+
+    <div class="copos-controls">
+        <label>
+            Polytope given by
+            <select class="polynorm-input-type">
+                <option value="vertices">Vertices (convex hull)</option>
+                <option value="inequalities">Inequalities v · x ≤ 1</option>
+                <option value="zonotope">Zonotope Σ v[0,1]</option>
+            </select>
+        </label>
+        <label>
+            Vectors M
+            <input class="copos-rows" type="number" min="1" max="50" value="4">
+        </label>
+        <label>
+            Dimension n
+            <input class="copos-cols" type="number" min="1" max="10" value="2">
+        </label>
+        <label>
+            Method
+            <select class="polynorm-method">
+                <option value="grid">Grid</option>
+                <option value="reduction">Reduction</option>
+            </select>
+        </label>
+        <label data-method="grid">
+            Grid refinement N
+            <input class="polynorm-grid-n" type="number" min="1" max="20" value="1">
+        </label>
+        <label data-method="grid">
+            Rounds
+            <input class="polynorm-rounds" type="number" min="1" max="10" value="3">
+        </label>
+        <label data-method="reduction">
+            Max reductions
+            <input class="polynorm-max-step" type="number" min="1" max="100000" value="1000">
         </label>
         <label>
             Preset

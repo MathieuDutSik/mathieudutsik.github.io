@@ -1,10 +1,13 @@
-// Tools page glue for the packing / covering densities of a polytope:
-// the <details class="polynorm-tool"> section. The polytope is given by M
-// vectors v_i in R^n, read as its vertices, as the inequalities v_i . x <= 1,
-// or as the generators of the zonotope v_1 [0,1] + ... + v_M [0,1].
+// Tools page glue for the polytope tools: the <details class="polynorm-tool"
+// data-mode="..."> sections. In each, the polytope is given by M vectors v_i
+// in R^n, read as its vertices, as the inequalities v_i . x <= 1, or as the
+// generators of the zonotope v_1 [0,1] + ... + v_M [0,1]. The modes:
+//   densities         packing and covering densities  (polytopeNormDensities)
+//   isMinimalCovering minimal covering test           (isMinimalCovering)
+//   minimalCovering   a minimal covering polytope     (minimalCoveringPolytope)
 //
-// The computation runs in a Web Worker (assets/polynorm-worker.js) calling
-// the `polytopeNormDensities` binding of /wasm/polyhedral.js.
+// The computations run in a Web Worker (assets/polynorm-worker.js) calling
+// those bindings of /wasm/polyhedral.js, one worker per section.
 
 (function () {
     "use strict";
@@ -12,7 +15,8 @@
     const MAX_ROWS = 50;
     const MAX_COLS = 10;
 
-    const PRESETS = {
+    // Presets for the densities tool.
+    const DENSITY_PRESETS = {
         "square": {
             label: "Square [0,1]² (vertices)",
             inputType: "vertices", rows: 4, cols: 2,
@@ -60,6 +64,54 @@
             label: "Rhombic dodecahedron (zonotope, 4 generators)",
             inputType: "zonotope", rows: 4, cols: 3,
             entries: ["1", "1", "1", "1", "1", "-1", "1", "-1", "1", "-1", "1", "1"],
+        },
+    };
+
+    // Presets for the two minimal covering tools.
+    const MINCOV_PRESETS = {
+        "square": {
+            label: "Square [0,1]² (minimal covering, a tile)",
+            inputType: "vertices", rows: 4, cols: 2,
+            entries: ["0", "0", "1", "0", "0", "1", "1", "1"],
+        },
+        "rectangle": {
+            label: "Rectangle [0,3/2] × [0,1] (covering, not minimal)",
+            inputType: "vertices", rows: 4, cols: 2,
+            entries: ["0", "0", "3/2", "0", "0", "1", "3/2", "1"],
+        },
+        "triangle-1": {
+            label: "Triangle conv(0, e₁, e₂) (not covering, μ = 2)",
+            inputType: "vertices", rows: 3, cols: 2,
+            entries: ["0", "0", "1", "0", "0", "1"],
+        },
+        "triangle-3": {
+            label: "Triangle conv(0, 3e₁, 3e₂)",
+            inputType: "vertices", rows: 3, cols: 2,
+            entries: ["0", "0", "3", "0", "0", "3"],
+        },
+        "hexagon": {
+            label: "Hexagon conv(±e₁, ±e₂, ±(e₁+e₂))",
+            inputType: "vertices", rows: 6, cols: 2,
+            entries: ["1", "0", "-1", "0", "0", "1", "0", "-1", "1", "1", "-1", "-1"],
+        },
+        "tetrahedron-3": {
+            label: "Tetrahedron conv(0, 3e₁, 3e₂, 3e₃)",
+            inputType: "vertices", rows: 4, cols: 3,
+            entries: ["0", "0", "0", "3", "0", "0", "0", "3", "0", "0", "0", "3"],
+        },
+        "octahedron-3-2": {
+            label: "Octahedron (3/2) conv(±eᵢ) (finding Q: about 20 s)",
+            inputType: "vertices", rows: 6, cols: 3,
+            entries: ["3/2", "0", "0", "-3/2", "0", "0", "0", "3/2", "0",
+                "0", "-3/2", "0", "0", "0", "3/2", "0", "0", "-3/2"],
+        },
+        "octahedron-q": {
+            label: "Minimal covering Q found in (3/2) conv(±eᵢ) (volume 5/4, not a tile)",
+            inputType: "vertices", rows: 12, cols: 3,
+            entries: ["-1/2", "1/2", "-1/2", "0", "-1/2", "0", "1/2", "0", "0",
+                "-1", "1/2", "0", "-1/2", "1", "0", "-1/2", "-1/2", "1/2",
+                "1/2", "-1/2", "1/2", "1/2", "1/2", "1/2", "0", "-1/2", "1",
+                "-1/2", "0", "1", "1/2", "0", "1", "0", "1/2", "1"],
         },
     };
 
@@ -136,6 +188,105 @@
         return out.join("");
     }
 
+    function verdict(ok, text) {
+        return `<p class="verdict ${ok ? "verdict-yes" : "verdict-no"}">${text}</p>`;
+    }
+
+    function renderMinimalTest(r) {
+        const n = r.dim;
+        const out = [];
+        if (!r.isCovering) {
+            out.push(verdict(false, "P is NOT covering: P + ℤ<sup>n</sup> ≠ ℝ<sup>n</sup>."));
+            out.push(`<p>Its covering radius is μ = ${exactAndDecimal(r.mu)} &gt; 1, so μP is covering; ` +
+                `the minimal covering polytope tool works on μP.</p>`);
+        } else if (r.isMinimal) {
+            out.push(verdict(true, "P is minimal covering."));
+            out.push(`<p>P + ℤ<sup>n</sup> = ℝ<sup>n</sup>, and no convex body strictly contained in P is covering: ` +
+                `no vertex of P can be cut.</p>`);
+        } else {
+            out.push(verdict(false, "P is covering but NOT minimal."));
+            out.push(`<p>${r.nCuttable} vert${r.nCuttable === 1 ? "ex" : "ices"} of P can be cut keeping the covering:</p>`);
+            out.push(`<pre>${vectorList(r.cuttableFlat, n, "w")}</pre>`);
+        }
+        out.push(`<table class="copos-factor-table">`);
+        out.push(`<tr><td>Vertices / facets of P</td><td>${r.nVertices} / ${r.nFacets}</td></tr>`);
+        out.push(`<tr><td>Volume of P</td><td>${exactAndDecimal(r.volume)}</td></tr>`);
+        out.push(`</table>`);
+        out.push(`<details><summary>Vertices of P (${r.nVertices})</summary>`);
+        out.push(`<pre>${vectorList(r.verticesFlat, n, "w")}</pre></details>`);
+        return out.join("");
+    }
+
+    function renderMinimalCovering(r) {
+        const n = r.dim;
+        const out = [];
+        if (!r.isCovering) {
+            out.push(verdict(false, "P is NOT covering."));
+            out.push(`<p>Its covering radius is μ = ${exactAndDecimal(r.muInput)} &gt; 1. ` +
+                `Scale P by μ (or more) to get a covering polytope.</p>`);
+            return out.join("");
+        }
+        if (r.isMinimal) {
+            out.push(verdict(true, "Found a minimal covering polytope Q ⊂ μP." +
+                (r.isTile ? " Q has volume 1: it is a lattice tile." : "")));
+        } else {
+            out.push(verdict(false, "Found a covering polytope Q ⊂ μP, NOT proved minimal."));
+            out.push(`<p>Some vertex of Q can still be cut: try a finer grid, more rounds, or more reductions.</p>`);
+        }
+        out.push(`<table class="copos-factor-table">`);
+        out.push(`<tr><td>Covering radius μ of P</td><td>${exactAndDecimal(r.muInput)}</td></tr>`);
+        out.push(`<tr><td>Vertices / facets of Q</td><td>${r.nVertices} / ${r.nFacets}</td></tr>`);
+        out.push(`<tr><td>Volume of Q</td><td>${exactAndDecimal(r.volume)}</td></tr>`);
+        out.push(`</table>`);
+        out.push(`<p>${escapeHtml(r.description)}</p>`);
+        out.push(`<details open><summary>Vertices of Q (${r.nVertices})</summary>`);
+        out.push(`<pre>${vectorList(r.verticesFlat, n, "w")}</pre></details>`);
+        const facets = [];
+        for (let i = 0; i < r.nFacets; i++) {
+            const row = r.facetsFlat.slice(i * (n + 1), (i + 1) * (n + 1));
+            const terms = row.slice(1).map((a, k) => `${a}·x${k + 1}`).join(" + ");
+            facets.push(`${row[0]} + ${terms} ≥ 0`.replace(/\+ -/g, "− "));
+        }
+        out.push(`<details><summary>Facets of Q (${r.nFacets}), as b + a·x ≥ 0</summary>`);
+        out.push(`<pre>${facets.map(escapeHtml).join("\n")}</pre></details>`);
+        return out.join("");
+    }
+
+    function intInput(el, min, fallback) {
+        const v = parseInt(el.value, 10);
+        return Number.isInteger(v) && v >= min ? v : fallback;
+    }
+
+    // Per mode: the presets, the default preset, the binding and its
+    // arguments after (inputType, rows, cols, entries), and the renderer.
+    const MODES = {
+        densities: {
+            presets: DENSITY_PRESETS, initial: "square",
+            method: "polytopeNormDensities",
+            extraArgs: (root) => [root.querySelector(".polynorm-what").value],
+            render: renderResult,
+        },
+        isMinimalCovering: {
+            presets: MINCOV_PRESETS, initial: "rectangle",
+            method: "isMinimalCovering",
+            extraArgs: () => [],
+            render: renderMinimalTest,
+        },
+        minimalCovering: {
+            presets: MINCOV_PRESETS, initial: "rectangle",
+            method: "minimalCoveringPolytope",
+            extraArgs: (root) => {
+                const method = root.querySelector(".polynorm-method").value;
+                if (method === "grid") {
+                    return [method, intInput(root.querySelector(".polynorm-grid-n"), 1, 1),
+                        intInput(root.querySelector(".polynorm-rounds"), 1, 3)];
+                }
+                return [method, intInput(root.querySelector(".polynorm-max-step"), 1, 1000), 0];
+            },
+            render: renderMinimalCovering,
+        },
+    };
+
     // Matrix file: "M n" followed by the M vectors, one per row.
     function parseVectorFile(text) {
         const toks = text.split(/\s+/).filter(Boolean);
@@ -156,9 +307,14 @@
     }
 
     function setupSection(root) {
+        const mode = MODES[root.dataset.mode];
+        if (!mode) {
+            console.warn("polynorm-ui: section has unknown data-mode:", root.dataset.mode, root);
+            return;
+        }
+        const PRESETS = mode.presets;
         const els = {
             inputType: root.querySelector(".polynorm-input-type"),
-            what: root.querySelector(".polynorm-what"),
             rows: root.querySelector(".copos-rows"),
             cols: root.querySelector(".copos-cols"),
             grid: root.querySelector(".copos-grid"),
@@ -250,7 +406,7 @@
                     setStatus(msg.result.error, "error");
                     return;
                 }
-                els.result.innerHTML = renderResult(msg.result);
+                els.result.innerHTML = mode.render(msg.result);
                 setStatus(`Done in ${formatElapsed(msg.elapsedMs)}.`, "ok");
             };
             worker.onerror = (e) => {
@@ -261,9 +417,8 @@
             };
             worker.postMessage({
                 bust: window.__WASM_BUST ? "?v=" + window.__WASM_BUST : "",
-                inputType: els.inputType.value,
-                rows, cols, entries,
-                what: els.what.value,
+                method: mode.method,
+                args: [els.inputType.value, rows, cols, entries, ...mode.extraArgs(root)],
             });
         }
 
@@ -318,7 +473,20 @@
             reader.readAsText(f);
         });
 
-        const p = PRESETS["square"];
+        // The grid method has parameters N and n_round, the reduction method
+        // a maximal number of steps: show the ones of the chosen method.
+        const methodSel = root.querySelector(".polynorm-method");
+        if (methodSel) {
+            const sync = () => {
+                root.querySelectorAll("[data-method]").forEach((el) => {
+                    el.hidden = el.dataset.method !== methodSel.value;
+                });
+            };
+            methodSel.addEventListener("change", sync);
+            sync();
+        }
+
+        const p = PRESETS[mode.initial];
         els.inputType.value = p.inputType;
         load(p.rows, p.cols, p.entries);
     }

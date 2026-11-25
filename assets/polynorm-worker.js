@@ -1,9 +1,9 @@
-// Web Worker running the packing / covering computation of the Tools page
-// (assets/polynorm-ui.js). The covering search can take a long time, so it
-// runs here rather than on the page's main thread: the page stays responsive
-// and "Stop" terminates the worker.
+// Web Worker running the polytope computations of the Tools page
+// (assets/polynorm-ui.js). The covering searches can take a long time, so
+// they run here rather than on the page's main thread: the page stays
+// responsive and "Stop" terminates the worker.
 //
-// Message in : { bust, inputType, rows, cols, entries, what }
+// Message in : { bust, method, args }, calling m[method](...args)
 // Message out: { ok: true, result, elapsedMs } or { ok: false, error }
 // The result is converted to plain arrays, since embind vectors cannot be
 // posted between threads.
@@ -33,8 +33,7 @@ self.onmessage = async (e) => {
     try {
         const m = await loadModule(msg.bust);
         const t0 = performance.now();
-        const r = m.polytopeNormDensities(msg.inputType, msg.rows, msg.cols,
-            msg.entries, msg.what);
+        const r = m[msg.method](...msg.args);
         const elapsedMs = performance.now() - t0;
         const result = {};
         for (const key of Object.keys(r)) {
