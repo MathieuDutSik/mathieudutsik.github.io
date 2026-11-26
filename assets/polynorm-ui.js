@@ -5,6 +5,8 @@
 //   densities         packing and covering densities  (polytopeNormDensities)
 //   isMinimalCovering minimal covering test           (isMinimalCovering)
 //   minimalCovering   a minimal covering polytope     (minimalCoveringPolytope)
+//   coveringPath      1/mu along a Minkowski path     (coveringPath), two
+//                     polytopes K1, K2 in .polynorm-polytope blocks
 //
 // The computations run in a Web Worker (assets/polynorm-worker.js) calling
 // those bindings of /wasm/polyhedral.js, one worker per section.
@@ -112,6 +114,43 @@
                 "-1", "1/2", "0", "-1/2", "1", "0", "-1/2", "-1/2", "1/2",
                 "1/2", "-1/2", "1/2", "1/2", "1/2", "1/2", "0", "-1/2", "1",
                 "-1/2", "0", "1", "1/2", "0", "1", "0", "1/2", "1"],
+        },
+    };
+
+    // Presets for the covering radius along a Minkowski path. The function
+    // is f(lambda) = 1 / mu(lambda K1 + (1 - lambda) K2).
+    const PATH_PRESETS = {
+        "cfk": {
+            label: "Two parallelogram tiles of Codenotti, Freyer, Krivokuca (4 pieces)",
+            cols: 2,
+            polytopes: [
+                { inputType: "zonotope", rows: 2, entries: ["1", "1", "-3/2", "-1/2"] },
+                { inputType: "zonotope", rows: 2, entries: ["1", "0", "1/2", "1"] },
+            ],
+        },
+        "boxes": {
+            label: "Boxes [0,1/2] × [0,2] and [0,2] × [0,1/2]",
+            cols: 2,
+            polytopes: [
+                { inputType: "zonotope", rows: 2, entries: ["1/2", "0", "0", "2"] },
+                { inputType: "zonotope", rows: 2, entries: ["2", "0", "0", "1/2"] },
+            ],
+        },
+        "square-cross": {
+            label: "Square |x|, |y| ≤ 1 and cross-polytope |x| + |y| ≤ 1 (inequalities)",
+            cols: 2,
+            polytopes: [
+                { inputType: "inequalities", rows: 4, entries: ["1", "0", "-1", "0", "0", "1", "0", "-1"] },
+                { inputType: "inequalities", rows: 4, entries: ["1", "1", "1", "-1", "-1", "1", "-1", "-1"] },
+            ],
+        },
+        "boxes3": {
+            label: "Boxes [0,1/2] × [0,2] × [0,1] and [0,2] × [0,1/2] × [0,1] (about 45 s)",
+            cols: 3,
+            polytopes: [
+                { inputType: "zonotope", rows: 3, entries: ["1/2", "0", "0", "0", "2", "0", "0", "0", "1"] },
+                { inputType: "zonotope", rows: 3, entries: ["2", "0", "0", "0", "1/2", "0", "0", "0", "1"] },
+            ],
         },
     };
 
@@ -252,38 +291,242 @@
         return out.join("");
     }
 
+    // Exact rationals {p, q} over BigInt, q > 0, for the values of the
+    // covering path at its break points.
+    function bigAbs(a) { return a < 0n ? -a : a; }
+    function bigGcd(a, b) {
+        a = bigAbs(a); b = bigAbs(b);
+        while (b) [a, b] = [b, a % b];
+        return a;
+    }
+    function rat(p, q) {
+        if (q < 0n) { p = -p; q = -q; }
+        const g = bigGcd(p, q) || 1n;
+        return { p: p / g, q: q / g };
+    }
+    function ratParse(s) {
+        const parts = String(s).split("/");
+        return rat(BigInt(parts[0]), parts.length > 1 ? BigInt(parts[1]) : 1n);
+    }
+    const ratAdd = (a, b) => rat(a.p * b.q + b.p * a.q, a.q * b.q);
+    const ratMul = (a, b) => rat(a.p * b.p, a.q * b.q);
+    const ratInv = (a) => rat(a.q, a.p);
+    const ratCmp = (a, b) => (a.p * b.q < b.p * a.q ? -1 : a.p * b.q > b.p * a.q ? 1 : 0);
+    const ratStr = (a) => a.q === 1n ? a.p.toString() : `${a.p}/${a.q}`;
+    const ratNum = (a) => Number(a.p) / Number(a.q);
+
+    // The pieces of the path, and its break points with their exact values.
+    function pathData(r) {
+        const pieces = [];
+        for (let k = 0; k < r.nPieces; k++) {
+            const [alpha, beta, s0, s1] = r.piecesFlat.slice(4 * k, 4 * k + 4).map(ratParse);
+            pieces.push({ alpha, beta, s0, s1 });
+        }
+        const value = (P, l) => ratAdd(P.s0, ratMul(P.s1, l));
+        const points = pieces.map((P) => ({ lambda: P.alpha, f: value(P, P.alpha) }));
+        const last = pieces[pieces.length - 1];
+        points.push({ lambda: last.beta, f: value(last, last.beta) });
+        return { pieces, points, value };
+    }
+
+    function renderCoveringPath(r) {
+        const { pieces, points, value } = pathData(r);
+        let iMax = 0, iMin = 0;
+        points.forEach((pt, i) => {
+            if (ratCmp(pt.f, points[iMax].f) > 0) iMax = i;
+            if (ratCmp(pt.f, points[iMin].f) < 0) iMin = i;
+        });
+        const exact = (a) => exactAndDecimal(ratStr(a));
+        const out = [];
+        out.push(verdict(true, `f(λ) = 1/μ(λK<sub>1</sub> + (1−λ)K<sub>2</sub>) has ` +
+            `${pieces.length} affine piece${pieces.length === 1 ? "" : "s"} on [0,1], each one proved.`));
+        out.push(`<table class="copos-factor-table">`);
+        out.push(`<tr><td>μ(K<sub>2</sub>), at λ = 0</td><td>${exact(ratInv(points[0].f))}</td></tr>`);
+        out.push(`<tr><td>μ(K<sub>1</sub>), at λ = 1</td><td>${exact(ratInv(points[points.length - 1].f))}</td></tr>`);
+        out.push(`<tr><td>Largest μ (smallest 1/μ)</td><td>${exact(ratInv(points[iMin].f))} at λ = ${escapeHtml(ratStr(points[iMin].lambda))}</td></tr>`);
+        out.push(`<tr><td>Smallest μ (largest 1/μ)</td><td>${exact(ratInv(points[iMax].f))} at λ = ${escapeHtml(ratStr(points[iMax].lambda))}</td></tr>`);
+        out.push(`</table>`);
+        out.push(`<div class="polynorm-chart" data-imax="${iMax}" data-imin="${iMin}"></div>`);
+        const rows = pieces.map((P) => {
+            const sign = P.s1.p < 0n ? "−" : "+";
+            const s1abs = rat(bigAbs(P.s1.p), P.s1.q);
+            return `<tr><td>[${escapeHtml(ratStr(P.alpha))}, ${escapeHtml(ratStr(P.beta))}]</td>` +
+                `<td>${escapeHtml(ratStr(P.s0))} ${sign} ${escapeHtml(ratStr(s1abs))} λ</td>` +
+                `<td>${escapeHtml(ratStr(ratInv(value(P, P.alpha))))} to ${escapeHtml(ratStr(ratInv(value(P, P.beta))))}</td></tr>`;
+        });
+        out.push(`<table class="copos-factor-table polynorm-pieces">` +
+            `<tr><th>λ</th><th>1/μ</th><th>μ</th></tr>${rows.join("")}</table>`);
+        out.push(`<p>${escapeHtml(r.description)}</p>`);
+        return out.join("");
+    }
+
+    // The plot of f = 1/mu over [0,1]: the polyline through the break
+    // points (f is affine in between), a marker at each break point, the
+    // extreme values labeled, and a crosshair with a tooltip on hover.
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    function svgEl(tag, attrs, text) {
+        const el = document.createElementNS(SVG_NS, tag);
+        for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+        if (text !== undefined) el.textContent = text;
+        return el;
+    }
+
+    // A round step (1, 2, 2.5 or 5 times a power of 10) giving about
+    // `target` intervals on [lo, hi].
+    function niceStep(lo, hi, target) {
+        const raw = (hi - lo) / target;
+        const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+        return [1, 2, 2.5, 5, 10].map((m) => m * mag).find((st) => st >= raw * (1 - 1e-9));
+    }
+
+    function wirePathChart(container, r) {
+        const host = container.querySelector(".polynorm-chart");
+        const { pieces, points, value } = pathData(r);
+        const W = 640, H = 300, ML = 56, MR = 20, MT = 24, MB = 44;
+        const fs = points.map((pt) => ratNum(pt.f));
+        let lo = Math.min(...fs), hi = Math.max(...fs);
+        const pad = hi > lo ? (hi - lo) * 0.15 : 0.05;
+        lo -= pad; hi += pad;
+        // The range is widened to whole tick steps, so that both ends get a tick.
+        const step = niceStep(lo, hi, 5);
+        const k0 = Math.floor(lo / step + 1e-9), k1 = Math.ceil(hi / step - 1e-9);
+        lo = k0 * step;
+        hi = k1 * step;
+        const ticks = [];
+        for (let k = k0; k <= k1; k++) ticks.push(k * step);
+        const X = (l) => ML + l * (W - ML - MR);
+        const Y = (f) => MT + (hi - f) / (hi - lo) * (H - MT - MB);
+        // As many decimals as the step has: 0.05 -> 2, 0.025 -> 3.
+        const digits = (String(+step.toPrecision(12)).split(".")[1] || "").length;
+
+        const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img",
+            "aria-label": "Plot of 1/mu(lambda K1 + (1 - lambda) K2) for lambda in [0,1]; the values are in the table below" });
+        for (const t of ticks) {
+            svg.appendChild(svgEl("line", { x1: ML, x2: W - MR, y1: Y(t), y2: Y(t), class: "grid" }));
+            svg.appendChild(svgEl("text", { x: ML - 8, y: Y(t) + 4, "text-anchor": "end", class: "tick" }, t.toFixed(digits)));
+        }
+        for (const l of [0, 0.25, 0.5, 0.75, 1]) {
+            svg.appendChild(svgEl("line", { x1: X(l), x2: X(l), y1: MT, y2: H - MB, class: "grid" }));
+            svg.appendChild(svgEl("text", { x: X(l), y: H - MB + 18, "text-anchor": "middle", class: "tick" }, String(l)));
+        }
+        svg.appendChild(svgEl("text", { x: (ML + W - MR) / 2, y: H - 6, "text-anchor": "middle", class: "axis-label" }, "λ"));
+        svg.appendChild(svgEl("text", { x: 14, y: MT + (H - MT - MB) / 2, "text-anchor": "middle", class: "axis-label",
+            transform: `rotate(-90 14 ${MT + (H - MT - MB) / 2})` }, "1/μ"));
+        svg.appendChild(svgEl("polyline", { class: "series",
+            points: points.map((pt) => `${X(ratNum(pt.lambda))},${Y(ratNum(pt.f))}`).join(" ") }));
+        // Every break point attaining the largest or the smallest value is
+        // labeled: the extremes can be attained several times (the two
+        // local maxima of the parallelograms).
+        const fMax = points[+host.dataset.imax].f, fMin = points[+host.dataset.imin].f;
+        points.forEach((pt) => {
+            svg.appendChild(svgEl("circle", { cx: X(ratNum(pt.lambda)), cy: Y(ratNum(pt.f)), r: 4, class: "marker" }));
+            const isMax = ratCmp(pt.f, fMax) === 0, isMin = ratCmp(pt.f, fMin) === 0;
+            if ((isMax || isMin) && ratCmp(fMax, fMin) !== 0) {
+                const above = isMax;
+                const x = X(ratNum(pt.lambda));
+                const anchor = x < ML + 40 ? "start" : x > W - MR - 40 ? "end" : "middle";
+                svg.appendChild(svgEl("text", { x, y: Y(ratNum(pt.f)) + (above ? -10 : 20),
+                    "text-anchor": anchor, class: "direct-label" }, ratStr(pt.f)));
+            }
+        });
+
+        // Hover: the crosshair snaps to a break point within 8 px, showing
+        // exact values there, and shows decimals elsewhere.
+        const cross = svgEl("line", { y1: MT, y2: H - MB, class: "crosshair", visibility: "hidden" });
+        const dot = svgEl("circle", { r: 5, class: "marker hover-dot", visibility: "hidden" });
+        svg.appendChild(cross);
+        svg.appendChild(dot);
+        const hit = svgEl("rect", { x: ML, y: MT, width: W - ML - MR, height: H - MT - MB, class: "hit" });
+        svg.appendChild(hit);
+        host.appendChild(svg);
+        const tip = document.createElement("div");
+        tip.className = "polynorm-tooltip";
+        tip.hidden = true;
+        host.appendChild(tip);
+
+        function show(evt) {
+            const box = svg.getBoundingClientRect();
+            const scale = W / box.width;
+            const sx = (evt.clientX - box.left) * scale;
+            let l = Math.min(1, Math.max(0, (sx - ML) / (W - ML - MR)));
+            let html;
+            const near = points.find((pt) => Math.abs(X(ratNum(pt.lambda)) - sx) <= 8);
+            let fNum;
+            if (near) {
+                l = ratNum(near.lambda);
+                fNum = ratNum(near.f);
+                html = `λ = ${escapeHtml(ratStr(near.lambda))}<br>1/μ = ${escapeHtml(ratStr(near.f))}<br>` +
+                    `μ = ${escapeHtml(ratStr(ratInv(near.f)))}`;
+            } else {
+                const P = pieces.find((Q) => ratNum(Q.beta) >= l) || pieces[pieces.length - 1];
+                fNum = ratNum(P.s0) + ratNum(P.s1) * l;
+                html = `λ ≈ ${l.toFixed(4)}<br>1/μ ≈ ${fNum.toFixed(6)}<br>μ ≈ ${(1 / fNum).toFixed(6)}`;
+            }
+            cross.setAttribute("x1", X(l)); cross.setAttribute("x2", X(l));
+            dot.setAttribute("cx", X(l)); dot.setAttribute("cy", Y(fNum));
+            cross.setAttribute("visibility", "visible");
+            dot.setAttribute("visibility", "visible");
+            tip.innerHTML = html;
+            tip.hidden = false;
+            const px = X(l) / scale, py = Y(fNum) / scale;
+            tip.style.left = (px + 12 + tip.offsetWidth > box.width ? px - 12 - tip.offsetWidth : px + 12) + "px";
+            tip.style.top = Math.max(0, py - tip.offsetHeight - 8) + "px";
+        }
+        function hide() {
+            cross.setAttribute("visibility", "hidden");
+            dot.setAttribute("visibility", "hidden");
+            tip.hidden = true;
+        }
+        hit.addEventListener("pointermove", show);
+        hit.addEventListener("pointerdown", show);
+        hit.addEventListener("pointerleave", hide);
+    }
+
     function intInput(el, min, fallback) {
         const v = parseInt(el.value, 10);
         return Number.isInteger(v) && v >= min ? v : fallback;
     }
 
+    // The arguments (inputType, rows, cols, entries, ...extra) of the
+    // bindings that take one polytope.
+    const singleArgs = (extraArgs) => (polys, cols, root) =>
+        [polys[0].inputType, polys[0].rows, cols, polys[0].entries, ...extraArgs(root)];
+
     // Per mode: the presets, the default preset, the binding and its
-    // arguments after (inputType, rows, cols, entries), and the renderer.
+    // arguments, the renderer and what to wire after rendering.
     const MODES = {
         densities: {
             presets: DENSITY_PRESETS, initial: "square",
             method: "polytopeNormDensities",
-            extraArgs: (root) => [root.querySelector(".polynorm-what").value],
+            buildArgs: singleArgs((root) => [root.querySelector(".polynorm-what").value]),
             render: renderResult,
         },
         isMinimalCovering: {
             presets: MINCOV_PRESETS, initial: "rectangle",
             method: "isMinimalCovering",
-            extraArgs: () => [],
+            buildArgs: singleArgs(() => []),
             render: renderMinimalTest,
         },
         minimalCovering: {
             presets: MINCOV_PRESETS, initial: "rectangle",
             method: "minimalCoveringPolytope",
-            extraArgs: (root) => {
+            buildArgs: singleArgs((root) => {
                 const method = root.querySelector(".polynorm-method").value;
                 if (method === "grid") {
                     return [method, intInput(root.querySelector(".polynorm-grid-n"), 1, 1),
                         intInput(root.querySelector(".polynorm-rounds"), 1, 3)];
                 }
                 return [method, intInput(root.querySelector(".polynorm-max-step"), 1, 1000), 0];
-            },
+            }),
             render: renderMinimalCovering,
+        },
+        coveringPath: {
+            presets: PATH_PRESETS, initial: "cfk",
+            method: "coveringPath",
+            buildArgs: (polys, cols) => [polys[0].inputType, polys[0].rows, polys[0].entries,
+                polys[1].inputType, polys[1].rows, polys[1].entries, cols],
+            render: renderCoveringPath,
+            afterRender: wirePathChart,
         },
     };
 
@@ -314,17 +557,25 @@
         }
         const PRESETS = mode.presets;
         const els = {
-            inputType: root.querySelector(".polynorm-input-type"),
-            rows: root.querySelector(".copos-rows"),
             cols: root.querySelector(".copos-cols"),
-            grid: root.querySelector(".copos-grid"),
             run: root.querySelector(".copos-run"),
             stop: root.querySelector(".polynorm-stop"),
             presets: root.querySelector(".copos-presets"),
-            file: root.querySelector(".copos-file"),
             status: root.querySelector(".copos-status"),
             result: root.querySelector(".copos-result"),
         };
+        // The polytope inputs: one block per .polynorm-polytope, or the
+        // section itself when it takes a single polytope. Each block has its
+        // input type, number of vectors, file input and grid; the dimension
+        // is shared.
+        const blockRoots = root.querySelectorAll(".polynorm-polytope");
+        const blocks = Array.from(blockRoots.length ? blockRoots : [root], (b) => ({
+            name: b.dataset.name || "",
+            inputType: b.querySelector(".polynorm-input-type"),
+            rows: b.querySelector(".copos-rows"),
+            file: b.querySelector(".copos-file"),
+            grid: b.querySelector(".copos-grid"),
+        }));
         let worker = null;
 
         function setStatus(msg, kind) {
@@ -337,46 +588,58 @@
             return Math.min(v, max);
         }
 
-        function readDims() {
-            return {
-                rows: clamp(parseInt(els.rows.value, 10), MAX_ROWS),
-                cols: clamp(parseInt(els.cols.value, 10), MAX_COLS),
-            };
+        function readCols() {
+            return clamp(parseInt(els.cols.value, 10), MAX_COLS);
         }
 
-        function rebuildGrid(rows, cols, entries) {
-            els.grid.innerHTML = "";
-            els.grid.style.gridTemplateColumns = `auto repeat(${cols}, minmax(3rem, 1fr))`;
+        function readRows(blk) {
+            return clamp(parseInt(blk.rows.value, 10), MAX_ROWS);
+        }
+
+        function rebuildGrid(blk, rows, cols, entries) {
+            blk.grid.innerHTML = "";
+            blk.grid.style.gridTemplateColumns = `auto repeat(${cols}, minmax(3rem, 1fr))`;
             for (let i = 0; i < rows; i++) {
                 const label = document.createElement("span");
                 label.className = "polynorm-row-label";
                 label.innerHTML = `v<sub>${i + 1}</sub>`;
-                els.grid.appendChild(label);
+                blk.grid.appendChild(label);
                 for (let j = 0; j < cols; j++) {
                     const inp = document.createElement("input");
                     inp.type = "text";
                     inp.value = entries ? entries[i * cols + j] : (i === j ? "1" : "0");
                     inp.dataset.i = i;
                     inp.dataset.j = j;
-                    inp.setAttribute("aria-label", `v${i + 1}[${j + 1}]`);
-                    els.grid.appendChild(inp);
+                    inp.setAttribute("aria-label", `${blk.name}v${i + 1}[${j + 1}]`);
+                    blk.grid.appendChild(inp);
                 }
             }
         }
 
-        function readEntries(rows, cols) {
+        function readPolytope(blk, cols) {
+            const rows = readRows(blk);
             const entries = new Array(rows * cols);
-            els.grid.querySelectorAll("input").forEach((inp) => {
+            blk.grid.querySelectorAll("input").forEach((inp) => {
                 entries[+inp.dataset.i * cols + +inp.dataset.j] = inp.value.trim();
             });
-            return entries;
+            return { inputType: blk.inputType.value, rows, entries };
         }
 
-        function load(rows, cols, entries) {
-            els.rows.value = String(rows);
-            els.cols.value = String(cols);
-            rebuildGrid(rows, cols, entries);
+        // Load one block; its grid takes the current dimension.
+        function loadBlock(blk, rows, entries) {
+            blk.rows.value = String(rows);
+            rebuildGrid(blk, rows, readCols(), entries);
             els.result.innerHTML = "";
+        }
+
+        // A preset is one polytope {inputType, rows, cols, entries}, or
+        // {cols, polytopes: [...]} for a section of several blocks.
+        function applyPreset(p) {
+            els.cols.value = String(p.cols);
+            (p.polytopes || [p]).forEach((q, k) => {
+                blocks[k].inputType.value = q.inputType;
+                loadBlock(blocks[k], q.rows, q.entries);
+            });
         }
 
         function finish() {
@@ -385,8 +648,8 @@
         }
 
         function run() {
-            const { rows, cols } = readDims();
-            const entries = readEntries(rows, cols);
+            const cols = readCols();
+            const polys = blocks.map((blk) => readPolytope(blk, cols));
             if (!worker) {
                 worker = new Worker("/assets/polynorm-worker.js" +
                     (window.__WASM_BUST ? "?v=" + window.__WASM_BUST : ""));
@@ -407,6 +670,7 @@
                     return;
                 }
                 els.result.innerHTML = mode.render(msg.result);
+                if (mode.afterRender) mode.afterRender(els.result, msg.result);
                 setStatus(`Done in ${formatElapsed(msg.elapsedMs)}.`, "ok");
             };
             worker.onerror = (e) => {
@@ -418,7 +682,7 @@
             worker.postMessage({
                 bust: window.__WASM_BUST ? "?v=" + window.__WASM_BUST : "",
                 method: mode.method,
-                args: [els.inputType.value, rows, cols, entries, ...mode.extraArgs(root)],
+                args: mode.buildArgs(polys, cols, root),
             });
         }
 
@@ -441,37 +705,45 @@
             const p = PRESETS[e.target.value];
             e.target.value = "";
             if (!p) return;
-            els.inputType.value = p.inputType;
-            load(p.rows, p.cols, p.entries);
+            applyPreset(p);
             setStatus("");
         });
 
-        const onDimChange = () => {
-            const { rows, cols } = readDims();
-            load(rows, cols, null);
+        els.cols.addEventListener("change", () => {
+            els.cols.value = String(readCols());
+            blocks.forEach((blk) => loadBlock(blk, readRows(blk), null));
             setStatus("");
-        };
-        els.rows.addEventListener("change", onDimChange);
-        els.cols.addEventListener("change", onDimChange);
+        });
+        for (const blk of blocks) {
+            blk.rows.addEventListener("change", () => {
+                loadBlock(blk, readRows(blk), null);
+                setStatus("");
+            });
+            blk.file.addEventListener("change", (e) => {
+                const f = e.target.files && e.target.files[0];
+                e.target.value = "";
+                if (!f) return;
+                const reader = new FileReader();
+                reader.onload = () => {
+                    try {
+                        const parsed = parseVectorFile(String(reader.result));
+                        if (parsed.cols !== readCols()) {
+                            // A new dimension resets the other polytopes.
+                            els.cols.value = String(parsed.cols);
+                            blocks.forEach((b) => { if (b !== blk) loadBlock(b, readRows(b), null); });
+                        }
+                        loadBlock(blk, parsed.rows, parsed.entries);
+                        setStatus(`Loaded ${parsed.rows} vectors in dimension ${parsed.cols} from ${f.name}`, "ok");
+                    } catch (err) {
+                        setStatus("File error: " + err.message, "error");
+                    }
+                };
+                reader.onerror = () => setStatus("Could not read file", "error");
+                reader.readAsText(f);
+            });
+        }
         els.run.addEventListener("click", run);
         els.stop.addEventListener("click", stop);
-        els.file.addEventListener("change", (e) => {
-            const f = e.target.files && e.target.files[0];
-            e.target.value = "";
-            if (!f) return;
-            const reader = new FileReader();
-            reader.onload = () => {
-                try {
-                    const parsed = parseVectorFile(String(reader.result));
-                    load(parsed.rows, parsed.cols, parsed.entries);
-                    setStatus(`Loaded ${parsed.rows} vectors in dimension ${parsed.cols} from ${f.name}`, "ok");
-                } catch (err) {
-                    setStatus("File error: " + err.message, "error");
-                }
-            };
-            reader.onerror = () => setStatus("Could not read file", "error");
-            reader.readAsText(f);
-        });
 
         // The grid method has parameters N and n_round, the reduction method
         // a maximal number of steps: show the ones of the chosen method.
@@ -486,9 +758,7 @@
             sync();
         }
 
-        const p = PRESETS[mode.initial];
-        els.inputType.value = p.inputType;
-        load(p.rows, p.cols, p.entries);
+        applyPreset(PRESETS[mode.initial]);
     }
 
     function init() {

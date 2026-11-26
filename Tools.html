@@ -5,7 +5,8 @@ description: >-
   Interactive in-browser tools by Mathieu Dutour Sikirić — copositivity tests,
   copositive factorization, shortest-vector realizability and automorphism
   groups, Gram-matrix canonicalization, the packing and covering densities
-  of a polytope, and minimal covering polytopes. Run locally in your browser via
+  of a polytope, minimal covering polytopes, and the covering radius along a
+  Minkowski path. Run locally in your browser via
   WebAssembly with exact arbitrary-precision arithmetic.
 ---
 <p>Computations on this page run locally in your browser. Results are exact.
@@ -411,6 +412,92 @@ covering density = μ<sup>n</sup> vol(P)  ≥ 1</pre>
     </div>
 
     <div class="copos-grid polynorm-grid" aria-label="Vectors v_i, one per row"></div>
+
+    <p class="copos-status" aria-live="polite"></p>
+    <div class="copos-result" aria-live="polite"></div>
+</details>
+
+<details class="tool-card polynorm-tool" data-mode="coveringPath" id="covering-radius-path">
+    <summary>Covering radius along a Minkowski path</summary>
+
+    <p>For two full-dimensional polytopes K<sub>1</sub>, K<sub>2</sub> ⊂ ℝ<sup>n</sup>,
+    compute exactly the function</p>
+
+    <pre>f(λ) = 1 / μ(λK<sub>1</sub> + (1 − λ)K<sub>2</sub>),   λ ∈ [0, 1],</pre>
+
+    <p>where μ is the covering radius for ℤ<sup>n</sup>. The facet normals of
+    K<sub>1</sub> + K<sub>2</sub> describe every λK<sub>1</sub> + (1 − λ)K<sub>2</sub>,
+    with right-hand sides affine in λ. With q = p/μ and s = 1/μ, the condition
+    that a point p is not covered is then linear in (q, s, λ), in the spirit of
+    the Cayley trick. So f is continuous and piecewise affine, and an exact
+    branch and bound over (q, s, λ) proves each of its pieces. This is the
+    setting of Codenotti, Freyer and Krivokuca, whose parallelogram tiles give
+    two local maxima of f (the first preset).</p>
+
+    <p>Each polytope is entered as in the other polytope tools, one vector
+    v<sub>i</sub> per row: as vertices, as inequalities v<sub>i</sub> · x ≤ 1,
+    or as zonotope generators. Dimension 2 takes seconds; dimension 3 can
+    take a minute or more.</p>
+
+    <div class="copos-controls">
+        <label>
+            Dimension n
+            <input class="copos-cols" type="number" min="1" max="10" value="2">
+        </label>
+        <label>
+            Preset
+            <select class="copos-presets">
+                <option value="">(choose one)</option>
+            </select>
+        </label>
+        <button class="copos-run primary" type="button">Compute</button>
+        <button class="polynorm-stop" type="button" disabled>Stop</button>
+    </div>
+
+    <fieldset class="polynorm-polytope" data-name="K1">
+        <legend>K<sub>1</sub> (at λ = 1)</legend>
+        <div class="copos-controls">
+            <label>
+                Polytope given by
+                <select class="polynorm-input-type">
+                    <option value="vertices">Vertices (convex hull)</option>
+                    <option value="inequalities">Inequalities v · x ≤ 1</option>
+                    <option value="zonotope">Zonotope Σ v[0,1]</option>
+                </select>
+            </label>
+            <label>
+                Vectors M
+                <input class="copos-rows" type="number" min="1" max="50" value="2">
+            </label>
+            <label>
+                Load from file
+                <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+            </label>
+        </div>
+        <div class="copos-grid polynorm-grid" aria-label="Vectors v_i of K1, one per row"></div>
+    </fieldset>
+    <fieldset class="polynorm-polytope" data-name="K2">
+        <legend>K<sub>2</sub> (at λ = 0)</legend>
+        <div class="copos-controls">
+            <label>
+                Polytope given by
+                <select class="polynorm-input-type">
+                    <option value="vertices">Vertices (convex hull)</option>
+                    <option value="inequalities">Inequalities v · x ≤ 1</option>
+                    <option value="zonotope">Zonotope Σ v[0,1]</option>
+                </select>
+            </label>
+            <label>
+                Vectors M
+                <input class="copos-rows" type="number" min="1" max="50" value="2">
+            </label>
+            <label>
+                Load from file
+                <input class="copos-file" type="file" accept=".txt,.dat,text/plain">
+            </label>
+        </div>
+        <div class="copos-grid polynorm-grid" aria-label="Vectors v_i of K2, one per row"></div>
+    </fieldset>
 
     <p class="copos-status" aria-live="polite"></p>
     <div class="copos-result" aria-live="polite"></div>

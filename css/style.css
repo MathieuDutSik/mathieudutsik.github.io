@@ -617,6 +617,67 @@ details.tool-card[open] > *:last-child {
     cursor: pointer;
 }
 
+/* Covering radius along a path: the two polytope blocks, the pieces
+   table, and the plot of 1/mu. One series in the link blue (validated
+   against the page surface), recessive hairline grid, text in text tokens. */
+.polynorm-polytope {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin: 12px 0;
+    padding: 4px 12px;
+}
+
+.polynorm-polytope legend {
+    padding: 0 6px;
+    font-weight: 600;
+}
+
+.polynorm-pieces th {
+    text-align: left;
+    padding: 4px 16px 4px 0;
+    font-weight: 600;
+}
+
+.polynorm-chart {
+    position: relative;
+    max-width: 640px;
+    margin: 12px 0;
+}
+
+.polynorm-chart svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.polynorm-chart .grid { stroke: var(--border-color); stroke-width: 1; }
+.polynorm-chart .tick { fill: #666; font-size: 12px; }
+.polynorm-chart .axis-label { fill: var(--text-color); font-size: 13px; font-style: italic; }
+.polynorm-chart .series {
+    fill: none;
+    stroke: var(--link-color);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+.polynorm-chart .marker { fill: var(--link-color); stroke: var(--bg-color); stroke-width: 2; }
+.polynorm-chart .direct-label { fill: var(--text-color); font-size: 12px; }
+.polynorm-chart .crosshair { stroke: #999; stroke-width: 1; }
+.polynorm-chart .hit { fill: transparent; cursor: crosshair; }
+
+.polynorm-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    white-space: nowrap;
+}
+
 /* Repo list (Programs & Data: polyhedral ecosystem section) */
 .repo-list {
     margin: 12px 0 0;
